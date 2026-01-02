@@ -28,7 +28,7 @@
 \usepackage{epstopdf}
 \usepackage{kpfonts}
 \usepackage{blindtext}
-\usepackage[left=2.0cm,right=1.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[left=5.0cm,right=2.0cm,top=2.0cm,bottom=2.0cm]{geometry}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \author{Finn Tegeler} % --> insert your name
@@ -125,13 +125,13 @@
 \begin{document}
     \setstretch{1.5}
     \addtocontents{toc}{\linespread{1}}
+    \pagenumbering{gobble} %no page numbering
     
     % Here the individual chapters are included in the main document by '\include{....}' . The files are in the folder 'doc'
     \include{./doc/00/001_title}
-    \pagenumbering{gobble} %no page numbering
-    \include{./doc/00/002_erklaerung}
     \setcounter{page}{1} %counter for page numbering is set to 1
     \pagenumbering{Roman} % page numbering is done with capital roman signs (I, II, III...)
+    \include{./doc/00/002_task}
     \include{./doc/00/003_abstract}
     % Table of contents is generated:
     \makeatletter
