@@ -56,6 +56,7 @@
 \setkomafont{section}{\sffamily \normalsize}
 \setkomafont{subsection}{\sffamily \normalsize}
 \setkomafont{subsubsection}{\sffamily \normalsize}
+\selectlanguage{german}
 \addtokomafont{caption}{\sffamily \small \itshape}
 \usepackage{courier}
 \usepackage{textgreek}
@@ -106,10 +107,10 @@
 }
 
 % Renaming "table of contents" in "Contents"
-\renewcaptionname{english}{\contentsname}{\textbf{Contents}}
+\renewcaptionname{english}{\contentsname}{\textbf{Inhaltsverzeichnis}}
 
 % Renaming "Sources" in "References"
-\renewcaptionname{english}{\bibname}{\textbf{References}} 
+\renewcaptionname{english}{\bibname}{\textbf{Referenzen}} 
 
 % \usepackage[
 %   tocindentmanual,
@@ -158,35 +159,35 @@
     \clearpage
     \bibliographystyle{unsrtdineng} % modified unsrtdin needs to be included as file in the main path (same level as the main document 000report.tex 
     \bibliography{./bibliography/sources}
-    \addcontentsline{toc}{chapter}{\textbf{References}}
+    \addcontentsline{toc}{chapter}{\textbf{Referenzen}}
      % add to TOC
     \clearpage
  
     %List of abbreviations
-    \markright{\textbf{List of Abbreviations}}
-    \markleft{\textbf{List of Abbreviations}}
+    \markright{\textbf{Abkürzungsverzeichnis}}
+    \markleft{\textbf{Abkürzungsverzeichnis}}
     \include{./doc/20/201_abbrevations}
     \clearpage
     
     %List of figures
-    \markright{\textbf{List of Figures}}
-    \markleft{\textbf{List of Figures}}
+    \markright{\textbf{Abbildungsverzeichnis}}
+    \markleft{\textbf{Abbildungsverzeichnis}}
     \listoffigures
-    \addcontentsline{toc}{chapter}{\textbf{List of Figures}}
+    \addcontentsline{toc}{chapter}{\textbf{Abbildungsverzeichnis}}
     
     %List of tables
     \clearpage
-    \markright{List of Tables}
-    \markleft{List of Tables}
+    \markright{\textbf{Tabellenverzeichnis}}
+    \markleft{\textbf{Tabellenverzeichnis}}
     \listoftables
-    \addcontentsline{toc}{chapter}{\textbf{List of Tables}}
+    \addcontentsline{toc}{chapter}{\textbf{Tabellenverzeichnis}}
     \clearpage
     
     
     %acknowledgments 
      \clearpage
-    \markright{Acknowledgments}
-    \markleft{Acknowledgments}
+    \markright{\textbf{Danksagungen}}
+    \markleft{\textbf{Danksagungen}}
     \include{./doc/20/202_acknowledgements}
     
     
