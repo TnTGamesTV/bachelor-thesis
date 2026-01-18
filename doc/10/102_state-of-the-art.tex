@@ -13,10 +13,78 @@
 \section{Industry Foundation Classes}
 
 \section{Künstliche Intelligenz}
+Irgendwas zu KI allgemein.
 
 \subsection{General Pretrained Transformer}
+Obwohl der Begriff von General Pretrained Transformer (GPT) mit der Einführung von OpenAIs ChatGPT am Popularität gewonnen hat (CITE and REWRITE), 
+ist das Vortrainieren von Modellen im Kontext von machinellem Lernen bereits seit einigen Jahrzehnten eine bekannte Strategie. \cite[S. 4-5]{han2021pretrainedmodelspastpresent}
+
+Die ersten Ansätze des Vortrainierens von Modellen nutzte die Technik des "transfer learning". Dabei wurde ein Modell auf Basis eines Satzes an Aufgaben trainiert und das gewonnene Wissen auf eine andere, vom Datensatz und der Aufgabenstellung abweichende Aufgabe, übertragen. \cite[S. 5]{han2021pretrainedmodelspastpresent}
+Das gewonne Wissen zur Lösung der ursprünglichen Aufgabe konnte trotz des unterschiedlichen Datensatzes und der Aufgabenstellung genutzt werden, obwohl das Modell nicht explizit auf die neue Aufgabe trainiert wurde.
+
+Während früher recurrent neural networks (RNNs) besonders für die Verarbeitung von natürlicher Sprache genutzt wurden, haben sich Transformer Modelle als der Standart für natürliche Sprachverarbeitung etabliert.
+
+RNNs bearbeiten die Eingabedaten sequenziell und referenzieren alle Zustände des vorangegangenen Wortes. Aus diesem Grund gestaltet es sich schwierig mit RNNs die Parallelisierung moderne Grafikkarten (GPUs) bzw. Tensor Processing Units (TPUs) zu nutzen. \cite[S. 7-8]{han2021pretrainedmodelspastpresent}
+
+Transformer hingegen basieren auf einer "sequence-to-sequence" (seq2seq) Architektur und besitzen jeweils einen Encoder und einen Decoder. Beide Komponenten bestehen aus identisch aufgebauten Blöcken, die im Inneren aus einigen "self-attention layers" und einem "position-wise feed-forward layer" bestehen. \cite[S. 8-9]{han2021pretrainedmodelspastpresent} 
+
+Erklärung von Transformer to GPT
+
+Um GPT-Modelle zu trainieren muss auf eine Trainingsmethode zurückgegriffen werden, welche unstrukturierte Trainingsdaten erlaubt. 
+Eine Klassifizierung wie z.B. bei Trainingsdaten aus Bildern ist für Text nicht umzusetzen, da das Bezeichnen von Text um ein vielfaches komplexer ist, als bei Bildern.
+
+Dabei unterteilt sich der Trainingsprozess in das sog. "pre-training" und "fine-tuning". 
+
+In der "pre-training"-Phase werden die genannten unstrukturierten Textdaten verwendet, um die grundsätzliche Semantik der Textdaten 
+
+Um GPT zu trainieren wird "self-supervised learning" als Trainingsmethode genutzt. Dabei werden große Mengen an Text ohne Bezeichnung oder Label verwendet. 
 
 \subsection{Large-Language-Modelle}
+
+Das Interesse der Wirtschaft und der Öffentlichkeit an generativer KI, zu welcher Large-Language-Modelle zählen, ist erst in den letzten Jahren stark angestiegen.
+Trotz des relativ jungen Alters von Produkten wie ChatGPT \cite{openAi2022chatgpt} sind Language-Modelle bereits mit dem 1966 vom MIT vorgestellten Sprachmodell ELIZA in der Wissenschaft bekannt \cite{weizenbaum1966eliza}.
+
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.75\textwidth]{doc/10/102_state-of-the-art/publications-citations-to-time.png}
+
+	\caption[Diagram zur Veröffentlichung wissenschaftlicher Arbeiten von 1990 bis 2020]{Die Veröffentlichung wissenschaftlicher Arbeiten zum Thema "language models" hat sich exponentiell entwickelt. \cite[Abbildung 2a]{han2021pretrainedmodelspastpresent}}
+
+	\label{fig:102_publications-citations-to-time}
+\end{figure}
+
+Dabei ist zwischen Language-Modellen und Large-Language-Modellen zu unterscheiden.
+
+Hierbei spielt besonders die Datenmenge des Trainings, sowie die Anzahl der Parameter des Models eine Rolle in der Unterscheidung.
+Im Beispiel von "gpt-oss-120b", einem öffentlich verfügbaren Modell von OpenAI, sind es 117 Milliarden Parameter, welche auf 36 Schichten verteilt wurden.
+Die Größe der Trainingsdaten ist für das grundlegende Verständnis von Sprache besonders wichtig. \cite[S. 10]{yenduri2023generativepretrainedtransformercomprehensive}
+Zusätzlich gewinnen LLMs ebenfalls an Allgemeinwissen und eigenen sich für eine Vielzahl an Aufgaben, aufgrund der breiten Trainingsdaten. (cite a benchmark for LM vs LLM or similar)
+
+Um diese weit gefächerte sprachliche Kompetenz zu erreichen, ist eine mehrstufige Sequenz an Training erforderlich.
+
+\subsubsection{Training}
+
+(add more regarding training)
+
+\subsubsection{Nutzung}
+
+Nachdem alle Trainingsphasen abgeschlossen sind, ist das trainierte Modell in der Lage auf Basis von Texteingaben in natürlicher Sprache eine passende Textausgabe zu generieren.
+
+Der allererste Schritt im Prozess der Ausgabe ist die Tokenisierung (tokenization) des Eingabetextes. 
+Dabei zerlegt ein zum Modell passender Tokenizer die Eingabe in kleinere Abschnitte, die durch das Modell in Zahlen umgewandelt werden. (cite structure of an LLM gpt based)
+Das Ziel eines Tokenizers ist die Maximierung des Informationsgehaltes und die Minimierung der Tokenanzahl. \cite{iese2024llm}
+
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.5\textwidth]{doc/10/102_state-of-the-art/tokenizing-a-sentence.png}
+
+	\caption[Beispielsatz tokenisiert]{Ein Beispielsatz wird vom Tokenizer "gpt-4o" in Tokens aufgeteilt. Erstellt mit \url{https://tiktokenizer.vercel.app/}.}
+
+	\label{fig:102_tokenizing-a-sentence}
+\end{figure}
+
+Nach der Umwandlung der Texteingabe in Token bzw. Zahlenwerte kommt der Schritt der Einbettung (embedding). 
+Dabei wird jeder Token mit Vektoren abgebildet. Bei semantisch ähnlichen Token 
 
 \subsection{Model Context Protocol}
 
