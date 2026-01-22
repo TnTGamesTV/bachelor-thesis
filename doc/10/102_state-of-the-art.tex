@@ -42,7 +42,7 @@ Um GPT zu trainieren wird "self-supervised learning" als Trainingsmethode genutz
 \subsection{Large-Language-Modelle}
 
 Das Interesse der Wirtschaft und der Öffentlichkeit an generativer KI, zu welcher Large-Language-Modelle zählen, ist erst in den letzten Jahren stark angestiegen.
-Trotz des relativ jungen Alters von Produkten wie ChatGPT \cite{openAi2022chatgpt} sind Language-Modelle bereits mit dem 1966 vom MIT vorgestellten Sprachmodell ELIZA in der Wissenschaft bekannt \cite{weizenbaum1966eliza}.
+Obwohl Produkten wie ChatGPT nur wenige Jahre alt sind, sind Language-Modelle bereits mit dem 1966 vom MIT vorgestellten Sprachmodell ELIZA in der Wissenschaft bekannt \cite{openAi2022chatgpt} \cite{weizenbaum1966eliza}.
 
 \begin{figure}[htb]
 	\centering
@@ -52,6 +52,58 @@ Trotz des relativ jungen Alters von Produkten wie ChatGPT \cite{openAi2022chatgp
 
 	\label{fig:102_publications-citations-to-time}
 \end{figure}
+
+Um die Fähigkeit von Language-Modellen als numerischen Wert darzustellen existieren verschiedene Berechnungsmodelle. 
+"SuperGLUE" beschäftigt sich dabei mit der Sprachkompetenz von Language-Modellen mit der englischen Sprache.
+Dabei werden insgesamt acht verschiedene Tests bewertet, welche verschiedene Bereiche der Sprache abdecken und am Ende zu einer Gesamtbewertung zusammengefasst. \cite{wang2020supergluestickierbenchmarkgeneralpurpose}
+
+\begin{table}[ht]
+    \centering
+    \caption{Entwicklung der SuperGLUE-Ergebnisse über verschiedene Sprachmodelle}
+    \label{tab:superglue_entwicklung}
+    \begin{tabular}{l c c l}
+        \hline
+        \textbf{Modell / Typ} & \textbf{Jahr} & \textbf{SuperGLUE} & \textbf{Quelle} \\
+        \hline
+
+        Non-neural Baselines
+            & 2019 & $\sim 45$--$55$
+            & \cite{wang2020supergluestickierbenchmarkgeneralpurpose} \\
+
+        BERT-large
+            & 2019 & $\sim 75$
+            & \cite{wang2020supergluestickierbenchmarkgeneralpurpose} \\
+
+        RoBERTa
+            & 2019 & $84.6$
+            & \cite{supergluebenchmark} \\
+
+        T5-base
+            & 2020 & $\sim 80$
+            & \cite[Tabelle 14]{raffel2023exploringlimitstransferlearning} \\
+
+        T5-11B
+            & 2020 & $\sim 89$--$90$
+            & \cite[Tabelle 14]{raffel2023exploringlimitstransferlearning}, \cite{supergluebenchmark} \\
+
+        Human Benchmark
+            & 2019 & $\sim 89.8$
+            & \cite{wang2020supergluestickierbenchmarkgeneralpurpose}, \cite{supergluebenchmark} \\
+
+        GPT-3 Few-Shot
+            & 2020 & $71.8$
+            & \cite[Tabelle 3.8]{brown2020languagemodelsfewshotlearners} \\
+
+        PaLM / ähnliche große Transformer
+            & 2022 & $90.4$
+            & \cite[Tabelle 9]{chowdhery2022palmscalinglanguagemodeling} \\
+
+		ERNIE 3.0
+			& 2021 & $91$
+			& \cite[Tabelle 9]{sun2021ernie30largescaleknowledge}\\
+        \hline
+    \end{tabular}
+\end{table}
 
 Dabei ist zwischen Language-Modellen und Large-Language-Modellen zu unterscheiden.
 
@@ -83,10 +135,65 @@ Das Ziel eines Tokenizers ist die Maximierung des Informationsgehaltes und die M
 	\label{fig:102_tokenizing-a-sentence}
 \end{figure}
 
-Nach der Umwandlung der Texteingabe in Token bzw. Zahlenwerte kommt der Schritt der Einbettung (embedding). 
-Dabei wird jeder Token mit Vektoren abgebildet. Bei semantisch ähnlichen Token 
+Nach der Umwandlung der Texteingabe in Token bzw. Zahlenwerte kommt der Schritt der Einbettung. 
+Dabei wird jeder Token mit Vektoren abgebildet und semantisch ähnliche Token zeigen in ähnliche Richtungen. 
+Neben der Semantik kann die Position eines Tokens in einem Satz ebenfalls in Vektoren eingebettet werden. \cite{iese2024llm}
 
-\subsection{Model Context Protocol}
+Im dritten Schritt werden die Wahrscheinlichkeiten aller möglichen Token berechnet. 
+Dies ist der Grund, warum LLMs - im Vergleich zu anderen neuronalen Netzwerken - eine hohe Anzahl an Parametern besitzen.
+Aufgrund der Komplexität von Sprache ist die Menge aller möglichen Token enorm. (cite)
+Bis heute nutzen die meisten LLMs die Transformer-Architektur, welche sich parallelisieren lässt und somit die verfügbare Rechenleistung von GPUs und TPUs nutzen kann. \cite[S. 7-8]{yenduri2023generativepretrainedtransformercomprehensive}
+
+
+
+\subsection{Tool Calling \& Model Context Protocol}
+
+Während des Trainings eines LLMs werden neben der Semantik auch Wissen aus dem Trainingssatz extrapoliert.
+Da der Datensatz jedoch zum Trainingszeitpunkt eingefroren ist, friert das Wissen ebenfalls ab diesem Zeitpunkt ein. Dies wird als sog. "knowledge cutoff" bezeichnet \cite{googlecloud2025modelcontextprotocol}. \\
+
+Um dennoch aktuelle Informationen verarbeiten zu können, besteht die Möglichkeit LLMs Zugriff auf verschiedene Werkzeuge zu geben.
+Beim "tool calling" entscheidet das Modell auf Basis von Beschreibung und Funktionen des Werkzeugs, welches Werkzeug am besten zur in natürlicher Sprache gegebenen Aufgabe passt,
+führt dieses aus und nutzt die erzeugten Ergebnisse, um dem Nutzer eine Antwort bereitzustellen.
+Grundsätzlich ist die Art des Werkzeugs nicht beschränkt und kann von einfachen Web-Suchen, über die Kommunikation mit andere Dienste, bis hin zum Zugriff auf komplexe Daten, die im normalen Kontext des Modells nicht verarbeitet werden könnten.\\
+
+Das offen standardisierte Model Context Protocol (MCP) arbeitet dabei als Brücke zwischen Modell und Werkzeug-Anbieter. 
+Der Grundgedanke besteht darin, dem Modell nur Informationen zu geben, die es für die aktuelle Aufgabe benötigt \cite{lfprojects2025modelcontextprotocol}. 
+Der Endnutzer muss sich dabei nicht mit Infrastruktur oder Abhängigkeiten des Werkzeugs beschäftigen und Entwickler können in vielen Programmiersprache Schnittstellen entwickeln \cite{github2025modelcontextprotocol}.\\
+
+Die Architektur von MCP besteht aus drei Abschnitten. Der MCP-Host ist im Kontext von LLMs das Modell selbst. Auch der MCP-Client ist Teil des Modells und übernimmt die gesamte Kommunikation, sowie die Bereitstellung der Informationen nachdem Werkzeugaufruf.
+Der MCP-Server bietet dabei das Gegenstück zum Client, verarbeitet den Werkzeugaufruf und sendet die gewonnenen Informationen an den Client zurück. Die Kommunikation zwischen Server und Client erfolgt dabei über die Transportschicht \cite{googlecloud2025modelcontextprotocol}.
+
+
+\begin{table}[!htb]
+    \centering
+    \caption{Beispiel für die Nutzung mehrere MCP-Werkzeuge}
+    \label{tab:modelcontextprotocol_example}
+    \begin{tabular}{C{1.25cm} L{10cm} C{2.75cm}}
+        \hline
+        \textbf{Schritt} & \textbf{Beschreibung} & \textbf{Abschnitt} \\
+        \hline
+
+        1 & Eingabe: "Fasse alle ungelesenen E-Mails in meinem Postfach zusammen und erstelle eine Notiz mit der Zusammenfassung" & MCP-Host \\
+
+        2 & Modell erkennt, dass Werkzeuge benötigt werden und fragt MCP-Client nach verfügbaren Werkzeugen & MCP-Host \\
+
+        3 & MCP-Client hat zwei Werkzeuge vorhanden: "E-Mails abrufen" und "Notiz erstellen" & MCP-Client \\
+
+        4 & MCP-Host erstellt eine Anfrage an das Werkzeug "E-Mails abrufen" in einer strukturierten Form & MCP-Host \\
+
+        5 & Der MCP-Server, welcher das Werkzeug bereitstellt ruft die E-Mails des Nutzers ab & MCP-Server \\
+
+        6 & Das Modell erhält eine strukturierte Liste der ungelesenen E-Mails und fasst diese zusammen & MCP-Host \\
+
+        7 & MCP-Host erstellt eine strukturierte Anfrage an das Werkzeug "Notiz erstellen" mit der generierten Zusammenfassung & MCP-Host \\
+
+        8 & Der MCP-Server erstellt eine Notiz mit den übergebenen Daten und bestätigt die Erstellung & MCP-Server \\
+
+        9 & Das Modell gibt dem Nutzer die Bestätigung des MCP-Servers aus & MCP-Host \\
+
+        \hline
+    \end{tabular}
+\end{table}
 
 \subsection{Open WebUI}
 
