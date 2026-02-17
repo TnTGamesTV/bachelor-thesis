@@ -12,6 +12,31 @@
 
 \section{Industry Foundation Classes}
 
+\gls{ifc} definiert einen internationalen Standard, um \gls{bim} Daten zwischen verschiedenen Parteien austauschen zu können. 
+Dabei garantiert der Standard, dass Gebäudegeometrie und Attributierung unabhängig von der benutzten Autorensoftware zwischen Versionen des Standards kompatibel sind.
+Zusätzlich sind die verschiedenen Versionen zueinander (rewrite, weil nur in Gewissen teilen) auf- und abwärtskompatibel.
+Die Abwärtskompatibilität ist besonders für die langjährige Nutzung erforderlich, weil sichergestellt wird, 
+das ältere Modelle mit neuen Versionen des Standards lesbar bleiben und die gespeicherten Daten nicht manuell zu einer neuen Version umgewandelt werden müssen. \cite{buildingsmart2025ifc4}
+
+Der \gls{ifc}-Standard definiert dabei Typen, Entitäten, Regeln und Funktionen, welche die Struktur von Gebäuden mit allen Bauteilen und den passenden Informationen (sog. Attribute) abbilden.
+Ein Attribut besitzt immer einen Attribut-Typen, welcher die eingegebenen Daten grundsätzlich validiert und nur bestimmte Arten von Daten erlaubt. 
+Jedes Bauteil eines Gebäudes wird über eine Entität abgebildet, wobei zusätzlich Entitäten für die allgemeine Struktur von Gebäuden (Geschosse, Räume, \dots) oder zur Veränderung anderer Bauteile (Schlitze und Durchbrüche) definiert sind.
+
+
+
+
+\begin{figure}[htb]
+    \centering
+        \includegraphics[width=0.75\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.png}
+
+    \caption[Test]{Der IFC Standard ist in mehrere Ebenenen unterteilt. }
+
+    \label{102:ifc4-architecture}
+    
+\end{figure}
+
+Test
+
 \section{Künstliche Intelligenz}
 Irgendwas zu KI allgemein.
 
@@ -116,7 +141,15 @@ Um diese weit gefächerte sprachliche Kompetenz zu erreichen, ist eine mehrstufi
 
 \subsubsection{Training}
 
-(add more regarding training)
+Im ersten Schritt, dem sogenannten unüberwachten Lernen, analysiert das \gls{llm} einen Trainingssatz an unstrukturierten Daten. 
+Dies erlaubt die Verwendung von größeren Datensätzen und lässt das \gls{llm} das Verständnis für Semantik und allgemeine Sprachkompetenz entwickeln. \cite{datasolut2023llm}
+
+Nachdem sprachliche Kernkonzepte trainiert wurde, erfolgt das sogenannte selbstüberwachte Lernen, bei dem ausschließlich strukturierte und bezeichnete Daten verwendet werden.
+Dies erlaubt dem \gls{llm} den erweiterten Wissensaufbau und die feinere Erarbeitung von sprachlichen Konzepten. \cite{datasolut2023llm}
+
+Als letzter Schritt erfolgt das reinforcement learning. Dabei 
+
+\cite{datasolut2023llm}
 
 \subsubsection{Nutzung}
 
@@ -194,7 +227,5 @@ Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den We
         \hline
     \end{tabular}
 \end{table}
-
-\subsection{Open WebUI}
 
 \addtocontents{toc}{\vspace{0.8cm}}
