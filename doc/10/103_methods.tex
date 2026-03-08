@@ -1,1 +1,233 @@
 \chapter{\textbf{Methodik}}
+
+
+
+\section{KI-Anwendung für Interviews}
+
+Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung zur Nutzung im Rahmen der Interviews geschaffen.
+Dabei lag der Fokus ausschließlich auf der Entwicklung einer fähigen KI-Chat-Anwendung, sodass Benutzererfahrung, Benutzbarkeit oder zusätzliche Funktionen, so wie sie in klassischen Produkten zu finden ist, nicht Teil des Umfangs der Anwendung war.
+
+\subsection{Konzept}
+
+Das oberste Ziel war eine textbasierte Eingabe, wodurch Probanden mit dem \gls{llm} kommunizieren können. 
+Zusätzlich war die einfache Konfiguration von Variablen, welche das \gls{llm} befassen für eine schnelle Entwicklung und Verbesserung der Anwendung erforderlich.
+Dies umfasst nebem dem Systemprompt auch dem \gls{llm} zur Verfügung gestellten Werkzeugen (tool calling) und dadurch zusätzlich erlangtes Wissen. \\
+
+In allen Iterationen der Anwendung wurde ausschließlich auf \gls{llm} gesetzt, welche über das Internet verfügbar sind, um den Betrieb der entsprechenden \gls{llm} aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
+Alle eingesetzten \gls{llm} besitzen ein \gls{api} welches mit dem OpenAI \gls{api} Standard kompatibel ist. Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung bearbeiten zu müssen. \\
+
+Der Nutzer sollte bei der Bedienung Fragen durch die Anwendung an das \gls{llm} übermitteln, welche auf Basis des Systemprompts und des im \gls{ifc}-Modell vorhandenen Wissens eine Antwort an den Nutzer ausgibt.
+
+
+
+\subsection{Iteration 1: Vorgefertiger \gls{mcp}-Server}
+
+Die erste Iteration der Anwendung bestand aus einem vorgefertigen \gls{mcp}-Server. Der \gls{mcp}-Server wurde in Python mit der FastMCP Bibliothek umgesetzt \cite{github2025bonsaimcp}. 
+Die von Juan Rodriguez entwickelte Anwendung nutzte die öffentlich verfügbare 3D-Bearbeitungssoftware Blender, um die \gls{ifc}-Modelle zu laden und zu bearbeiten. 
+Der \gls{ifc}-Standard wurde nach der Installation von Blender nicht nativ unterstützt, weswegen eine Erweiterung installiert werden musste.
+Diese wird von IfcOpenShell, einer Anwendungsbibliothek für die Programmiersprachen C++ und Python  zur Verarbeitung des \gls{ifc}-Standards, unter dem Namen Bonsai öffentlich zur Verfügung gestellt.
+Um dem \gls{llm} die Fähigkeit zur Bearbeitung beliebiger \gls{ifc}-Modelle zu geben, war eine zusätzliche Erweiterung für Blender notwendig. 
+Diese wurde mit dem vorgefertigen \gls{mcp}-Server geliefert und nutzt eine Socket-Verbindung, um zwischen dem \gls{mcp}-Server und der installierten Erweiterung für Blender zu kommunizieren.
+Alle vom \gls{mcp}-Server unterstützen Werkzeuge, werden mitsamt aller Parameter an die in Blender installierte Erweiterung übertragen, welche die Befehle wiederum an die Bonsai-Erweiterung übertragt.
+Der \gls{mcp}-Server und die bereitgestelle Erweiterung fungierten ausschließlich als Schnittstelle zwischen dem \gls{llm} und der Bonsai-Erweiterung, welche die Bearbeitung der \gls{ifc}-Modelle durchführt.
+
+\begin{table}[!htb]
+    \centering
+    \caption{Bereitgestelle Werkzeuge}
+    \label{tab:iteration1tools}
+    \begin{tabular}{L{5.5cm} L{10cm}}
+        \hline
+        \textbf{Name} & \textbf{Beschreibung} \\
+        \hline
+
+        \texttt{get\_ifc\_project\_info} & Gibt grundsätzliche Projektinformationen über das \gls{ifc}-Modell zurück. Neben Metadaten, wie Name und Beschreibung umfasst dies die Anzahl aller verfügbaren \gls{ifc}-Entitäten. \\
+
+        \texttt{list\_ifc\_entities} & Durchsucht das \gls{ifc}-Modell auf Basis von gegebenen Suchparametern nach \gls{ifc}-Entitäten. Als Suchparameter gibt es den \gls{ifc}-Entitätstyp und die Möglichkeit die Ergebnisse in der Anzahl zu beschneiden.  \\
+
+        \texttt{get\_ifc\_properties} & Gibt alle Eigenschaften eines einzelnen Bauteils in dem geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
+
+        \texttt{get\_ifc\_spatial\_structure} & Gibt den strukturellen Aufbau des \gls{ifc}-Modells zurück. Dabei wird die Beziehung von Grundstücken (IfcSite), Gebäuden (IfcBuilding), Geschossen (IfcBuildingStorey) und einzelnen Räumen bzw. Flächen (IfcSpace) dargestellt. \\
+
+        \texttt{get\_ifc\_relationships} & Gibt alle Beziehung eines einzelnen Bauteils in dem geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
+
+        \texttt{get\_selected\_ifc\_entities} & Gibt grundsätzliche Informationen über die vom Nutzer in Blender selektierten Bauteile zurück. \\
+
+        \texttt{export\_ifc\_data} & Erstellt eine als \gls{json} strukturierte oder als Tabelle formatierte Datei, welche die Struktur des \gls{ifc}-Modells abbildet. \\
+
+        \texttt{place\_ifc\_object} & Platziert eine gewählte \gls{ifc}-Entität an der angegebenen Position. Dabei können Koordinaten und Rotation angepasst werden. \\
+
+        \texttt{get\_ifc\_quantities} & Gibt Mengenwerte von \gls{ifc}-Entitäten zurück. \\
+
+        \texttt{get\_ifc\_total\_structure} & Als Erweiterung von \texttt{get\_ifc\_spatial\_structure} werden zusätzlich noch die darunterliegenden \gls{ifc}-Entitäten, welche einen Bezug zu einem einzelnen Raum bzw. Fläche (IfcSpace) besitzen. \\
+
+        \texttt{get\_ifc\_georeferencing\_info} & Gibt Informationen über die geografischen Koordinaten des \gls{ifc}-Modells zurück. \\
+
+        \texttt{georeference\_ifc\_model} & Schreibt geografische Informationen in das \gls{ifc}-Modell und erlaubt die genaue Positionierung dessen. \\
+
+        \hline
+    \end{tabular}
+\end{table}
+
+Gründe für weitere Iteration:
+- zu wenig Konfigurationsmöglichkeiten
+- zu viele Werkzeuge, die nicht benötigt werden und das LLM unnötig verwirren
+- 
+
+
+\subsection{Iteration 2: Selbstentwickelter \gls{mcp}-Server}
+
+In der zweiten Iteration der Anwendung wurde auf einen selbstentwickelten \gls{mcp}-Server gesetzt. Dieser wurde wie in der ersten Iteration ebenfalls in der Programmiersprache Python mit der FastMCP Bibliothek umgesetzt.
+Dabei wurde die Anzahl der dem \gls{llm} zur Verfügung gestellten Werkzeuge auf Werkzeuge zur Wissensgewinnung reduziert, um dem \gls{llm} die Auswahl des korrekten Werkzeuges zu vereinfachen.
+
+Gründe für weitere Iteration:
+- Komplex für Deployment (Open WebUI + MCP Server + Blender?)
+- nur ein einziges Modell gleichzeitig möglicj (meistens sind Projekte in Architektur, TGA, ... unterteilt)
+
+\subsection{Finale Iteration: Selbstentwickelte Anwendung}
+
+Die finale Iteration der Anwendung bestand aus einer selbstentwickelten Anwendung, welche neben einer Benutzeroberfläche zur Texteingabe, 
+Systeme für die Verwaltung des dem \gls{llm} übergebenen Prompts, sowie als Datenquelle eine vom \gls{ifc}-Standard unabhängige Datenbank nutzte.
+
+Vorteile:
+- anpassbarer Systemprompt
+- unterstützt Wissensgewinnung über Skills (anpassbar)
+- mehrere Modelle können gleichzeitig geladen und befragt werden
+- Historie und Werkzeugaufrufe können besser gespeichert und nachvollzogen werden - wichtig für spätere Analyse und für die Entwicklung
+
+\subsection{Technischer Aufbau}
+
+Die selbstentwickelte Anwendung baute im Backend auf dem NestJS-Framework auf. Aufgrund der Nutzung von der in NestJS integrierten \gls{di} wurde das Backend in verschiedene Module unterteilt. \\
+
+Als Datenbanksystem wurde PostgreSQL eingesetzt, welches über die \gls{orm}-Bibliothek Prisma im Backend angebunden wurde. 
+
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.8\textwidth]{doc/10/103_methods/app_final_backend_structure}
+
+	\caption[Struktur des Backends der finalen Iteration der Anwendung]{Die Struktur des Backends der finalen Iteration der Anwendung}
+
+	\label{fig:103_app-final-backend-structure}
+\end{figure}
+
+\subsubsection{AppModule - Einstiegspunkt}
+
+Das AppModule diente dabei als Verwaltungsmodul für alle anderen Module. Die Einbettung von Umgebungsvariablen aus Konfigurationsdateien (\gls{uri} der Datenbank, \gls{llm} \gls{api} Schlüssel, verwendetes \gls{llm}) erfolgte ebenfalls im AppModule.
+Dadurch diente das AppModule als Möglichkeit die gesamte Anwendung durch den Bootstrapper (Einstiegspunkt) zu starten.
+
+\subsubsection{PrismaModule - Datenbankzugriff}
+
+Zugriff auf Datenbank, Prisma bietet Abstraktion gegenüber klassischen SQL-Abfragen, Typensicher, Migration von Datenbankstruktur, beinhaltet PrismaService als Implementation der gesamten Datenbankverwaltung. 
+Erlaubt auch die Ausführung von rohem SQL, was für das QueryTool relevant ist.
+
+\subsubsection{ChatModule - Verarbeitung von Nutzereingaben und Ablauf der \gls{llm}-Anfrage}
+
+Die gesamte Kommunikation mit LLM und den entsprechenden APIs erfolgt hier, jede chat nachricht wird hier verarbeitet. Der ChatConversationService kümmert sich um die primäre Verarbeitung von Nachrichten des Nutzers.
+Um die aktuelle Historie von vergangenen Nachrichten, Werkzeugaufrufen und Antworten des LLMs zu speichern wird der ChatExecutionHistoryService genutzt. 
+Der ChatOpenAIService übernimmt die Kommunikation mit OpenAI-kompatiblen APIs und bildet damit die Schnittstelle der Anwendung zu den LLMs. 
+
+\subsubsection{ChatHistoryModule - Verwaltung der Nachrichtenhistorie}
+
+Um über die gesamte Laufzeit der Anwendung die Historie von Nachrichten, Werkzeugaufrufen und LLM-Antworten zu speichern wird der ChatHistoryService im ChatHistoryModule genutzt. Die Nachrichten werden in Gruppen (sog. threads) unterteilt und entsprechend abgespeichert.
+Dies erlaubt die Analyse während der Entwicklungsphase und die spätere Auswertung der einzelnen Elemente für die Bachelorarbeit. Es werden jegliche Parameter und jeder einzelne Werkzeugaufruf erfasst und gespeichert.
+
+\subsubsection{IfcModule - Bereitstellung von \gls{ifc}-Modellen für das Frontend}
+
+Stellt IFC Modelle für das Frontend durch streaming Controller bereit. IFC Standard wird auch verwaltet. Konvertiert dem IFC Standard von EXPRESS-Dateien zu JSON-Strukturen, welche durch das LLM abgefragt werden können.
+Alle gängigen IFC Versionen werden unterstützt. Die Abfrage nach einzelnen Kategorien aus dem Standard oder einzelnen Entitätstypen ist möglich über das IfcTool.
+
+\subsubsection{PromptModule - Bereitstellung des Systemprompts}
+
+Generiert einen passenden Systemprompt auf Basis der geladenen Modelle. 
+
+Prompt besteht aus:
+- Basisprompt
+- Skillsprompt
+- Modelprompt je aktivem Modell
+    - Metadaten (interne ID, Model ID für Datenbankabfragen, Modelnamen, Projektid um mehrere Modelle zusammenzufassen, verwendete ifc version)
+    - IFC-Entitätstypen und deren Anzahl im Modell
+    - je IfcBuildingStorey eine Liste an IDs der untergeordneten IfcSpace-Entitäten
+
+
+\begin{table}[!htb]
+    \centering
+    \caption{Aufbau des Systemprompts}
+    \label{tab:103_system-prompt}
+    \begin{tabular}{C{2cm} C{3cm} L{8cm}}
+        \hline
+        \textbf{Bezeichnung} & & \textbf{Beschreibung} \\
+        \hline
+
+        Basis & & Beinhaltet grundsätzliche Informationen über die Aufgabe des \gls{llm}, welche Ziele der Nutzer verfolgt und Informationen über die Nutzung von Einheiten und des Skills-Werkzeuges \\
+
+        Skills & & Details zu den verfügbaren Skills, welche das \gls{llm} über das Skills-Werkzeug abrufen kann. \\
+
+        Modell & & Details für jedes geladene Modell, zu welchem der Nutzer Fragen stellen kann. \\
+
+        & Metadaten & Beinhaltet die interne Identifikation, die sog. Model-Identifikation, zur Identifikation bei Datenbankabfragen, der Name des Models, die Projekt-Identifikation, welche mehrere Modelle in einem Projekt bündelt, sowie die verwendete Version des \gls{ifc}-Standards. \\
+
+        & \gls{ifc}-Entitäten & Eine Liste aller \gls{ifc}-Entitätstypen, welche im entsprechenden Modell geladen sind, sowie die Anzahl dieser. \\
+
+        & \gls{ifc}-Beziehungen & Für jedes Geschoss im geladenen Modell ist die Identifikation des Geschosses, sowie die Identifikation aller dem Geschoss untergeordneten Räume angegeben. \\
+
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{SkillsModule - Wissensbibliothek über Werkzeuge}
+
+Stellt dem LLM Textblöcke zu verschiedenen Werkzeugen zur Verfügung. Erlaubt dem LLM zusätzliches Wissen für bestimme Werkzeuge zu erfragen. Reduziert den Kontext, weil nicht alle Informationen dem LLM dauerhaft zur Verfügung stehen.
+
+\begin{table}[!htb]
+    \centering
+    \caption{Englische Definition von Skills, welche vom Skills-Werkzeug bereitgestellt werden}
+    \label{tab:103_available-skills}
+    \begin{tabular}{C{2cm} L{11cm}}
+        \hline
+        \textbf{Name} & \textbf{Beschreibung} \\
+        \hline
+
+        ask-user & Give the user one or more questions to answer with single-choice, multiple-choice or free-form inputs \\
+
+        ifc & Further information about the IFC standard and how to work with IFC building models. \\
+
+        query & Use SQL queries to find IFC elements, properties, Psets, systems, materials and storey data, including aggregates and math expressions. \\
+
+        \hline
+    \end{tabular}
+\end{table}
+
+Der Skill "ask-user" unterstützt das LLM bei Rückfragen an den Nutzer. Dabei wird genauer spezifiert, wie Fragen strukturiert werden sollen und wann Rückfragen gestellt werden sollen.
+Jegliches Wissen im Zusammenhang mit der Datenbank befindet sich im Skill "query". Dieser beinhaltet zum Ersten die Tabellenstruktur der ifc\_elements Tabelle. 
+Jede Spalte wird dabei mit ihrem Namen, dem PostgreSQL-Typ und einer Beschreibung des Inhalts und der möglichen Verwendung gelistet.
+Als zweites folgen Beispiele für SQL-Abfragen, die das LLM auf Basis der in der Tabelle vorhandenen Daten durchführen kann. Dabei wurde jede SQL-Abfrage mit verschiedenen Modellen manuell getestet.
+Zuletzt wurden Details zum direkten Herunterladen von Abfrageergebnissen durch den Nutzer bereitgestellt.
+Der "ifc" Skill definiert kurz den \gls{ifc}-Standard. Danach werden der Aufbau der vorhandenen \gls{ifc}-\gls{json}-Strukturen definiert, sowie die vorhandenen Parameter für die Abfrage erläutert.
+
+\subsubsection{ToolsModule - Bereitstellung von \gls{llm}-Werkzeugen}
+
+Alle ausführbaren Werkzeuge sind hier definiert. 
+
+\begin{table}[!htb]
+    \centering
+    \caption{Englische Definition von Werkzeugen, welche dem \gls{llm} bereitgestellt werden}
+    \label{tab:103_available-tools}
+    \begin{tabular}{C{3.5cm} L{9.5cm}}
+        \hline
+        \textbf{Name} & \textbf{Beschreibung} \\
+        \hline
+
+        askUser & Ask the user one or more questions to gather information. Supports text input, single-choice, and multiple-choice questions. Always use this tool when requesting information from the user. Combine multiple questions into a single call when possible. \\
+
+        highlightElement & Highlight specific building elements in the 3D viewer by their express IDs. Useful for showing search results or pointing out specific components visually. \\
+
+        ifc & Read IFC standard reference data by version. Supports returning the complete parsed standard artifact or searching for specific elements by free text, declaration type, or entity name. \\
+
+        query & Execute SQL queries against IFC model data, including advanced filtering, grouping, aggregation, and computed values. Supports pagination and optional direct export of query results as CSV, JSON, or XML. \\
+
+        skill & Load a skill by name and return its information. \\
+
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Interviews}

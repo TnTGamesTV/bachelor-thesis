@@ -21,7 +21,7 @@ das ältere Modelle mit neuen Versionen des Standards lesbar bleiben und die ges
 Der \gls{ifc}-Standard definiert dabei Typen, Entitäten, Regeln und Funktionen, welche die Struktur von Gebäuden mit allen Bauteilen und den passenden Informationen (sog. Attribute) abbilden.
 Ein Attribut besitzt immer einen Attribut-Typen, welcher die eingegebenen Daten grundsätzlich validiert und nur bestimmte Arten von Daten erlaubt. 
 Jedes Bauteil eines Gebäudes wird über eine Entität abgebildet, wobei zusätzlich Entitäten für die allgemeine Struktur von Gebäuden (Geschosse, Räume, \dots) oder zur Veränderung anderer Bauteile (Schlitze und Durchbrüche) definiert sind.
-
+Die Attribute je Entität sind vom Standard eindeutig vorgegeben und 
 
 
 
@@ -36,6 +36,8 @@ Jedes Bauteil eines Gebäudes wird über eine Entität abgebildet, wobei zusätz
 \end{figure}
 
 Test
+
+\newpage
 
 \section{Künstliche Intelligenz}
 Irgendwas zu KI allgemein.
@@ -227,5 +229,248 @@ Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den We
         \hline
     \end{tabular}
 \end{table}
+
+\subsection{Skills zum inkrementellen Wissensgewinn}
+
+Weil das Kontextfenster von \gls{llm} beschränkt ist, kann ein großer Systemprompt dazu führen, dass nur wenig Platz für die Nachrichtenhistorie und die Ergebnisse von Werkzeugen bleibt.
+Dadurch muss die Historie sehr früh beschnitten werden, wodurch die Qualität der \gls{llm}-Ergebnisse, besonders bei Rückfragen oder Folgefragen, sinkt.
+Um dennoch für das \gls{llm} passende Information bereitzustellen eignen sich sog. Skills. 
+Das vom \gls{llm}-Entwickler Anthropic etablierte Konzept ermöglicht \gls{llm} den stückweisen Wissensgewinn auf Basis der vom Nutzer gestellten Frage.
+Dabei werden im Systemprompt nur der Name des jew. Skills, sowie eine kurze Beschreibung bereitgestellt. Der Name wird ausschließlich als Identifikation für die spätere Verwendung genutzt.
+Die Beschreibung eines Skills ist entscheidet dafür, ob das \gls{llm} weitere Informationen zu diesem Skill anfragt. Dies wird von Anthropic als das erste Level des Wissensgewinns bezeichnet. \\
+Sollte die Fragestellung des Nutzers und die Beschreibung des Skills übereinstimmen ruft das \gls{llm} weitere Informationen zu dem Skill ab. 
+Dabei wird der Einstiegspunkt eines jeden Skills, die SKILL.md-Datei (Markdown-Datei), verwendet und der gesamte Inhalt dem \gls{llm} zur Verfügung gestellt.
+Bei diesem zweiten Level des Wissensgewinns hat das \gls{llm} bereits eine Vorauswahl getroffen, wodurch das Kontextfenster nur mit Informationen gefüllt wird, welche für die Fragestellung des Nutzers relevant sind.\\
+Beim dritten und letzten Level des Wissensgewinns werden in der SKILL.md-Datei genannte Referenzen geladen. Dies können zusätzliche Markdown-Dateien, aber auch ausführbare Skripte sein. \\
+
+Während das zweite Level auf 5000 Tokens beschränkt ist, erlaubt der dritte Level eine effektiv unendliche Anzahl von Tokens, die das \gls{llm} als Wissen gewinnen kann.\\
+
+Da sich Anthropic bei dem vorgestellen Konzept von Skills direkt auf ihre selber entwickelten \gls{llm} beziehen muss das Konzept für andere \gls{llm} angepasst bzw. manuell implementiert werden.
+Im Rahmen der Bachelorarbeit wurde daher auf das dritte Level des Wissensgewinns verzichtet und der Abruf der Skills über ein bereitgestelltes Werkzeug realisiert.
+
+\newpage
+
+\section{Entwicklung von Web-Anwendungen}
+Verwendete Programmiersprachen, 
+
+
+
+\subsection{Frontend-Framework React}
+
+Das von Meta (ehem. Facebook) 2013 entwickelte Framework für interaktive Webanwendungen, ist aktuell das von Web-Entwicklern meist genutzte Frontend-Framework (s. Abb. \ref{fig:102_frontend-framework-usage}).
+ Bei der dargestellen Grafik ist zu beachten, dass Mehrfach-Antworten möglich sind, sodass die Summe der Nutzungswerte 100 \% übersteigt. \\
+
+\begin{figure}[htbp]
+    \centering
+  
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Frontend-Framework Nutzung (2016–2024)},
+            xlabel={Jahr},
+            ylabel={Nutzung [\%]},
+            xmin=2016, xmax=2024,
+            ymin=0, ymax=100,
+            xtick={2016,...,2024},
+            grid=major,
+            legend style={at={(1.02,1)}, anchor=north west},
+            symbolic x coords={2016,2017,2018,2019,2020,2021,2022,2023,2024},
+            width=12cm, height=8cm
+        ]
+
+            \addplot+[mark=*] coordinates {
+                (2016,52.7)
+                (2017,62)
+                (2018,71.6)
+                (2019,80.3)
+                (2020,80.1)
+                (2021,80)
+                (2022,81.8)
+                (2023,84)
+                (2024,82)
+            };
+            \addlegendentry{React}
+
+            \addplot+[mark=*] coordinates {
+                (2016,10.1)
+                (2017,21.6)
+                (2018,31.7)
+                (2019,46.5)
+                (2020,49)
+                (2021,51.2)
+                (2022,46.2)
+                (2023,52)
+                (2024,51)
+            };
+            \addlegendentry{Vue}
+
+            \addplot+[mark=*] coordinates {
+                (2016,20)
+                (2017,28.5)
+                (2018,57.8)
+                (2019,57.8)
+                (2020,55.9)
+                (2021,54)
+                (2022,48.8)
+                (2023,46)
+                (2024,50)
+            };
+            \addlegendentry{Angular}
+
+            \addplot+[mark=*] coordinates {
+                (2019,7.8)
+                (2020,14.6)
+                (2021,19.9)
+                (2022,21.2)
+                (2023,25)
+                (2024,26)
+            };
+            \addlegendentry{Svelte}
+
+            % Solid usage
+            \addplot+[mark=*] coordinates {
+                (2021,2.8)
+                (2022,6.3)
+                (2023,8)
+                (2024,9)
+            };
+            \addlegendentry{Solid}
+
+            \addplot+[mark=*] coordinates {
+                (2020,5.4)
+                (2021,7.1)
+                (2022,6.2)
+                (2023,8)
+                (2024,9)
+            };
+            \addlegendentry{Lit}
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024 \cite{tkrotoff2026frontendframeworkspopularity}}
+    \label{fig:102_frontend-framework-usage}
+\end{figure}
+
+Mit React erstellte Frontend-Anwendungen werden als \gls{spa} bezeichnet, da sie ohne Ladevorgang im Browser bei Interaktion des Nutzers auskommen. 
+Wünscht der Nutzer eine Änderung der Seite wird dies von React behandelt und erfordert nicht direkt einen Verbindungsaufbau zum Server.
+Datenanfragen werden im Hintergrund gestellt und entsprechende Datenänderung werden durch React verarbeitet, ohne das der Nutzer die eigentliche Anwendung verlassen muss. \\
+
+Im Kern arbeitet React mit einem \gls{vdom} der Website-Struktur. Das \gls{vdom} wird verwendet, um das vom Browser geforderte \gls{html}, zu erzeugen.
+Änderungen an Zuständen oder aktualisierte Daten werden erst mit Hilfe des \gls{vdom} verarbeitet und Änderungen am \gls{html} werden durch React automatisch berechnet und ausgeführt \cite{hunt2013whydidwebuildreact}. \\
+
+Es müssen daher weder manuell Änderungen am \gls{html} durchgeführt werden, noch müssen sich ändernde Daten oder Zustände explizit in den React-Komponenten markiert werden (sog. "data binding").
+Da React selber entscheidet, welche Teile des \gls{html} aktualisiert werden müssen und das \gls{vdom} schneller als \gls{html} verändert werden kann, reduziert sich die Zeit pro Änderung, die für die Aktualisierung benötigt wird \cite{hunt2013whydidwebuildreact}. \\
+
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.9\textwidth]{doc/10/102_state-of-the-art/example-react-component.png}
+
+	\caption[Beispiel für eine React-Komponente]{Ein Beispiel einer React-Komponente, welche einen Knopf und Zähler vereint. Erstellt mit \url{https://carbon.now.sh}.}
+
+	\label{fig:102_example-react-component}
+\end{figure}
+
+Im Beispiel ist ein sich ändernder Zustand ("counter") abgebildet, welcher durch die Methode "increaseCounter" bei jedem Druck des Knopfes um Eins erhöht wird.
+Gleichzeitig aktualisiert sich der Text des Knopfes, um den aktuellen Stand des Zustandes anzuzeigen (s. Abb. \ref{fig:102_example-react-component}). \\
+
+Desweiteren erlaubt das \gls{vdom} eine Repräsentation außerhalb von einem Browser und \gls{html}. 
+Diese Technik wird von React Native umgesetzt. Dabei wird das \gls{vdom} in für des Nutzers Betriebssystem native Komponenten übersetzt, während die Entwicklungserfahrung gleichbleibend ist \cite{occhino2015reactnative}.
+
+\subsection{Backend-Framework NestJS}
+Einführung in JavaScript-basierte Backend-Frameworks (NodeJS), Nachteile von reinem express, Struktur von NestJS, Grund für Wahl?
+
+
+
+
+NestJS ist ein Backend-Framework, welches eine Abstraktionsebene für das eigentliche HTTP-Server-Framework bietet. 
+Dies erlaubt die freie Wahl des unterliegenden HTTP-Server-Frameworks und eine dogmatische Struktur für den Aufbau der eigentlichen Backend-Anwendung.
+Neben einer modulbasierten Anwendungsstruktur, \gls{di}, Adapter für gängige Datenbanksysteme, bietet NestJS zusätzlich umfangreiche Dokumentation für die Anbindung verschiedener Systeme, welche im Rahmen der Webentwicklung aufkommen können.
+Durch die Verwendung von JavaScript bzw. TypeScript für die gesamte Backend-Anwendung ist eine direkte Kompatibilität mit der Frontend-Anwendung gegeben. Diese Kompatibilität erlaubt es Typen oder Methoden zwischen beiden Anwendungen zu teilen. \cite{nestjsUnknownDocumentation}
+
+\begin{figure}[htbp]
+    \centering
+  
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Backend-Framework Nutzung (2017-2025)},
+            xlabel={Jahr},
+            ylabel={Nutzung [\%]},
+            xmin=2017, xmax=2025,
+            ymin=0, ymax=100,
+            xtick={2017,...,2025},
+            grid=major,
+            legend style={at={(1.02,1)}, anchor=north west},
+            symbolic x coords={2017,2018,2019,2020,2021,2022,2023,2024,2025},
+            width=12cm, height=8cm
+        ]
+
+            \addplot+[mark=*] coordinates {
+                (2017,66)
+                (2018,68)
+                (2019,77)
+                (2020,80)
+                (2021,80)
+                (2025,80)
+            };
+            \addlegendentry{Express}
+
+            \addplot+[mark=*] coordinates {
+                (2020,12)
+                (2021,19)
+                (2025,30)
+            };
+            \addlegendentry{NestJS}
+
+            \addplot+[mark=*] coordinates {
+                (2020,6)
+                (2021,10)
+                (2025,20)
+            };
+            \addlegendentry{Fastify}
+
+            \addplot+[mark=*] coordinates {
+                (2020,9)
+                (2021,12)
+                (2025,15)
+            };
+            \addlegendentry{Strapi}
+
+            \addplot+[mark=*] coordinates {
+                (2017,11)
+                (2018,8)
+                (2019,14)
+                (2020,15)
+                (2025,11)
+            };
+            \addlegendentry{Koa}
+
+            \addplot+[mark=*] coordinates {
+                (2017,9)
+                (2020,9)
+                (2025,4)
+            };
+            \addlegendentry{Hapi}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025. In den Jahren 2022, 2023 und 2024 wurden keine Daten erhoben. Einträge mit nur einem Datenpunkt wurden nicht übernommen \cite{devographics2025backendframeworksusage}}
+    \label{fig:102_backend-framework-usage}
+\end{figure}
+
+Sofern NestJS in der Standard-Konfiguration verwendet wird, ist Express als HTTP-Server-Framework hinterlegt. Es ist mit Abstand das am meisten eingesetzte HTTP-Server-Framework für JavaScript (s. Abb. \ref{fig:102_backend-framework-usage}). 
+In der Abbildung ist zu erkennen, dass NestJS als Abstraktionsebene im Jahr 2025 an Nutzung gewonnen hat. Analog zur Abb. \ref{fig:102_frontend-framework-usage} sind auch in der Abb. \ref{fig:102_backend-framework-usage} Mehrfach-Antworten möglich, wodurch die Summe der Nutzungswerte 100 \% übersteigt.
+
+\subsection{Strukturierung von Code mit Repositories und Turborepo}
+Repository ermöglichen Entwicklern den Quellcode von entwickelten Anwendung mit Hilfe vom Commits (in einem Paket verpackte Code-Änderung) zu speichern. 
+Dies ermöglicht eine redundante Strategie für Backups, da Repositories in den meisten Fällen bei Cloud-Diensten mit entsprechender Backup-Struktur gespeichert sind, 
+nachvollziehbare Änderung durch Unveränderbarkeit erstellter Commits, sowie die Zusammenarbeit mit anderen Entwicklern durch ein System für das Zusammenführen von Änderungen und der Konfliktlösung bei Problemen. \\
+
+
+
+Unterschiede zwischen versch. Repository-Strukturen, Vorteile von Monorepo im Kontext von JavaScript für Frontend/Backend, Einleitung in Turborepo
+
+\subsection{Datenbankzugriff mit Prisma}
+Einführung in Datenbankabfragen, Nachteile von reinen SQL-Abfragen für komplexe Systeme, Abstraktion von Datenbank, Vereinfachte Migration
+
+\subsection{Frontend-Backend-Kommunikation mit tRPC}
+Kommunikation über klassische HTTP-Schnittstelle, Fehleranfälligkeit ohne komplette Typisierung, Einführung von tRPC, Technischer Aufbau von tRPC
 
 \addtocontents{toc}{\vspace{0.8cm}}
