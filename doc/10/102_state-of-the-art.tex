@@ -4,9 +4,11 @@
 
 \section{Probandengruppe}
 
-\subsection{Gruppe A: "Experten"}
 
-\subsection{Gruppe B: "Nicht-Experten"}
+
+\subsection{Gruppe A: Fachkompetenter Akteur}
+
+\subsection{Gruppe B: Fachfremder Akteur}
 
 \section{Open Building Information Modelling}
 
@@ -253,7 +255,25 @@ Im Rahmen der Bachelorarbeit wurde daher auf das dritte Level des Wissensgewinns
 \section{Entwicklung von Web-Anwendungen}
 Verwendete Programmiersprachen, 
 
+\subsection{Strukturierung von Code mit Repositories}
+Repository ermöglichen Entwicklern den Quellcode von entwickelten Anwendung mit Hilfe vom Commits (in einem Paket verpackte Code-Änderung) zu speichern. 
+Dies ermöglicht eine redundante Strategie für Backups, da Repositories in den meisten Fällen bei Cloud-Diensten mit entsprechender Backup-Struktur gespeichert sind, 
+nachvollziehbare Änderung durch Unveränderbarkeit erstellter Commits, sowie die Zusammenarbeit mit anderen Entwicklern durch ein System für das Zusammenführen von Änderungen und der Konfliktlösung bei Problemen \cite{losoviz2023monorepovsmultirepo}. \\
 
+Zur Strukturierung eines gesamten Software-Projektes gibt es unterschiedliche Repository-Strategien. \\
+
+Eine Strategie ist das Mono-Repository, in welchem alle Komponenten des Projektes in einem einzelnen Repository gelagert sind. 
+Dabei birgt dies besonders bei stark verkuppelten Anwendungen einen Vorteil, da Code zwischen verschiedenen Komponenten des Projektes ohne Orchestrierungsaufwand, wie erweiterte Abhängigkeitsverwaltung, ausgetauscht und verwendet werden kann.
+Ebenso reduziert sich der Aufwand neue Teammitglieder in das bestehende Projekt aufzunehmen. Gleichzeitig erlaubt ein Mono-Repository jedem Entwickler einen Gesamtüberblick über das Projekt zu gewinnen ohne von Repository zu Repository springen zu müssen.
+Dieser Überblick eignet sich besonders bei weitreichenden Änderungen, welche weite Teile des Projektes gleichzeitig betreffen. \cite{losoviz2023monorepovsmultirepo}. \\
+
+Als Gegenstrategie existiert das Multi-Repository. Jede abgrenzbare Komponente bekommt ein eigenes Repository und ist im Bezug auf Abhängigkeiten und Code stärker von anderen Komponenten isoliert. 
+Die Isolation erlaubt unabhängige Veröffentlichung der jeweiligen Komponenten, wodurch sich die Veröffentlichungsfrequenz im Vergleich zu einem Mono-Repository erhöht.
+Da Zugriffsrechte immer je Repository vergeben werden, erlaubt die Multi-Repository-Strategie eine verbesserte Rechtezuweisung. 
+Teammitglieder, welche nur einzelne Komponenten bearbeiten, bekommen nicht automatisch Zugriff auf den gesamten Quellcode des Projektes.
+Desweiteren erlaubt die Isolation der Komponenten unabhängige Architekturentscheidungen für jede Komponente, da nur die Schnittstelle zwischen den Komponenten für die Kommunikation relevant ist \cite{losoviz2023monorepovsmultirepo}. \\
+
+Beide Strategien bieten Vor- und Nachteile, welche für jedes Projekt eigenständig abgewogen werden müssen. Dabei spielt besonders das verwendete Framework bzw. die verwendete Programmiersprache eine wichtige Rolle bei dieser Entscheidung. \\
 
 \subsection{Frontend-Framework React}
 
@@ -346,7 +366,7 @@ Das von Meta (ehem. Facebook) 2013 entwickelte Framework für interaktive Webanw
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024 \cite{tkrotoff2026frontendframeworkspopularity}}
+    \caption{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024}{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024 \cite{tkrotoff2026frontendframeworkspopularity}.}
     \label{fig:102_frontend-framework-usage}
 \end{figure}
 
@@ -376,10 +396,6 @@ Desweiteren erlaubt das \gls{vdom} eine Repräsentation außerhalb von einem Bro
 Diese Technik wird von React Native umgesetzt. Dabei wird das \gls{vdom} in für des Nutzers Betriebssystem native Komponenten übersetzt, während die Entwicklungserfahrung gleichbleibend ist \cite{occhino2015reactnative}.
 
 \subsection{Backend-Framework NestJS}
-Einführung in JavaScript-basierte Backend-Frameworks (NodeJS), Nachteile von reinem express, Struktur von NestJS, Grund für Wahl?
-
-
-
 
 NestJS ist ein Backend-Framework, welches eine Abstraktionsebene für das eigentliche HTTP-Server-Framework bietet. 
 Dies erlaubt die freie Wahl des unterliegenden HTTP-Server-Frameworks und eine dogmatische Struktur für den Aufbau der eigentlichen Backend-Anwendung.
@@ -451,26 +467,150 @@ Durch die Verwendung von JavaScript bzw. TypeScript für die gesamte Backend-Anw
             \addlegendentry{Hapi}
         \end{axis}
     \end{tikzpicture}
-    \caption{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025. In den Jahren 2022, 2023 und 2024 wurden keine Daten erhoben. Einträge mit nur einem Datenpunkt wurden nicht übernommen \cite{devographics2025backendframeworksusage}}
+    \caption{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025}{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025. In den Jahren 2022, 2023 und 2024 wurden keine Daten erhoben. Einträge mit nur einem Datenpunkt wurden nicht übernommen \cite{devographics2025backendframeworksusage}.}
     \label{fig:102_backend-framework-usage}
 \end{figure}
 
 Sofern NestJS in der Standard-Konfiguration verwendet wird, ist Express als HTTP-Server-Framework hinterlegt. Es ist mit Abstand das am meisten eingesetzte HTTP-Server-Framework für JavaScript (s. Abb. \ref{fig:102_backend-framework-usage}). 
 In der Abbildung ist zu erkennen, dass NestJS als Abstraktionsebene im Jahr 2025 an Nutzung gewonnen hat. Analog zur Abb. \ref{fig:102_frontend-framework-usage} sind auch in der Abb. \ref{fig:102_backend-framework-usage} Mehrfach-Antworten möglich, wodurch die Summe der Nutzungswerte 100 \% übersteigt.
 
-\subsection{Strukturierung von Code mit Repositories und Turborepo}
-Repository ermöglichen Entwicklern den Quellcode von entwickelten Anwendung mit Hilfe vom Commits (in einem Paket verpackte Code-Änderung) zu speichern. 
-Dies ermöglicht eine redundante Strategie für Backups, da Repositories in den meisten Fällen bei Cloud-Diensten mit entsprechender Backup-Struktur gespeichert sind, 
-nachvollziehbare Änderung durch Unveränderbarkeit erstellter Commits, sowie die Zusammenarbeit mit anderen Entwicklern durch ein System für das Zusammenführen von Änderungen und der Konfliktlösung bei Problemen. \\
 
+\subsection{PostgreSQL als Datenbank mit Prisma}
 
+Um dem Backend Daten zur Verfügung zu stellen, ist der Zugriff auf eine Datenbank erforderlich.
+Dies kann manuell realisiert werden, in dem für das Backend passende Datenbankbibliotheken eingefügt werden und in der Abfragesprache der Datenbank entsprechende Abfragen erstellt werden.
+Als Alternative eignet sich ein \gls{orm}, welches eine Abstraktionsebene zwischen der Abfragesprache und dem Backend bildet. \\
 
-Unterschiede zwischen versch. Repository-Strukturen, Vorteile von Monorepo im Kontext von JavaScript für Frontend/Backend, Einleitung in Turborepo
+\subsubsection{Prisma}
 
-\subsection{Datenbankzugriff mit Prisma}
-Einführung in Datenbankabfragen, Nachteile von reinen SQL-Abfragen für komplexe Systeme, Abstraktion von Datenbank, Vereinfachte Migration
+Prisma ist ein \gls{orm}, welches verschiedene Datenbanksysteme unterstützt und eine gemeinsame Schnittstelle für Entwickler im Backend zur Verfügung stellt.
+Neben der eigentlichen Definition des Datenbankschemas, generiert Prisma eine an das Schema angepasste Datenbankbibliothek, welche von der Backend-Anwendung konsumiert wird.
+Dies bringt eine sehr strenge Typisierung mit sich, welche falsche Bezeichnungen oder unerwartete Rückgaben vermeidet \cite{prismaUnknownDocumentation}. \\
+
+Desweiteren hilft Prisma auf Basis von Änderungen am Schema Migrationsskripte für das entsprechende Datenbanksystem zu erstellen. 
+Dadurch können Änderungen am Schema in der lokalen Entwicklungsumgebung in andere Umgebungen übertragen werden \cite{prismaUnknownDocumentation}. \\
+
+\subsubsection{PostgreSQL}
+
+Bei PostgreSQL handelt es sich um ein \gls{ordbms}, welches auf POSTGRES, einem an der "University of California" am "Berkeley Computer Science Department" entwickelten Datenbanksystem, basiert.
+Der Quellcode hinter PostgreSQL ist öffentlich zugänglich, wodurch jede Person Änderungen an der Software durchführen kann. 
+Tatsächliche Änderungen am Quellcode im offiziellen PostgreSQL Repository ist einer durch interne Abstimmung erhobenen Gruppe an Entwicklern vorbehalten.
+Andere Entwickler können dennoch Änderungen vorschlagen, welche von der erhobenen Gruppe geprüft und gegebenenfalls übernommen werden \cite{postgresqlUnknownDocs} \cite{postgresqlUnknownGovernance}. \\
+
+PostgreSQL unterstützt einen Großteil des \gls{sql}-Standards und erweitert den Funktionsumfang mit Funktionen, wie komplexen Abfragen, foreign keys - geprüfte Referenzen zwischen verschiedenen Tabellen, 
+sowie Unterstützung für Transaktionen, welche sicherstellen, dass in einem Block von Abfragen alle Abfragen gemeinsam ausgeführt werden und bei Fehlern einzelner Abfragen bereits geänderte Daten auf den vorherigen Zustand zurückgesetzt werden \cite{postgresqlUnknownDocs}. \\
+
+\begin{figure}[htbp]
+    \centering
+  
+    \begin{tikzpicture}
+        \begin{axis}[
+            title={Popularität nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com} (2016 - 2026)},
+            xlabel={Jahr},
+            ylabel={Popularität [-]},
+            xmin=2016, xmax=2026,
+            ymin=0,
+            xtick={2016,...,2026},
+            grid=major,
+            legend style={at={(1.02,1)}, anchor=north west},
+            symbolic x coords={2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026},
+            width=11cm, height=8cm
+        ]
+
+            \addplot+[mark=*] coordinates {
+                (2016,1496)
+                (2017,1416)
+                (2018,1341)
+                (2019,1268)
+                (2020,1346)
+                (2021,1322)
+                (2022,1266)
+                (2023,1245)
+                (2024,1247)
+                (2025,1258)
+                (2026,1237)
+            };
+            \addlegendentry{Oracle}
+
+            \addplot+[mark=*] coordinates {
+                (2016,1299)
+                (2017,1366)
+                (2018,1299)
+                (2019,1154)
+                (2020,1274)
+                (2021,1251)
+                (2022,1206)
+                (2023,1211)
+                (2024,1123)
+                (2025,998)
+                (2026,867)
+            };
+            \addlegendentry{MySQL}
+
+            \addplot+[mark=*] coordinates {
+                (2016,1144)
+                (2017,1220)
+                (2018,1148)
+                (2019,1040)
+                (2020,1098)
+                (2021,1031)
+                (2022,944)
+                (2023,919)
+                (2024,876)
+                (2025,798)
+                (2026,706)
+            };
+            \addlegendentry{Microsoft SQL Server}
+
+            \addplot+[mark=*] coordinates {
+                (2016,282)
+                (2017,330)
+                (2018,386)
+                (2019,466)
+                (2020,506)
+                (2021,552)
+                (2022,606)
+                (2023,614)
+                (2024,648)
+                (2025,663)
+                (2026,666)
+            };
+            \addlegendentry{PostgreSQL}
+
+             \addplot+[mark=*] coordinates {
+                (2016,306)
+                (2017,331)
+                (2018,330)
+                (2019,387)
+                (2020,426)
+                (2021,457)
+                (2022,488)
+                (2023,455)
+                (2024,417)
+                (2025,402)
+                (2026,376)
+            };
+            \addlegendentry{MongoDB}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}}{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}. Wert von Januar für das gesamte Jahr verwendet und Kommawerte abgeschnitten. \cite{dbengines2026rankingtrend}}
+    \label{fig:102_database-usage}
+\end{figure}
+
+In den letzten Jahren hat PostgreSQL an Popularität gewonnen und ist nach der Bestenliste von \href{https://db-engines.com/de/ranking_trend}{db-engines.com} auf dem vierten Platz. 
+Faktoren für den in Abb. \ref{fig:102_database-usage} Popularitätswert sind neben der Anzahl von Suchanfragen zu der Datenbank, Häufigkeit von technischen Diskussion, die Anzahl von Jobangeboten, auch die Anzahl an Entwicklern, welche das entsprechende Datenbanksystem in ihrem professionellen Profil aufgeführt haben \cite{dbengines2026rankingdefinition}.
+
 
 \subsection{Frontend-Backend-Kommunikation mit tRPC}
 Kommunikation über klassische HTTP-Schnittstelle, Fehleranfälligkeit ohne komplette Typisierung, Einführung von tRPC, Technischer Aufbau von tRPC
+
+\section{BIMcollab Zoom}
+
+Bei BIMcollab Zoom handelt es sich um eine von BIMcollab entwickelte Software für die Prüfung und Qualitätsanalyse von digitalen datengetriebenen Gebäudemodellen. 
+Dabei erlaubt BIMcollab Zoom das gleichzeitige Laden mehrerer Fachmodelle und die Ausführung verschiedener Analysen und Prüfungen auf den geladenen Modellen.
+Kernaufgabe ist dabei die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter, sowie der Durchsetzung von Standards für jedes Projekt \cite{bimcollabUnknownZoom}. \\
+
+Zusätzlich bietet BIMcollab Zoom die Möglichkeit bestehende Modelldaten auf Basis von definierten Regeln zu restrukturieren und beliebige Parameter und Elemente farblich zu visualisieren.
+Die Integration in andere Produkte von BIMcollab, wie BIMcollab Twin, eine \gls{cde} oder BIMcollab Nexus, eine Kommunikationsplattform für Issues, ist wichtiger Teil von BIMcollab Zoom \cite{bimcollabUnknownZoom}.
 
 \addtocontents{toc}{\vspace{0.8cm}}
