@@ -242,8 +242,6 @@ Dies ermöglichte Interviews ohne Koordination von Reisen, sowie den entsprechen
 
 \subsection{Zuordnung zur Probanden-Gruppe}
 
-Kernfragen, 
-
 Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierten Probanden-Gruppen zugewiesen. Dies erfolgte über die in Abb. \ref{tab:103_interview-core-questions} gezeigten Fragen.
 
 \begin{table}[!htb]
@@ -259,6 +257,8 @@ Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierte
 
         2 & Wie viel Prozent der wöchentlichen Arbeitszeit beschäftigen Sie sich mit digitaler datengetriebener Planung? \\
 
+        3 & Wie viel \% der wöchentlichen Arbeitszeit beschäftigen Sie sich mit der Koordination von Projekten oder Teammitglieder? \\
+
         \hline
     \end{tabular}
 \end{table}
@@ -267,28 +267,62 @@ Während Frage 1 auf die allgemeine Fachkompetenz in der Jobposition des Proband
 Dabei bezieht sich Frage 2 auf alle aktiv mit digitaler datengetriebener Planung in Beziehung stehenden Aufgaben, wie Prüfung von Modellen, Modellierung oder die Auswertung von Daten.
 Ausgenommen sind dabei Aufgaben, die einen Wissensbezug zu digitaler datengetrieber Planung haben, aber nicht aktiv mit Modellen oder dem Aufbau dieser zutun haben. 
 Dies können Schulungen für das On-Boarding von fachfremden Personen, Kommunikation mit Projektbeteiligten oder die Koordination von Kollegen sein.
+Frage 3 zielte dabei auf einer Abgrenzung von Probanden mit Personal- und Projektverantwortung von Probanden ohne entsprechende Verantwortung.
 
-\subsection{Leitfrage für Probanden-Gruppe A: "Experten"}
+\subsection{Entwicklung von Aufgabenstellungen durch Probanden-Gruppe A}
 
-Um für die Probanden-Gruppe A einen Einstieg in das Interview zu schaffen wurde die folgende Leitfrage entworfen: \\
+Der zweite Schritt der Interviews für die Probanden-Gruppe A bestand aus der Entwicklung von Aufgabenstellungen. 
+Dabei wurde die folgende Leitfrage entwickelt, um den Probanden einen Einstieg in das Interview zu ermöglichen: \\
 
 \say{Ihnen steht eine unangelernte Hilfskraft zur Verfügung, welche von Ihnen eine Aufgabe für exemplarische digitale Modell benötigt. Welche Aufgaben fallen Ihnen dazu in Stichworten ein?} \\
 
+Zusätzlich zur genannten Leitfrage, wurde den Probanden der Gruppe A zusätzlich der Rahmen für die Aufgabenstellungen erklärt. 
+Es wurde dabei auf Aufgabenstellungen abgezielt, welche eine einzige Problemstellung betreffen. 
+Besondere Priorität hatte dabei die Identifizierbarkeit des Kernproblems der Aufgabenstellung.
+Für Probanden der Gruppe B, sollte dabei erkenntlich sein, welches Ziel sie zu erreichen hatten. 
+Dies schloss die Verwendung von Fachbegriffen nicht aus, da Probanden das \gls{llm} als Hilfsmittel einsetzen konnten.
+Jedoch wurde explizit auf eine Kombination aus mehreren Aufgaben in einer einzelnen Aufgabenstellung verzichtet, 
+um den Fokus der Probanden je Aufgabenstellung auf ein einzelnes zu lösendes Problem zu lenken.
 
-Um Aufgabenstellung zu entwickeln
+\subsection{Durchführung der Aufgabenstellung durch Probanden-Gruppe B}
+Im Vergleich zur Probanden-Gruppe A bestand der zweite Schritt des Interviews für die Probanden-Gruppe B aus der Bearbeitung der im vorherigen Unterkapitel (ref?) genannten Aufgabenstellungen.
 
 \section{Validierung der \gls{llm}-Ausgabe}
 
-Bevor die im Rahmen der Interviews gewonnen Daten ausgewertet werden konnten, wurden alle \gls{llm}-Ausgaben auf Richtigkeit geprüft.\\
+Bevor die im Rahmen der Interviews gewonnen Daten ausgewertet werden konnten, wurden alle \gls{llm}-Ausgaben auf Richtigkeit geprüft. \\
 
-Für Überprüfung von Attributen und 
+Für Überprüfung von Attributen und Struktur des digitalen Modells wurde ein Modellviewer, welcher zum \gls{ifc}-Standard kompatibel ist eingesetzt.
+Es handelte sich dabei um BIMcollab Zoom, eine von BIMcollab entwickelte Software für die Prüfung und Qualitätsanalyse von digitalen datengetriebenen Gebäudemodellen.
+BIMcollab zum Unterstützt allgemein die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter, sowie der Durchsetzung von Standards für jedes Projekt \cite{bimcollabUnknownZoom}.
 
-Validierung mit Hilfe von BIMcollab Zoom und der Datenbank. 
+Im Rahmen der Bachelorarbeit wurden damit unter anderem einzelne Elemente, zum Beispiel technische Geräten, welche vom \gls{llm} direkt erwähnt wurden, durch Selektion in BIMcollab Zoom geprüft.
+Dabei wurden alle mit dem Element verknüpfte Psets und Properties angezeigt und manuell ausgewertet (s. Abb. \ref{fig:103_bimcollab-zoom-selection}).
 
-Jede im Rahmen der Interviews vom \gls{llm} erzeugte Ausgabe wurde auf Richtigkeit geprüft. Ausgaben die sich auf 
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.6\textwidth]{doc/10/103_methods/bimcollab-zoom-example-selection.png}
 
-Dies erfolgte über die Software BIMcollab Zoom, sowie über den in der Datenbank der Anwendung gespeicherten Datensatz. \\
+	\caption[Beispielselektion eines Elementes in BIMcollab Zoom]{Auswahl eines IfcBuildingStorey-Elementes und dessen Psets und Properties in BIMcollab Zoom.}
 
+	\label{fig:103_bimcollab-zoom-selection}
+\end{figure}
 
+Für komplexere Überprüfung, besonders bei großen Mengen an Elementen, wurden Listen in BIMcollab Zoom eingesetzt.
+Bei der Erstellung dieser Listen konnten verschiedene Suchkriterien ausgefüllt werden, um eine genaue Auswahl an Elementen aus dem digitalen Modell zu extrahieren.
+Mit der Verwendung eines Pivot-Rasters, einer Unterkategorie der klassischen Liste, bestand die Möglichkeit auch arithmetische Funktionen auf den Properties der selektierten Elemente auszuführen.
+In der Abb. \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Berechnung der Fensterfläche in einem Modell gezeigt, welche im Rahmen der Überprüfung eingesetzt wurde. \\
+
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.6\textwidth]{doc/10/103_methods/bimcollab-zoom-example-list.png}
+
+	\caption[Erstellung einer Liste in BIMcollab Zoom]{Erstellung eines Pivot-Rasters aller Fenster des Modells in BIMcollab Zoom.}
+
+	\label{fig:103_bimcollab-zoom-list}
+\end{figure}
+
+Um die vom \gls{llm} verwendeten \gls{sql}-Abfragen zu überprüfen wurde eine lokale Verwaltungssoftware für die manuelle Ausführung der generierten \gls{sql}-Abfragen verwendet.
+Es handelte sich dabei um pgAdmin, eine für mehrere Betriebssysteme entwickelte Anwendung, welche die Verwaltung verschiedener PostgreSQL-Datenbanken ermöglicht.
+Neben der manuellen Ausführung von \gls{sql}-Abfragen, wurde pgAdmin auch zur Analyse der Datenbankstruktur nach Migrationen oder zur Analyse einzelner Dateneinträge genutzt \cite{pgadmin2026features}.
 
 \section{Aufbereitung der Daten}

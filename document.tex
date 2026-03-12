@@ -11,6 +11,7 @@
 
 % Paket für Umlaute (für Deutsch):
 \usepackage[utf8]{inputenc}       % Cross Platform
+\usepackage[T1]{fontenc}
 \usepackage{xcolor}       % Für erweiterte Farbdefinitionen
 \usepackage{hyperref}   %links in TOC
 \usepackage{tikz}
@@ -30,12 +31,15 @@
     pdfborder={0 0 1},    % Unterstreichung (0 0 1 bedeutet 1pt Linie unten)
 }
 
+\hyphenation{Qua-li-täts-si-che-rung}
+
 \usepackage[acronym,automake]{glossaries}
 \makeglossaries
 
 \include{doc/00/000_abbreviations}
 
 \usepackage[german,english]{babel}       % language: germena nad english, english is main language, german is used in the german abstract and the acknowledgements 
+% \usepackage[T1]{fontenc}
 \usepackage[ddmmyyyy]{datetime} 
 \renewcommand{\dateseparator}{.} 
 \usepackage{amsmath}
@@ -66,7 +70,6 @@
 \usepackage{booktabs}
 \usepackage[export]{adjustbox}
 \usepackage{svg}
-
 
 % fonts
 \usepackage{helvet}
