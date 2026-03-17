@@ -86,6 +86,8 @@
 \usepackage{textgreek}
 \usepackage{gensymb}
 \usepackage{dirtytalk}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\small, breaklines=true, }
 \setlength{\parindent}{0cm} %change indent of new paragraphs (if 0cm --> no indent)
 
 % gap between header and headlines
@@ -97,6 +99,7 @@
 \chead[]{}
 \ifoot[]{}
 \cfoot[]{}
+\ofoot*{\centering\vspace{1cm}\pagemark} 
 \automark[chapter]{chapter}
 \renewcommand*{\chapterheadendvskip}{\vspace*{1\baselineskip}}
 
@@ -158,8 +161,6 @@
     
     % Here the individual chapters are included in the main document by '\include{....}' . The files are in the folder 'doc'
     \include{./doc/00/001_title}
-    \setcounter{page}{1} %counter for page numbering is set to 1
-    \pagenumbering{Roman} % page numbering is done with capital roman signs (I, II, III...)
     \include{./doc/00/002_task}
     \include{./doc/00/003_abstract}
     % Table of contents is generated:
@@ -171,6 +172,9 @@
     % First chapter starts on uneven number 
     \cleardoublepage
     \setstretch{1.25}
+
+
+    \setcounter{page}{1} %counter for page numbering is set to 1
     \pagenumbering{arabic} %page numbering is done with arabic numbers
     % chapters which are not used can be commented out
     % additional chapters require a new file in folder 'doc'
@@ -183,8 +187,12 @@
 
     % References
     \clearpage
+
+    \pagenumbering{Roman} % page numbering is done with capital roman signs (I, II, III...)
+
     \bibliographystyle{unsrtdineng} % modified unsrtdin needs to be included as file in the main path (same level as the main document 000report.tex 
     \bibliography{./bibliography/sources}
+
     \addcontentsline{toc}{chapter}{\textbf{Referenzen}}
      % add to TOC
     \clearpage

@@ -2,6 +2,20 @@
 
 \section{Definition Fallstudie}
 
+Die Fallstudie ist eine qualitative Forschungsmethode, bei der ein konkreter Fall als zeitgenössisches Phänomen in seinem natürlichen Kontext untersucht wird.
+Sie ist insbesondere dann geeignet, wenn die Forschungsfrage auf ein "Wie" oder "Warum" ausgerichtet ist, wenn Forschende nur begrenzte Kontrolle über das untersuchte Geschehen haben und wenn reale, gegenwartsbezogene Problemstellungen im Mittelpunkt stehen.
+Damit stellt die Fallstudie keine bloße Vorstufe anderer Verfahren dar, sondern eine eigenständige Methode mit eigener Untersuchungslogik \cite{hertrich2020forschungsmethodefallstudien}. \\
+
+Nach Yin unterscheidet sich die methodische Einordnung einer Fallstudie in drei Grundformen: Explorative Fallstudien dienen der Erkundung wenig untersuchter Phänomene und dienen meist als Vorarbeit für weitere Forschung.
+Deskriptive Fallstudien beschreiben ein Phänomen und dessen Kontext in seiner Ganzheit, und explanative Fallstudien bearbeiten die Analyse möglicher Ursache-Wirkungs-Zusammenhänge.
+Diese Typen verdeutlichen, dass die Fallstudie je nach Erkenntnisinteresse sowohl zur Strukturierung neuer Fragestellungen als auch zur vertieften Erklärung komplexer Zusammenhänge eingesetzt werden kann \cite{hollweck2016casestudy}. \\
+
+Der erste Schritt einer Fallstudie umfasst die Definition einer klaren Forschungsfrage. Wie eingangs erwähnt eignen sich aufgrund des qualitativen Forschungsansatzes Wie- oder Warum-Fragen. 
+% Laut \textcite{pfeiffer2023fallstudie} ist ein Beispiel für eine solche klare Forschungsfrage: \\
+
+\say{Wie wirken sich Marketingstrategien auf das Kaufverhalten von Apple-Kunden aus? \cite{pfeiffer2023fallstudie}} \\
+
+Dabei spielt 
 \section{Probandengruppe}
 
 Die Zusammenstellung der Probandengruppe folgt einem kriteriumsorientierten, gezielten Sampling (purposeful sampling). 
@@ -14,45 +28,67 @@ Diese Aufteilung ermöglicht eine kontrastive Betrachtung zwischen fachlich gepr
 Die Stichprobengröße wird in qualitativen Interviews nicht primär über statistische Repräsentativität begründet, sondern über den zu erwartenden Informationsgehalt der Fälle sowie das Erreichen thematischer Sättigung. 
 Als methodische Orientierung dienen hierfür sowohl das Sättigungskonzept \cite{guest2006howmany} als auch das Konzept der ``Information Power'', nach dem eine spezifische und zielgerichtete Stichprobe mit hoher Informationsdichte eine kleinere Fallzahl rechtfertigen kann \cite{malterud2016samplesize}. 
 
-\subsection{Gruppe A: Fachkompetenter Akteur}
+\subsection{Gruppe A: Fachkompetenter Akteur} 
 
 Gruppe A umfasst Probanden mit einschlägiger Fachkompetenz in den für die Fallstudie relevanten Arbeitsabläufen und Fachbegriffen. 
-Sie bringen praxisnahes Domänenwissen ein und können sowohl fachliche Korrektheit als auch Umsetzbarkeit der betrachteten Lösungsansätze bewerten. 
-Dadurch liefert diese Gruppe vor allem Aussagen zur inhaltlichen Validität und zur Anschlussfähigkeit an reale Arbeitsprozesse.
+Sie bringen praxisnahes Domänenwissen ein, können alltägliche Problemstellungen isolieren und in individuelle Aufgabenstellungen transferieren.
+Dadurch liefert diese Gruppe neben einer realistischen Problemstellung Hintergrundwissen zu möglichen Komplikationen für fachfremde Akteure, auf Basis ihrer beruflichen Erfahrung.
+Die im Rahmen der Interviews gestellten Leitfragen (vgl. Tab. \ref{tab:103_interview-core-questions}) grenzen Probanden mit diesen Eigenschaften klar von der Gruppe B ab.
 
 \subsection{Gruppe B: Fachfremder Akteur}
 
 Gruppe B umfasst Probanden ohne vertiefte Vorerfahrung im fachlichen Zielkontext. 
 Diese Perspektive ist wichtig, um Verständlichkeit, Zugänglichkeit und Lernhürden der entwickelten Ansätze systematisch zu erfassen. 
 Die Gegenüberstellung zu Gruppe A ermöglicht es, Unterschiede zwischen Experten- und Einsteigerperspektive transparent zu machen und daraus Anforderungen für Kommunikation, Dokumentation und Nutzerführung abzuleiten.
+Des Weiteren lässt sich auf Basis der Lösung der Aufgabenstellung unter Zuhilfenahme von \gls{llm} ermitteln, in welchem Rahmen \gls{llm} Fachkompetenz für fachfremde Akteure bereitstellen kann,
+um die verfügbaren Aufgabenstellungen auf einem vergleichbaren Niveau zu fachkompetenten Akteuren zu erledigen.
 
-\section{Open Building Information Modelling}
+\section{Open \& Closed Building Information Modelling}
+
+Für den Einsatz der \gls{bim}-Methodik ist die Nutzung von Software ein essenzieller Bestandteil der alltäglichen Arbeit. Datengetriebene Planung erfolgt vollständig digital und ist somit in der Praxis direkt an Softwarenutzung geknüpft.
+Welche Software von welchem Hersteller eingesetzt wird, hängt von verschiedenen Faktoren ab. Dabei spielen die Teamgröße, Interoperabilität mit anderen Unternehmen oder Teams, Budgets und Kundenanforderungen eine Rolle. \\
+
+Mit Open \gls{bim} ist die Nutzung spezifischer Software von einem spezifischen Hersteller nicht vorgegeben. Der Datenaustausch erfolgt dabei über definierte offene Austauschformate (Bsp. vgl. Kap. \ref{sec:industry-foundation-classes}).
+Offene Austauschformate stellen eine Grundlage für die Entwicklung von Drittanbieter-Anwendungen zur Weiterverarbeitung ausgetauschter Daten dar, welche in einem geschlossenen System auf der Schnittstelle des Software-Herstellers basieren würden und somit von dessen Weiterentwicklung abhängig wären.
+Des Weiteren erlauben offene Austauschformate neben der Verwendung beliebiger Software auch die eigenständige Gestaltung des Arbeitsprozesses durch jede am Projekt beteiligte Partei. 
+Fachplaner bekommen im Rahmen eines offenen Austauschs nur die für sie relevanten Informationen in Form eines Teilmodells. Eine eigenständige Aussortierung von Daten ist durch den Fachplaner nicht erforderlich.
+Zeitlich grenzen offene Austauschformate, welche von jedem Fachplaner ausgegeben werden, die Verantwortung klar ab, da Parteien Modelle anderer Parteien nicht modifizieren können.
+Die ausgegebenen Modelle der Fachplaner können vor der Übergabe auf Korrektheit und Modellqualität überprüft werden \cite{westphal2018openvsclosedbim}. \\
+
+Im Gegensatz beschreibt Closed \gls{bim} die Verwendung eines geschlossenen herstellerspezifischen Austauschformats für den gesamten Planungsprozess eines Gebäudes. 
+Dabei müssen alle abhängigen Planungsbeteiligten dieselbe Herstellersoftware oder Softwarefamilie einsetzen. Eine freie Software- oder Prozesswahl ist auch für externe Planer ausgeschlossen.
+Analog zu Open \gls{bim} werden die Spezifikationen des Datenaustauschs vorher festgelegt -- dies bringt aber nicht die inhärente Beständigkeit mit, 
+welche aus der von Prozessbeteiligten selbstständig gewählten Software und dem entsprechenden Dateiaustausch mit einem offenen Format resultieren würde. 
+Unabhängige Parteien haben dadurch die Möglichkeit Änderungen an Modellen durchzuführen, welche nicht in ihren Verantwortungsbereich fallen. \cite{westphal2018openvsclosedbim}. \\
+
+Im Rahmen der Bachelorarbeit wird die Open \gls{bim}-Methodik angewandt, weswegen im nachfolgenden Abschnitt eine Einführung in ein offenes Austauschformat gegeben wird.
+
 
 \section{Industry Foundation Classes}
+\label{sec:industry-foundation-classes}
 
+Im Sinne des Open-BIM-Ansatzes gewinnt die Nutzung offener Standards für den softwareübergreifenden Datenaustausch eine zentrale Bedeutung. 
 \gls{ifc} ist ein offener internationaler Standard für den Austausch und die gemeinsame Nutzung von \gls{bim}-Daten zwischen verschiedenen Softwareanwendungen und Projektbeteiligten. 
 In IFC 4.3 umfasst der Anwendungsbereich nicht nur Hochbau, sondern explizit auch Infrastrukturbereiche wie Brücken, Straßen, Schienenwege, Wasserwege und Hafenanlagen. 
 Der Standard beschreibt dazu den Austausch über den gesamten Lebenszyklus eines Bauwerks hinweg, von frühen Planungsphasen über Bau und Beschaffung bis in Betrieb und Instandhaltung \cite{buildingsmart2025ifc4}. \\
 
-IFC besteht aus mehreren Bausteinen: einem formalen Datenschema, der zugehörigen Spezifikationsdokumentation, standardisierten Property- und Quantity-Set-Definitionen sowie Austauschmechanismen für Dateien. 
+\gls{ifc} besteht aus mehreren Bausteinen: einem formalen Datenschema, der zugehörigen Spezifikationsdokumentation, standardisierten Property- und Quantity-Set-Definitionen sowie Austauschmechanismen für Dateien. 
 Das zentrale Schema wird in maschinenlesbaren Formen publiziert, unter anderem als EXPRESS-Definition und als XSD-basierte XML-Beschreibung. 
 Als Austauschformate sind insbesondere das STEP Physical File Format (SPF, ISO 10303-21) sowie XML- und JSON-basierte Repräsentationen relevant; in der Praxis ist SPF weiterhin das verbreitetste Format \cite{buildingsmart2025ifc4}. \\
 
-Inhaltlich basiert IFC auf klar definierten Datenmodellierungsbegriffen wie Entitäten, Attributen, Beziehungen und Typen. 
+Inhaltlich basiert \gls{ifc} auf klar definierten Datenmodellierungsbegriffen wie Entitäten, Attributen, Beziehungen und Typen. 
 Entitäten bilden die Klassen der Fachobjekte ab (z. B. Wände, Räume, Anlagenkomponenten), während Attribute deren Eigenschaften beschreiben. 
-Zusätzlich nutzt IFC sogenannte Concept Templates, mit denen wiederkehrende Muster aus Entitäten und Attributen standardisiert und für verschiedene Objektklassen konsistent angewendet werden. 
+Zusätzlich nutzt \gls{ifc} sogenannte Concept Templates, mit denen wiederkehrende Muster aus Entitäten und Attributen standardisiert und für verschiedene Objektklassen konsistent angewendet werden. 
 Darauf aufbauend werden Model View Definitions (MVDs) als fachliche Teilausschnitte des Gesamtschemas definiert, um konkrete Austauschanforderungen für spezifische Anwendungsfälle umzusetzen \cite{buildingsmart2025ifc4}. \\
 
-Für IFC 4.3 werden drei offizielle Umsetzungsstufen genannt: Reference View, Alignment-based Reference View und Design Transfer View. 
+Für \gls{ifc} 4.3 werden drei offizielle Umsetzungsstufen genannt: Reference View, Alignment-based Reference View und Design Transfer View. 
 Diese Stufen unterscheiden sich im Detaillierungsgrad der übertragbaren Informationen und ermöglichen eine abgestufte Interoperabilität zwischen Softwareprodukten. 
 Für Zertifizierungen müssen Anwendungen angeben, gegen welche MVD sie Konformität beanspruchen \cite{buildingsmart2025ifc4}. \\
 
 \begin{figure}[htb]
     \centering
         \includegraphics[width=0.75\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.png}
-
-    \caption[Struktur des IFC4-Standards als Schema]{Der IFC-Standard ist in mehrere Ebenen unterteilt \cite{buildingsmart2025ifc4}.}
-
+    \caption[Struktur des \gls{ifc}4-Standards als Schema]{Der \gls{ifc}-Standard ist in mehrere Ebenen unterteilt \cite{buildingsmart2025ifc4}.}
     \label{fig:102_ifc4-architecture}
     
 \end{figure}
@@ -65,45 +101,20 @@ Für die langfristige Nutzbarkeit von Bauwerksdaten ist insbesondere die Kompati
 Die Spezifikation unterscheidet zwischen Abwärtskompatibilität (ältere Austauschstrukturen bleiben in neueren Implementierungen lesbar) und Vorwärtskompatibilität (neuere Dateien bleiben in älteren Implementierungen möglichst nutzbar). 
 Dabei wird Abwärtskompatibilität für die Weiterentwicklung des EXPRESS-Schemas grundsätzlich streng priorisiert, während Änderungen an Property- und Quantity-Sets weniger restriktiv behandelt werden \cite{buildingsmart2025ifc4}. \\
 
-\newpage
+\section{Modellviewer mit \gls{ifc}-Schnittstelle und Validierung}
+
+Aufbauend auf den zuvor beschriebenen Eigenschaften und Austauschmechanismen von \gls{ifc} wird für die praktische Arbeit mit solchen Modellen ein geeigneter Modellviewer benötigt.
+Ein \gls{ifc}-Viewer verknüpft die geometrische Darstellung von Bauteilen mit den semantischen Informationen des Datenmodells und ermöglicht damit die gleichzeitige Analyse von Form, Struktur und Attributierung. \\
+
+In der Praxis unterstützen \gls{ifc}-Viewer das parallele Laden mehrerer Fachmodelle, um Koordinationsprüfungen und fachübergreifende Abstimmungen durchzuführen.
+Neben der visuellen Kollisionsprüfung bilden regelbasierte Validierungen einen zentralen Funktionsbereich: Geprüft werden beispielsweise das Vorhandensein erforderlicher Attribute, die korrekte Datentypzuweisung, zulässige Wertebereiche, die Vollständigkeit von Property Sets sowie die Konsistenz von Beziehungen zwischen Entitäten.
+Ergänzend erlauben viele Werkzeuge die Anwendung projektspezifischer Prüfkataloge, sodass Informationsanforderungen, Modellierungsrichtlinien und definierte Qualitätskriterien systematisch und reproduzierbar kontrolliert werden können \cite{bimcollabUnknownZoom}.
 
 \section{Künstliche Intelligenz}
 Künstliche Intelligenz (KI) umfasst Verfahren, mit denen Computersysteme Aufgaben übernehmen, die typischerweise mit menschlicher Wahrnehmung, Schlussfolgerung und Sprachverarbeitung verbunden sind.
-Im Bereich der Sprachverarbeitung reichen die wissenschaftlichen Wurzeln bis zu frühen Systemen wie ELIZA zurück, das bereits 1966 die regelbasierte Simulation von Dialogen demonstrierte \cite{weizenbaum1966eliza}. \\
+Im Bereich der Sprachverarbeitung reichen die wissenschaftlichen Wurzeln bis zu frühen Systemen wie ELIZA zurück, das bereits 1966 die regelbasierte Simulation von Dialogen demonstrierte \cite{weizenbaum1966eliza}.
+Seit den 1990er Jahren zeigt sich zugleich eine deutliche Zunahme der Häufigkeit wissenschaftlicher Veröffentlichungen zum Themenfeld "language models" (vgl. Abb. \ref{fig:102_publications-citations-to-time}). \\
 
-Für die aktuelle Entwicklung ist insbesondere die Geschwindigkeit des Leistungszuwachses relevant.
-Der AI Index 2025 zeigt für acht zentrale Aufgabenfelder (u.a. Bildklassifikation, Sprachverständnis, Mathematik und multimodales Schlussfolgern), dass die Leistungsfähigkeit moderner KI in den letzten Jahren stark angestiegen ist und 2024 nur noch wenige Aufgabenbereiche verbleiben, in denen Menschen klar überlegen sind \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}. \\
-
-Parallel zur Leistungsentwicklung ist die Nutzung von KI in Unternehmen deutlich gestiegen.
-Laut AI Index nutzen 2024 bereits 78 \% der befragten Organisationen KI in mindestens einer Geschäftsfunktion; 2023 waren es noch 55 \%.
-Für generative KI stieg der Anteil im gleichen Zeitraum von 33 \% auf 71 \% \cite[Abb. 4.4.1]{maslej2025artificialintelligenceindexreport}. \\
-
-Ein zentraler Treiber dieser Entwicklung sind sinkende Inferenzkosten.
-Für ein Leistungsniveau auf GPT-3.5-Niveau (MMLU) fielen die Kosten laut AI Index von 20 US-Dollar pro einer Million Tokens (November 2022) auf 0{,}07 US-Dollar (Oktober 2024), was einer Reduktion um mehr als den Faktor 280 entspricht.
-Auch bei anspruchsvolleren Benchmarks wie GPQA Diamond ist ein starker Preisrückgang dokumentiert \cite[Abb. 1.3.22]{maslej2025artificialintelligenceindexreport}. \\
-
-Die Kombination aus steigender Leistungsfähigkeit, wachsender Verbreitung und sinkenden Kosten bildet die Grundlage für den praktischen Einsatz großer Sprachmodelle in Fachanwendungen.
-Im folgenden Abschnitt wird daher die Klasse der \gls{gpt} als technische Grundlage dieser Systeme eingeführt.
-
-\subsection{General Pretrained Transformer}
-Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
-Das zugrunde liegende Prinzip, Modelle zunächst auf großen Datenmengen vorzutrainieren und anschließend auf konkrete Aufgaben anzupassen, ist jedoch deutlich älter und in der Forschung seit Jahren etabliert \cite[S. 4-5]{han2021pretrainedmodelspastpresent}.
-
-Frühe Verfahren des Vortrainierens orientierten sich am "transfer learning": Ein Modell wurde auf einer Ausgangsaufgabe trainiert und das dabei gelernte Wissen auf eine andere, verwandte Aufgabe übertragen \cite[S. 5]{han2021pretrainedmodelspastpresent}. 
-Dieses Vorgehen reduziert den Bedarf an aufwendig annotierten Daten, da bereits erlernte Repräsentationen weiterverwendet werden können.
-
-In der Sprachverarbeitung wurden lange Zeit \gls{rnns} eingesetzt. Da sie Eingaben strikt sequenziell verarbeiten, ist ihre Parallelisierung auf moderner Hardware wie \glspl{gpu} oder \glspl{tpu} jedoch begrenzt \cite[S. 7-8]{han2021pretrainedmodelspastpresent}. 
-Transformer-Modelle überwinden diese Einschränkung durch Self-Attention-Mechanismen und bilden heute die zentrale Architektur moderner Sprachmodelle \cite[S. 8-9]{han2021pretrainedmodelspastpresent}.
-
-\gls{gpt}-Modelle basieren auf diesem Transformer-Paradigma und werden typischerweise in zwei Schritten trainiert: 
-Im "pre-training" lernt das Modell auf sehr großen, überwiegend unannotierten Textkorpora statistische Sprachmuster und semantische Zusammenhänge. 
-Dabei kommt "self-supervised learning" zum Einsatz, bei dem Trainingsziele direkt aus den Rohtexten abgeleitet werden \cite{han2021pretrainedmodelspastpresent}. 
-Im anschließenden "fine-tuning" wird das vortrainierte Modell auf spezifische Aufgaben oder Anwendungsdomänen ausgerichtet.
-
-\subsection{Large-Language-Modelle}
-
-Das Interesse der Wirtschaft und der Öffentlichkeit an generativer KI, zu welcher \gls{llm} zählen, ist erst in den letzten Jahren stark angestiegen.
-Obwohl Produkten wie ChatGPT nur wenige Jahre alt sind, sind \gls{lm} bereits mit dem 1966 vom MIT vorgestellten Sprachmodell ELIZA in der Wissenschaft bekannt \cite{openAi2022chatgpt} \cite{weizenbaum1966eliza}.
 
 \begin{figure}[htb]
 	\centering
@@ -114,9 +125,46 @@ Obwohl Produkten wie ChatGPT nur wenige Jahre alt sind, sind \gls{lm} bereits mi
 	\label{fig:102_publications-citations-to-time}
 \end{figure}
 
-Um die Fähigkeit von \gls{lm} als numerischen Wert darzustellen existieren verschiedene Berechnungsmodelle. 
-"SuperGLUE" beschäftigt sich dabei mit der Sprachkompetenz von \gls{lm} mit der englischen Sprache.
-Dabei werden insgesamt acht verschiedene Tests bewertet, welche verschiedene Bereiche der Sprache abdecken und am Ende zu einer Gesamtbewertung zusammengefasst. \cite{wang2020supergluestickierbenchmarkgeneralpurpose}
+Für die aktuelle Entwicklung ist insbesondere die Geschwindigkeit des Leistungszuwachses relevant.
+Der AI Index 2025 zeigt für acht zentrale Aufgabenfelder (u. a. Bildklassifikation, Sprachverständnis, Mathematik und multimodales Schlussfolgern), dass die Leistungsfähigkeit moderner KI in den letzten Jahren stark angestiegen ist und 2024 nur noch wenige Aufgabenbereiche verbleiben, in denen Menschen klar überlegen sind \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}. \\
+
+Parallel zur Leistungsentwicklung ist die Nutzung von KI in Unternehmen deutlich gestiegen.
+Laut AI Index nutzen 2024 bereits 78 \% der befragten Organisationen KI in mindestens einer Geschäftsfunktion; 2023 waren es noch 55 \%.
+Für generative KI stieg der Anteil im gleichen Zeitraum von 33 \% auf 71 \% \cite[Abb. 4.4.1]{maslej2025artificialintelligenceindexreport}. \\
+
+Ein zentraler Treiber dieser Entwicklung sind sinkende Inferenzkosten.
+Für ein Leistungsniveau auf GPT-3.5-Niveau (MMLU) fielen die Kosten laut AI Index von 20 US-Dollar pro einer Million Tokens (November 2022) auf 0{,}07 US-Dollar (Oktober 2024), was einer Reduktion um mehr als den Faktor 280 entspricht.
+Auch bei anspruchsvolleren Benchmarks wie GPQA Diamond ist ein starker Preisrückgang dokumentiert \cite[Abb. 1.3.22]{maslej2025artificialintelligenceindexreport}. \\
+
+Die Kombination aus steigender Leistungsfähigkeit, wachsender Verbreitung und sinkenden Kosten bildet die Grundlage für den praktischen Einsatz großer Sprachmodelle in Fachanwendungen.
+Im folgenden Abschnitt wird daher die Klasse von \gls{gpt} als technische Grundlage dieser Systeme eingeführt.
+
+\subsection{Generative Pretrained Transformer}
+Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
+Das zugrunde liegende Prinzip, Modelle zunächst auf großen Datenmengen vorzutrainieren und anschließend auf konkrete Aufgaben anzupassen, ist jedoch deutlich älter und in der Forschung seit Jahren etabliert \cite[S. 4-5]{han2021pretrainedmodelspastpresent}.
+
+Frühe Verfahren des Vortrainierens orientierten sich am "transfer learning": Ein Modell wurde auf einer Ausgangsaufgabe trainiert und das dabei gelernte Wissen auf eine andere, verwandte Aufgabe übertragen \cite[S. 5]{han2021pretrainedmodelspastpresent}. 
+Dieses Vorgehen reduziert den Bedarf an aufwendig annotierten Daten, da bereits erlernte Repräsentationen weiterverwendet werden können.
+
+In der Sprachverarbeitung wurden lange Zeit \gls{rnns} eingesetzt. Da sie Eingaben strikt sequenziell verarbeiten, ist ihre Parallelisierung auf moderner Hardware wie \glspl{gpu} oder \glspl{tpu} jedoch begrenzt \cite[S. 7-8]{han2021pretrainedmodelspastpresent}. 
+Transformer-Modelle überwinden diese Einschränkung durch Self-Attention-Mechanismen: Abhängigkeiten zwischen Tokens werden gleichzeitig als Matrixoperationen berechnet statt strikt rekurrent Schritt für Schritt. Damit bilden Transformer heute die zentrale Architektur moderner Sprachmodelle \cite[S. 8-9]{han2021pretrainedmodelspastpresent}.
+
+\gls{gpt}-Modelle basieren auf diesem Transformer-Paradigma und werden typischerweise in zwei Schritten trainiert: 
+Im "pre-training" lernt das Modell auf sehr großen, überwiegend unannotierten Textkorpora statistische Sprachmuster und semantische Zusammenhänge. 
+Dabei kommt "self-supervised learning" zum Einsatz, bei dem Trainingsziele direkt aus den Rohtexten abgeleitet werden \cite{han2021pretrainedmodelspastpresent}. 
+Im anschließenden "fine-tuning" wird das vortrainierte Modell auf spezifische Aufgaben oder Anwendungsdomänen ausgerichtet.
+
+Somit sind \gls{gpt}-Modelle nicht als isolierter Sonderfall zu verstehen, sondern als zentraler Vertreter einer breiteren Modellklasse.
+Die dargestellten Architektur- und Trainingsprinzipien markieren den methodischen Übergang zu \glspl{llm}, die diese Ansätze in größerem Maßstab umsetzen.
+
+\subsection{Large-Language-Modelle}
+
+Unter \glspl{llm} werden großskalige Sprachmodelle verstanden, die auf sehr umfangreichen Textkorpora trainiert werden und durch ihre Parametrisierung vielfältige Sprachaufgaben innerhalb eines Modells bearbeiten können.
+Für die vorliegende Arbeit ist diese Modellklasse besonders relevant, da sie sowohl allgemeine Sprachkompetenz als auch eine Anpassung an domänenspezifische Anwendungskontexte ermöglicht.
+
+Zur quantitativen Bewertung der angesprochenen allgemeinen Sprachkompetenz von \gls{lm} und \gls{llm} werden verschiedene Benchmarks eingesetzt.
+Ein etabliertes Beispiel ist "SuperGLUE", das die Sprachkompetenz von Modellen im Englischen anhand mehrerer Teilaufgaben misst.
+Die Ergebnisse aus insgesamt acht Tests werden zu einem Gesamtwert zusammengeführt und ermöglichen so einen zeitlichen Vergleich zwischen unterschiedlichen Modellgenerationen \cite{wang2020supergluestickierbenchmarkgeneralpurpose}.
 
 \begin{table}[ht]
     \centering
@@ -166,54 +214,39 @@ Dabei werden insgesamt acht verschiedene Tests bewertet, welche verschiedene Ber
     \end{tabular}
 \end{table}
 
-Dabei ist zwischen \gls{lm} und \gls{llm} zu unterscheiden.
+Für die Einordnung ist eine begriffliche Unterscheidung zwischen \gls{lm} und \gls{llm} sinnvoll.
+Zu den zentralen Unterscheidungsmerkmalen zählen insbesondere die Größe der Trainingsdaten sowie die Anzahl der Modellparameter.
+Am Beispiel von "gpt-oss-120b", einem öffentlich verfügbaren Modell von OpenAI, wird die Größenordnung moderner Systeme deutlich: Das Modell verfügt über 117 Milliarden Parameter, verteilt auf 36 Schichten.
+Breite und Umfang der Trainingsdaten sind dabei entscheidend, um sprachliche Muster zuverlässig zu erfassen und ein belastbares Grundverständnis von Sprache aufzubauen \cite[S. 10]{yenduri2023generativepretrainedtransformercomprehensive}.
+Durch diese Skalierung lassen sich \gls{llm} nicht nur für sprachliche Aufgaben, sondern flexibel in vielen Anwendungsfeldern einsetzen. \\
 
-Hierbei spielt besonders die Datenmenge des Trainings, sowie die Anzahl der Parameter des Models eine Rolle in der Unterscheidung.
-Im Beispiel von "gpt-oss-120b", einem öffentlich verfügbaren Modell von OpenAI, sind es 117 Milliarden Parameter, welche auf 36 Schichten verteilt wurden.
-Die Größe der Trainingsdaten ist für das grundlegende Verständnis von Sprache besonders wichtig. \cite[S. 10]{yenduri2023generativepretrainedtransformercomprehensive}
-Zusätzlich gewinnen \gls{llm} ebenfalls an Allgemeinwissen und eigenen sich für eine Vielzahl an Aufgaben, aufgrund der breiten Trainingsdaten. (cite a benchmark for LM vs LLM or similar)
+Um diese Leistungsfähigkeit zu erreichen, wird typischerweise ein mehrstufiger Trainings- und Nutzungsprozess durchlaufen, der im Folgenden zusammenhängend dargestellt wird.
+Im ersten Schritt, dem unüberwachten bzw. selbstüberwachten Vortraining, verarbeitet ein \gls{llm} große Mengen unstrukturierter Textdaten.
+Auf diese Weise lernt das Modell grundlegende Muster der Sprache, semantische Zusammenhänge und statistische Regelmäßigkeiten \cite{datasolut2023llm}.
+Darauf aufbauend folgt ein weiterer Trainingsschritt mit stärker strukturierten und annotierten Daten, um das bereits gelernte Wissen zu präzisieren und auf gewünschte Aufgabenprofile auszurichten \cite{datasolut2023llm}.
+In einer letzten Phase kommt häufig reinforcement learning zum Einsatz, um die Qualität von Antworten weiter zu verbessern und das Modellverhalten stärker an gewünschte Kriterien anzupassen \cite{datasolut2023llm}. \\
 
-Um diese weit gefächerte sprachliche Kompetenz zu erreichen, ist eine mehrstufige Sequenz an Training erforderlich.
-
-\subsubsection{Training}
-
-Im ersten Schritt, dem sogenannten unüberwachten Lernen, analysiert das \gls{llm} einen Trainingssatz an unstrukturierten Daten. 
-Dies erlaubt die Verwendung von größeren Datensätzen und lässt das \gls{llm} das Verständnis für Semantik und allgemeine Sprachkompetenz entwickeln. \cite{datasolut2023llm}
-
-Nachdem sprachliche Kernkonzepte trainiert wurde, erfolgt das sogenannte selbstüberwachte Lernen, bei dem ausschließlich strukturierte und bezeichnete Daten verwendet werden.
-Dies erlaubt dem \gls{llm} den erweiterten Wissensaufbau und die feinere Erarbeitung von sprachlichen Konzepten. \cite{datasolut2023llm}
-
-Als letzter Schritt erfolgt das reinforcement learning. Dabei 
-
-\cite{datasolut2023llm}
-
-\subsubsection{Nutzung}
-
-Nachdem alle Trainingsphasen abgeschlossen sind, ist das trainierte Modell in der Lage auf Basis von Texteingaben in natürlicher Sprache eine passende Textausgabe zu generieren.
-
-Der allererste Schritt im Prozess der Ausgabe ist die Tokenisierung (tokenization) des Eingabetextes. 
-Dabei zerlegt ein zum Modell passender Tokenizer die Eingabe in kleinere Abschnitte, die durch das Modell in Zahlen umgewandelt werden. (cite structure of an LLM gpt based)
-Das Ziel eines Tokenizers ist die Maximierung des Informationsgehaltes und die Minimierung der Tokenanzahl. \cite{iese2024llm}
+Nach Abschluss der Trainingsphasen kann das Modell aus natürlichsprachigen Eingaben passende Textausgaben erzeugen.
+Der erste Verarbeitungsschritt ist die Tokenisierung des Eingabetextes.
+Ein geeigneter, modellabhängiger Tokenizer zerlegt die Eingabe in kleinere Einheiten, die anschließend in numerische Repräsentationen überführt werden.
+Ziel ist es, mit einer geeigneten Anzahl von Tokens möglichst viel Information abzubilden \cite{iese2024llm}. 
 
 \begin{figure}[htb]
 	\centering
 		\includegraphics[width=0.5\textwidth]{doc/10/102_state-of-the-art/tokenizing-a-sentence.png}
 
-	\caption[Beispielsatz tokenisiert]{Ein Beispielsatz wird vom Tokenizer "gpt-4o" in Tokens aufgeteilt. Erstellt mit \url{https://tiktokenizer.vercel.app/}.}
+	\caption[LLM tokenisiert Beispielsatz]{Ein Beispielsatz wird vom Tokenizer "gpt-4o" in Tokens aufgeteilt. Erstellt mit \url{https://tiktokenizer.vercel.app/}.}
 
 	\label{fig:102_tokenizing-a-sentence}
 \end{figure}
 
-Nach der Umwandlung der Texteingabe in Token bzw. Zahlenwerte kommt der Schritt der Einbettung. 
-Dabei wird jeder Token mit Vektoren abgebildet und semantisch ähnliche Token zeigen in ähnliche Richtungen. 
-Neben der Semantik kann die Position eines Tokens in einem Satz ebenfalls in Vektoren eingebettet werden. \cite{iese2024llm}
+Nach der Tokenisierung folgt die Einbettung.
+Dabei wird jedem Token ein Vektor zugeordnet; semantisch ähnliche Token liegen in diesem Vektorraum typischerweise näher beieinander.
+Zusätzlich wird die Position eines Tokens innerhalb der Sequenz kodiert, damit das Modell Reihenfolgebeziehungen berücksichtigen kann \cite{iese2024llm}. \\
 
-Im dritten Schritt werden die Wahrscheinlichkeiten aller möglichen Token berechnet. 
-Dies ist der Grund, warum \gls{llm} - im Vergleich zu anderen neuronalen Netzwerken - eine hohe Anzahl an Parametern besitzen.
-Aufgrund der Komplexität von Sprache ist die Menge aller möglichen Token enorm. (cite)
-Bis heute nutzen die meisten \gls{llm} die Transformer-Architektur, welche sich parallelisieren lässt und somit die verfügbare Rechenleistung von \gls{gpu} und \gls{tpu} nutzen kann. \cite[S. 7-8]{yenduri2023generativepretrainedtransformercomprehensive}
-
-
+Anschließend berechnet das Modell Wahrscheinlichkeiten für mögliche nächste Tokens.
+Da natürliche Sprache eine sehr große Kombinationsvielfalt aufweist, ist dieser Schritt rechnerisch aufwendig und ein zentraler Grund für die hohe Parametrisierung moderner \gls{llm}.
+Die heute dominierende Transformer-Architektur ist dafür besonders geeignet, da sie sich effizient parallelisieren lässt und dadurch die Rechenleistung von \gls{gpu} und \gls{tpu} wirksam nutzt \cite[S. 7-8]{yenduri2023generativepretrainedtransformercomprehensive}.
 
 \subsection{Tool Calling \& Model Context Protocol}
 
@@ -223,19 +256,18 @@ Da der Datensatz jedoch zum Trainingszeitpunkt eingefroren ist, friert das Wisse
 Um dennoch aktuelle Informationen verarbeiten zu können, besteht die Möglichkeit \gls{llm} Zugriff auf verschiedene Werkzeuge zu geben.
 Beim "tool calling" entscheidet das Modell auf Basis von Beschreibung und Funktionen des Werkzeugs, welches Werkzeug am besten zur in natürlicher Sprache gegebenen Aufgabe passt,
 führt dieses aus und nutzt die erzeugten Ergebnisse, um dem Nutzer eine Antwort bereitzustellen.
-Grundsätzlich ist die Art des Werkzeugs nicht beschränkt und kann von einfachen Web-Suchen, über die Kommunikation mit andere Dienste, bis hin zum Zugriff auf komplexe Daten, die im normalen Kontext des Modells nicht verarbeitet werden könnten.\\
+Grundsätzlich ist die Art des Werkzeugs nicht beschränkt und kann von einfachen Web-Suchen über die Kommunikation mit anderen Diensten bis hin zum Zugriff auf komplexe Daten reichen, die im normalen Kontext des Modells nicht verarbeitet werden könnten.\\
 
 Das offen standardisierte \gls{mcp} arbeitet dabei als Brücke zwischen Modell und Werkzeug-Anbieter. 
 Der Grundgedanke besteht darin, dem Modell nur Informationen zu geben, die es für die aktuelle Aufgabe benötigt \cite{lfprojects2025modelcontextprotocol}. 
-Der Endnutzer muss sich dabei nicht mit Infrastruktur oder Abhängigkeiten des Werkzeugs beschäftigen und Entwickler können in vielen Programmiersprache Schnittstellen entwickeln \cite{github2025modelcontextprotocol}.\\
+Der Endnutzer muss sich dabei nicht mit Infrastruktur oder Abhängigkeiten des Werkzeugs beschäftigen und Entwickler können in vielen Programmiersprachen Schnittstellen entwickeln \cite{github2025modelcontextprotocol}.\\
 
-Die Architektur von MCP besteht aus drei Abschnitten. Der \gls{mcp}-Host ist im Kontext von \gls{llm} das Modell selbst. Auch der \gls{mcp}-Client ist Teil des Modells und übernimmt die gesamte Kommunikation, sowie die Bereitstellung der Informationen nachdem Werkzeugaufruf.
+Die Architektur von MCP besteht aus drei Abschnitten. Der \gls{mcp}-Host ist im Kontext von \gls{llm} das Modell selbst. Auch der \gls{mcp}-Client ist Teil des Modells und übernimmt die gesamte Kommunikation sowie die Bereitstellung der Informationen nach dem Werkzeugaufruf.
 Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den Werkzeugaufruf und sendet die gewonnenen Informationen an den Client zurück. Die Kommunikation zwischen Server und Client erfolgt dabei über die Transportschicht \cite{googlecloud2025modelcontextprotocol}.
-
 
 \begin{table}[!htb]
     \centering
-    \caption{Beispiel für die Nutzung mehrere MCP-Werkzeuge}
+    \caption{Beispiel für die Nutzung mehrerer MCP-Werkzeuge}
     \label{tab:modelcontextprotocol_example}
     \begin{tabular}{C{1.25cm} L{10cm} C{2.75cm}}
         \hline
@@ -250,7 +282,7 @@ Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den We
 
         4 & \gls{mcp}-Host erstellt eine Anfrage an das Werkzeug "E-Mails abrufen" in einer strukturierten Form & \gls{mcp}-Host \\
 
-        5 & Der \gls{mcp}-Server, welcher das Werkzeug bereitstellt ruft die E-Mails des Nutzers ab & \gls{mcp}-Server \\
+        5 & Der \gls{mcp}-Server, welcher das Werkzeug bereitstellt, ruft die E-Mails des Nutzers ab & \gls{mcp}-Server \\
 
         6 & Das Modell erhält eine strukturierte Liste der ungelesenen E-Mails und fasst diese zusammen & \gls{mcp}-Host \\
 
@@ -266,51 +298,113 @@ Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den We
 
 \subsection{Skills zum inkrementellen Wissensgewinn}
 
-Weil das Kontextfenster von \gls{llm} beschränkt ist, kann ein großer Systemprompt dazu führen, dass nur wenig Platz für die Nachrichtenhistorie und die Ergebnisse von Werkzeugen bleibt.
-Dadurch muss die Historie sehr früh beschnitten werden, wodurch die Qualität der \gls{llm}-Ergebnisse, besonders bei Rückfragen oder Folgefragen, sinkt.
-Um dennoch für das \gls{llm} passende Information bereitzustellen eignen sich sog. Skills. 
-Das vom \gls{llm}-Entwickler Anthropic etablierte Konzept ermöglicht \gls{llm} den stückweisen Wissensgewinn auf Basis der vom Nutzer gestellten Frage.
-Dabei werden im Systemprompt nur der Name des jew. Skills, sowie eine kurze Beschreibung bereitgestellt. Der Name wird ausschließlich als Identifikation für die spätere Verwendung genutzt.
-Die Beschreibung eines Skills ist entscheidet dafür, ob das \gls{llm} weitere Informationen zu diesem Skill anfragt. Dies wird von Anthropic als das erste Level des Wissensgewinns bezeichnet. \\
-Sollte die Fragestellung des Nutzers und die Beschreibung des Skills übereinstimmen ruft das \gls{llm} weitere Informationen zu dem Skill ab. 
-Dabei wird der Einstiegspunkt eines jeden Skills, die SKILL.md-Datei (Markdown-Datei), verwendet und der gesamte Inhalt dem \gls{llm} zur Verfügung gestellt.
-Bei diesem zweiten Level des Wissensgewinns hat das \gls{llm} bereits eine Vorauswahl getroffen, wodurch das Kontextfenster nur mit Informationen gefüllt wird, welche für die Fragestellung des Nutzers relevant sind.\\
-Beim dritten und letzten Level des Wissensgewinns werden in der SKILL.md-Datei genannte Referenzen geladen. Dies können zusätzliche Markdown-Dateien, aber auch ausführbare Skripte sein. \\
+Das Kontextfenster eines \gls{llm} ist begrenzt. Umfangreiche Systemprompts reduzieren daher den verfügbaren Platz für Nachrichtenhistorie und Werkzeugergebnisse, was insbesondere bei Rückfragen die Antwortqualität beeinträchtigen kann.
+Eine Möglichkeit zur Entlastung des Kontextfensters ist der Einsatz von Skills. Laut der Spezifikation werden Skills in mehreren Ebenen aufgelöst und nur bei inhaltlicher Relevanz schrittweise geladen \cite{agentskills_github}. \\
 
-Während das zweite Level auf 5000 Tokens beschränkt ist, erlaubt der dritte Level eine effektiv unendliche Anzahl von Tokens, die das \gls{llm} als Wissen gewinnen kann.\\
+Das grundlegende Ziel dieses Ansatzes besteht darin, Wissensinhalte nicht pauschal vorzuhalten, sondern bedarfsorientiert zu laden. Damit wird die Wissensbereitstellung von einem statischen Prompt-Design zu einem selektiven Abrufmechanismus verlagert. 
+Für dialogorientierte Anwendungen ist dies besonders relevant, da die verfügbare Kontextkapazität dynamisch zwischen Nutzerverlauf, Werkzeugausgaben und domänenspezifischem Wissen aufgeteilt werden muss \cite{agentskills_github}. \\
 
-Da sich Anthropic bei dem vorgestellen Konzept von Skills direkt auf ihre selber entwickelten \gls{llm} beziehen muss das Konzept für andere \gls{llm} angepasst bzw. manuell implementiert werden.
-Im Rahmen der Bachelorarbeit wurde daher auf das dritte Level des Wissensgewinns verzichtet und der Abruf der Skills über ein bereitgestelltes Werkzeug realisiert.
+Auf der ersten Ebene erhält das Modell lediglich Metadaten zu einem Skill, insbesondere Namen und Kurzbeschreibung. 
+Diese Informationen dienen der Auswahlentscheidung, ob ein Skill zur aktuellen Nutzeranfrage passt \cite{agentskills_github}.
+Auf der zweiten Ebene wird der Einstiegspunkt des Skills geladen, typischerweise die Datei SKILL.md. 
+Dadurch werden nur die für die Anfrage vorausgewählten Inhalte in den Kontext übernommen \cite{agentskills_github}.
+Auf der dritten Ebene können aus SKILL.md referenzierte Inhalte nachgeladen werden, zum Beispiel weitere Markdown-Dateien oder Skripte. 
+Dieses stufenweise Vorgehen ermöglicht einen inkrementellen Wissensaufbau, ohne von Beginn an alle Details im Systemprompt vorzuhalten \cite{agentskills_github}. \\
 
-\newpage
+Im Vergleich zu monolithischen Prompts ergeben sich zwei zentrale Vorteile: Erstens wird die Relevanz der im Kontext enthaltenen Informationen erhöht, weil irrelevante Wissensanteile nicht automatisch geladen werden. 
+Zweitens verbessert sich die Wartbarkeit, da Skills als eigenständige, versionierbare Wissensbausteine gepflegt werden können \cite{agentskills_github}. 
+Änderungen an einzelnen Themenbereichen lassen sich dadurch gezielt vornehmen, ohne den gesamten Systemprompt neu zu strukturieren. \\
 
-\section{Entwicklung von Web-Anwendungen}
-Verwendete Programmiersprachen, 
+Gleichzeitig erfordert der Ansatz eine präzise Beschreibung der Skills. Unklare oder zu breite Beschreibungen können dazu führen, dass ein geeigneter Skill nicht ausgewählt wird oder unnötige Inhalte geladen werden. 
+Die Qualität der Skill-Metadaten ist daher ein wesentlicher Faktor für die Effektivität des inkrementellen Wissensgewinns \cite{agentskills_github}. \\
+
+Für die vorliegende Arbeit wurde dieses Prinzip in angepasster Form übernommen: Der Skill-Abruf erfolgt über ein bereitgestelltes Werkzeug, wobei der Fokus auf den für die jeweilige Anfrage relevanten Skill-Inhalten liegt.
+
+\section{Softwareentwicklung}
+
+Dieser Abschnitt beschreibt die technischen Grundlagen der im Rahmen dieser Arbeit umgesetzten Softwareentwicklung. 
+Zuerst wird die Strukturierung und Versionierung von Quellcode betrachtet (vgl. Kap. \ref{sec:structure-code-with-repositories} und Kap. \ref{sec:git-github}).
+Der danach folgende Unterabschnitt \glqq Entwicklung von Web-Anwendungen\grqq{} (vgl. Kap. \ref{sec:web-development}) führt dabei in die Grundsätze der Entwicklung von Webanwendungen ein und erläutert die technischen Hintergründe für die Datenübertragung.
+Zuletzt wird die konkrete Technologiewahl mit React, NestJS, PostgresSQL und Prisma sowie tRPC (vgl. Kap. \ref{sec:react}, Kap. \ref{sec:nestjs}, Kap. \ref{sec:postgresql-prisma} und Kap. \ref{sec:trpc}) in den nachfolgenden Unterabschnitten vertieft.
+
 
 \subsection{Strukturierung von Code mit Repositories}
-Repository ermöglichen Entwicklern den Quellcode von entwickelten Anwendung mit Hilfe vom Commits (in einem Paket verpackte Code-Änderung) zu speichern. 
+\label{sec:structure-code-with-repositories}
+Die Softwareentwicklung basiert grundsätzlich auf der Erstellung von Quellcode, der in Textdateien abgelegt wird.
+Zur strukturierten Organisation, nachvollziehbaren Versionierung und kollaborativen Weiterentwicklung dieses Quellcodes werden in der Praxis Repositories eingesetzt. \\
+
+Repositories ermöglichen Entwicklern, den Quellcode von entwickelten Anwendungen mithilfe von Commits zu speichern.
+Ein Commit beschreibt dabei Änderungen des Quellcodes, von einem einzelnen Entwickler verpackt und mit einer Beschreibung versehen (vgl. Kap. \ref{sec:git-github}).
 Dies ermöglicht eine redundante Strategie für Backups, da Repositories in den meisten Fällen bei Cloud-Diensten mit entsprechender Backup-Struktur gespeichert sind, 
-nachvollziehbare Änderung durch Unveränderbarkeit erstellter Commits, sowie die Zusammenarbeit mit anderen Entwicklern durch ein System für das Zusammenführen von Änderungen und der Konfliktlösung bei Problemen \cite{losoviz2023monorepovsmultirepo}. \\
+nachvollziehbare Änderungen durch die Unveränderbarkeit erstellter Commits sowie die Zusammenarbeit mit anderen Entwicklern durch ein System für das Zusammenführen von Änderungen und die Konfliktlösung bei Problemen \cite{losoviz2023monorepovsmultirepo}. \\
 
-Zur Strukturierung eines gesamten Software-Projektes gibt es unterschiedliche Repository-Strategien. \\
+Zur Strukturierung eines gesamten Softwareprojekts gibt es unterschiedliche Repository-Strategien. \\
 
-Eine Strategie ist das Mono-Repository, in welchem alle Komponenten des Projektes in einem einzelnen Repository gelagert sind. 
-Dabei birgt dies besonders bei stark verkuppelten Anwendungen einen Vorteil, da Code zwischen verschiedenen Komponenten des Projektes ohne Orchestrierungsaufwand, wie erweiterte Abhängigkeitsverwaltung, ausgetauscht und verwendet werden kann.
-Ebenso reduziert sich der Aufwand neue Teammitglieder in das bestehende Projekt aufzunehmen. Gleichzeitig erlaubt ein Mono-Repository jedem Entwickler einen Gesamtüberblick über das Projekt zu gewinnen ohne von Repository zu Repository springen zu müssen.
+Eine Strategie ist das Mono-Repository, in dem alle Komponenten des Projekts in einem einzelnen Repository abgelegt sind. 
+Dabei birgt dies besonders bei stark gekoppelten Anwendungen einen Vorteil, da Code zwischen verschiedenen Komponenten des Projekts ohne Orchestrierungsaufwand, wie etwa erweiterte Abhängigkeitsverwaltung, ausgetauscht und verwendet werden kann.
+Ebenso reduziert sich der Aufwand, neue Teammitglieder in das bestehende Projekt aufzunehmen. Gleichzeitig erlaubt ein Mono-Repository jedem Entwickler, einen Gesamtüberblick über das Projekt zu gewinnen, ohne von Repository zu Repository springen zu müssen.
 Dieser Überblick eignet sich besonders bei weitreichenden Änderungen, welche weite Teile des Projektes gleichzeitig betreffen. \cite{losoviz2023monorepovsmultirepo}. \\
 
 Als Gegenstrategie existiert das Multi-Repository. Jede abgrenzbare Komponente bekommt ein eigenes Repository und ist im Bezug auf Abhängigkeiten und Code stärker von anderen Komponenten isoliert. 
 Die Isolation erlaubt unabhängige Veröffentlichung der jeweiligen Komponenten, wodurch sich die Veröffentlichungsfrequenz im Vergleich zu einem Mono-Repository erhöht.
 Da Zugriffsrechte immer je Repository vergeben werden, erlaubt die Multi-Repository-Strategie eine verbesserte Rechtezuweisung. 
 Teammitglieder, welche nur einzelne Komponenten bearbeiten, bekommen nicht automatisch Zugriff auf den gesamten Quellcode des Projektes.
-Desweiteren erlaubt die Isolation der Komponenten unabhängige Architekturentscheidungen für jede Komponente, da nur die Schnittstelle zwischen den Komponenten für die Kommunikation relevant ist \cite{losoviz2023monorepovsmultirepo}. \\
+Des Weiteren erlaubt die Isolation der Komponenten unabhängige Architekturentscheidungen für jede Komponente, da nur die Schnittstelle zwischen den Komponenten für die Kommunikation relevant ist \cite{losoviz2023monorepovsmultirepo}. \\
 
-Beide Strategien bieten Vor- und Nachteile, welche für jedes Projekt eigenständig abgewogen werden müssen. Dabei spielt besonders das verwendete Framework bzw. die verwendete Programmiersprache eine wichtige Rolle bei dieser Entscheidung. \\
+\subsection{Speicherung von Code mit Git \& GitHub}
+\label{sec:git-github}
+
+Wie im vorherigen Abschnitt beschrieben, bilden Commits die grundlegende Einheit der Änderungsverfolgung in einem Versionsverwaltungssystem. 
+Jeder Commit stellt dabei einen gespeicherten Zustand des Projekts dar und ermöglicht es, den Entwicklungsverlauf nachzuvollziehen sowie bei Bedarf auf frühere Stände zurückzukehren \cite{chacon2014progit}. 
+Aufbauend auf diesem Konzept wird im Folgenden das Versionsverwaltungssystem Git sowie die darauf aufbauende Plattform GitHub eingeführt. \\
+
+Git ist ein \gls{dvcs}, das ursprünglich im Jahr 2005 von Linus Torvalds für die Entwicklung des Linux-Kernels entwickelt wurde. 
+Im Gegensatz zu zentralisierten Systemen besitzt bei Git jede Arbeitskopie die vollständige Geschichte des Projekts. 
+Dadurch können Entwicklerinnen und Entwickler unabhängig voneinander und auch ohne ständige Netzwerkverbindung arbeiten \cite{chacon2014progit}. \\
+
+Git speichert Daten nicht als Datei-Differenzen, sondern als eine Folge von Snapshots des gesamten Projektverzeichnisses. 
+Die Snapshots sind dabei so strukturiert, dass nicht geänderte Dateien als Referenz zur letzten Änderung abgelegt werden und somit keine doppelte Speicherung dieser erfolgt.
+Jeder Commit referenziert dabei einen solchen Snapshot und enthält Metadaten wie Autor, Zeitstempel und eine Beschreibung der vorgenommenen Änderungen \cite{chacon2014progit}. \\
+
+Ein Kernbestandteil von Git sind sogenannte Branches (dt. Zweige). Ein Branch ist dabei ein von anderen Änderungen isolierter Strang, welcher von einem Commit aus gestartet wird.
+Dabei können weitere Commits zu diesem Branch hinzugefügt werden, ohne dass andere Branches beeinflusst werden. 
+Diese Isolation ermöglicht die Zusammenarbeit unter der Nutzung von Git mit einer beliebigen Teamgröße.
+Änderungen und entsprechende Commits beeinflussen nicht die Arbeit anderer Teammitglieder.
+Nachdem Commits auf dem jeweiligen Branch erstellt wurden, können diese über einen Merge (Zusammenführung) in den Hauptzweig zurückgeführt werden \cite{chacon2014progit}. \\
+
+\subsection{Entwicklung von Web-Anwendungen}
+\label{sec:web-development}
+
+Web-Anwendungen werden typischerweise in mehreren Programmiersprachen entwickelt, die jeweils unterschiedliche Aufgaben im System übernehmen.
+Grundlegende Sprachen wie HTML, CSS und JavaScript sind seit den Anfängen des World Wide Web etabliert und bilden die technische Basis nahezu aller modernen Web-Anwendungen \cite{mdn_client_server}.
+Darüber hinaus kommen je nach Einsatzszenario weitere Sprachen zum Einsatz, die auf dem Server ausgeführt werden und dort Logik, Datenhaltung und Kommunikation übernehmen. \\
+
+Web-Anwendungen werden durch das Client-Server-Modell beschrieben. Der Client -- in der Regel ein Webbrowser -- stellt Anfragen an einen Server,
+der diese verarbeitet und eine Antwort zurücksendet \cite{gfg_client_server}. 
+Man unterscheidet dabei zwischen Frontend und Backend. Das Frontend definiert die Schicht für Nutzerinteraktionen, welche alle interaktiven Elemente -- sog. \gls{ui} -- beinhaltet.
+Das Backend umfasst  die dahinterliegende Verarbeitungs- und Datenschicht, die für den Nutzer nicht sichtbar ist \cite{aws_frontend_backend}.
+In modernen Web-Anwendungen kommunizieren beide Schichten über wohldefinierte Schnittstellen miteinander und können unabhängig voneinander entwickelt, skaliert und ausgetauscht werden. \\
+
+Die Kommunikation von Frontend und Backend bzw. Client und Server erfolgt über standardisierte Protokolle. Das \gls{http} bildet dabei die Grundlage des gesamten Datenaustauschs im Web.
+Es handelt sich dabei um ein zustandsloses Protokoll -- jede Anfrage eines Clients und jede Antwort eines Servers ist in sich abgeschlossen \cite{mdn_http_overview}.
+Sollte die Anwendung kontinuierlich aktualisierte Daten erfordern, existieren weitere Transportmechanismen.
+\gls{sse} erlauben eine durch den Client initiierte, unidirektionale Verbindung, welche \gls{http} als Grundlage verwendet.
+Dabei wird eine Verbindung zwischen dem Client und Server geöffnet und gehalten, sodass ausschließlich durch den Server Daten an den Client übertragen werden können,
+ohne dass der Client wiederholt über die Änderung von Daten Anfragen an den Server stellen muss.
+WebSockets bilden dabei die Möglichkeit einer bidirektionalen Verbindung zwischen Client und Server und verwenden ein von \gls{http} unabhängiges eigenständiges Protokoll.
+Analog zu \gls{sse} baut der Client eine WebSocket-Verbindung mit dem Server auf. Der größte Unterschied zwischen \gls{sse} und WebSockets ist, dass es beiden Parteien möglich ist,
+Daten zu verschicken und dies nicht auf den Server beschränkt ist. 
+Der Kernunterschied zwischen den beiden Technologien für den kontinuierlichen Empfang von Daten liegt zum einen in dem verwendeten Protokoll und dem client- und serverseitigen Implementierungsaufwand, 
+sowie der Direktionalität des Datenempfangs \cite{softwaremill_sse_ws}.
 
 \subsection{Frontend-Framework React}
+\label{sec:react}
 
-Das von Meta (ehem. Facebook) 2013 entwickelte Framework für interaktive Webanwendungen, ist aktuell das von Web-Entwicklern meist genutzte Frontend-Framework (s. Abb. \ref{fig:102_frontend-framework-usage}).
- Bei der dargestellen Grafik ist zu beachten, dass Mehrfach-Antworten möglich sind, sodass die Summe der Nutzungswerte 100 \% übersteigt. \\
+Aufbauend auf den zuvor dargestellten Grundlagen der Webentwicklung wird im Folgenden der Einsatz moderner Frontend-Frameworks eingeordnet.
+Ein zentraler Unterschied zur klassischen Entwicklung mit HTML und JavaScript besteht darin, dass Oberflächenänderungen nicht primär durch manuelle Eingriffe in die Seitenstruktur erfolgen, sondern über einen strukturierten, komponentenbasierten Ansatz umgesetzt werden. \\
+
+React, das 2013 von Meta (ehem. Facebook) veröffentlicht wurde, ist aktuell eines der am häufigsten genutzten Frontend-Frameworks (vgl. Abb. \ref{fig:102_frontend-framework-usage}).
+Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich sind, sodass die Summe der Nutzungswerte 100 \% übersteigt. \\
 
 \begin{figure}[htbp]
     \centering
@@ -398,19 +492,19 @@ Das von Meta (ehem. Facebook) 2013 entwickelte Framework für interaktive Webanw
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024}{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024 \cite{tkrotoff2026frontendframeworkspopularity}.}
+    \caption[Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024]{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024 \cite{tkrotoff2026frontendframeworkspopularity}.}
     \label{fig:102_frontend-framework-usage}
 \end{figure}
 
 Mit React erstellte Frontend-Anwendungen werden als \gls{spa} bezeichnet, da sie ohne Ladevorgang im Browser bei Interaktion des Nutzers auskommen. 
-Wünscht der Nutzer eine Änderung der Seite wird dies von React behandelt und erfordert nicht direkt einen Verbindungsaufbau zum Server.
-Datenanfragen werden im Hintergrund gestellt und entsprechende Datenänderung werden durch React verarbeitet, ohne das der Nutzer die eigentliche Anwendung verlassen muss. \\
+Interagiert der Nutzer mit der Anwendung -- beispielsweise zur Änderung von Daten -- wird dies zuerst von React behandelt und erfordert nicht direkt einen Verbindungsaufbau zum Server.
+Datenanfragen werden im Hintergrund gestellt und entsprechende Datenänderungen werden durch React verarbeitet, ohne dass die Frontend-Anwendung erneut aufgebaut werden muss. \\
 
-Im Kern arbeitet React mit einem \gls{vdom} der Website-Struktur. Das \gls{vdom} wird verwendet, um das vom Browser geforderte \gls{html}, zu erzeugen.
+Im Kern arbeitet React mit einem \gls{vdom} der Webseitenstruktur. Das \gls{vdom} wird verwendet, um das vom Browser geforderte \gls{html} zu erzeugen.
 Änderungen an Zuständen oder aktualisierte Daten werden erst mit Hilfe des \gls{vdom} verarbeitet und Änderungen am \gls{html} werden durch React automatisch berechnet und ausgeführt \cite{hunt2013whydidwebuildreact}. \\
 
 Es müssen daher weder manuell Änderungen am \gls{html} durchgeführt werden, noch müssen sich ändernde Daten oder Zustände explizit in den React-Komponenten markiert werden (sog. "data binding").
-Da React selber entscheidet, welche Teile des \gls{html} aktualisiert werden müssen und das \gls{vdom} schneller als \gls{html} verändert werden kann, reduziert sich die Zeit pro Änderung, die für die Aktualisierung benötigt wird \cite{hunt2013whydidwebuildreact}. \\
+Da React selbst entscheidet, welche Teile des \gls{html} aktualisiert werden müssen und das \gls{vdom} schneller als \gls{html} verändert werden kann, reduziert sich die Zeit pro Änderung, die für die Aktualisierung benötigt wird \cite{hunt2013whydidwebuildreact}. \\
 
 \begin{figure}[htb]
 	\centering
@@ -424,15 +518,29 @@ Da React selber entscheidet, welche Teile des \gls{html} aktualisiert werden mü
 Im Beispiel ist ein sich ändernder Zustand ("counter") abgebildet, welcher durch die Methode "increaseCounter" bei jedem Druck des Knopfes um Eins erhöht wird.
 Gleichzeitig aktualisiert sich der Text des Knopfes, um den aktuellen Stand des Zustandes anzuzeigen (s. Abb. \ref{fig:102_example-react-component}). \\
 
-Desweiteren erlaubt das \gls{vdom} eine Repräsentation außerhalb von einem Browser und \gls{html}. 
-Diese Technik wird von React Native umgesetzt. Dabei wird das \gls{vdom} in für des Nutzers Betriebssystem native Komponenten übersetzt, während die Entwicklungserfahrung gleichbleibend ist \cite{occhino2015reactnative}.
+Des Weiteren erlaubt das \gls{vdom} eine Repräsentation außerhalb eines Browsers und von \gls{html}. 
+Diese Technik wird von React Native umgesetzt. Dabei wird das \gls{vdom} in für das Betriebssystem des Nutzers native Komponenten übersetzt, während die Entwicklungserfahrung gleichbleibend ist \cite{occhino2015reactnative}.
 
 \subsection{Backend-Framework NestJS}
+\label{sec:nestjs}
 
-NestJS ist ein Backend-Framework, welches eine Abstraktionsebene für das eigentliche HTTP-Server-Framework bietet. 
-Dies erlaubt die freie Wahl des unterliegenden HTTP-Server-Frameworks und eine dogmatische Struktur für den Aufbau der eigentlichen Backend-Anwendung.
-Neben einer modulbasierten Anwendungsstruktur, \gls{di}, Adapter für gängige Datenbanksysteme, bietet NestJS zusätzlich umfangreiche Dokumentation für die Anbindung verschiedener Systeme, welche im Rahmen der Webentwicklung aufkommen können.
-Durch die Verwendung von JavaScript bzw. TypeScript für die gesamte Backend-Anwendung ist eine direkte Kompatibilität mit der Frontend-Anwendung gegeben. Diese Kompatibilität erlaubt es Typen oder Methoden zwischen beiden Anwendungen zu teilen. \cite{nestjsUnknownDocumentation}
+Die vorangehenden Abschnitte haben gezeigt, dass moderne Web-Anwendungen aus einer klaren Aufgabenteilung zwischen Frontend und Backend bestehen.
+Während React die Benutzeroberfläche strukturiert und Interaktionen auf der Client-Seite verarbeitet, muss das Backend Anfragen entgegennehmen, Geschäftslogik ausführen und Daten zuverlässig bereitstellen.
+Für diese serverseitige Ebene wird im Rahmen dieser Arbeit NestJS eingesetzt. \\
+
+NestJS ist ein Backend-Framework, das eine Abstraktionsebene über dem eigentlichen HTTP-Server-Framework bereitstellt.
+Dadurch bleibt die Wahl des zugrunde liegenden Server-Frameworks flexibel, während gleichzeitig eine einheitliche und gut nachvollziehbare Struktur für den Aufbau der Backend-Anwendung vorgegeben wird.
+Neben einer modularen Anwendungsstruktur, \gls{di} und Adaptern für gängige Infrastrukturbestandteile bietet NestJS eine umfassende Dokumentation für typische Integrationsaufgaben der Webentwicklung.
+Da Frontend und Backend auf JavaScript beziehungsweise TypeScript basieren, können Typen und ausgewählte Schnittstellen konsistent zwischen beiden Ebenen genutzt werden \cite{nestjsUnknownDocumentation}. \\
+
+Ein zentraler Vorteil von NestJS ist das Adapterprinzip. Auf der HTTP-Ebene können insbesondere Express und Fastify als Laufzeitadapter genutzt werden.
+Darüber hinaus lassen sich weitere Kommunikationsformen anbinden, etwa WebSockets für bidirektionale Echtzeitkommunikation oder GraphQL für schemaorientierte APIs.
+Für verteilte Systemlandschaften unterstützt NestJS zudem typische Transportsysteme wie TCP, gRPC, Redis, RabbitMQ, NATS oder Kafka, wodurch sowohl klassische Request-Response-Muster (vgl. Kap. \ref{sec:web-development}) als auch ereignisorientierte Architekturen abgebildet werden können \cite{nestjsUnknownDocumentation}. \\
+
+Die interne Struktur folgt einer Modul-Architektur: Fachliche Funktionen werden in voneinander abgegrenzten Modulen organisiert, welche Controller, Services oder andere Elemente der Anwendung vereinen.
+Dadurch werden Zuständigkeiten klar getrennt, Abhängigkeiten transparent gehalten und die Wartbarkeit bei wachsendem Funktionsumfang verbessert.
+Das Konzept der \gls{di} ergänzt diese Struktur, indem benötigte Komponenten nicht direkt erzeugt, sondern über den NestJS-Container bereitgestellt werden.
+Die Kopplung zwischen Komponenten wird damit reduziert, Tests lassen sich einfacher durchführen und Implementierungen können mit geringem Anpassungsaufwand ausgetauscht werden \cite{nestjsUnknownDocumentation}. \\
 
 \begin{figure}[htbp]
     \centering
@@ -499,19 +607,19 @@ Durch die Verwendung von JavaScript bzw. TypeScript für die gesamte Backend-Anw
             \addlegendentry{Hapi}
         \end{axis}
     \end{tikzpicture}
-    \caption{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025}{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025. In den Jahren 2022, 2023 und 2024 wurden keine Daten erhoben. Einträge mit nur einem Datenpunkt wurden nicht übernommen \cite{devographics2025backendframeworksusage}.}
+    \caption[Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025]{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025. In den Jahren 2022, 2023 und 2024 wurden keine Daten erhoben. Einträge mit nur einem Datenpunkt wurden nicht übernommen \cite{devographics2025backendframeworksusage}.}
     \label{fig:102_backend-framework-usage}
 \end{figure}
 
-Sofern NestJS in der Standard-Konfiguration verwendet wird, ist Express als HTTP-Server-Framework hinterlegt. Es ist mit Abstand das am meisten eingesetzte HTTP-Server-Framework für JavaScript (s. Abb. \ref{fig:102_backend-framework-usage}). 
-In der Abbildung ist zu erkennen, dass NestJS als Abstraktionsebene im Jahr 2025 an Nutzung gewonnen hat. Analog zur Abb. \ref{fig:102_frontend-framework-usage} sind auch in der Abb. \ref{fig:102_backend-framework-usage} Mehrfach-Antworten möglich, wodurch die Summe der Nutzungswerte 100 \% übersteigt.
-
+Im Rahmen der Web-Entwicklung dieser Bachelorarbeit wurde NestJS mit Express als HTTP-Server-Framework verwendet. Es handelt sich dabei um das Framework, das standardmäßig mit NestJS integriert ist und das am häufigsten eingesetzte HTTP-Server-Framework darstellt (vgl. Abb. \ref{fig:102_backend-framework-usage}). 
+Zusätzlich ist in der Abbildung zu erkennen, dass NestJS als Grundlage für Backend-Anwendungen im Jahr 2025 an Nutzung gewonnen hat. Analog zu Abb. \ref{fig:102_frontend-framework-usage} sind auch in Abb. \ref{fig:102_backend-framework-usage} Mehrfachantworten möglich, wodurch die Summe der Nutzungswerte 100 \% übersteigt.
 
 \subsection{PostgreSQL als Datenbank mit Prisma}
+\label{sec:postgresql-prisma}
 
-Um dem Backend Daten zur Verfügung zu stellen, ist der Zugriff auf eine Datenbank erforderlich.
-Dies kann manuell realisiert werden, in dem für das Backend passende Datenbankbibliotheken eingefügt werden und in der Abfragesprache der Datenbank entsprechende Abfragen erstellt werden.
-Als Alternative eignet sich ein \gls{orm}, welches eine Abstraktionsebene zwischen der Abfragesprache und dem Backend bildet. \\
+Während NestJS die serverseitige Verarbeitung von Anfragen strukturiert, benötigt die Anwendung für die dauerhafte Speicherung und Abfrage von Informationen eine angebundene Datenbank.
+Der Zugriff auf die Datenbank kann dabei manuell umgesetzt werden, indem passende Datenbankbibliotheken eingebunden und Abfragen direkt in der jeweiligen Datenbanksprache formuliert werden.
+Als Alternative eignet sich ein \gls{orm}, das als vermittelnde Abstraktionsebene zwischen der Datenbanksprache und der Backend-Logik fungiert.
 
 \subsubsection{Prisma}
 
@@ -519,14 +627,14 @@ Prisma ist ein \gls{orm}, welches verschiedene Datenbanksysteme unterstützt und
 Neben der eigentlichen Definition des Datenbankschemas, generiert Prisma eine an das Schema angepasste Datenbankbibliothek, welche von der Backend-Anwendung konsumiert wird.
 Dies bringt eine sehr strenge Typisierung mit sich, welche falsche Bezeichnungen oder unerwartete Rückgaben vermeidet \cite{prismaUnknownDocumentation}. \\
 
-Desweiteren hilft Prisma auf Basis von Änderungen am Schema Migrationsskripte für das entsprechende Datenbanksystem zu erstellen. 
-Dadurch können Änderungen am Schema in der lokalen Entwicklungsumgebung in andere Umgebungen übertragen werden \cite{prismaUnknownDocumentation}. \\
+Des Weiteren hilft Prisma auf Basis von Änderungen am Schema, Migrationsskripte für das entsprechende Datenbanksystem zu erstellen. 
+Dadurch können Änderungen am Schema in der lokalen Entwicklungsumgebung in andere Umgebungen übertragen werden \cite{prismaUnknownDocumentation}.
 
 \subsubsection{PostgreSQL}
 
 Bei PostgreSQL handelt es sich um ein \gls{ordbms}, welches auf POSTGRES, einem an der "University of California" am "Berkeley Computer Science Department" entwickelten Datenbanksystem, basiert.
 Der Quellcode hinter PostgreSQL ist öffentlich zugänglich, wodurch jede Person Änderungen an der Software durchführen kann. 
-Tatsächliche Änderungen am Quellcode im offiziellen PostgreSQL Repository ist einer durch interne Abstimmung erhobenen Gruppe an Entwicklern vorbehalten.
+Tatsächliche Änderungen am Quellcode im offiziellen PostgreSQL Repository sind einer durch interne Abstimmung erhobenen Gruppe an Entwicklern vorbehalten.
 Andere Entwickler können dennoch Änderungen vorschlagen, welche von der erhobenen Gruppe geprüft und gegebenenfalls übernommen werden \cite{postgresqlUnknownDocs} \cite{postgresqlUnknownGovernance}. \\
 
 PostgreSQL unterstützt einen Großteil des \gls{sql}-Standards und erweitert den Funktionsumfang mit Funktionen, wie komplexen Abfragen, foreign keys - geprüfte Referenzen zwischen verschiedenen Tabellen, 
@@ -625,27 +733,38 @@ sowie Unterstützung für Transaktionen, welche sicherstellen, dass in einem Blo
             \addlegendentry{MongoDB}
         \end{axis}
     \end{tikzpicture}
-    \caption{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}}{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}. Wert von Januar für das gesamte Jahr verwendet und Kommawerte abgeschnitten. \cite{dbengines2026rankingtrend}}
+    \caption[Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}]{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}. Wert von Januar für das gesamte Jahr verwendet und Kommawerte abgeschnitten. \cite{dbengines2026rankingtrend}}
     \label{fig:102_database-usage}
 \end{figure}
 
 In den letzten Jahren hat PostgreSQL an Popularität gewonnen und ist nach der Bestenliste von \href{https://db-engines.com/de/ranking_trend}{db-engines.com} auf dem vierten Platz. 
-Faktoren für den in Abb. \ref{fig:102_database-usage} Popularitätswert sind neben der Anzahl von Suchanfragen zu der Datenbank, Häufigkeit von technischen Diskussion, die Anzahl von Jobangeboten, auch die Anzahl an Entwicklern, welche das entsprechende Datenbanksystem in ihrem professionellen Profil aufgeführt haben \cite{dbengines2026rankingdefinition}.
-
+Faktoren für den in Abb. \ref{fig:102_database-usage} dargestellten Popularitätswert sind neben der Anzahl von Suchanfragen zur Datenbank die Häufigkeit technischer Diskussionen, die Anzahl von Jobangeboten sowie die Anzahl an Entwicklern, die das entsprechende Datenbanksystem in ihrem professionellen Profil aufgeführt haben \cite{dbengines2026rankingdefinition}.
 
 \subsection{Frontend-Backend-Kommunikation mit tRPC}
-Kommunikation über klassische HTTP-Schnittstelle, Fehleranfälligkeit ohne komplette Typisierung, Einführung von tRPC, Technischer Aufbau von tRPC
+\label{sec:trpc}
 
-\section{Modellviewer mit \gls{ifc}-Schnittstelle und Validierung}
+Bei der klassischen Kommunikation zwischen Frontend und Backend über HTTP-Schnittstellen entsteht in TypeScript-Projekten häufig ein Abstimmungsproblem zwischen beiden Seiten.
+Zwar können Anfragen und Antworten lokal typisiert werden, die tatsächliche Schnittstellenbeschreibung liegt jedoch oft getrennt vor.
+Dadurch steigt das Risiko, dass sich Parameter, Rückgabetypen oder Fehlermodelle im Lauf der Entwicklung auseinanderentwickeln und Fehler erst zur Laufzeit sichtbar werden \cite{trpc2026documentation}. \\
 
-Da \gls{ifc}-Modelle neben Geometrie auch Daten mit den Elementen im Modell verknüft haben, wird eine spezielle Anwendung benötigt, welche Geometrie und Daten gemeinsam anzeigt.
-Neben der eigentlichen Schnittstelle für \gls{ifc}-Modelle ist auch die 
+tRPC adressiert dieses Problem mit einem Ende-zu-Ende typisierten Ansatz für \gls{api}-Aufrufe.
+Anstelle einer separaten Schema- oder Code-Generierung wird die Typsicherheit direkt aus der serverseitigen Definition in den Client übertragen.
+Aus Sicht der Anwendung wird eine entfernte Funktion aufgerufen, während die technische Übertragung weiterhin über standardisierte HTTP-Requests erfolgt \cite{trpc2026documentation}. \\
 
-Bei BIMcollab Zoom handelt . 
-Dabei erlaubt BIMcollab Zoom das gleichzeitige Laden mehrerer Fachmodelle und die Ausführung verschiedener Analysen und Prüfungen auf den geladenen Modellen.
-Kernaufgabe ist dabei die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter, sowie der Durchsetzung von Standards für jedes Projekt \cite{bimcollabUnknownZoom}. \\
+Der technische Aufbau folgt dabei einem klaren Grundmuster.
+Auf dem Server wird zunächst genau eine tRPC-Instanz initialisiert; darauf aufbauend werden Router als strukturierte Sammlungen von Procedures definiert.
+Eine Procedure kann als Query (lesender Zugriff), Mutation (ändernder Zugriff) oder Subscription (laufende Aktualisierungen) ausgestaltet sein.
+Jede Procedure erhält dabei eine eigene statische Methode im Client und kann Ein- und Ausgabevalidierung deklarieren, welche bei jedem Aufruf verwendet werden.
+Um Authentifizierung, Autorisierung und die Anzeige von Fehlern zu ermöglichen, können ein eigener Kontext, eigene Middleware und Fehlerformatierung eingebunden werden \cite{trpc2026documentation}. \\
+ 
+Auf Client-Seite wird der durch den Server exportierte Router-Typ eingebunden und zur Initialisierung eines tRPC-Clients verwendet.
+Damit stehen die definierten Procedures als typisierte Aufrufe zur Verfügung, einschließlich Typinformationen für Eingaben, Ausgaben und Fehler.
+Letztere werden aus der auf dem Server angegebenen Ein- und Ausgabevalidierung abgeleitet.
+Für die Übertragung kann unter anderem ein HTTP-Link mit Request-Batching genutzt werden, bei dem mehrere zeitgleich ausgelöste Aufrufe zu einer gemeinsamen Anfrage zusammengeführt werden.
+Dies kann die Anzahl einzelner Netzwerkzugriffe reduzieren und die Kommunikation insbesondere bei stark interaktiven Oberflächen effizienter machen \cite{trpc2026documentation}. \\
 
-Zusätzlich bietet BIMcollab Zoom die Möglichkeit bestehende Modelldaten auf Basis von definierten Regeln zu restrukturieren und beliebige Parameter und Elemente farblich zu visualisieren.
-Die Integration in andere Produkte von BIMcollab, wie BIMcollab Twin, eine \gls{cde} oder BIMcollab Nexus, eine Kommunikationsplattform für Issues, ist wichtiger Teil von BIMcollab Zoom \cite{bimcollabUnknownZoom}.
+Im Ergebnis verbindet tRPC die Flexibilität klassischer Web-Architekturen mit einer durchgängigen Typkonsistenz zwischen Frontend und Backend.
+Insbesondere in Projekten, die vollständig auf TypeScript basieren, reduziert dieser Ansatz redundante Schnittstellenpflege und verbessert die Wartbarkeit der Anwendung.
+Gleichzeitig bleibt die Einführung schrittweise möglich, da tRPC auch parallel zu bestehenden Endpunkten in vorhandene Systeme integriert werden kann \cite{trpc2026documentation}.
 
 \addtocontents{toc}{\vspace{0.8cm}}

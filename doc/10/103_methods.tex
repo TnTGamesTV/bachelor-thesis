@@ -313,6 +313,14 @@ Bei der Erstellung dieser Listen konnten verschiedene Suchkriterien ausgefüllt 
 Mit der Verwendung eines Pivot-Rasters, einer Unterkategorie der klassischen Liste, bestand die Möglichkeit auch arithmetische Funktionen auf den Properties der selektierten Elemente auszuführen.
 In der Abb. \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Berechnung der Fensterfläche in einem Modell gezeigt, welche im Rahmen der Überprüfung eingesetzt wurde. \\
 
+[TODO]
+Bei BIMcollab Zoom handelt es sich um eine solche Anwendung. 
+Dabei erlaubt BIMcollab Zoom das gleichzeitige Laden mehrerer Fachmodelle und die Ausführung verschiedener Analysen und Prüfungen auf den geladenen Modellen.
+Kernaufgabe ist dabei die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter, sowie der Durchsetzung von Standards für jedes Projekt \cite{bimcollabUnknownZoom}. \\
+
+Zusätzlich bietet BIMcollab Zoom die Möglichkeit bestehende Modelldaten auf Basis von definierten Regeln zu restrukturieren und beliebige Parameter und Elemente farblich zu visualisieren.
+Die Integration in andere Produkte von BIMcollab, wie BIMcollab Twin, eine \gls{cde} oder BIMcollab Nexus, eine Kommunikationsplattform für Issues, ist wichtiger Teil von BIMcollab Zoom \cite{bimcollabUnknownZoom}.
+
 \begin{figure}[htb]
 	\centering
 		\includegraphics[width=0.6\textwidth]{doc/10/103_methods/bimcollab-zoom-example-list.png}
@@ -327,3 +335,40 @@ Es handelte sich dabei um pgAdmin, eine für mehrere Betriebssysteme entwickelte
 Neben der manuellen Ausführung von \gls{sql}-Abfragen, wurde pgAdmin auch zur Analyse der Datenbankstruktur nach Migrationen oder zur Analyse einzelner Dateneinträge genutzt \cite{pgadmin2026features}.
 
 \section{Aufbereitung der Daten}
+
+Nach Abschluss der inhaltlichen Prüfung wurden die im Interviewverlauf entstandenen Daten in einem mehrstufigen Verfahren aufbereitet.
+Zunächst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
+Darauf aufbauend wurden die Kommunikationsverläufe in Form von Threads dokumentiert, wobei jeweils mehrere zusammenhängende Nachrichten einer konkreten Aufgabenstellung zugeordnet wurden.
+
+Die zentrale Grundlage der weiteren Analyse bildete anschließend eine Tabelle mit sämtlichen \gls{llm}-Rückgaben.
+Jeder Rückgabe wurde eine inhaltliche Kategorie zugewiesen; bei inkorrekten Ergebnissen wurde zusätzlich der vermutete Fehlergrund erfasst.
+Auf diese Weise konnte neben der reinen Ergebnisdokumentation auch die qualitative Einordnung der Antworten nachvollziehbar festgehalten werden.
+Die im Rahmen dieser Einordnung verwendeten Fehlerzustände sind in Tabelle \ref{tab:103_incorrect-output-errors} zusammengefasst.
+
+\begin{table}[!htb]
+    \centering
+    \caption{Fehlerzustände bei inkorrekter \gls{llm}-Ausgabe}
+    \label{tab:103_incorrect-output-errors}
+    \begin{tabular}{C{4cm} L{9cm}}
+        \hline
+        \textbf{Name} & \textbf{Beschreibung}\\
+        \hline
+
+        Falsche \gls{ifc}-Entität genutzt & Bei der \gls{sql}-Abfrage wurde von dem \gls{llm} nach einer falschen \gls{ifc}-Entität gesucht. 
+        Daraus ergab sich die Falschaussage, dass Daten nicht vorhanden wären oder es wurden unvollständige Daten angezeigt. \\
+
+        Falsche Property/Pset genutzt & Im Rahmen der \gls{sql}-Abfrage wurde von dem \gls{llm} nach einer falschen Property oder einem falschen Pset gesucht. 
+        Dies hat zur Folge, dass fälschlicherweise behauptet wurde Daten seien nicht vorhanden oder das angezeigte Daten unvollständig oder falsch waren. \\
+
+        \gls{sql}-Abfrage falsch aufgebaut & Die vom \gls{llm} erzeugte \gls{sql}-Abfrage wurde falsch aufgebaut. Dies können fehlende Filter, Gruppierungen oder falsche Aggregation sein,
+        was zu falschen Ergebnissen der Abfrage geführt hat. \\
+
+        Sonstiger Fehler & Der Fehler hing nicht direkt mit dem \gls{llm} zusammen, sondern basierte auf Problemen mit der Datenbank, der eigentlichen Anwendung oder anderen vom \gls{llm} unabhängigen Parametern. \\
+
+        \hline
+    \end{tabular}
+\end{table}
+
+Ergänzend wurden die aufbereiteten Tabellen in einem gemeinsamen Datensatz zusammengeführt, sodass Rückgaben, Thread-Kontext und Probandengruppe gemeinsam ausgewertet werden konnten.
+Im letzten Schritt wurde eine Aggregation der Daten durchgeführt, insbesondere auf Basis der kategorisierten \gls{llm}-Rückgaben und der dokumentierten Fehlerzustände.
+Diese Verdichtung diente der Berechnung statistischer Kennzahlen und der Erstellung vergleichbarer Übersichten, die als Grundlage für die spätere Interpretation der Ergebnisse herangezogen wurden.
