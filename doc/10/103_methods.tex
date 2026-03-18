@@ -1,41 +1,52 @@
 \chapter{\textbf{Methodik}}
 
-
+Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen der Arbeit angewandte Methodik systematisch dargestellt. Zunächst wird die Entwicklung der Anwendung über mehrere Iterationsschritte beschrieben und der technische Aufbau der finalen Version erläutert.
+Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen dargestellt; anschließend erfolgt die Validierung der erzeugten \\gls{llm}-Ausgaben.
+Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die spätere Auswertung.
 
 \section{KI-Anwendung für Interviews}
 
 Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung zur Nutzung im Rahmen der Interviews geschaffen.
-Dabei lag der Fokus ausschließlich auf der Entwicklung einer fähigen KI-Chat-Anwendung, sodass Benutzererfahrung, Benutzbarkeit oder zusätzliche Funktionen, so wie sie in klassischen Produkten zu finden ist, nicht Teil des Umfangs der Anwendung war.
+Die Anwendung wurde bewusst als methodisches Werkzeug konzipiert, um die Interaktion der Probanden mit dem \gls{llm} unter vergleichbaren Rahmenbedingungen zu ermöglichen.
+Damit sollte eine nachvollziehbare Grundlage geschaffen werden, auf deren Basis die Qualität der erzeugten Antworten systematisch betrachtet werden kann.
+Dabei lag der Fokus ausschließlich auf der Entwicklung einer fähigen KI-Chat-Anwendung, sodass Benutzererfahrung, Benutzbarkeit oder zusätzliche Funktionen, wie sie in klassischen Produkten zu finden sind, nicht Teil des Umfangs der Anwendung waren.
 
 \subsection{Konzept}
 
-Das oberste Ziel war eine textbasierte Eingabe, wodurch Probanden mit dem \gls{llm} kommunizieren können. 
-Zusätzlich war die einfache Konfiguration von Variablen, welche das \gls{llm} befassen für eine schnelle Entwicklung und Verbesserung der Anwendung erforderlich.
-Dies umfasst nebem dem Systemprompt auch dem \gls{llm} zur Verfügung gestellten Werkzeugen (tool calling) und dadurch zusätzlich erlangtes Wissen. \\
+Als Kern der Anwendung wurde eine textbasierte Eingabe vorgesehen, über die Probanden direkt mit dem \gls{llm} kommunizieren können.
+Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine möglichst direkte Bearbeitung der Aufgabenstellungen.
+Zusätzlich war die einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, für eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung erforderlich.
+Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge (tool calling) sowie dadurch zusätzlich eingebundenes Wissen.
+Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur zwischen einzelnen Iterationen zu verändern. \\
 
 In allen Iterationen der Anwendung wurde ausschließlich auf \gls{llm} gesetzt, welche über das Internet verfügbar sind, um den Betrieb der entsprechenden \gls{llm} aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
-Alle eingesetzten \gls{llm} besitzen ein \gls{api} welches mit dem OpenAI \gls{api} Standard kompatibel ist. Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung bearbeiten zu müssen. \\
+Alle eingesetzten \gls{llm} besitzen ein \gls{api}, welches mit dem OpenAI \gls{api}-Standard kompatibel ist.
+Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung grundlegend bearbeiten zu müssen.
+Damit wurde zugleich sichergestellt, dass Modellwechsel oder Anpassungen an der Modellwahl den methodischen Ablauf der Interviews nicht beeinflussen. \\
 
-Der Nutzer sollte bei der Bedienung Fragen durch die Anwendung an das \gls{llm} übermitteln, welche auf Basis des Systemprompts und des im \gls{ifc}-Modell vorhandenen Wissens eine Antwort an den Nutzer ausgibt.
+Der Nutzer sollte bei der Bedienung Fragen durch die Anwendung an das \gls{llm} übermitteln, das auf Basis des Systemprompts und des im \gls{ifc}-Modell vorhandenen Wissens eine Antwort an den Nutzer ausgibt.
+Damit wurde ein klarer und einheitlicher Ablauf geschaffen, der die Bearbeitung der Aufgaben sowie die spätere Auswertung der Antworten unterstützt.
 
+\subsection{Iteration 1: Vorgefertigter \gls{mcp}-Server}
 
+Die erste Iteration der Anwendung basierte auf einem vorgefertigten \gls{mcp}-Server, der in Python mit der FastMCP-Bibliothek umgesetzt wurde \cite{github2025bonsaimcp}.
+Als technische Grundlage wurde die öffentlich verfügbare 3D-Bearbeitungssoftware Blender verwendet, um \gls{ifc}-Modelle zu laden und zu bearbeiten.
+Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erweiterung Bonsai eingesetzt, die von IfcOpenShell bereitgestellt wird \cite{bonsai2026blenderextensions}. \\
 
-\subsection{Iteration 1: Vorgefertiger \gls{mcp}-Server}
+Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung genutzt, die gemeinsam mit dem \gls{mcp}-Server bereitgestellt wurde.
+Die Kommunikation zwischen Server und Blender erfolgte über eine Socket-Verbindung.
+Dabei wurden Werkzeugaufrufe einschließlich ihrer Parameter vom \gls{mcp}-Server an die in Blender installierte Erweiterung übermittelt, die die Befehle an Bonsai weiterleitete.
+Der \gls{mcp}-Server übernahm damit die Rolle einer Schnittstelle zwischen \gls{llm} und Modellbearbeitung \cite{github2025bonsaimcp}. \\
 
-Die erste Iteration der Anwendung bestand aus einem vorgefertigen \gls{mcp}-Server. Der \gls{mcp}-Server wurde in Python mit der FastMCP Bibliothek umgesetzt \cite{github2025bonsaimcp}. 
-Die von Juan Rodriguez entwickelte Anwendung nutzte die öffentlich verfügbare 3D-Bearbeitungssoftware Blender, um die \gls{ifc}-Modelle zu laden und zu bearbeiten. 
-Der \gls{ifc}-Standard wurde nach der Installation von Blender nicht nativ unterstützt, weswegen eine Erweiterung installiert werden musste.
-Diese wird von IfcOpenShell, einer Anwendungsbibliothek für die Programmiersprachen C++ und Python  zur Verarbeitung des \gls{ifc}-Standards, unter dem Namen Bonsai öffentlich zur Verfügung gestellt.
-Um dem \gls{llm} die Fähigkeit zur Bearbeitung beliebiger \gls{ifc}-Modelle zu geben, war eine zusätzliche Erweiterung für Blender notwendig. 
-Diese wurde mit dem vorgefertigen \gls{mcp}-Server geliefert und nutzt eine Socket-Verbindung, um zwischen dem \gls{mcp}-Server und der installierten Erweiterung für Blender zu kommunizieren.
-Alle vom \gls{mcp}-Server unterstützen Werkzeuge, werden mitsamt aller Parameter an die in Blender installierte Erweiterung übertragen, welche die Befehle wiederum an die Bonsai-Erweiterung übertragt.
-Der \gls{mcp}-Server und die bereitgestelle Erweiterung fungierten ausschließlich als Schnittstelle zwischen dem \gls{llm} und der Bonsai-Erweiterung, welche die Bearbeitung der \gls{ifc}-Modelle durchführt.
+Diese erste Iteration war geeignet, um die grundsätzliche technische Machbarkeit zu prüfen und ein funktionsfähiges Prototypen bereitzustellen.
+Gleichzeitig zeigte sich, dass die bereitgestellte Werkzeugmenge sowie die enge Kopplung an Blender den praktischen Einsatz für den weiteren Verlauf der Arbeit einschränkten.
+Die Erkenntnisse aus dieser Phase bildeten daher die Grundlage für die zweite Iteration mit stärkerer Fokussierung auf einfache Konfiguration und klarere Werkzeugauswahl.
 
 \begin{table}[!htb]
     \centering
-    \caption{Bereitgestelle Werkzeuge}
+    \caption[Bereitgestellte Werkzeuge vom vorgefertigen \gls{mcp}-Server]{Alle Werkzeuge, welcher der vorgefertige \gls{mcp}-Server bereitgestellt hat.}
     \label{tab:iteration1tools}
-    \begin{tabular}{L{5.5cm} L{10cm}}
+    \begin{tabular}{L{6cm} L{8cm}}
         \hline
         \textbf{Name} & \textbf{Beschreibung} \\
         \hline
@@ -59,40 +70,36 @@ Der \gls{mcp}-Server und die bereitgestelle Erweiterung fungierten ausschließli
         \texttt{get\_ifc\_quantities} & Gibt Mengenwerte von \gls{ifc}-Entitäten zurück. \\
 
         \texttt{get\_ifc\_total\_structure} & Als Erweiterung von \texttt{get\_ifc\_spatial\_structure} werden zusätzlich noch die darunterliegenden \gls{ifc}-Entitäten, welche einen Bezug zu einem einzelnen Raum bzw. Fläche (IfcSpace) besitzen. \\
-
-        \texttt{get\_ifc\_georeferencing\_info} & Gibt Informationen über die geografischen Koordinaten des \gls{ifc}-Modells zurück. \\
-
-        \texttt{georeference\_ifc\_model} & Schreibt geografische Informationen in das \gls{ifc}-Modell und erlaubt die genaue Positionierung dessen. \\
-
+        
         \hline
     \end{tabular}
 \end{table}
 
-Gründe für weitere Iteration:
-- zu wenig Konfigurationsmöglichkeiten
-- zu viele Werkzeuge, die nicht benötigt werden und das LLM unnötig verwirren
-- 
-
-
 \subsection{Iteration 2: Selbstentwickelter \gls{mcp}-Server}
 
-In der zweiten Iteration der Anwendung wurde auf einen selbstentwickelten \gls{mcp}-Server gesetzt. Dieser wurde wie in der ersten Iteration ebenfalls in der Programmiersprache Python mit der FastMCP Bibliothek umgesetzt.
-Dabei wurde die Anzahl der dem \gls{llm} zur Verfügung gestellten Werkzeuge auf Werkzeuge zur Wissensgewinnung reduziert, um dem \gls{llm} die Auswahl des korrekten Werkzeuges zu vereinfachen.
+In der zweiten Iteration der Anwendung wurde ein selbstentwickelter \gls{mcp}-Server eingesetzt. Dieser wurde, analog zur ersten Iteration, in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
+Im Unterschied zur ersten Iteration lag der Schwerpunkt nun auf einer gezielten Reduktion der bereitgestellten Werkzeuge. Statt einer breiten Abdeckung von Modellbearbeitungsfunktionen wurden nur noch Werkzeuge zur Wissensgewinnung bereitgestellt.
+Dadurch sollte die Auswahl des jeweils passenden Werkzeuges durch das \gls{llm} vereinfacht und die Nachvollziehbarkeit der Werkzeugaufrufe im Interviewkontext verbessert werden. \\
 
-Gründe für weitere Iteration:
-- Komplex für Deployment (Open WebUI + MCP Server + Blender?)
-- nur ein einziges Modell gleichzeitig möglicj (meistens sind Projekte in Architektur, TGA, ... unterteilt)
+Die bereitgestellten Werkzeuge gleichen in ihrer Funktion der Iteration 1, aber verwenden als \gls{ifc}-Bibliothek IFC Open Shell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
+Dies erlaubt die eingenständige Definition der Extrationslogik aus den geladenen Modellen. Im Hinblick auf Leistungsfähigkeit des \gls{llm} ermöglicht dies genauere Kontrolle über den Kontext des \gls{llm} \cite{ifcopenshell_github}. \\
+
+Für die textbasierte Interaktion mit dem \gls{llm} wurde Open WebUI als Oberfläche genutzt.
+Die Software ermöglichte die Anbindung an unterschiedliche \gls{llm} sowie die Einbindung eigener \gls{mcp}-Server.
+Zusätzlich bot sie eine praktikable Grundlage für den Export von Nachrichtenverläufen und damit für die spätere Analyse der im Interview erzeugten Kommunikation \cite{openwebui2026home}. \\
+
+Eine weitere Iteration der Anwendung ergab sich aus der Anforderung, den Systemprompt, den dem \gls{llm} verfügbaren Kontext sowie die Integration einer primären Datenquelle präziser zu definieren.
+Zugleich war der Ansatz durch FastMCP und Open WebUI limitiert, da weder mehrfache Abfragen noch ein agentenähnliches Verhalten möglich waren.
+Die finale Iteration ermöglichte daher die kontrollierte Definition aller Bestandteile der \gls{llm}-Abfrage.
 
 \subsection{Finale Iteration: Selbstentwickelte Anwendung}
 
-Die finale Iteration der Anwendung bestand aus einer selbstentwickelten Anwendung, welche neben einer Benutzeroberfläche zur Texteingabe, 
-Systeme für die Verwaltung des dem \gls{llm} übergebenen Prompts, sowie als Datenquelle eine vom \gls{ifc}-Standard unabhängige Datenbank nutzte.
+Die finale Iteration wurde als eigenständige Anwendung konzipiert, um den gesamten Ablauf der Anfrageverarbeitung methodisch kontrollieren zu können.
+Im Mittelpunkt der Anwendung steht die Anbindung eines externen Datensatzes in Form einer Datenbank, welche eine effizientere Bereitstellung von Wissen für das \gls{llm} ermöglicht.
+Desweiteren war die genaue Definition des Systemprompts, sowie die Strukturierung der Anfragearchitektur ein wesentliches Mittel, um die Qualität der \gls{llm}-Abfragen zu steigern.
+Die Nachvollziehbarkeit einzelner Verarbeitungsschritte erhöhte sich aufgrund der Kontroller über den gesamten Prozess und Quellcode.
+Gegenüber den vorherigen Iterationen ergab sich aus diesem Ansatz eine stabilere technische Basis und Verbesserungen für die spätere Auswertung der Interviews.
 
-Vorteile:
-- anpassbarer Systemprompt
-- unterstützt Wissensgewinnung über Skills (anpassbar)
-- mehrere Modelle können gleichzeitig geladen und befragt werden
-- Historie und Werkzeugaufrufe können besser gespeichert und nachvollzogen werden - wichtig für spätere Analyse und für die Entwicklung
 
 \subsection{Technischer Aufbau}
 
@@ -110,43 +117,40 @@ Als Datenbanksystem wurde PostgreSQL eingesetzt, welches über die \gls{orm}-Bib
 \end{figure}
 
 \subsubsection{AppModule - Einstiegspunkt}
+\label{sec:app-appmodule}
 
 Das AppModule diente dabei als Verwaltungsmodul für alle anderen Module. Die Einbettung von Umgebungsvariablen aus Konfigurationsdateien (\gls{uri} der Datenbank, \gls{llm} \gls{api} Schlüssel, verwendetes \gls{llm}) erfolgte ebenfalls im AppModule.
 Dadurch diente das AppModule als Möglichkeit die gesamte Anwendung durch den Bootstrapper (Einstiegspunkt) zu starten.
 
 \subsubsection{PrismaModule - Datenbankzugriff}
+\label{sec:app-prismamodule}
 
 Zugriff auf Datenbank, Prisma bietet Abstraktion gegenüber klassischen SQL-Abfragen, Typensicher, Migration von Datenbankstruktur, beinhaltet PrismaService als Implementation der gesamten Datenbankverwaltung. 
 Erlaubt auch die Ausführung von rohem SQL, was für das QueryTool relevant ist.
 
 \subsubsection{ChatModule - Verarbeitung von Nutzereingaben und Ablauf der \gls{llm}-Anfrage}
+\label{sec:app-chatmodule}
 
 Die gesamte Kommunikation mit LLM und den entsprechenden APIs erfolgt hier, jede chat nachricht wird hier verarbeitet. Der ChatConversationService kümmert sich um die primäre Verarbeitung von Nachrichten des Nutzers.
 Um die aktuelle Historie von vergangenen Nachrichten, Werkzeugaufrufen und Antworten des LLMs zu speichern wird der ChatExecutionHistoryService genutzt. 
 Der ChatOpenAIService übernimmt die Kommunikation mit OpenAI-kompatiblen APIs und bildet damit die Schnittstelle der Anwendung zu den LLMs. 
 
 \subsubsection{ChatHistoryModule - Verwaltung der Nachrichtenhistorie}
+\label{sec:app-chathistorymodule}
 
 Um über die gesamte Laufzeit der Anwendung die Historie von Nachrichten, Werkzeugaufrufen und LLM-Antworten zu speichern wird der ChatHistoryService im ChatHistoryModule genutzt. Die Nachrichten werden in Gruppen (sog. threads) unterteilt und entsprechend abgespeichert.
 Dies erlaubt die Analyse während der Entwicklungsphase und die spätere Auswertung der einzelnen Elemente für die Bachelorarbeit. Es werden jegliche Parameter und jeder einzelne Werkzeugaufruf erfasst und gespeichert.
 
 \subsubsection{IfcModule - Bereitstellung von \gls{ifc}-Modellen für das Frontend}
+\label{sec:app-ifcmodule}
 
 Stellt IFC Modelle für das Frontend durch streaming Controller bereit. IFC Standard wird auch verwaltet. Konvertiert dem IFC Standard von EXPRESS-Dateien zu JSON-Strukturen, welche durch das LLM abgefragt werden können.
 Alle gängigen IFC Versionen werden unterstützt. Die Abfrage nach einzelnen Kategorien aus dem Standard oder einzelnen Entitätstypen ist möglich über das IfcTool.
 
 \subsubsection{PromptModule - Bereitstellung des Systemprompts}
+\label{sec:app-promptmodule}
 
 Generiert einen passenden Systemprompt auf Basis der geladenen Modelle. 
-
-Prompt besteht aus:
-- Basisprompt
-- Skillsprompt
-- Modelprompt je aktivem Modell
-    - Metadaten (interne ID, Model ID für Datenbankabfragen, Modelnamen, Projektid um mehrere Modelle zusammenzufassen, verwendete ifc version)
-    - IFC-Entitätstypen und deren Anzahl im Modell
-    - je IfcBuildingStorey eine Liste an IDs der untergeordneten IfcSpace-Entitäten
-
 
 \begin{table}[!htb]
     \centering
@@ -174,6 +178,7 @@ Prompt besteht aus:
 \end{table}
 
 \subsubsection{SkillsModule - Wissensbibliothek über Werkzeuge}
+\label{sec:app-skillsmodule}
 
 Stellt dem LLM Textblöcke zu verschiedenen Werkzeugen zur Verfügung. Erlaubt dem LLM zusätzliches Wissen für bestimme Werkzeuge zu erfragen. Reduziert den Kontext, weil nicht alle Informationen dem LLM dauerhaft zur Verfügung stehen.
 
@@ -204,6 +209,7 @@ Zuletzt wurden Details zum direkten Herunterladen von Abfrageergebnissen durch d
 Der "ifc" Skill definiert kurz den \gls{ifc}-Standard. Danach werden der Aufbau der vorhandenen \gls{ifc}-\gls{json}-Strukturen definiert, sowie die vorhandenen Parameter für die Abfrage erläutert.
 
 \subsubsection{ToolsModule - Bereitstellung von \gls{llm}-Werkzeugen}
+\label{sec:app-toolsmodule}
 
 Alle ausführbaren Werkzeuge sind hier definiert. 
 

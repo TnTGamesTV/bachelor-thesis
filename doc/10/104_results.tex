@@ -38,7 +38,16 @@ Analyse aller LLM-Ausgaben, Fehlerquote, gängige Fehler, Hintergrund von Fehler
 \section{Ergebnisse der Anwendungsentwicklung}
 
 - Gründe für Wechsel von vorgefertigen MCP-Server zu selbstentwickelten MCP-Server
+    - zu wenig Konfigurationsmöglichkeiten
+    - zu viele Werkzeuge, die nicht benötigt werden und das LLM unnötig verwirren 
 - Gründe für den Wechsel von selbstentwickelten MCP-Server zu selbstentwickelter Anwendung
+    - Komplex für Deployment (Open WebUI + MCP Server + Blender?)
+    - nur ein einziges Modell gleichzeitig möglicj (meistens sind Projekte in Architektur, TGA, ... unterteilt)
+
+    - anpassbarer Systemprompt
+    - unterstützt Wissensgewinnung über Skills (anpassbar)
+    - mehrere Modelle können gleichzeitig geladen und befragt werden
+- Historie und Werkzeugaufrufe können besser gespeichert und nachvollzogen werden - wichtig für spätere Analyse und für die Entwicklung
 - Architekturentscheidung von selbstentwickelter Anwendung und Gründe dafür
 - Gründe für bestimmte Tools/Code bei der selbstentwickelten Anwendung
 

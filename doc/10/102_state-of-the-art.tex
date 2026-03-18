@@ -1,21 +1,47 @@
 \chapter{\textbf{Stand der Technik und theoretischer Hintergrund}}
 
+Aufbauend auf der Einleitung werden in diesem Kapitel die für die Arbeit relevanten fachlichen und methodischen Grundlagen systematisch dargestellt.
+Zunächst werden die Fallstudie als Forschungsdesign und die Zusammensetzung der Probandengruppe erläutert.
+Anschließend werden die technischen Grundlagen zu Open und Closed \gls{bim}, \gls{ifc}, KI-basierten Sprachmodellen sowie ausgewählten Konzepten der Softwareentwicklung eingeordnet.
+Damit entsteht der Bezugsrahmen für die spätere Umsetzung und die Bewertung der entwickelten Anwendung.
+
 \section{Definition Fallstudie}
 
 Die Fallstudie ist eine qualitative Forschungsmethode, bei der ein konkreter Fall als zeitgenössisches Phänomen in seinem natürlichen Kontext untersucht wird.
 Sie ist insbesondere dann geeignet, wenn die Forschungsfrage auf ein "Wie" oder "Warum" ausgerichtet ist, wenn Forschende nur begrenzte Kontrolle über das untersuchte Geschehen haben und wenn reale, gegenwartsbezogene Problemstellungen im Mittelpunkt stehen.
 Damit stellt die Fallstudie keine bloße Vorstufe anderer Verfahren dar, sondern eine eigenständige Methode mit eigener Untersuchungslogik \cite{hertrich2020forschungsmethodefallstudien}. \\
 
-Nach Yin unterscheidet sich die methodische Einordnung einer Fallstudie in drei Grundformen: Explorative Fallstudien dienen der Erkundung wenig untersuchter Phänomene und dienen meist als Vorarbeit für weitere Forschung.
+Die methodische Einordnung einer Fallstudie unterscheidet sich in drei Grundformen: Explorative Fallstudien dienen der Erkundung wenig untersuchter Phänomene und dienen meist als Vorarbeit für weitere Forschung.
 Deskriptive Fallstudien beschreiben ein Phänomen und dessen Kontext in seiner Ganzheit, und explanative Fallstudien bearbeiten die Analyse möglicher Ursache-Wirkungs-Zusammenhänge.
 Diese Typen verdeutlichen, dass die Fallstudie je nach Erkenntnisinteresse sowohl zur Strukturierung neuer Fragestellungen als auch zur vertieften Erklärung komplexer Zusammenhänge eingesetzt werden kann \cite{hollweck2016casestudy}. \\
 
-Der erste Schritt einer Fallstudie umfasst die Definition einer klaren Forschungsfrage. Wie eingangs erwähnt eignen sich aufgrund des qualitativen Forschungsansatzes Wie- oder Warum-Fragen. 
-% Laut \textcite{pfeiffer2023fallstudie} ist ein Beispiel für eine solche klare Forschungsfrage: \\
+Der erste Schritt einer Fallstudie umfasst die präzise Formulierung der Forschungsfrage. Wie eingangs dargestellt, eignen sich im qualitativen Kontext insbesondere Wie- oder Warum-Fragen.
+Beispielsweise kann eine solche Fragestellung lauten:
 
-\say{Wie wirken sich Marketingstrategien auf das Kaufverhalten von Apple-Kunden aus? \cite{pfeiffer2023fallstudie}} \\
+\say{Wie wirken sich Marketingstrategien auf das Kaufverhalten von Apple-Kunden aus? \cite{pfeiffer2023fallstudie}}
 
-Dabei spielt 
+Entscheidend ist, dass die Fragestellung im realen Lebenskontext verankert ist und auf die Untersuchung eines tatsächlichen Phänomens abzielt.
+Zugleich sollte sie den Untersuchungsgegenstand klar eingrenzen und an bestehendes Wissen sowie einschlägige Theorien anschlussfähig sein \cite{pfeiffer2023fallstudie}. \\
+
+Im zweiten Schritt wird der konkrete Fall (Case) ausgewählt.
+Der Fall ist als reales Phänomen in seinem natürlichen Kontext zu verstehen, wobei die Grenzen zwischen Phänomen und Kontext in der Regel nicht eindeutig trennbar sind.
+Im Unterschied zu experimentellen Designs ist diese enge Verbindung zwischen Fall und Umfeld ein zentrales Merkmal der Fallstudie.
+Für die Auswahl ist daher wichtig, dass ausreichend Daten verfügbar sind, ein Bezug zu vorhandenen theoretischen Ansätzen besteht und zugleich neue Perspektiven auf ein bekanntes Problem eröffnet werden können \cite{hollweck2016casestudy}. \\
+
+Der dritte Schritt umfasst die systematische Literaturrecherche und Theoriefindung.
+Ausgehend vom gewählten Fall werden relevante wissenschaftliche Arbeiten identifiziert, ausgewertet und zur Entwicklung eines tragfähigen Bezugsrahmens zusammengeführt \cite{pfeiffer2023fallstudie}. \\
+
+Im vierten Schritt wird der Fall strukturiert dargestellt.
+Dabei werden die für die Untersuchung relevanten Rahmenbedingungen, Akteure und Einzelheiten nachvollziehbar beschrieben und gegenüber bereits dokumentierten Fällen abgegrenzt \cite{pfeiffer2023fallstudie}. \\
+
+Der fünfte Schritt betrifft die Auswertung und Interpretation der erhobenen Informationen.
+Die Ergebnisse werden entlang der Forschungsfrage zusammengeführt, mit den theoretischen Grundlagen rückgekoppelt und in ihren Konsequenzen für den untersuchten Kontext diskutiert \cite{pfeiffer2023fallstudie,hollweck2016casestudy}. \\
+
+Insgesamt ermöglicht die Fallstudie einen realitätsnahen Zugang zu komplexen und kontextreichen Ereignissen und kann dabei sinnvoll mit weiteren Methoden kombiniert werden.
+Gleichzeitig sind ihre Grenzen zu berücksichtigen, insbesondere die potenzielle Subjektivität in der Auswertung sowie der vergleichsweise hohe Ressourcenaufwand \cite{hertrich2020forschungsmethodefallstudien,hollweck2016casestudy}. \\
+
+Im Folgenden wird die Probandengruppe dargestellt, die im Rahmen der vorliegenden Bachelorarbeit verwendet wird.
+
 \section{Probandengruppe}
 
 Die Zusammenstellung der Probandengruppe folgt einem kriteriumsorientierten, gezielten Sampling (purposeful sampling). 
@@ -93,7 +119,9 @@ Für Zertifizierungen müssen Anwendungen angeben, gegen welche MVD sie Konformi
     
 \end{figure}
 
-Die Architektur des Standards ist in vier konzeptionelle Ebenen gegliedert: Resource-, Core-, Interoperability- und Domain-Layer (s. Abb. \ref{fig:102_ifc4-architecture}). 
+Die Architektur des Standards ist in vier konzeptionelle Ebenen gegliedert: 
+
+Resource-, Core-, Interoperability- und Domain-Layer (s. Abb. \ref{fig:102_ifc4-architecture}). 
 Die unteren Ebenen stellen allgemeine Grundbausteine bereit, während in den oberen Ebenen disziplinspezifische Spezialisierungen modelliert werden. 
 Dadurch lassen sich gemeinsame semantische Grundlagen und fachspezifische Anforderungen in einem konsistenten Gesamtmodell verbinden \cite{buildingsmart2025ifc4}. \\
 
@@ -112,21 +140,18 @@ Ergänzend erlauben viele Werkzeuge die Anwendung projektspezifischer Prüfkatal
 
 \section{Künstliche Intelligenz}
 Künstliche Intelligenz (KI) umfasst Verfahren, mit denen Computersysteme Aufgaben übernehmen, die typischerweise mit menschlicher Wahrnehmung, Schlussfolgerung und Sprachverarbeitung verbunden sind.
-Im Bereich der Sprachverarbeitung reichen die wissenschaftlichen Wurzeln bis zu frühen Systemen wie ELIZA zurück, das bereits 1966 die regelbasierte Simulation von Dialogen demonstrierte \cite{weizenbaum1966eliza}.
-Seit den 1990er Jahren zeigt sich zugleich eine deutliche Zunahme der Häufigkeit wissenschaftlicher Veröffentlichungen zum Themenfeld "language models" (vgl. Abb. \ref{fig:102_publications-citations-to-time}). \\
-
-
+Im Bereich der Sprachverarbeitung reichen die wissenschaftlichen Wurzeln bis zu frühen Systemen wie ELIZA zurück, das bereits 1966 die regelbasierte Simulation von Dialogen demonstrierte \cite{weizenbaum1966eliza}. \\
 \begin{figure}[htb]
-	\centering
-		\includegraphics[width=0.75\textwidth]{doc/10/102_state-of-the-art/publications-citations-to-time.png}
+    \centering
+        \includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/ai-index-technical-performance.png}
 
-	\caption[Diagram zur Veröffentlichung wissenschaftlicher Arbeiten von 1990 bis 2020]{Die Veröffentlichung wissenschaftlicher Arbeiten zum Thema "language models" hat sich exponentiell entwickelt. \cite[Abbildung 2a]{han2021pretrainedmodelspastpresent}}
+    \caption[Verlauf verschiedener KI-Benchmarks]{Der Verlauf verschiedener KI-Benchmarks ab 2012 \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}.}
 
-	\label{fig:102_publications-citations-to-time}
+    \label{fig:102_ai-index-technical-performance}
 \end{figure}
 
 Für die aktuelle Entwicklung ist insbesondere die Geschwindigkeit des Leistungszuwachses relevant.
-Der AI Index 2025 zeigt für acht zentrale Aufgabenfelder (u. a. Bildklassifikation, Sprachverständnis, Mathematik und multimodales Schlussfolgern), dass die Leistungsfähigkeit moderner KI in den letzten Jahren stark angestiegen ist und 2024 nur noch wenige Aufgabenbereiche verbleiben, in denen Menschen klar überlegen sind \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}. \\
+Der AI Index 2025 zeigt für acht zentrale Aufgabenfelder (u. a. Bildklassifikation, Sprachverständnis, Mathematik und multimodales Schlussfolgern), dass die Leistungsfähigkeit moderner KI in den letzten Jahren stark angestiegen ist und 2024 nur noch wenige Aufgabenbereiche verbleiben, in denen Menschen klar überlegen sind (vgl. Abb. \ref{fig:102_ai-index-technical-performance}). \\
 
 Parallel zur Leistungsentwicklung ist die Nutzung von KI in Unternehmen deutlich gestiegen.
 Laut AI Index nutzen 2024 bereits 78 \% der befragten Organisationen KI in mindestens einer Geschäftsfunktion; 2023 waren es noch 55 \%.
@@ -262,14 +287,14 @@ Das offen standardisierte \gls{mcp} arbeitet dabei als Brücke zwischen Modell u
 Der Grundgedanke besteht darin, dem Modell nur Informationen zu geben, die es für die aktuelle Aufgabe benötigt \cite{lfprojects2025modelcontextprotocol}. 
 Der Endnutzer muss sich dabei nicht mit Infrastruktur oder Abhängigkeiten des Werkzeugs beschäftigen und Entwickler können in vielen Programmiersprachen Schnittstellen entwickeln \cite{github2025modelcontextprotocol}.\\
 
-Die Architektur von MCP besteht aus drei Abschnitten. Der \gls{mcp}-Host ist im Kontext von \gls{llm} das Modell selbst. Auch der \gls{mcp}-Client ist Teil des Modells und übernimmt die gesamte Kommunikation sowie die Bereitstellung der Informationen nach dem Werkzeugaufruf.
-Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den Werkzeugaufruf und sendet die gewonnenen Informationen an den Client zurück. Die Kommunikation zwischen Server und Client erfolgt dabei über die Transportschicht \cite{googlecloud2025modelcontextprotocol}.
+Die Architektur von MCP umfasst vier zentrale Komponenten bestehend aus dem \gls{mcp}-Host, \gls{mcp}-Client, \gls{mcp}-Server und der Transportschicht. Der \gls{mcp}-Host und \gls{mcp}-Client entspricht im Kontext von \gls{llm} dem Modell selbst, wobei der Client die Kommunikation und Bereitstellung der Werkzeugergebnisse koordiniert.
+Der \gls{mcp}-Server bildet das Gegenstück zum Client: Er verarbeitet den Werkzeugaufruf und sendet die gewonnenen Informationen zurück. Der Austausch zwischen Client und Server erfolgt über die Transportschicht \cite{googlecloud2025modelcontextprotocol}, welche das Bindeglied zwischen Client und Server bildet.
 
 \begin{table}[!htb]
     \centering
     \caption{Beispiel für die Nutzung mehrerer MCP-Werkzeuge}
     \label{tab:modelcontextprotocol_example}
-    \begin{tabular}{C{1.25cm} L{10cm} C{2.75cm}}
+    \begin{tabular}{C{1.25cm} L{9cm} C{2.75cm}}
         \hline
         \textbf{Schritt} & \textbf{Beschreibung} & \textbf{Abschnitt} \\
         \hline
@@ -298,7 +323,7 @@ Der \gls{mcp}-Server bietet dabei das Gegenstück zum Client, verarbeitet den We
 
 \subsection{Skills zum inkrementellen Wissensgewinn}
 
-Das Kontextfenster eines \gls{llm} ist begrenzt. Umfangreiche Systemprompts reduzieren daher den verfügbaren Platz für Nachrichtenhistorie und Werkzeugergebnisse, was insbesondere bei Rückfragen die Antwortqualität beeinträchtigen kann.
+Das Kontextfenster eines \gls{llm} ist begrenzt und umfangreiche Systemprompts reduzieren daher den verfügbaren Platz für Nachrichtenhistorie und Werkzeugergebnisse, was insbesondere bei Rückfragen die Antwortqualität beeinträchtigen kann.
 Eine Möglichkeit zur Entlastung des Kontextfensters ist der Einsatz von Skills. Laut der Spezifikation werden Skills in mehreren Ebenen aufgelöst und nur bei inhaltlicher Relevanz schrittweise geladen \cite{agentskills_github}. \\
 
 Das grundlegende Ziel dieses Ansatzes besteht darin, Wissensinhalte nicht pauschal vorzuhalten, sondern bedarfsorientiert zu laden. Damit wird die Wissensbereitstellung von einem statischen Prompt-Design zu einem selektiven Abrufmechanismus verlagert. 
