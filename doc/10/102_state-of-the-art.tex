@@ -6,6 +6,7 @@ Anschließend werden die technischen Grundlagen zu Open und Closed \gls{bim}, \g
 Damit entsteht der Bezugsrahmen für die spätere Umsetzung und die Bewertung der entwickelten Anwendung.
 
 \section{Definition Fallstudie}
+\label{sec:fallstudie}
 
 Die Fallstudie ist eine qualitative Forschungsmethode, bei der ein konkreter Fall als zeitgenössisches Phänomen in seinem natürlichen Kontext untersucht wird.
 Sie ist insbesondere dann geeignet, wenn die Forschungsfrage auf ein "Wie" oder "Warum" ausgerichtet ist, wenn Forschende nur begrenzte Kontrolle über das untersuchte Geschehen haben und wenn reale, gegenwartsbezogene Problemstellungen im Mittelpunkt stehen.
@@ -43,6 +44,7 @@ Gleichzeitig sind ihre Grenzen zu berücksichtigen, insbesondere die potenzielle
 Im Folgenden wird die Probandengruppe dargestellt, die im Rahmen der vorliegenden Bachelorarbeit verwendet wird.
 
 \section{Probandengruppe}
+\label{sec:probandengruppe}
 
 Die Zusammenstellung der Probandengruppe folgt einem kriteriumsorientierten, gezielten Sampling (purposeful sampling). 
 Dabei werden Teilnehmende nicht zufällig ausgewählt, sondern anhand vordefinierter Merkmale, um informationsreiche Fälle für die jeweilige Forschungsfrage zu erhalten \cite{palinkas2015purposefulsampling}. \\
@@ -55,6 +57,7 @@ Die Stichprobengröße wird in qualitativen Interviews nicht primär über stati
 Als methodische Orientierung dienen hierfür sowohl das Sättigungskonzept \cite{guest2006howmany} als auch das Konzept der ``Information Power'', nach dem eine spezifische und zielgerichtete Stichprobe mit hoher Informationsdichte eine kleinere Fallzahl rechtfertigen kann \cite{malterud2016samplesize}. 
 
 \subsection{Gruppe A: Fachkompetenter Akteur} 
+\label{sec:probandengruppe-a}
 
 Gruppe A umfasst Probanden mit einschlägiger Fachkompetenz in den für die Fallstudie relevanten Arbeitsabläufen und Fachbegriffen. 
 Sie bringen praxisnahes Domänenwissen ein, können alltägliche Problemstellungen isolieren und in individuelle Aufgabenstellungen transferieren.
@@ -62,6 +65,7 @@ Dadurch liefert diese Gruppe neben einer realistischen Problemstellung Hintergru
 Die im Rahmen der Interviews gestellten Leitfragen (vgl. Tab. \ref{tab:103_interview-core-questions}) grenzen Probanden mit diesen Eigenschaften klar von der Gruppe B ab.
 
 \subsection{Gruppe B: Fachfremder Akteur}
+\label{sec:probandengruppe-b}
 
 Gruppe B umfasst Probanden ohne vertiefte Vorerfahrung im fachlichen Zielkontext. 
 Diese Perspektive ist wichtig, um Verständlichkeit, Zugänglichkeit und Lernhürden der entwickelten Ansätze systematisch zu erfassen. 
@@ -70,6 +74,7 @@ Des Weiteren lässt sich auf Basis der Lösung der Aufgabenstellung unter Zuhilf
 um die verfügbaren Aufgabenstellungen auf einem vergleichbaren Niveau zu fachkompetenten Akteuren zu erledigen.
 
 \section{Open \& Closed Building Information Modelling}
+\label{sec:open-closed-bim}
 
 Für den Einsatz der \gls{bim}-Methodik ist die Nutzung von Software ein essenzieller Bestandteil der alltäglichen Arbeit. Datengetriebene Planung erfolgt vollständig digital und ist somit in der Praxis direkt an Softwarenutzung geknüpft.
 Welche Software von welchem Hersteller eingesetzt wird, hängt von verschiedenen Faktoren ab. Dabei spielen die Teamgröße, Interoperabilität mit anderen Unternehmen oder Teams, Budgets und Kundenanforderungen eine Rolle. \\
@@ -130,6 +135,7 @@ Die Spezifikation unterscheidet zwischen Abwärtskompatibilität (ältere Austau
 Dabei wird Abwärtskompatibilität für die Weiterentwicklung des EXPRESS-Schemas grundsätzlich streng priorisiert, während Änderungen an Property- und Quantity-Sets weniger restriktiv behandelt werden \cite{buildingsmart2025ifc4}. \\
 
 \section{Modellviewer mit \gls{ifc}-Schnittstelle und Validierung}
+\label{sec:ifc-viewer}
 
 Aufbauend auf den zuvor beschriebenen Eigenschaften und Austauschmechanismen von \gls{ifc} wird für die praktische Arbeit mit solchen Modellen ein geeigneter Modellviewer benötigt.
 Ein \gls{ifc}-Viewer verknüpft die geometrische Darstellung von Bauteilen mit den semantischen Informationen des Datenmodells und ermöglicht damit die gleichzeitige Analyse von Form, Struktur und Attributierung. \\
@@ -139,6 +145,8 @@ Neben der visuellen Kollisionsprüfung bilden regelbasierte Validierungen einen 
 Ergänzend erlauben viele Werkzeuge die Anwendung projektspezifischer Prüfkataloge, sodass Informationsanforderungen, Modellierungsrichtlinien und definierte Qualitätskriterien systematisch und reproduzierbar kontrolliert werden können \cite{bimcollabUnknownZoom}.
 
 \section{Künstliche Intelligenz}
+\label{sec:ai}
+
 Künstliche Intelligenz (KI) umfasst Verfahren, mit denen Computersysteme Aufgaben übernehmen, die typischerweise mit menschlicher Wahrnehmung, Schlussfolgerung und Sprachverarbeitung verbunden sind.
 Im Bereich der Sprachverarbeitung reichen die wissenschaftlichen Wurzeln bis zu frühen Systemen wie ELIZA zurück, das bereits 1966 die regelbasierte Simulation von Dialogen demonstrierte \cite{weizenbaum1966eliza}. \\
 \begin{figure}[htb]
@@ -158,13 +166,15 @@ Laut AI Index nutzen 2024 bereits 78 \% der befragten Organisationen KI in minde
 Für generative KI stieg der Anteil im gleichen Zeitraum von 33 \% auf 71 \% \cite[Abb. 4.4.1]{maslej2025artificialintelligenceindexreport}. \\
 
 Ein zentraler Treiber dieser Entwicklung sind sinkende Inferenzkosten.
-Für ein Leistungsniveau auf GPT-3.5-Niveau (MMLU) fielen die Kosten laut AI Index von 20 US-Dollar pro einer Million Tokens (November 2022) auf 0{,}07 US-Dollar (Oktober 2024), was einer Reduktion um mehr als den Faktor 280 entspricht.
+Für ein Leistungsniveau auf GPT-3.5-Niveau (auf Basis des MMLU Benchmarks) fielen die Kosten laut AI Index von 20 US-Dollar pro einer Million Tokens (November 2022) auf 0{,}07 US-Dollar (Oktober 2024), was einer Reduktion um mehr als den Faktor 280 entspricht.
 Auch bei anspruchsvolleren Benchmarks wie GPQA Diamond ist ein starker Preisrückgang dokumentiert \cite[Abb. 1.3.22]{maslej2025artificialintelligenceindexreport}. \\
 
 Die Kombination aus steigender Leistungsfähigkeit, wachsender Verbreitung und sinkenden Kosten bildet die Grundlage für den praktischen Einsatz großer Sprachmodelle in Fachanwendungen.
 Im folgenden Abschnitt wird daher die Klasse von \gls{gpt} als technische Grundlage dieser Systeme eingeführt.
 
 \subsection{Generative Pretrained Transformer}
+\label{sec:gpt}
+
 Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
 Das zugrunde liegende Prinzip, Modelle zunächst auf großen Datenmengen vorzutrainieren und anschließend auf konkrete Aufgaben anzupassen, ist jedoch deutlich älter und in der Forschung seit Jahren etabliert \cite[S. 4-5]{han2021pretrainedmodelspastpresent}.
 
@@ -183,6 +193,7 @@ Somit sind \gls{gpt}-Modelle nicht als isolierter Sonderfall zu verstehen, sonde
 Die dargestellten Architektur- und Trainingsprinzipien markieren den methodischen Übergang zu \glspl{llm}, die diese Ansätze in größerem Maßstab umsetzen.
 
 \subsection{Large-Language-Modelle}
+\label{sec:llm}
 
 Unter \glspl{llm} werden großskalige Sprachmodelle verstanden, die auf sehr umfangreichen Textkorpora trainiert werden und durch ihre Parametrisierung vielfältige Sprachaufgaben innerhalb eines Modells bearbeiten können.
 Für die vorliegende Arbeit ist diese Modellklasse besonders relevant, da sie sowohl allgemeine Sprachkompetenz als auch eine Anpassung an domänenspezifische Anwendungskontexte ermöglicht.
@@ -274,6 +285,7 @@ Da natürliche Sprache eine sehr große Kombinationsvielfalt aufweist, ist diese
 Die heute dominierende Transformer-Architektur ist dafür besonders geeignet, da sie sich effizient parallelisieren lässt und dadurch die Rechenleistung von \gls{gpu} und \gls{tpu} wirksam nutzt \cite[S. 7-8]{yenduri2023generativepretrainedtransformercomprehensive}.
 
 \subsection{Tool Calling \& Model Context Protocol}
+\label{sec:tool-calling-mcp}
 
 Während des Trainings eines \gls{llm} werden neben der Semantik auch Wissen aus dem Trainingssatz extrapoliert.
 Da der Datensatz jedoch zum Trainingszeitpunkt eingefroren ist, friert das Wissen ebenfalls ab diesem Zeitpunkt ein. Dies wird als sog. "knowledge cutoff" bezeichnet \cite{googlecloud2025modelcontextprotocol}. \\
@@ -322,6 +334,7 @@ Der \gls{mcp}-Server bildet das Gegenstück zum Client: Er verarbeitet den Werkz
 \end{table}
 
 \subsection{Skills zum inkrementellen Wissensgewinn}
+\label{sec:skills}
 
 Das Kontextfenster eines \gls{llm} ist begrenzt und umfangreiche Systemprompts reduzieren daher den verfügbaren Platz für Nachrichtenhistorie und Werkzeugergebnisse, was insbesondere bei Rückfragen die Antwortqualität beeinträchtigen kann.
 Eine Möglichkeit zur Entlastung des Kontextfensters ist der Einsatz von Skills. Laut der Spezifikation werden Skills in mehreren Ebenen aufgelöst und nur bei inhaltlicher Relevanz schrittweise geladen \cite{agentskills_github}. \\
@@ -346,6 +359,7 @@ Die Qualität der Skill-Metadaten ist daher ein wesentlicher Faktor für die Eff
 Für die vorliegende Arbeit wurde dieses Prinzip in angepasster Form übernommen: Der Skill-Abruf erfolgt über ein bereitgestelltes Werkzeug, wobei der Fokus auf den für die jeweilige Anfrage relevanten Skill-Inhalten liegt.
 
 \section{Softwareentwicklung}
+\label{sec:software-development}
 
 Dieser Abschnitt beschreibt die technischen Grundlagen der im Rahmen dieser Arbeit umgesetzten Softwareentwicklung. 
 Zuerst wird die Strukturierung und Versionierung von Quellcode betrachtet (vgl. Kap. \ref{sec:structure-code-with-repositories} und Kap. \ref{sec:git-github}).
