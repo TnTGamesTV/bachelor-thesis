@@ -1,41 +1,288 @@
 \chapter{\textbf{Ergebnisse}}
+\label{chap:result}
 
-Methoden aus Kap. 3 genutzt um Ergebnisse zu erstellen, 
-Unterteilung aus Ergebnisse der Interviews (aufgabenstellung von Gruppe A, aussortierte aufgaben mit gründen, Ergebnis der Gruppe B ist welche aufgaben gelöst werden konnten, wo es verständnisprobleme gab, hilfe erforderlich usw)
-Ergebnisse der KI-Anwendung (Rückgaben des LLM, Fehlerquote, Gründe für Fehler)
-Ergebnisse der Anwendundungsentwicklung (Gründe für weitere Iteration, )
-
+Dieses Kapitel führt die Ergebnisse, welche auf Grundlage der in Kapitel \ref{chap:methods} beschrieben Methodik gewonnen wurden, vor.
+Zuerst wird in die Ergebniss der Interviews eingeleitet, sowie die verfügbaren Datenstrukturen gelistet.
+Anschließend werden die von der Probandengruppe A entwickelten Aufgaben vorgestellt und in ihren einzelnen Bestandteilen untersucht (vgl. Kap. \ref{sec:results-group-a}).
+Die Bearbeitung der Aufgabenstellung durch die Probandengruppe B wird in Kap. \ref{sec:results-group-b} vorgestellt und auf die Lösbarkeit der Aufgabenstellungen aus Probandensicht eingegangen.
+Danach werden die Ausgaben des \gls{llm} nach ihrer Richtigkeit bewertet und in entsprechenden Statistiken dargestellt (vgl. Kap. \ref{sec:results-ai}).
+Zuletzt werden die Erkenntnisse, welche im Rahmen der Softwareentwicklung der bereitgestellten Anwendung gewonnen wurden, erläutert und eingeordnet.
 
 \section{Ergebnisse der Interviews}
+\label{sec:results-interviews}
 
-- für jedes Interview grobes Gedankenprotokoll besonders im Bezug auf die gelösten Aufgaben
-- alle Chatnachrichten mit LLM in Datenbank gespeichert (auch mit tool calls, parametern usw.)
-- vom LLM exportierte Datein (nur CSV)
-- von Gruppe A: Aufgabenstellungen
+Die Einzelinterviews mit beiden Probandengruppen wurden auf Basis der in Kap. \ref{sec:interviews} beschriebenen Methodik durchgeführt und folgende Daten erfasst wurden:
+
+\begin{itemize}
+  \item Der gesamte Chatverlauf (inklusive mit den Werkzeugaufrufen des Modells und weiteren Metadaten),
+  \item ein Gedankenprotokoll, welches kurze Notizen zu den bearbeiteten Aufgabenstellungen beinhaltet,
+  \item alle vom \gls{llm} exportierten Dateien,
+  \item sowie die grundsätzliche Aufgabenstellung der Probandengruppe A.
+\end{itemize}
+
+Alle Datenpunkte wurden im Kontext des 
 
 \subsection{Ergebnisse der Probandengruppe A}
+\label{sec:results-group-a}
 
-Entwickelte Aufgaben der Fachkompetenten Akteure
+Im Rahmen der Interviews mit der Probandengruppe A wurden Aufgabenstellungen aus verschiedenen Bereichen der \gls{bim}-Methodik entwickelt.
+Die gesamte Auflistung der entwickelten Aufgabenstellung wurde aufgrund der Größe angehängt. 
+Einige dieser sich im Anhang befindlichen Aufgabenstellungen sind aufgrund von Fachbegriffen oder fehlenden Details aus dem Alltag ohne zusätzliche Erklärung schwer nachzuvollziehen,
+weswegen in den folgenden Absätzen auf Basis der Aussagen der Probanden der Gruppe A näher definiert werden. \\
 
+\textit{Analysieren Sie, wie viele IfcBuildingElementProxy-Entitäten es im Modell gibt und für welchen Zweck diese eingesetzt werden.}
+Die genannte Aufgabenstellung befasst sich mit der Verwendung von IfcBuildingElementProxy-Entitäten bei der Modellierung von Gebäuden. 
+Dabei handelt es sich bei dieser Entität um einen Platzhalter, welcher für beliebige Elemente eingesetzt wird. 
+Vorgesehen ist diese Entität für Elemente, welche keine eigene \gls{ifc}-Entität besitzen und somit durch eine generische Entität abgebildet werden müssen.
+Aufgrund der generischen Natur der Entität wird diese in der Praxis an Stellen eingesetzt, welche im \gls{ifc}-Standard eine passende Entität vorgegeben haben.
+Die Aufgabenstellung zielt daher auf die Analyse der in den Modellen vorhandenen IfcBuildingElementProxy-Entitäten ab, um festzustellen, 
+ob die Nutzung dieser generischen Entität innerhalb von Projektvorgaben liegt. \\
 
+\textit{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt und die gleiche Höhe besitzen.}
+Im Rahmen der gesamtheitlich datengetriebenen Planung von Gebäuden werden verschiedene Modelle benutzt, welche in der Praxis den unterschiedlichen Gewerken oder Fachgebieten zugeordnet sind.
+Diese Modelle besitzen unterschiedliche Elemente des Gebäudes, benötigen aber eine gemeinsame Projektstruktur. 
+Der \gls{ifc}-Standard definiert innerhalb eines Gebäudes (IfcBuilding), Ebenen (IfcBuildingStorey) und Räume bzw. Volumen (IfcSpace).
+Das Architekturmodell, welches in der Praxis vom Architekten oder primären Planungsbüro modelliert wird, gibt dabei die Struktur vor, welche in den anderen Modellen repliziert wird.
+Dabei können besonders im Bezug auf die Benennung oder die Höhe der Ebenen Unterschiede zwischen den verschiedenen Modellen auftreten, welche im Rahmen dieser Aufgabenstellung gefunden werden sollen. \\
 
+\textit{Finden Sie das Attribute zur Ermittlung von Kostengruppen nach der DIN 276 im Modell.}
+Bei der Planung und Ausführung von Bauprojekten wird die DIN 276 eingesetzt, um systematisch Kosten des Projektes zu planen und aufzuschlüsseln.
+Dabei sind jedem Kostenpunkt eine entsprechende numerische Kategorie abhängig des Zweckes der Kosten zugewiesen.
+Im Rahmen von datengetriebenen Planungsprojekten können diese Kostengruppen als Parameter an den jeweiligen Elementen des Modells hinterlegt werden.
+Die Aufgabenstellung zielt dabei explizit auf das verwendete Parameter zur Sicherung der Kostengruppe pro Element ab, da dieses in der Praxis keinem Standard folgt und zwischen verschiedenen Projekten unterschiedlich definiert sein kann. \\
+
+\textit{Berechnen Sie die Gesamtlänge aller Heizungsrohre im Modell mit dem Durchmesser DN15 und gruppieren Sie das Ergebnis nach dem jeweiligen Geschoss.}
+Im Vergleich zu den vorherigen Aufgabenstellung handelt es sich bei der genannten Aufgabenstellung um ein komplexes Problem, 
+welches im Kontext der den Probanden der Gruppe A gestellten Leitfrage (vgl. Kap. \ref{sec:aufgabenstellung-gruppe-a}) für eine unangelernte Hilfskraft grundsätzlich ungeeignet ist.
+Dennoch wurde sie im Rahmen der Interviews verwendet, um die Leistungsfähigkeit des Query-Werkzeuges und die mehrstufige Abfrage von Informationen zu überprüfen. \\
+
+Während letztere Aufgabenstellung aufgrund der Mehrschichtigkeit bei der Datenbankabfrage zugelassen wurde, mussten Aufgabenstellungen aussortiert werden,
+welche im folgenden Abschnitt betrachtet werden.
 
 \subsubsection{Aussortierte Aufgabenstellung}
+\label{sec:results-group-a-deleted}
 
-Probleme mit den Aufgabenstellungen, welche Aussortiert wurden durch Vorprüfung
+Im Rahmen der Vorprüfung der Aufgabenstellungen wurden Aufgabenstellungen aussortiert, da sie mehrere Aufgaben in einer einzigen Aufgabenstellung vereinten,
+die zumutatbare Komplexität für fachfremde Akteure überschritten oder mindestens in Teilen Daten benötigten, welche im verwendeten Datensatz nicht vorhanden waren.
+In diesem Abschnitt werden dazu die aussortierten Aufgabenstellung strukturiert abgebildet und entsprechende Probleme auf Basis der Interviews mit der Probandengruppe A mit den Aufgabenstellungen erläutert. \\
+
+\textit{Prüfen Sie das Modell auf mögliche Kollisionen von Bauteilen und erstellen Sie eine Liste mit den entsprechenden Kollisionen, welche Bauteile, die Koordinaten der Kollision, sowie eine Beschreibung und Bewertung der Kollision beinhaltet.}
+Im beruflichen Alltag stellen Kollisionsprüfungen einen wichtigen Bestandteil der Arbeit mit datengetriebener Planung dar.
+Aufgrund der vielfältigen Zusammenarbeit verschiedener Planer, die in der Praxis über mehrere Unternehmen verteilt sind, sind Komplikationen in der Platzierung von Bauteilen oder Objekten nicht auszuschließen.
+Das Thema Kollisionsprüfung ist ein komplexes Unterfangen, welches in der Praxis durch spezielle Software gelöst wird, welche auf diese Aufgabe zugeschnitten ist.
+Unter dem Hintergrund der Komplexität wurde diese Aufgabenstellung daher aussortiert. \\
+
+\textit{Überprüfen Sie, ob alle Bauteile, welche einem IfcSpace zugewiesen sind, von diesem eingefasst werden.}
+Bei einem IfcSpace handelt es sich um ein rein virtuelles Volumen, welches innerhalb der Gesamtstruktur eines \gls{ifc}-Modelles einen Raum oder eine Fläche definiert.
+Jedem IfcSpace können dabei Bauteile und Elemente untergeordnet werden, welche in direkter Relation zu diesem IfcSpace stehen.
+Aufgrund von Umpositionierung oder unsauberer Modellierung können dabei Bauteile die Grenzen des IfcSpace-Volumens überschreiten und somit zwar in der Struktur logisch verknüpft sein,
+im Kontext der Geometrie aber nicht oder nur teilweise zuzuordnen sind. Aufgrund der im Datensatz fehlenden Geometrieinformationen war diese Aufgabenstellung jedoch nicht durchzuführen. \\
+
+\textit{Überprüfen Sie, ob die Durchbrüche für Leitungen und Rohre vorhanden sind und korrekt ausgeführt wurden.}
+Analog zur vorangegangenen Aufgabenstellung, werden Durchbrüche in der Praxis oft erst als IfcBuildingElementProxy (generisches Element) ausgeführt.
+Um die korrekte Platzierung der Durchbrüche zu validieren, ist zudem eine Kollisionsüberprüfung der am Durchbruch beteiligten Elemente erforderlich.
+Auf Basis der Komplexität der Aufgabenstellung, sowie der Verwendung von Daten welche nicht im Datensatz vorhanden ist, wurde die Aufgabe aussortiert. \\
+
+Bereits direkt im Fluss der Interviews wurden einige Aufgabenstellungen aussortiert, welche grundsätzlich nicht mit der Leitfrage übereinstimmten.
+Dabei waren besonders Aufgabestellungen, mit der Anforderung von Funktionen betroffen, welche mit den vorhandenen Werkzeugen oder Daten nicht überein zu bringen waren.
+Im nachfolgendenen Abschnitt werden die von den Probanden der Gruppe B bearbeiteten Aufgaben, deren Fortschritt, sowie mögliche Probleme mit den Aufgabenstellungen definiert.
 
 \subsection{Ergebnisse der Probandengruppe B}
+\label{sec:results-group-b}
 
-Fortschritt von Aufgaben, welche Aufgaben konnten gelöst werden, welche Aufgaben nicht, 
+Während der Interviews mit der Probandengruppe B, konnten verschiedene Lösungsansätze dokumentiert werden, welche nachfolgend aufgeschlüsselt werden. \\
+
+Grundsätzlich zeigte sich, dass Probanden, welche nach eigenen Angaben minimales Grundwissen in Bezug auf digitale datengetriebene Planungsprozesse besitzen
+die gegebenen Aufgabenstellungen tendenziell näher zum in der Aufgabenstellung definierten Ziel führen konnten.
+Dabei unterscheidete sich der grundsätzliche Ansatz der Probanden und die Verwendung bestimmter Fachbegriffe, bei der Strukturierung der Anfrage an das \gls{llm}.
+Probanden der Gruppe B mit minimalem Grundwissen nutzten Formulierungen, welche näher an dem im Systemprompt (vgl. Kap. \ref{sec:appendix-systemprompt}) 
+oder in den Skills (vgl. Tab. \ref{tab:103_available-skills}) verwendeten Fachbegriffen lagen.
+Probanden der Gruppe B mit keiner Vorerfahrung setzten zum Teil Formulierungen ein, welche durch das \gls{llm} konträr zum Ziel des Probanden interpretiert wurden, 
+sodass Aufgabenstellung erst nach Korrektur durch weitere Informationen des Probanden oder nicht vollständig bearbeitet wurden. \\
+
+Allgemein konnte festgestellt werden, dass das \gls{llm} die Ausführung von Werkzeugen grundsätzlich passiv auslegte und dadurch zum Teil auf wichtige Informationen,
+welche durch das Skill-Werkzeug zur Verfügung gestellt wurden, verzichtete. Dies hatte zur Folge, dass manche \gls{llm}-Ausgaben fehlerhaft waren und die Aufgabenstellung durch Probanden nicht komplett bearbeitet werden konnte.
+Analog dazu wurde das Skill-Werkzeug in den meisten \gls{llm}-Ausgaben lediglich einmal ausgeführt, 
+wodurch bei Aufgabenstellung mit direktem Bezug zum \gls{ifc}-Standard und zeitgleicher Nutzung der Datenbank Informationen zur Bearbeitung der Aufgabenstellung nicht vorhanden waren. \\
+
+Insgesamt zeigten sich alle Probanden der Gruppe B sehr zufriedenen mit den Ausgaben, welche durch \gls{llm} generiert wurden.
+Das galt im Bezug auf die Detailtiefe der Ausgaben, aber auch auf die empfohlenen Handlungsanweisungen, welche vom \gls{llm} in den meisten Fällen am Ende der Ausgabe definiert wurden.
+Im folgenden Abschnitt erfolgt die Analyse der vom \gls{llm} ausgegebenen Nachrichten auf Basis der in den Modellen vorhandenen Daten.
 
 \section{Ergebnisse der KI-Anwendung}
+\label{sec:results-ai}
 
-Analyse aller LLM-Ausgaben, Fehlerquote, gängige Fehler, Hintergrund von Fehlern
+Während im vorherigen Kapitel die Ergebnisse aus Sicht der Probanden präsentiert wurden, bezieht sich dieses Kapitel rein auf die Ergebnisse des \gls{llm}.
+Es handelt sich bei diesen Ergebnissen um die objektive Analyse der ausgegebenen Nachrichten im Kontext der Modelle und der vorhandenen Daten. \\
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+
+  % --- Daten ---
+  % Gesamt: 3 + 21 + 15 + 2 = 41
+  % Abgebrochen:                  3  -> 3/41  * 360 =  26.34°
+  % Ausgabe erzeugt und inkorrekt: 21 -> 21/41 * 360 = 184.39°
+  % Ausgabe erzeugt und korrekt:  15 -> 15/41 * 360 = 131.71°
+  % Keine Ausgabe erzeugt:         2 ->  2/41 * 360 =  17.56°
+
+  % --- Farben ---
+  \definecolor{col1}{HTML}{9E9E9E} % Rot      – Abgebrochen
+  \definecolor{col2}{HTML}{9e0b63} % Orange   – inkorrekt
+  \definecolor{col3}{HTML}{0892b2} % Grün     – korrekt
+  \definecolor{col4}{HTML}{424242} % Blau     – Keine Ausgabe
+
+  % --- Hilfsmakro: \slice{Startwinkel}{Endwinkel}{Farbe} ---
+  \newcommand{\slice}[3]{%
+    \fill[#3] (0,0) -- ({#1}:2.5) arc ({#1}:{#2}:2.5) -- cycle;
+    % \draw[white, line width=1.2pt] (0,0) -- ({#1}:2.5);
+    % \draw[white, line width=1.2pt] (0,0) -- ({#2}:2.5);
+  }
+
+  % --- Segmente (Startwinkel kumulativ, gegen den Uhrzeigersinn) ---
+  % Segment 1: Abgebrochen (26.34°)          0° -> 26.34°
+  \slice{90}{116.34}{col1}
+
+  % Segment 2: Ausgabe erzeugt und inkorrekt (184.39°)   116.34° -> 300.73°
+  \slice{116.34}{300.73}{col2}
+
+  % Segment 3: Ausgabe erzeugt und korrekt (131.71°)     300.73° -> 432.44° = 72.44°
+  \slice{300.73}{432.44}{col3}
+
+  % Segment 4: Keine Ausgabe erzeugt (17.56°)            432.44° -> 450° = 90°
+  \slice{432.44}{450}{col4}
+
+  % --- Prozentwerte als Labels (Mittelpunkt jedes Segments) ---
+  % Mittelpunkt = Startwinkel + halber Bogenwinkel, Radius 1.55
+  \node[white, font=\bfseries\small] at ({90  + 13.17}:2) {7.3\%};   % Abgebrochen
+  \node[white, font=\bfseries\small] at ({116.34+92.20}:1.55) {51.2\%}; % inkorrekt
+  \node[white, font=\bfseries\small] at ({300.73+65.85}:1.55) {36.6\%}; % korrekt
+  \node[white, font=\bfseries\small] at ({432.44+5}:2) {4.9\%};  % Keine Ausgabe
+
+  % --- Legende ---
+  \begin{scope}[shift={(3.2, 1.1)}]
+    % Eintrag 1
+    \fill[col1] (0, 0.00) rectangle (0.35, 0.35);
+    \node[anchor=west, font=\small] at (0.45, 0.175) {Abgebrochen (3)};
+    % Eintrag 2
+    \fill[col2] (0, -0.55) rectangle (0.35, -0.20);
+    \node[anchor=west, font=\small] at (0.45, -0.375) {Ausgabe erzeugt und inkorrekt (21)};
+    % Eintrag 3
+    \fill[col3] (0, -1.10) rectangle (0.35, -0.75);
+    \node[anchor=west, font=\small] at (0.45, -0.925) {Ausgabe erzeugt und korrekt (15)};
+    % Eintrag 4
+    \fill[col4] (0, -1.65) rectangle (0.35, -1.30);
+    \node[anchor=west, font=\small] at (0.45, -1.475) {Keine Ausgabe erzeugt (2)};
+  \end{scope}
+
+\end{tikzpicture}
+\caption{Verteilung der Ergebnisse (gesamt: 41)}
+\label{fig:104_results-ai}
+\end{figure}
+
+In der Abbildung \ref{fig:104_results-ai} sind die strukturierten Analysedaten der \gls{llm}-Ausgaben abgebildet. 
+Von den insgesamt 41 analyiserten \gls{llm}-Ausgaben, sind 36 \% der \gls{llm}-Ausgaben als objektiv korrekt eingestuft worden. 
+Insbesondere die Einbettung von allgemeinen Wissens in Ausgaben des \gls{llm}, war korrekt durchgeführt.
+Bei bauspezifischen Themen, wie die Definition der DIN 276 oder Kostengruppen gab das \gls{llm} trotz fehlendem Werkzeug der Internetsuche korrekte Informationen aus,
+welche den Probanden der Gruppe B die Aufgabenstellung und das Ziel näher brachte. 
+Allgemein wurde bemerkt, dass durch das \gls{llm} korrekte Annahmen oder Erklärungen an die Probanden gegeben wurden,
+welche Informationen beinhalten, die weder in der Datenbank noch im Systemprompt vorhanden waren.
+Auch die Möglichkeit vorangegangene Inhalte der Konversation mit den Probanden zusammenzufassen und in einfacherer Sprache zu erzählen bot den Probanden eine Möglichkeit,
+um komplexe Aufgabenstellungen in verständliche Probleme aufzubrechen. Zusätzlich interpretierte das \gls{llm} leere Ergebnisse, in der Regel eine leere Datenbankabfrage,
+korrekt und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gewünschten Daten zu finden. \\
 
 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
 
+  % --- Daten ---
+  % Gesamt: 2 + 5 + 3 + 5 + 6 = 21
+  % Falsche IFC-Entität genutzt:    2  ->  2/21 * 360 =  34.29°
+  % Falsche Property/Pset genutzt:  5  ->  5/21 * 360 =  85.71°
+  % Falsches Werkzeug:              3  ->  3/21 * 360 =  51.43°
+  % SQL-Abfrage falsch aufgebaut:   5  ->  5/21 * 360 =  85.71°
+  % Sonstiger Fehler:               6  ->  6/21 * 360 = 102.86°
+
+  % --- Farben ---
+  \definecolor{col1}{HTML}{FF5252} % Rot        – Falsche IFC-Entität
+  \definecolor{col2}{HTML}{FFD180} % Orange     – Falsche Property/Pset
+  \definecolor{col3}{HTML}{FFFF8D} % Gelb       – Falsches Werkzeug
+  \definecolor{col4}{HTML}{B9F6CA} % Grün       – SQL-Abfrage falsch
+  \definecolor{col5}{HTML}{82B1FF} % Blau       – Sonstiger Fehler
+
+  % --- Hilfsmakro: \slice{Startwinkel}{Endwinkel}{Farbe} ---
+  \newcommand{\slice}[3]{%
+    \fill[#3] (0,0) -- ({#1}:2.5) arc ({#1}:{#2}:2.5) -- cycle;
+    % \draw[white, line width=1.2pt] (0,0) -- ({#1}:2.5);
+    % \draw[white, line width=1.2pt] (0,0) -- ({#2}:2.5);
+  }
+
+  % --- Segmente (Start: 90°, gegen den Uhrzeigersinn) ---
+  % Segment 1: Falsche IFC-Entität    90.00° -> 124.29°
+  \slice{90.00}{124.29}{col1}
+  % Segment 2: Falsche Property/Pset  124.29° -> 210.00°
+  \slice{124.29}{210.00}{col2}
+  % Segment 3: Falsches Werkzeug      210.00° -> 261.43°
+  \slice{210.00}{261.43}{col3}
+  % Segment 4: SQL-Abfrage falsch     261.43° -> 347.14°
+  \slice{261.43}{347.14}{col4}
+  % Segment 5: Sonstiger Fehler       347.14° -> 450.00°
+  \slice{347.14}{450.00}{col5}
+
+  % --- Prozentwerte (Mitte jedes Segments) ---
+  \node[black, font=\bfseries\small] at ({107.14}:1.55) {9.5\%};   % IFC-Entität
+  \node[black, font=\bfseries\small] at ({167.14}:1.55) {23.8\%};  % Property/Pset
+  \node[black, font=\bfseries\small] at ({235.71}:1.55) {14.3\%};  % Werkzeug
+  \node[black, font=\bfseries\small] at ({304.29}:1.55) {23.8\%};  % SQL
+  \node[black, font=\bfseries\small] at ({398.57}:1.55) {28.6\%};  % Sonstiger
+
+  % --- Legende (manuell) ---
+  \begin{scope}[shift={(3.2, 1.4)}]
+    % Eintrag 1
+    \fill[col1] (0,  0.00) rectangle (0.35,  0.35);
+    \node[anchor=west, font=\small] at (0.45,  0.175) {Falsche IFC-Entität genutzt (2)};
+    % Eintrag 2
+    \fill[col2] (0, -0.55) rectangle (0.35, -0.20);
+    \node[anchor=west, font=\small] at (0.45, -0.375) {Falsche Property/Pset genutzt (5)};
+    % Eintrag 3
+    \fill[col3] (0, -1.10) rectangle (0.35, -0.75);
+    \node[anchor=west, font=\small] at (0.45, -0.925) {Falsches Werkzeug (3)};
+    % Eintrag 4
+    \fill[col4] (0, -1.65) rectangle (0.35, -1.30);
+    \node[anchor=west, font=\small] at (0.45, -1.475) {SQL-Abfrage falsch aufgebaut (5)};
+    % Eintrag 5
+    \fill[col5] (0, -2.20) rectangle (0.35, -1.85);
+    \node[anchor=west, font=\small] at (0.45, -2.025) {Sonstiger Fehler (6)};
+  \end{scope}
+
+\end{tikzpicture}
+\caption{Verteilung der Fehlertypen (gesamt: 21)}
+\label{fig:104_results-ai-errors}
+\end{figure}
+
+Wie in der Abbildung \ref{fig:104_results-ai-errors} zu erkennen, gab es neben Fehlern, welche außerhalb des Einflussbereiches des \gls{llm} lagen ("Sonstige Fehler"), 
+primär Probleme mit der Datenbankabfrage ("SQL-Abfrage falsch aufgebaut"), sowie der Suche nach Properties ("Falsche Property/Pset genutzt"). 
+Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeug (Query-Werkzeug), wählte das \gls{llm} in der Regel die Injektion von Zeilenumbrüchen ("\textbackslash{n}"), 
+sowie Semikolon (";") in den SQL-Abfragen an die Datenbank, obwohl dies im Systemprompt dem \gls{llm} explizit verboten wurde. 
+Dies sorgte für Fehler bei Datenbankabfragen, wodurch vorhandene Daten nicht oder nur teilweise abgerufen wurden. 
+Gleichzeitig ignorierte das \gls{llm} die Anweisungen aus dem Systemprompt im Bezug auf die Nutzung des Skill-Werkzeuges,
+wodurch die korrekten Skills zum Teil nicht geladen wurden. Im Kontext von Datenbankabfragen führte dies zu Problemen, da die Struktur der Datenbank dem \gls{llm} nicht vorlag.
+Die Annahmen, wie Spalten in der Datenbank bezeichnet waren, welche das \gls{llm} traf, waren nicht korrekt und führten zu fehlerhaften Abfragen.
+Bei komplexeren Aufgabenstellungen, wurde durch das \gls{llm} zum Teil der SQL-Befehl \textit{JOIN} (zwei Tabellen kombinieren -- exponentielle Anzahl von Elementen) gewählt, sowie gewisse SQL-Filter nicht korrekt umgesetzt,
+sodass arithmetische Funktionen, wie Summierung, ungenaue Ergebnisse lieferten. Während der Property-Suche, nutze das \gls{llm} in den meisten Fällen eine direkte Bezeichnung der Property, 
+welche aus der Anfrage des Probanden abgeleitet war. Dies führte dazu, dass in Kombination mit einer direkten Suche, Properties nicht korrekt gefunden oder das \gls{llm} frühzeitig ein Ergebniss erzeugte,
+obwohl im Modell noch weitere Daten vorhanden waren. Ebenso interpretierte das \gls{llm} bei der Erstellung von Raumlisten die Zuordnung von IfcSpaces falsch,
+da diese im beispielhaften Modell mit doppelten Bezeichnungen jeweils als Fläche und als Raum angelegt waren. Diese Dopplung der Bezeichnungen war durch das \gls{llm} nicht interpretiert gewesen,
+sodass die erzeugte Raumliste, sowie berechneten Flächenwerte nicht korrekt waren. Zusätzlich verwendete das \gls{llm} die geladenen Modelle korrekt, 
+jedoch wurde desöfteren durch das \gls{llm} die Annahme getroffen, dass Properties in allen Modellen vorhanden waren, obwohl dies besonders in Fachmodellen nicht gegeben war. \\
+
+Der folgende Abschnitt befasst sich mit der iterativ weiterentwickelten Anwendung, welche die Grundlage für die Interviews, sowie die vorangegangenen Ergebnisse bot.
 
 \section{Ergebnisse der Anwendungsentwicklung}
+\label{sec:results-software-development}
+
+\subsection{}
 
 - Gründe für Wechsel von vorgefertigen MCP-Server zu selbstentwickelten MCP-Server
     - zu wenig Konfigurationsmöglichkeiten

@@ -24,6 +24,7 @@
 % \end{figure}
 
 \section*{Systemprompt}
+\label{sec:appendix-systemprompt}
 
 \begin{lstlisting}
 You are an expert IFC (Industry Foundation Classes) building model assistant. You help users analyze, query, and understand IFC building information models.
@@ -64,14 +65,14 @@ following:
 \end{lstlisting}
 
 \section*{Vollständige Analyse der \gls{llm}-Ausgaben}
+\label{sec:appendix-analysis}
 
 \begin{table}[h]
     \centering
-    \caption{Analyseergebnisse}
-    \label{tab:analyseergebnisse}
+    \caption{Analyseergebnisse B1}
     \begin{tabular}{l|l|l}
         \hline
-        \textbf{ID} & \textbf{Analysis} & \textbf{Reason} \\
+        \textbf{Nachricht} & \textbf{Ergebniss} & \textbf{Fehlergrund} \\
         \hline
         B1.1.1 & Ausgabe erzeugt und korrekt & -- \\
         B1.1.2 & Ausgabe erzeugt und inkorrekt & Falsche Property/Pset genutzt \\
@@ -86,6 +87,16 @@ following:
         B1.4.2 & Ausgabe erzeugt und korrekt & -- \\
         B1.5.1 & Ausgabe erzeugt und korrekt & -- \\
         B1.5.2 & Ausgabe erzeugt und korrekt & -- \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \caption{Analyseergebnisse B2}
+    \begin{tabular}{l|l|l}
+        \hline
+        \textbf{Nachricht} & \textbf{Ergebniss} & \textbf{Fehlergrund} \\
         \hline
         B2.1.1 & Ausgabe erzeugt und inkorrekt & SQL-Abfrage falsch aufgebaut \\
         B2.1.2 & Ausgabe erzeugt und inkorrekt & SQL-Abfrage falsch aufgebaut \\
@@ -103,6 +114,16 @@ following:
         B2.5.4 & Ausgabe erzeugt und inkorrekt & SQL-Abfrage falsch aufgebaut \\
         B2.5.5 & Ausgabe erzeugt und korrekt & -- \\
         \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \caption{Analyseergebnisse B3}
+    \begin{tabular}{l|l|l}
+        \hline
+        \textbf{Nachricht} & \textbf{Ergebniss} & \textbf{Fehlergrund} \\
+        \hline
         B3.1.1 & Ausgabe erzeugt und korrekt & -- \\
         B3.1.2 & Ausgabe erzeugt und korrekt & -- \\
         B3.1.3 & Ausgabe erzeugt und inkorrekt & Sonstiger Fehler \\
@@ -119,3 +140,21 @@ following:
         \hline
     \end{tabular}
 \end{table}
+
+\clearpage
+
+\section*{Aufgabenstellungen der Probandengruppe A}
+\label{sec:appendix-aufgabenstellungen}
+
+\begin{enumerate}
+    \item Analysieren Sie, wie viele IfcBuildingElementProxy-Entitäten es im Modell gibt und für welchen Zweck diese eingesetzt werden.
+    \item Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt und die gleiche Höhe besitzen.
+    \item Berechnen Sie den Glasanteil des Modells.
+    \item Berechnen Sie den Fensteranteil pro Raum und pro Stockwerk.
+    \item Finden Sie das Attribute zur Ermittlung von Kostengruppen nach der DIN 276 im Modell.
+    \item Erstellen Sie eine Liste aller Räume sortiert nach deren Raumnummer und dem Geschoss.
+    \item Berechnen Sie die Gesamtlänge aller Heizungsrohre im Modell mit dem Durchmesser DN15 und gruppieren Sie das Ergebnis nach dem jeweiligen Geschoss. 
+    \item Geben Sie eine Mengenliste aller Sanitärbauteile auf Basis der im Modell vorhandenen Mengen als Tabelle aus.
+    \item Erstellen Sie eine Liste aller verwendeten Materialien und dem entsprechenden Bauteil.
+    \item Summieren Sie die Bruttogesamtfläche aller Räume auf und gruppieren Sie das Ergebnis nach Raumtyp.
+\end{enumerate}
