@@ -3,7 +3,7 @@
 Aufbauend auf der Einleitung werden in diesem Kapitel die für die Arbeit relevanten fachlichen und methodischen Grundlagen systematisch dargestellt.
 Zunächst werden die Fallstudie als Forschungsdesign und die Zusammensetzung der Probandengruppe erläutert.
 Anschließend werden die technischen Grundlagen zu Open und Closed \gls{bim}, \gls{ifc}, KI-basierten Sprachmodellen sowie ausgewählten Konzepten der Softwareentwicklung eingeordnet.
-Damit entsteht der Bezugsrahmen für die spätere Umsetzung und die Bewertung der entwickelten Anwendung.
+Daraus entsteht der Bezugsrahmen für die spätere Umsetzung und die Bewertung der entwickelten Anwendung.
 
 \section{Definition Fallstudie}
 \label{sec:fallstudie}
@@ -12,12 +12,12 @@ Die Fallstudie ist eine qualitative Forschungsmethode, bei der ein konkreter Fal
 Sie ist insbesondere dann geeignet, wenn die Forschungsfrage auf ein "Wie" oder "Warum" ausgerichtet ist, wenn Forschende nur begrenzte Kontrolle über das untersuchte Geschehen haben und wenn reale, gegenwartsbezogene Problemstellungen im Mittelpunkt stehen.
 Damit stellt die Fallstudie keine bloße Vorstufe anderer Verfahren dar, sondern eine eigenständige Methode mit eigener Untersuchungslogik \cite{hertrich2020forschungsmethodefallstudien}. \\
 
-Die methodische Einordnung einer Fallstudie unterscheidet sich in drei Grundformen: Explorative Fallstudien dienen der Erkundung wenig untersuchter Phänomene und dienen meist als Vorarbeit für weitere Forschung.
-Deskriptive Fallstudien beschreiben ein Phänomen und dessen Kontext in seiner Ganzheit, und explanative Fallstudien bearbeiten die Analyse möglicher Ursache-Wirkungs-Zusammenhänge.
+Die methodische Einordnung einer Fallstudie unterscheidet sich in drei Grundformen: Explorative Fallstudien dienen der Erkundung gering untersuchter Phänomene und bilden meist eine Vorarbeit für weitere Forschung.
+Deskriptive Fallstudien beschreiben ein Phänomen und dessen Kontext in seiner Ganzheit, während explanative Fallstudien die Analyse möglicher Ursache-Wirkungs-Zusammenhänge bearbeiten.
 Diese Typen verdeutlichen, dass die Fallstudie je nach Erkenntnisinteresse sowohl zur Strukturierung neuer Fragestellungen als auch zur vertieften Erklärung komplexer Zusammenhänge eingesetzt werden kann \cite{hollweck2016casestudy}. \\
 
 Der erste Schritt einer Fallstudie umfasst die präzise Formulierung der Forschungsfrage. Wie eingangs dargestellt, eignen sich im qualitativen Kontext insbesondere Wie- oder Warum-Fragen.
-Beispielsweise kann eine solche Fragestellung lauten:
+Beispielsweise kann eine Fragestellung lauten:
 
 \say{Wie wirken sich Marketingstrategien auf das Kaufverhalten von Apple-Kunden aus? \cite{pfeiffer2023fallstudie}}
 
@@ -32,10 +32,10 @@ Für die Auswahl ist daher wichtig, dass ausreichend Daten verfügbar sind, ein 
 Der dritte Schritt umfasst die systematische Literaturrecherche und Theoriefindung.
 Ausgehend vom gewählten Fall werden relevante wissenschaftliche Arbeiten identifiziert, ausgewertet und zur Entwicklung eines tragfähigen Bezugsrahmens zusammengeführt \cite{pfeiffer2023fallstudie}. \\
 
-Im vierten Schritt wird der Fall strukturiert dargestellt.
+Anschließend wird im vierten Schritt der Fall strukturiert dargestellt.
 Dabei werden die für die Untersuchung relevanten Rahmenbedingungen, Akteure und Einzelheiten nachvollziehbar beschrieben und gegenüber bereits dokumentierten Fällen abgegrenzt \cite{pfeiffer2023fallstudie}. \\
 
-Der fünfte Schritt betrifft die Auswertung und Interpretation der erhobenen Informationen.
+Zuletzt erfolgt im fünften Schritt die Auswertung und Interpretation der erhobenen Informationen.
 Die Ergebnisse werden entlang der Forschungsfrage zusammengeführt, mit den theoretischen Grundlagen rückgekoppelt und in ihren Konsequenzen für den untersuchten Kontext diskutiert \cite{pfeiffer2023fallstudie,hollweck2016casestudy}. \\
 
 Insgesamt ermöglicht die Fallstudie einen realitätsnahen Zugang zu komplexen und kontextreichen Ereignissen und kann dabei sinnvoll mit weiteren Methoden kombiniert werden.
@@ -47,14 +47,15 @@ Im Folgenden wird die Probandengruppe dargestellt, die im Rahmen der vorliegende
 \label{sec:probandengruppe}
 
 Die Zusammenstellung der Probandengruppe folgt einem kriteriumsorientierten, gezielten Sampling (purposeful sampling). 
-Dabei werden Teilnehmende nicht zufällig ausgewählt, sondern anhand vordefinierter Merkmale, um informationsreiche Fälle für die jeweilige Forschungsfrage zu erhalten \cite{palinkas2015purposefulsampling}. \\
+Dabei werden Teilnehmende nicht zufällig ausgewählt, sondern anhand vordefinierter Merkmale, um im Kontext der Fallstudie passende Probanden zu erhalten \cite{palinkas2015purposefulsampling}. \\
 
-Für die vorliegende Fallstudie wurden die Auswahlkriterien aus den im Interviewteil formulierten Erkenntniszielen (vgl. Kap. \ref{sec:interviews}) sowie aus den Leitfragen des Interviewkerns (vgl. Tab. \ref{tab:103_interview-core-questions}) abgeleitet. 
+Für die vorliegende Fallstudie wurden die Auswahlkriterien aus den im Interviewteil formulierten Erkenntniszielen (vgl. Kap. \ref{sec:interviews}) 
+sowie aus den Leitfragen des Interviewkerns (vgl. Tab. \ref{tab:103_interview-core-questions}) abgeleitet. 
 Die zentrale Trennvariable ist die Fachkompetenz im untersuchten Domänenkontext. 
 Diese Aufteilung ermöglicht eine kontrastive Betrachtung zwischen fachlich geprägter und fachfremder Perspektive und erhöht zugleich die Spezifität der Stichprobe. \\
 
-Die Stichprobengröße wird in qualitativen Interviews nicht primär über statistische Repräsentativität begründet, sondern über den zu erwartenden Informationsgehalt der Fälle sowie das Erreichen thematischer Sättigung. 
-Als methodische Orientierung dienen hierfür sowohl das Sättigungskonzept \cite{guest2006howmany} als auch das Konzept der ``Information Power'', nach dem eine spezifische und zielgerichtete Stichprobe mit hoher Informationsdichte eine kleinere Fallzahl rechtfertigen kann \cite{malterud2016samplesize}. 
+Die Stichprobengröße wird in qualitativen Interviews nicht primär über statistische Repräsentativität begründet, sondern über den zu erwartenden Informationsgehalt der Probanden. 
+Als methodische Orientierung das Konzept der Information Power, nachdem eine spezifische und zielgerichtete Stichprobe mit hoher Informationsdichte eine kleinere Fallzahl rechtfertigen kann \cite{malterud2016samplesize}. 
 
 \subsection{Gruppe A: Fachkompetenter Akteur} 
 \label{sec:probandengruppe-a}
@@ -69,7 +70,7 @@ Die im Rahmen der Interviews gestellten Leitfragen (vgl. Tab. \ref{tab:103_inter
 
 Gruppe B umfasst Probanden ohne vertiefte Vorerfahrung im fachlichen Zielkontext. 
 Diese Perspektive ist wichtig, um Verständlichkeit, Zugänglichkeit und Lernhürden der entwickelten Ansätze systematisch zu erfassen. 
-Die Gegenüberstellung zu Gruppe A ermöglicht es, Unterschiede zwischen Experten- und Einsteigerperspektive transparent zu machen und daraus Anforderungen für Kommunikation, Dokumentation und Nutzerführung abzuleiten.
+Die Gegenüberstellung zu Gruppe A ermöglicht es, Unterschiede zwischen Experten- und Einsteigerperspektive zu verdeutlichen und daraus Anforderungen für Kommunikation, Dokumentation und Nutzerführung abzuleiten.
 Des Weiteren lässt sich auf Basis der Lösung der Aufgabenstellung unter Zuhilfenahme von \gls{llm} ermitteln, in welchem Rahmen \gls{llm} Fachkompetenz für fachfremde Akteure bereitstellen kann,
 um die verfügbaren Aufgabenstellungen auf einem vergleichbaren Niveau zu fachkompetenten Akteuren zu erledigen.
 
@@ -88,12 +89,10 @@ Die ausgegebenen Modelle der Fachplaner können vor der Übergabe auf Korrekthei
 
 Im Gegensatz beschreibt Closed \gls{bim} die Verwendung eines geschlossenen herstellerspezifischen Austauschformats für den gesamten Planungsprozess eines Gebäudes. 
 Dabei müssen alle abhängigen Planungsbeteiligten dieselbe Herstellersoftware oder Softwarefamilie einsetzen. Eine freie Software- oder Prozesswahl ist auch für externe Planer ausgeschlossen.
-Analog zu Open \gls{bim} werden die Spezifikationen des Datenaustauschs vorher festgelegt -- dies bringt aber nicht die inhärente Beständigkeit mit, 
-welche aus der von Prozessbeteiligten selbstständig gewählten Software und dem entsprechenden Dateiaustausch mit einem offenen Format resultieren würde. 
-Unabhängige Parteien haben dadurch die Möglichkeit Änderungen an Modellen durchzuführen, welche nicht in ihren Verantwortungsbereich fallen. \cite{westphal2018openvsclosedbim}. \\
+Analog zu Open \gls{bim} werden die Spezifikationen des Datenaustauschs vorher festgelegt, jedoch im Gegenteil zu Open \gls{bim} unter der Benutzung von herstellerspezifischen Austauschformaten,
+welche grundsätzlich für alle Parteien bearbeitbar sind, auch wenn das Modell nicht in ihren Verantwortungsbereich fällt \cite{westphal2018openvsclosedbim}. \\
 
 Im Rahmen der Bachelorarbeit wird die Open \gls{bim}-Methodik angewandt, weswegen im nachfolgenden Abschnitt eine Einführung in ein offenes Austauschformat gegeben wird.
-
 
 \section{Industry Foundation Classes}
 \label{sec:industry-foundation-classes}
@@ -401,15 +400,15 @@ Web-Anwendungen werden typischerweise in mehreren Programmiersprachen entwickelt
 Grundlegende Sprachen wie HTML, CSS und JavaScript sind seit den Anfängen des World Wide Web etabliert und bilden die technische Basis nahezu aller modernen Web-Anwendungen \cite{mdn_client_server}.
 Darüber hinaus kommen je nach Einsatzszenario weitere Sprachen zum Einsatz, die auf dem Server ausgeführt werden und dort Logik, Datenhaltung und Kommunikation übernehmen. \\
 
-Web-Anwendungen werden durch das Client-Server-Modell beschrieben. Der Client -- in der Regel ein Webbrowser -- stellt Anfragen an einen Server,
+Web-Anwendungen werden durch das Client-Server-Modell beschrieben. Der Webbrowser (Client) stellt Anfragen an einen Server,
 der diese verarbeitet und eine Antwort zurücksendet \cite{gfg_client_server}. 
-Man unterscheidet dabei zwischen Frontend und Backend. Das Frontend definiert die Schicht für Nutzerinteraktionen, welche alle interaktiven Elemente -- sog. \gls{ui} -- beinhaltet.
-Das Backend umfasst  die dahinterliegende Verarbeitungs- und Datenschicht, die für den Nutzer nicht sichtbar ist \cite{aws_frontend_backend}.
+Man unterscheidet dabei zwischen Frontend und Backend. Das Frontend definiert die Schicht für Nutzerinteraktionen, welche alle interaktiven Elemente beinhaltet.
+Das Backend umfasst die dahinterliegende Verarbeitungs- und Datenschicht, die für den Nutzer nicht sichtbar ist \cite{aws_frontend_backend}.
 In modernen Web-Anwendungen kommunizieren beide Schichten über wohldefinierte Schnittstellen miteinander und können unabhängig voneinander entwickelt, skaliert und ausgetauscht werden. \\
 
 Die Kommunikation von Frontend und Backend bzw. Client und Server erfolgt über standardisierte Protokolle. Das \gls{http} bildet dabei die Grundlage des gesamten Datenaustauschs im Web.
-Es handelt sich dabei um ein zustandsloses Protokoll -- jede Anfrage eines Clients und jede Antwort eines Servers ist in sich abgeschlossen \cite{mdn_http_overview}.
-Sollte die Anwendung kontinuierlich aktualisierte Daten erfordern, existieren weitere Transportmechanismen.
+Es handelt sich dabei um ein zustandsloses Protokoll, sodass jede Anfrage eines Clients und jede Antwort eines Servers in sich abgeschlossen ist \cite{mdn_http_overview}.
+Sollte die Anwendung kontinuierlich aktualisierte Daten erfordern, existieren weitere Transportmechanismen, wie \gls{sse} oder WebSockets.
 \gls{sse} erlauben eine durch den Client initiierte, unidirektionale Verbindung, welche \gls{http} als Grundlage verwendet.
 Dabei wird eine Verbindung zwischen dem Client und Server geöffnet und gehalten, sodass ausschließlich durch den Server Daten an den Client übertragen werden können,
 ohne dass der Client wiederholt über die Änderung von Daten Anfragen an den Server stellen muss.
@@ -519,7 +518,7 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
 \end{figure}
 
 Mit React erstellte Frontend-Anwendungen werden als \gls{spa} bezeichnet, da sie ohne Ladevorgang im Browser bei Interaktion des Nutzers auskommen. 
-Interagiert der Nutzer mit der Anwendung -- beispielsweise zur Änderung von Daten -- wird dies zuerst von React behandelt und erfordert nicht direkt einen Verbindungsaufbau zum Server.
+Interagiert der Nutzer mit der Anwendung, sodass neue Daten benötigt werden, wird dies zuerst von React behandelt und erfordert nicht direkt einen Verbindungsaufbau zum Server.
 Datenanfragen werden im Hintergrund gestellt und entsprechende Datenänderungen werden durch React verarbeitet, ohne dass die Frontend-Anwendung erneut aufgebaut werden muss. \\
 
 Im Kern arbeitet React mit einem \gls{vdom} der Webseitenstruktur. Das \gls{vdom} wird verwendet, um das vom Browser geforderte \gls{html} zu erzeugen.

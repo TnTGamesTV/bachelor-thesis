@@ -2,7 +2,7 @@
 \label{chap:methods}
 
 Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen der Arbeit angewandte Methodik systematisch dargestellt. 
-Zunächst wird die Entwicklung der Anwendung auf Basis des Spiralmodelles (vgl. Kap. \ref{sec:spiral-model}) beschrieben und der technische Aufbau des lauffähigen Prototypen erläutert.
+Zunächst wird die Entwicklung der Anwendung beschrieben, welche auf Basis des Spiralmodelles (vgl. Kap. \ref{sec:spiral-model}) durchgeführt wurde.
 Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen dargestellt; anschließend erfolgt die Validierung der erzeugten \gls{llm}-Ausgaben.
 Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die spätere Auswertung.
 
@@ -12,178 +12,40 @@ Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grun
 Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung entwickelt, die im Rahmen der Interviews eingesetzt werden konnte.
 Die Anwendung wurde bewusst als methodisches Werkzeug konzipiert, um die Interaktion der Probanden mit dem \gls{llm} unter vergleichbaren Rahmenbedingungen zu ermöglichen.
 Damit konnte eine nachvollziehbare Grundlage geschaffen werden, auf deren Basis die Qualität der erzeugten Antworten systematisch betrachtet werden kann.
-Während der Entwicklungsfokus auf der genannten Kernfunktion lag, wurden Benutzererfahrung und zusätzliche Funktionen nur sekundär betrachtet und flossen lediglich teilweise in Entwicklungsentscheidungen ein. 
-Ein wichtiger Teil des Konzeptes war die Möglichkeit mehrere \gls{ifc}-Modelle gleichzeitig zu laden, um dem in der Praxis angewandten Aufteilen von Modellen nach Fachdisziplin (vgl. Kap. \ref{sec:open-closed-bim}) gerecht zu werden. \\
+Während der Entwicklungsfokus auf der genannten Kernfunktion lag, wurden Benutzererfahrung und zusätzliche Funktionen nur sekundär betrachtet und flossen lediglich teilweise in Entwicklungsentscheidungen ein. \\
 
-Die Struktur der Entwicklung orientierte sich am Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}). Zunächst wurde ein Konzept erarbeitet, das die grundlegenden Anforderungen und Ziele der Anwendung festlegte.
-Darauf folgte eine Vorentwicklung, in der die technologische Machbarkeit überprüft wurde und anschließend in der Entwicklung des ersten Prototypen mündete.
-Die letzte Phase stellte die Entwicklung des lauffähigen Prototypen dar, welcher für die Interviews eingesetzt wurde.
-Eine vollständige Implementierung für ein Release war im Rahmen der Bachelorarbeit jedoch nicht vorgesehen, da dies die zur Verfügung stehenden Ressourcen überschritten hätte. \\
+Die Struktur der Entwicklung orientierte sich am Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}). 
+Zunächst wurde ein Konzept (vgl. Kap. \ref{sec:app-concept}) erarbeitet, das die grundlegenden Anforderungen und Ziele der Anwendung festlegte.
+Auf das Konzept folgte eine Vorentwicklung, in der die technologische Machbarkeit überprüft wurde und gewonnene Erkenntnisse in Form eines Entwicklungsplans festgehalten wurden (vgl. Kap. \ref{sec:app-development-plan}).
+Die Entwicklung des Prototypen orientierte sich an diesem Plan und wurde anschließend analysiert, um die Kriterien und den Entwicklungsplan zu verfeinern.
+Nach der Verbesserung des Entwicklungsplans wurde der lauffähige Prototyp entwickelt, welcher für die Interviews eingesetzt wurde.
+Eine vollständige Implementierung für ein Release, wie er im Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}) vorgesehen war, ist auf Basis der zur Verfügung stehenden Ressourcen ausgeschlossen. \\
 
-Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten Anwendung eingegangen.
+Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten Anwendung eingegangen, welches als Grundlage für den gesamten Entwicklungsprozess diente.
 
 \subsection{Konzept}
 \label{sec:app-concept}
 
 Als Kern der Anwendung wurde eine textbasierte Eingabe vorgesehen, über die Probanden direkt mit dem \gls{llm} kommunizieren können.
 Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine möglichst direkte Bearbeitung der Aufgabenstellungen.
-Darüber hinaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, für eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung erforderlich.
-Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge (tool calling) sowie zusätzlich eingebundenes Wissen.
-Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur während der Entwicklung ändern zu müssen. \\
+Darüber hinhaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, Teil des Konzeptes, um eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung zu ermöglichen.
+Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge sowie zusätzlich eingebundenes Wissensbausteine.
+Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur während der Entwicklung ändern zu müssen.
+Ein wichtiger Teil des Konzeptes war die Möglichkeit mehrere \gls{ifc}-Modelle gleichzeitig zu laden, 
+um dem in der Praxis angewandten Aufteilen von Modellen nach Fachdisziplin (vgl. Kap. \ref{sec:open-closed-bim}) gerecht zu werden. \\
 
-Bei der Anbindung des \gls{llm} wurde auf externe Dienstleister zur Bereitstellung der \gls{llm}-Funktionalität gesetzt, 
-um den Betrieb der entsprechenden \gls{llm} aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
-Alle eingesetzten \gls{llm} besitzen ein \gls{api}, das mit dem OpenAI \gls{api}-Standard kompatibel ist.
-Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung grundlegend bearbeiten zu müssen.
-Damit wurde zugleich sichergestellt, dass Modellwechsel oder Anpassungen an der Modellwahl den methodischen Ablauf der Interviews nicht beeinflussen. \\
+Das Konzept sah bei der Anbindung von \gls{llm} die Nutzung von externen Dienstleistern vor, 
+um den Betrieb aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
+Die Anbindung erfolgt über eine \gls{api}, welche dem OpenAI \gls{api}-Standard entspricht, um die Flexibilität bei der Auswahl des \gls{llm} zu erhöhen.
+Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung grundlegend bearbeiten zu müssen, 
+sodass Modellwechsel oder Anpassungen an der Modellwahl den methodischen Ablauf der Interviews nicht beeinflussen. \\
 
-Der Nutzer übermittelte bei der Bedienung Fragen über die Anwendung an das \gls{llm}, das auf Basis des Systemprompts und des im \gls{ifc}-Modell vorhandenen Wissens eine Antwort ausgibt.
-Damit wurde ein klarer und einheitlicher Ablauf geschaffen, der die Bearbeitung der Aufgaben sowie die spätere Auswertung der Antworten unterstützt. \\
-
-\subsection{Vorentwicklung und technische Machbarkeit}
-\label{sec:app-iteration-1}
-
-Um zu überprüfen, ob die im Konzept geplanten Technologien in Kombination zu einer funktionsfähigen Anwendung führen, 
-wurde am Anfang des Entwicklungsprozesses die technische Machbarkeit mit einer Vorentwicklung evaluiert.
-Dabei basierte die Vorentwicklung auf einem vorgefertigten \gls{mcp}-Server, der in Python mit der FastMCP-Bibliothek umgesetzt wurde \cite{github2025bonsaimcp}.
-Als technische Grundlage wurde die öffentlich verfügbare 3D-Bearbeitungssoftware Blender verwendet, um \gls{ifc}-Modelle zu laden und zu bearbeiten.
-Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erweiterung Bonsai eingesetzt, die von IfcOpenShell bereitgestellt wird \cite{bonsai2026blenderextensions}. \\
-
-\begin{table}[!htb]
-    \centering
-    \caption[Bereitgestellte Werkzeuge vom vorgefertigten \gls{mcp}-Server]{Alle Werkzeuge, welche der vorgefertigte \gls{mcp}-Server bereitgestellt hat.}
-    \label{tab:iteration1tools}
-    \begin{tabular}{L{6cm} L{8cm}}
-        \hline
-        \textbf{Name} & \textbf{Beschreibung} \\
-        \hline
-
-        \texttt{get\_ifc\_project\_info} & Gibt grundsätzliche Projektinformationen über das \gls{ifc}-Modell zurück. Neben Metadaten, wie Name und Beschreibung umfasst dies die Anzahl aller verfügbaren \gls{ifc}-Entitäten. \\
-
-        \texttt{list\_ifc\_entities} & Durchsucht das \gls{ifc}-Modell auf Basis gegebener Suchparameter nach \gls{ifc}-Entitäten. Als Suchparameter stehen der \gls{ifc}-Entitätstyp und die Möglichkeit zur Begrenzung der Ergebnisanzahl zur Verfügung.  \\
-
-        \texttt{get\_ifc\_properties} & Gibt alle Eigenschaften eines einzelnen Bauteils im geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
-
-        \texttt{get\_ifc\_spatial\_structure} & Gibt den strukturellen Aufbau des \gls{ifc}-Modells zurück. Dabei wird die Beziehung von Grundstücken (IfcSite), Gebäuden (IfcBuilding), Geschossen (IfcBuildingStorey) und einzelnen Räumen bzw. Flächen (IfcSpace) dargestellt. \\
-
-        \texttt{get\_ifc\_relationships} & Gibt alle Beziehungen eines einzelnen Bauteils im geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
-
-        \texttt{get\_selected\_ifc\_entities} & Gibt grundsätzliche Informationen über die vom Nutzer in Blender selektierten Bauteile zurück. \\
-
-        \texttt{export\_ifc\_data} & Erstellt eine als \gls{json} strukturierte oder als Tabelle formatierte Datei, welche die Struktur des \gls{ifc}-Modells abbildet. \\
-
-        \texttt{place\_ifc\_object} & Platziert eine gewählte \gls{ifc}-Entität an der angegebenen Position. Dabei können Koordinaten und Rotation angepasst werden. \\
-
-        \texttt{get\_ifc\_quantities} & Gibt Mengenwerte von \gls{ifc}-Entitäten zurück. \\
-
-        \texttt{get\_ifc\_total\_structure} & Als Erweiterung von \texttt{get\_ifc\_spatial\_structure} werden zusätzlich die darunterliegenden \gls{ifc}-Entitäten ausgegeben, die einen Bezug zu einem einzelnen Raum bzw. einer Fläche (IfcSpace) besitzen. \\
-        
-        \hline
-    \end{tabular}
-\end{table} 
-
-Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung genutzt, die gemeinsam mit dem \gls{mcp}-Server bereitgestellt wurde.
-Die Kommunikation zwischen Server und Blender erfolgte über eine Socket-Verbindung.
-Dabei wurden Werkzeugaufrufe einschließlich ihrer Parameter vom \gls{mcp}-Server an die in Blender installierte Erweiterung übermittelt, die die Befehle an Bonsai weiterleitete.
-Der \gls{mcp}-Server übernahm damit die Rolle einer Schnittstelle zwischen \gls{llm} und Modellbearbeitung \cite{github2025bonsaimcp}.
-In Tabelle \ref{tab:iteration1tools} sind die durch den \gls{mcp}-Server bereitgestellten Werkzeuge gelistet. \\
-
-Im folgenden Abschnitt wird die Entwicklung des Prototyps erläutert, welcher auf Basis der Vorentwicklung entwickelt wurde.
-
-\subsection{Entwicklung des Prototypen}
-\label{sec:app-iteration-2}
-
-Auf Basis der im vorherigen Kapitel vorgestellten Vorentwicklung wurde im Rahmen der Prototypenentwicklung ein selbst entwickelter \gls{mcp}-Server geschaffen. 
-Dieser wurde in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
-Im Unterschied zur Vorentwicklung lag der Schwerpunkt auf einer gezielten Reduktion der bereitgestellten Werkzeuge. 
-Statt einer breiten Abdeckung von Modellbearbeitungsfunktionen wurden nur noch Werkzeuge zur Wissensgewinnung bereitgestellt. \\
-
-Die bereitgestellten Werkzeuge entsprechen in ihrer Funktion weitgehend der Vorentwicklung, verwenden jedoch als \gls{ifc}-Bibliothek IfcOpenShell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
-Dies ermöglicht die eigenständige Definition der Extraktionslogik aus den geladenen Modellen. Im Hinblick auf die Leistungsfähigkeit des \gls{llm} erlaubt dies eine genauere Kontrolle über den bereitgestellten Kontext \cite{ifcopenshell_github}. \\
-
-Für die textbasierte Interaktion mit dem \gls{llm} wurde Open WebUI als Oberfläche genutzt.
-Die Software ermöglichte die Anbindung an unterschiedliche \gls{llm} sowie die Einbindung eigener \gls{mcp}-Server.
-Zusätzlich bot sie eine praktikable Grundlage für den Export von Nachrichtenverläufen und damit für die spätere Analyse der im Interview erzeugten Kommunikation \cite{openwebui2026home}. \\
-
-Nach der Definition des Prototypen wird im folgenden Abschnitt die Entwicklung des lauffähigen Prototypen (operational prototype) erläutert.
-
-\subsection{Entwicklung des lauffähigen Prototypen}
-\label{sec:app-final-iteration}
-
-Der im vorherigen Abschnitt definierte Prototyp diente zusammen mit dem Konzept als Grundlage für die Entwicklung des lauffähigen Prototypen (operational prototype).
-Im Mittelpunkt der Entwicklung stand dabei die Anbindung eines externen Datensatzes als Datenquelle, die eine effizientere Bereitstellung von Wissen für das \gls{llm} ermöglicht.
-Die Struktur des Datensatzes ist in Tabelle \ref{tab:103_app-data-structure} dargestellt und umfasst Informationen zu Bauteilen, Systemen, Materialien und Geschossen, die in den bereitgestellten \gls{ifc}-Modellen enthalten sind.
-Dabei entspricht jede Zeile einem einzelnen Eigenschaftswert, einer Systembeschreibung oder anderen einzelnen Informationseinheit, die mit einem Bauteil oder einem anderen Element im Modell verknüpft ist. \\
-\begin{table}[!htb]
-    \centering
-    \caption{Struktur des externen Datensatzes für den lauffähigen Prototypen}
-    \label{tab:103_app-data-structure}
-    \begin{tabular}{C{3cm} C{1.5cm} L{6.5cm}}
-        \hline
-        \textbf{Spalte} & \textbf{Typ} & \textbf{Beschreibung} \\
-        \hline
-
-        element\_uuid & text & Identifikation jedes Bauteils \\
-
-        model\_id & text & Referenz zum Modell \\
-
-        element\_type & text & IFC-Entitätstyp \\
-
-        property\_id & text & Identifikation der Eigenschaft \\
-
-        property\_name & text & Name der Eigenschaft \\
-
-        property\_value & text & Wert der Eigenschaft \\
-
-        property\_description & text & Beschreibung der Eigenschaft \\
-
-        property\_type & text & Typklassifikation der Eigenschaft \\
-
-        property\_valuetype & text & Datentyp des Wertes \\
-
-        pset\_name & text & Name des Property Sets  \\
-
-        pset\_type & text & Typ des Property Sets \\
-
-        pset\_description & text & Beschreibung des Property Sets \\
-
-        system\_uuid & text & Identifikation des Systems \\
-
-        system\_name & text & Name des Systems \\
-
-        system\_type & text & Typ des Systems \\
-
-        system\_description & text & Beschreibung des Systems \\
-
-        material\_name & text & Name des Materials \\
-
-        material\_category & text & Kategorie des Materials \\
-
-        material\_description & text & Beschreibung des Materials \\
-
-        material\_thickness & text & Dicke des Materials \\
-
-        storey\_uuid & text & Identifikation des Geschosses \\
-
-        storey\_name & text & Name des Geschosses \\
-
-        storey\_longname & text & Vollständiger Name des Geschosses \\
-
-        \hline
-    \end{tabular}
-\end{table}
-
-
-Zur Integration des Datensatzes wurde eine vollständige Web-Anwendung geschaffen (full stack web application), die die methodische Kontrolle des gesamten Ablaufs der Anfrageverarbeitung ermöglichte.
-Des Weiteren war die genaue Definition des Systemprompts sowie die Strukturierung der Anfragearchitektur ein wesentliches Mittel, um die Qualität der \gls{llm}-Abfragen zu steigern.
-Für die Entwicklung der Web-Anwendung wurde TypeScript als Programmiersprache eingesetzt, um die Kommunikation zwischen Frontend und Backend zu vereinfachen. \\
-
-Der lauffähige Prototyp wurde im Rahmen der Interviews mit den Probanden eingesetzt, die im nachfolgenden Abschnitt näher beschrieben werden.
+Die Anwendung wurde im Rahmen der Interviews eingesetzt, welche nachfolgend methodisch definiert werden.
 
 \section{Interviews}
 \label{sec:interviews}
 
-Um die entwickelte \gls{llm}-Anwendung mit Probanden zu testen, wurden Interviews durchgeführt. Dabei handelte es sich um Einzelinterviews, die in Form einer Videokonferenz durchgeführt wurden.
+Um die entwickelte \gls{llm}-Anwendung mit Probanden zu testen, wurden Einzelinterviews in Form einer Videokonferenz durchgeführt wurden.
 Dies reduzierte die Nutzung von Ressourcen für die Koordination der Interviewtermine erheblich, da die Verfügbarkeit von Probanden durch das ortsunabhängige Format verbessert wurde.
 
 Zur inhaltlichen Nachvollziehbarkeit wurde während der Gespräche ein grobes Gedankenprotokoll erstellt. Dieses diente als ergänzende Grundlage für die spätere Analyse der vom \gls{llm} erzeugten Ausgaben und half dabei, zentrale Beobachtungen aus der Interaktion systematisch festzuhalten.
@@ -204,7 +66,7 @@ Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierte
 
         1 & Seit wie vielen Jahren haben Sie Ihre aktuelle Jobposition inne? \\
 
-        2 & Wie viel Prozent der wöchentlichen Arbeitszeit beschäftigen Sie sich mit digitaler datengetriebener Planung? \\
+        2 & Wie viel \% der wöchentlichen Arbeitszeit beschäftigen Sie sich mit digitaler datengetriebener Planung? \\
 
         3 & Wie viel \% der wöchentlichen Arbeitszeit beschäftigen Sie sich mit der Koordination von Projekten oder Teammitgliedern? \\
 

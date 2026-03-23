@@ -6,21 +6,29 @@ Die gewonnenen Erkenntnisse werden dabei in der Reihenfolge ihrer Erarbeitung di
 und anschließend in einem Gesamtüberblick zusammenfassend betrachtet. \\
 
 \section{Entwickelte Anwendung}
+\label{sec:discussion-app}
 
 Die im Rahmen der Bachelorarbeit entwickelte Anwendung leistete gute Unterstützung bei der Datenerfassung während der Interviews.
 Das in Kapitel \ref{sec:app-concept} definierte Konzept konnte mithilfe der vorgesehenen Entwicklungsstruktur und der vorhandenen Ressourcen umgesetzt werden,
 sodass die für die Interviews erforderlichen Funktionen implementiert werden konnten.
 Der Übergang von der Vorentwicklung über den Prototyp bis hin zum lauffähigen Prototypen 
 ermöglichte zwischen den einzelnen Schritten eine Verfeinerung der Kriterien und des Entwicklungsplans.
+Ebenso wurde in der Vorentwicklung deutlich, dass Blender als externe Datenquelle für detailierte Iterationen der Anwendung ungeeignet ist,
+da die Bereitstellung der Anwendung dadurch komplexer wird und nur maximal ein Modell gleichzeitig geladen werden kann.
 Obwohl die Nutzbarkeit nur sekundär betrachtet wurde, traten bei den Probanden keine größeren Probleme bei der Bedienung der Anwendung auf.
 Dies ist nicht zuletzt auf die geringe Komplexität der Interaktionsfläche zurückzuführen, die nur essenzielle Funktionen bereitstellte.
 Die Darstellung der \gls{ifc}-Modelle in einem Viewer erhöhte die Ladezeit nach der Modellwahl erheblich,
 brachte jedoch keinen erkennbaren Informationsgewinn für die Probanden, da die vom \gls{llm} genutzte Datenquelle davon unabhängig war.
-Ein Verzicht auf den Viewer oder eine engere Integration beider Elemente erscheint daher sinnvoll. \\
+Ein Verzicht auf den Viewer oder eine engere Integration beider Elemente erscheint daher sinnvoll. 
+Insgesamt wurde das Frontend funktional aufgebaut, sodass die wenigen Ansichten und Elemente alle einen Zweck auf Basis des Konzepts ohne zusätzliche Komplexität für die Probanden erfüllen.
+Die meisten Ressourcen der Entwicklung wurden für die Entwicklung des Backends verwendet, welches im nachfolgenden Abschnitt nach Funktionsbereich innerhalb der Anwendung dargestellt wird. 
+Bei der Struktur des Backends zeigte sich, dass die modulare Architektur mit einer durchgängigen Trennung von Konfiguration, Datenhaltung, Anfrageverarbeitung, Wissensbereitstellung und Werkzeugausführung
+sowohl im eigentlichen Entwicklungsprozess, als auch bei der Fehlersuche positiv aufgefallen ist. \\
 
 Im nachfolgenden Abschnitt wird die Anwendung im Kontext der Interviews diskutiert, bevor die gewonnenen Erkenntnisse zu den \gls{llm}-Daten betrachtet werden.
 
 \section{Interviews}
+\label{sec:discussion-interviews}
 
 Die durchgeführten Interviews (vgl. Kap. \ref{sec:interviews} und Kap. \ref{sec:results-interviews}) erwiesen sich im Format einer Videokonferenz als geeignete Wahl,
 da die Terminfindung mit Probanden im Vergleich zu Präsenzterminen weniger aufwendig war.
@@ -58,6 +66,7 @@ Abschließend lässt sich festhalten, dass die Interviews insgesamt wertvolle Ei
 Es hat sich im Rahmen der Interviews eindeutig gezeigt, dass \gls{llm} eine wichtige unterstützende Rolle bei der Bearbeitung von Aufgabenstellungen einnehmen können, jedoch auch klare Grenzen in Bezug auf die Dateninterpretation und -nutzung aufweisen.
 
 \section{\gls{llm}-Daten}
+\label{sec:discussion-llm-data}
 
 Objektiv zeigten sich einige Schwächen in den Antworten des \gls{llm}, die sich insbesondere in der fehlerhaften Nutzung von Werkzeugen sowie der fehlerhaften Interpretation von Datenbankstrukturen manifestierten.
 Diese Fehler führten teilweise zu unverständlichen oder unbrauchbaren Antworten, die bei den Probanden Unsicherheit auslösten.
@@ -65,10 +74,18 @@ Durch eine verbesserte Konfiguration der Werkzeuge und der dem \gls{llm} zur Ver
 Gleichzeitig zeigte sich, dass das allgemeine Wissen des \gls{llm} kompetent genug für die Beantwortung komplexer fachspezifischer Fragen war. 
 Um auch bei Themen, die nicht im Trainingsdatensatz des \gls{llm} enthalten sind, kompetente Antworten zu ermöglichen, könnte zukünftig die Möglichkeit zur gezielten Nachladung von Informationen über ein Internetsuche-Werkzeug implementiert werden. \\
 
+Allgemein konnte festgestellt werden, dass das \gls{llm} die Ausführung von Werkzeugen grundsätzlich passiv auslegte und dadurch zum Teil auf wichtige Informationen,
+welche durch das Skill-Werkzeug zur Verfügung gestellt wurden, verzichtete. 
+Dies hatte zur Folge, dass manche \gls{llm}-Ausgaben fehlerhaft waren und die Aufgabenstellung durch Probanden nicht komplett bearbeitet werden konnte.
+Analog dazu wurde das Skill-Werkzeug in den meisten \gls{llm}-Ausgaben lediglich einmal ausgeführt, 
+wodurch bei Aufgabenstellungen mit direktem Bezug zum \gls{ifc}-Standard und zeitgleicher Nutzung der Datenbank Informationen zur Bearbeitung der Aufgabenstellung nicht vorhanden waren. 
+
 Insgesamt lässt sich festhalten, dass trotz der überwiegend fehlerhaften Antworten des \gls{llm}, die Probanden der Gruppe B in der Lage waren, die Antworten zu interpretieren und teilweise auch zu korrigieren, um die Aufgaben erfolgreich zu bearbeiten.
 Dies unterstreicht die Bedeutsamkeit der menschlichen Interpretation und Korrektur bei der Nutzung von \gls{llm} in komplexen Anwendungsfällen, insbesondere wenn die Datenbasis unvollständig oder fehlerhaft ist.
 Um fachkompetenten Akteuren die Nutzung von \gls{llm} zu erleichtern, ist in zukünftigen Anwendungen eine tiefgründige, manuell erarbeitete Datengrundlage für die Definition fachspezifischer Informationen notwendig,
 um die Fehleranfälligkeit der Antworten zu reduzieren und die Nutzbarkeit der \gls{llm}-Unterstützung zu erhöhen.
+
+- welche den Probanden der Gruppe B die Aufgabenstellung und das Ziel näher brachte. 
 
 \section{Gesamtausblick}
 

@@ -16,10 +16,11 @@ Dieser Abschnitt befasst sich mit den genannten Entwicklungsständen sowie dem i
 
 \subsection{Ergebnisse der Vorentwicklung}
 
-Insgesamt zeigte die Vorentwicklung, dass das Konzept der Anwendung technisch umsetzbar war. 
-Das \gls{llm} erzeugte Ausgaben, welche auf ein grundsätzliches Verständnis für die vorhandenen Werkzeuge hindeutete.
-Aufgrund der erheblichen Anzahl an definierten Werkzeugen gelang es dem \gls{llm} jedoch nicht, alle Werkzeuge konsequent einzusetzen,
-wodurch die Ausgabequalität insgesamt eingeschränkt wurde. \\
+Um zu überprüfen, ob die im Konzept geplanten Technologien in Kombination zu einer funktionsfähigen Anwendung führen, 
+wurde am Anfang des Entwicklungsprozesses die technische Machbarkeit mit einer Vorentwicklung evaluiert.
+Dabei basierte die Vorentwicklung auf einem vorgefertigten \gls{mcp}-Server, der in Python mit der FastMCP-Bibliothek umgesetzt wurde \cite{github2025bonsaimcp}.
+Als technische Grundlage wurde die öffentlich verfügbare 3D-Bearbeitungssoftware Blender verwendet, um \gls{ifc}-Modelle zu laden und zu bearbeiten (vgl. Abb. \ref{fig:104_blender-ifc-viewer}).
+Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erweiterung Bonsai eingesetzt, die von IfcOpenShell bereitgestellt wird \cite{bonsai2026blenderextensions}. \\
 
 \begin{figure}[htb]
 	\centering
@@ -30,40 +31,87 @@ wodurch die Ausgabequalität insgesamt eingeschränkt wurde. \\
 	\label{fig:104_blender-ifc-viewer}
 \end{figure}
 
-Die Nutzung von Blender als \gls{ifc}-Viewer und Modellierungssoftware (vgl. Abb. \ref{fig:104_blender-ifc-viewer}) stellte sich als wichtige Entscheidung für eine ressourcensparsame Entwicklung dar.
-Jedoch reduzierte die Verwendung einer externen Software als Datenquelle die Anpassbarkeit vorhandener Werkzeuge. \\
+Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung genutzt, die gemeinsam mit dem \gls{mcp}-Server bereitgestellt wurde.
+Die Kommunikation zwischen Server und Blender erfolgte über eine Socket-Verbindung.
+Dabei wurden Werkzeugaufrufe einschließlich ihrer Parameter vom \gls{mcp}-Server an die in Blender installierte Erweiterung übermittelt, die die Befehle an Bonsai weiterleitete.
+Der \gls{mcp}-Server übernahm damit die Rolle einer Schnittstelle zwischen \gls{llm} und Modellbearbeitung \cite{github2025bonsaimcp}.
+In Tabelle \ref{tab:iteration1tools} sind die durch den \gls{mcp}-Server bereitgestellten Werkzeuge gelistet. \\
 
-Zeitgleich war es nur mit erhöhtem Ressourcenaufwand möglich, Änderungen an der Konfiguration wie dem Systemprompt oder der Werkzeugdefinition durchzuführen.
-Durch die statische Definition der Konfiguration war eine Verbesserung der inkonsequenten Werkzeugnutzung ausgeschlossen. 
-Dies wurde in der Entwicklung des nachfolgenden Entwicklungsplans einbezogen, welcher genutzt wurde, um den Prototypen zu entwickeln.
+\begin{table}[!htb]
+    \centering
+    \caption[Bereitgestellte Werkzeuge vom vorgefertigten \gls{mcp}-Server]{Alle Werkzeuge, welche der vorgefertigte \gls{mcp}-Server bereitgestellt hat.}
+    \label{tab:iteration1tools}
+    \begin{tabular}{L{6cm} L{8cm}}
+        \hline
+        \textbf{Name} & \textbf{Beschreibung} \\
+        \hline
+
+        \texttt{get\_ifc\_project\_info} & Gibt grundsätzliche Projektinformationen über das \gls{ifc}-Modell zurück. Neben Metadaten, wie Name und Beschreibung umfasst dies die Anzahl aller verfügbaren \gls{ifc}-Entitäten. \\
+
+        \texttt{list\_ifc\_entities} & Durchsucht das \gls{ifc}-Modell auf Basis gegebener Suchparameter nach \gls{ifc}-Entitäten. Als Suchparameter stehen der \gls{ifc}-Entitätstyp und die Möglichkeit zur Begrenzung der Ergebnisanzahl zur Verfügung.  \\
+
+        \texttt{get\_ifc\_properties} & Gibt alle Eigenschaften eines einzelnen Bauteils im geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
+
+        \texttt{get\_ifc\_spatial\_structure} & Gibt den strukturellen Aufbau des \gls{ifc}-Modells zurück. Dabei wird die Beziehung von Grundstücken (IfcSite), Gebäuden (IfcBuilding), Geschossen (IfcBuildingStorey) und einzelnen Räumen bzw. Flächen (IfcSpace) dargestellt. \\
+
+        \texttt{get\_ifc\_relationships} & Gibt alle Beziehungen eines einzelnen Bauteils im geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
+
+        \texttt{get\_selected\_ifc\_entities} & Gibt grundsätzliche Informationen über die vom Nutzer in Blender selektierten Bauteile zurück. \\
+
+        \texttt{export\_ifc\_data} & Erstellt eine als \gls{json} strukturierte oder als Tabelle formatierte Datei, welche die Struktur des \gls{ifc}-Modells abbildet. \\
+
+        \texttt{place\_ifc\_object} & Platziert eine gewählte \gls{ifc}-Entität an der angegebenen Position. Dabei können Koordinaten und Rotation angepasst werden. \\
+
+        \texttt{get\_ifc\_quantities} & Gibt Mengenwerte von \gls{ifc}-Entitäten zurück. \\
+
+        \texttt{get\_ifc\_total\_structure} & Als Erweiterung von \texttt{get\_ifc\_spatial\_structure} werden zusätzlich die darunterliegenden \gls{ifc}-Entitäten ausgegeben, die einen Bezug zu einem einzelnen Raum bzw. einer Fläche (IfcSpace) besitzen. \\
+        
+        \hline
+    \end{tabular}
+\end{table} 
+
+Insgesamt zeigte die Vorentwicklung, dass das Konzept der Anwendung technisch umsetzbar war. 
+Das \gls{llm} erzeugte Ausgaben, welche auf ein grundsätzliches Verständnis für die vorhandenen Werkzeuge hindeutete.
+Aufgrund der erheblichen Anzahl an definierten Werkzeugen gelang es dem \gls{llm} jedoch nicht, alle Werkzeuge konsequent einzusetzen,
+wodurch die Ausgabequalität insgesamt eingeschränkt wurde. \\
+
+Aus der Vorentwicklung wurde ein Entwicklungsplan für den Prototypen abgeleitet, welcher die Reduktion der bereitgestellten Werkzeuge, 
+die Verbesserung der Anfragearchitektur sowie die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten vorsah,
+um die im Konzept definierten Anforderungen umzusetzen.
 
 \subsection{Ergebnisse des Prototypen}
 
-Bei der Entwicklung des Prototypen lag der Entwicklungsfokus primär auf der Adaptivität des Systemprompts, sowie der dem \gls{llm} zur Verfügung gestellten Werkzeuge.
-Des Weiteren ergab sich aus dem vorliegenden Entwicklungsplan die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten. 
-Die Reduktion der verwendeten gekapselten Komponenten war ebenfalls Teil des Entwicklungsplans, um die Bereitstellung der Anwendung zu vereinfachen. \\
+Auf Basis der im vorherigen Kapitel vorgestellten Vorentwicklung, sowie des abgeleiteten Entwicklungsplans, 
+wurde im Rahmen der Prototypenentwicklung ein selbst entwickelter \gls{mcp}-Server geschaffen. 
+Dieser wurde in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
+Im Unterschied zur Vorentwicklung wurden die bereitgestellten Werkzeuge fokussiert reduziert, 
+sodass statt einer breiten Abdeckung von Modellbearbeitungsfunktionen wurden nur noch Werkzeuge zur Wissensgewinnung bereitgestellt werden. \\
 
-Der Einsatz von FastMCP und Open WebUI ermöglichte eine Fokussierung auf die Werkzeugentwicklung, limitierte den Prototypen jedoch in Bezug auf mehrfache Abfragen oder agentenähnliches Verhalten,
-da keine Kontrolle über die Strukturierung der Abfrage durch das \gls{llm} bestand. Ebenfalls war der Prototyp so aufgebaut, dass nur ein \gls{ifc}-Modell gleichzeitig durch Probanden befragt werden konnte.
-Dies ergab sich aus technischen Hürden bei der gleichzeitigen Verarbeitung mehrerer Modelle -- entsprach jedoch nicht dem Konzept der Anwendung (vgl. Kap. \ref{sec:app-concept}). \\
+Die  Werkzeuge entsprechen in ihrer Funktion weitgehend der Vorentwicklung, verwenden jedoch als \gls{ifc}-Bibliothek IfcOpenShell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
+Dies ermöglicht die eigenständige Definition der Extraktionslogik aus den geladenen Modellen und allgemein die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten.
+Im Hinblick auf die Leistungsfähigkeit des \gls{llm} erlaubt dies eine genauere Kontrolle über den bereitgestellten Kontext \cite{ifcopenshell_github}. \\
 
-Vor der Entwicklung des lauffähigen Prototypen wurde dementsprechend erneut ein Plan für die Entwicklung aufgestellt. 
-Neben der präziseren Strukturierung der \gls{llm}-Abfragen war die Kombination der Interaktionsfläche für die Probanden mit den technischen Komponenten in einer einzelnen Anwendung zentral.
+Für die textbasierte Interaktion mit dem \gls{llm} wurde Open WebUI als Oberfläche genutzt.
+Die Software ermöglichte die Anbindung an unterschiedliche \gls{llm} sowie die Einbindung eigener \gls{mcp}-Server.
+Zusätzlich bot sie eine praktikable Grundlage für den Export von Nachrichtenverläufen und damit für die spätere Analyse der im Interview erzeugten Kommunikation \cite{openwebui2026home}. \\
+
+Auf Basis des Prototypen wurde der Entwicklungsplan für den lauffähigen Prototypen weiter verfeinert, um das Konzept (vgl. Kap. \ref{sec:app-concept}) vollständig umzusetzen.
+Besonders die Kombination von Interaktionsfläche und technischen Komponenten in einer einzelnen Anwendung, eine Strukturierung der \gls{llm}-Anfrage 
+und die Möglichkeit mehrere \gls{ifc}-Modelle parallel zu verarbeiten, ergaben sich aus den Erkenntnissen der Prototypenentwicklung. \\
 
 \subsection{Ergebnisse des lauffähigen Prototypen - Frontend}
 
-Auf Basis der nach der Entwicklung des Prototypen spezifizierten Eigenschaften wurde der lauffähige Prototyp entwickelt. 
-Dieser nutzte als Datengrundlage einen externen Datensatz, der über \gls{sql} abgefragt werden kann.
+Auf Basis der nach der Entwicklung des Prototypen verfeinerten Entwicklungsplans wurde der lauffähige Prototyp entwickelt. 
+Dieser nutzte als Datengrundlage einen externen Datensatz, welcher als Tabelle eingebettet wurde und über \gls{sql} abgefragt werden kann (vgl. Tab. \ref{tab:104_app-data-structure}).
+Die Tabelle umfasst Informationen zu Bauteilen, Systemen, Materialien und Geschossen, die in den bereitgestellten \gls{ifc}-Modellen enthalten sind.
+Jede Zeile entspricht einem einzelnen Eigenschaftswert, einer Systembeschreibung oder anderen einzelnen Informationseinheit, die mit einem Bauteil oder einem anderen Element im Modell verknüpft ist. 
 Mögliche Abfragen wurden durch das \gls{llm} als Text generiert, wodurch im Vergleich zu einem statischen Abfrageobjekt dem \gls{llm} mehr Freiheit bei der Datenabfrage gegeben wurde. \\
 
-Die angebundene Datenbank wurde auch verwendet, um Informationen über den Nachrichtenverlauf sowie die Werkzeugverwendung und Ausgaben des \gls{llm} zu speichern.
-Neben Details über Parameter der Werkzeugaufrufe wurden die Zeitpunkte in Bezug auf die Geschwindigkeit des \gls{llm} gespeichert.
-In Kombination mit der Software pgAdmin, welche für die Datenvalidierung verwendet wurde (vgl. Kap. \ref{sec:datenvalidierung}), 
-konnte die gesamte Historie von Nachrichten und Werkzeugaufrufen betrachtet und in gängigen Dateiformaten exportiert werden. \\
-
-Da eines der Elemente des Entwicklungsplans für den lauffähigen Prototypen den Zusammenschluss von Interaktionsfläche und technischen Komponenten darstellte,
-wurde bei der Entwicklung des lauffähigen Prototypen auf eine vollständige Web-Anwendung (full stack web application) gesetzt (vgl. Kap. \ref{sec:react} und Kap. \ref{sec:nestjs}),
-welche in einem Mono-Repository strukturiert wurde (vgl. \ref{sec:structure-code-with-repositories}). \\
+Um das eingebundene Wissen zu nutzen, wurde eine vollständige Web-Anwendung geschaffen (full stack web application), die die methodische Kontrolle des gesamten Ablaufs der Anfrageverarbeitung ermöglichte.
+Des Weiteren wurde die Definition des Systemprompts, sowie die Anfragearchitektur im Entwicklungsplan als Kernelemente identifziert und ausgebaut.
+Für die Entwicklung der Web-Anwendung wurde TypeScript als Programmiersprache eingesetzt, um die Kommunikation zwischen Frontend und Backend zu vereinfachen.
+React (vgl. Kap. \ref{sec:react}) wurde für Interaktionsflächen genutzt, während NestJS (vgl. Kap. \ref{sec:nestjs}) die technische Struktur des Backends bildete.
+Die gesamte Anwendung wurde mit einer Mono-Repository-Strategie strukturiert und unter GitHub versioniert (vgl. \ref{sec:structure-code-with-repositories}). \\
 
 \begin{figure}[htb]
 	\centering
@@ -76,7 +124,7 @@ welche in einem Mono-Repository strukturiert wurde (vgl. \ref{sec:structure-code
 
 Das mit React umgesetzte Frontend als Interaktionsfläche für die Probanden bestand aus einer Primäransicht (vgl. Abb. \ref{fig:104_app-ui-chat}), die einen \gls{ifc}-Viewer sowie die Texteingabe beinhaltete.
 Probanden konnten über die Texteingabe mit dem \gls{llm} kommunizieren und bekamen die entsprechenden Ausgaben des \gls{llm} angezeigt. 
-Der in der Abbildung dargestellte \gls{ifc}-Viewer diente als Referenz -- einen direkten Bezug zwischen den dem \gls{llm} zur Verfügung stehenden Daten und den abgebildeten Modellen im Viewer gab es nicht.
+Der in der Abbildung dargestellte \gls{ifc}-Viewer diente als Referenz, verfügte jedoch nicht über einen direkten Bezug zwischen den dem \gls{llm} zur Verfügung stehenden Daten und den abgebildeten Modellen im Viewer.
 Zusätzlich verfügte das Frontend über eine Modellauswahl, welche als Startbildschirm der Anwendung konfiguriert war (\ref{fig:104_app-loading-ifc-model}).
 
 \begin{figure}[htb]
@@ -100,8 +148,7 @@ welche eine vollständige Vorschau der Datei, sowie den Download ermöglichte (v
 	\label{fig:104_app-file-export}
 \end{figure}
 
-Insgesamt wurde das Frontend funktional aufgebaut -- die wenigen Ansichten und Elemente erfüllen alle einen Zweck auf Basis des Konzepts ohne zusätzliche Komplexität für die Probanden.
-Die meisten Ressourcen der Entwicklung wurden für die Entwicklung des Backends verwendet, welches im nachfolgenden Abschnitt nach Funktionsbereich innerhalb der Anwendung dargestellt wird.
+Der folgende Abschnitt befasst sich mit dem technischen Aufbau des Backends, welches die im Konzept definierten Funktionen bereitstellt und die Verarbeitung der Anfragen des \gls{llm} ermöglicht.
 
 \subsection{Ergebnisse des lauffähigen Prototypen - Backend}
 \label{sec:app-technical-structure}
@@ -109,7 +156,7 @@ Die meisten Ressourcen der Entwicklung wurden für die Entwicklung des Backends 
 Aufbauend auf dem im vorangegangenen Abschnitt beschriebenen Frontend wird im Folgenden das Backend des lauffähigen Prototypen strukturiert dargestellt.
 Das Backend basiert auf dem NestJS-Framework und nutzt die dort integrierte \gls{di}, um zentrale Verantwortlichkeiten in eigenständige Module zu gliedern.
 Als Datenbanksystem wird PostgreSQL eingesetzt, das über die \gls{orm}-Bibliothek Prisma angebunden ist (vgl. Kap. \ref{sec:app-prismamodule}).
-Dabei integriert das Datenbanksystem den in Tabelle \ref{tab:103_app-data-structure} beschriebenen Datensatz, welcher die Grundlage für die Datenabfrage durch das \gls{llm} bildet.
+Dabei integriert das Datenbanksystem den in Tabelle \ref{tab:104_app-data-structure} beschriebenen Datensatz, welcher die Grundlage für die Datenabfrage durch das \gls{llm} bildet.
 Die textbasierte Interaktion zwischen Nutzer und \gls{llm} erfolgt im ChatModule (vgl. Kap. \ref{sec:app-chatmodule}), während das ChatHistoryModule die Nachrichten für die spätere Auswertung speichert (vgl. Kap. \ref{sec:app-chathistorymodule}).
 Für die Wissensbereitstellung sind das PromptModule (vgl. Kap. \ref{sec:app-promptmodule}), das SkillsModule (vgl. Kap. \ref{sec:app-skillsmodule}) und das ToolsModule (vgl. Kap. \ref{sec:app-toolsmodule}) verantwortlich.
 In der Abbildung \ref{fig:104_app-backend-structure} sind die Beziehungen der verschiedenen Module sowie deren untergeordnete Dienstleister grafisch dargestellt.
@@ -137,6 +184,66 @@ Das PrismaModule kapselt den Zugriff auf die relationale Datenbank und stellt mi
 Dadurch werden Typensicherheit, strukturierte Datenzugriffe sowie die Migration der Datenbankstruktur unterstützt.
 Kernbestandteil des Moduls ist der PrismaService, der die zentrale Datenbankverwaltung innerhalb der Anwendung implementiert.
 Zusätzlich erlaubt das Modul die Ausführung von rohem SQL, was insbesondere für das QueryTool erforderlich ist (vgl. Kap. \ref{sec:postgresql-prisma}).
+In Tabelle \ref{tab:104_app-data-structure} ist die Tabellenstruktur des externen Datensatzes dargestellt, welcher dem \gls{llm} über das Query-Werkzeug zur Verfügung steht.
+
+\begin{table}[!htb]
+    \centering
+    \caption[Tabellenstruktur von externem Datensatz]{Die Tabellenstruktur des externen Datensatzes im lauffähigen Prototypen}
+    \label{tab:104_app-data-structure}
+    \begin{tabular}{C{3cm} C{1.5cm} L{6.5cm}}
+        \hline
+        \textbf{Spalte} & \textbf{Typ} & \textbf{Beschreibung} \\
+        \hline
+
+        element\_uuid & text & Identifikation jedes Bauteils \\
+
+        model\_id & text & Referenz zum Modell \\
+
+        element\_type & text & IFC-Entitätstyp \\
+
+        property\_id & text & Identifikation der Eigenschaft \\
+
+        property\_name & text & Name der Eigenschaft \\
+
+        property\_value & text & Wert der Eigenschaft \\
+
+        property\_description & text & Beschreibung der Eigenschaft \\
+
+        property\_type & text & Typklassifikation der Eigenschaft \\
+
+        property\_valuetype & text & Datentyp des Wertes \\
+
+        pset\_name & text & Name des Property Sets  \\
+
+        pset\_type & text & Typ des Property Sets \\
+
+        pset\_description & text & Beschreibung des Property Sets \\
+
+        system\_uuid & text & Identifikation des Systems \\
+
+        system\_name & text & Name des Systems \\
+
+        system\_type & text & Typ des Systems \\
+
+        system\_description & text & Beschreibung des Systems \\
+
+        material\_name & text & Name des Materials \\
+
+        material\_category & text & Kategorie des Materials \\
+
+        material\_description & text & Beschreibung des Materials \\
+
+        material\_thickness & text & Dicke des Materials \\
+
+        storey\_uuid & text & Identifikation des Geschosses \\
+
+        storey\_name & text & Name des Geschosses \\
+
+        storey\_longname & text & Vollständiger Name des Geschosses \\
+
+        \hline
+    \end{tabular}
+\end{table}
 
 \subsubsection{ChatModule - Verarbeitung von Nutzereingaben und Ablauf der \gls{llm}-Anfrage}
 \label{sec:app-chatmodule}
@@ -261,9 +368,7 @@ Das SkillsModule benutzt dabei das gleichnamige Werkzeug "skill", um dem \gls{ll
     \end{tabular}
 \end{table}
 
-Zusammenfassend zeigt der technische Aufbau eine klar modulare Architektur mit einer durchgängigen Trennung von Konfiguration, Datenhaltung, Anfrageverarbeitung, Wissensbereitstellung und Werkzeugausführung.
-Die Anwendung bringt damit die notwendigen technischen Voraussetzungen mit, um die Interaktion der Probanden mit dem \gls{llm} im Rahmen der Interviews methodisch kontrolliert zu gestalten und die Qualität der erzeugten Antworten systematisch zu analysieren.
-
+Die Ergebnisse, welche unter Verwendung der Anwendung erzeugt wurden, sind im folgenden Abschnitt dargestellt und analysiert.
 
 \section{Ergebnisse der Interviews}
 \label{sec:results-interviews}
@@ -287,7 +392,8 @@ Die gesamte Auflistung der entwickelten Aufgabenstellungen wurde aufgrund der Gr
 Einige dieser im Anhang befindlichen Aufgabenstellungen sind aufgrund von Fachbegriffen oder fehlenden Details aus dem Alltag ohne zusätzliche Erklärung schwer nachzuvollziehen,
 weshalb sie in den folgenden Absätzen auf Basis der Aussagen der Probanden der Gruppe A näher definiert werden. \\
 
-\textit{Analysieren Sie, wie viele IfcBuildingElementProxy-Entitäten es im Modell gibt und für welchen Zweck diese eingesetzt werden.}
+\textbf{Analysieren Sie, wie viele IfcBuildingElementProxy-Entitäten es im Modell gibt und für welchen Zweck diese eingesetzt werden.}
+
 Die genannte Aufgabenstellung befasst sich mit der Verwendung von IfcBuildingElementProxy-Entitäten bei der Modellierung von Gebäuden. 
 Dabei handelt es sich bei dieser Entität um einen Platzhalter, welcher für beliebige Elemente eingesetzt wird. 
 Vorgesehen ist diese Entität für Elemente, welche keine eigene \gls{ifc}-Entität besitzen und somit durch eine generische Entität abgebildet werden müssen.
@@ -295,19 +401,23 @@ Aufgrund der generischen Natur der Entität wird diese in der Praxis auch an Ste
 Die Aufgabenstellung zielt daher auf die Analyse der in den Modellen vorhandenen IfcBuildingElementProxy-Entitäten ab, um festzustellen, 
 ob die Nutzung dieser generischen Entität innerhalb der Projektvorgaben liegt. \\
 
-\textit{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt und die gleiche Höhe besitzen.}
+\textbf{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt und die gleiche Höhe besitzen.}
+
 Im Rahmen der gesamtheitlich datengetriebenen Planung von Gebäuden werden verschiedene Modelle benutzt, welche in der Praxis den unterschiedlichen Gewerken oder Fachgebieten zugeordnet sind.
 Diese Modelle besitzen unterschiedliche Elemente des Gebäudes, benötigen aber eine gemeinsame Projektstruktur. 
 Der \gls{ifc}-Standard definiert innerhalb eines Gebäudes (IfcBuilding), Ebenen (IfcBuildingStorey) und Räume bzw. Volumen (IfcSpace).
 Das Architekturmodell, welches in der Praxis vom Architekten oder primären Planungsbüro modelliert wird, gibt dabei die Struktur vor, welche in den anderen Modellen repliziert wird.
 Dabei können besonders in Bezug auf die Benennung oder die Höhe der Ebenen Unterschiede zwischen den verschiedenen Modellen auftreten, welche im Rahmen dieser Aufgabenstellung gefunden werden sollen. \\
-\textit{Finden Sie das Attribut zur Ermittlung von Kostengruppen nach der DIN 276 im Modell.}
+
+\textbf{Finden Sie das Attribut zur Ermittlung von Kostengruppen nach der DIN 276 im Modell.}
+
 Bei der Planung und Ausführung von Bauprojekten wird die DIN 276 eingesetzt, um systematisch Kosten des Projektes zu planen und aufzuschlüsseln.
 Dabei ist jedem Kostenpunkt abhängig vom Zweck der Kosten eine entsprechende numerische Kategorie zugewiesen.
 Im Rahmen von datengetriebenen Planungsprojekten können diese Kostengruppen als Parameter an den jeweiligen Elementen des Modells hinterlegt werden.
 Die Aufgabenstellung zielt dabei explizit auf den verwendeten Parameter zur Sicherung der Kostengruppe pro Element ab, da dieser in der Praxis keinem Standard folgt und zwischen verschiedenen Projekten unterschiedlich definiert sein kann. \\
 
-\textit{Berechnen Sie die Gesamtlänge aller Heizungsrohre im Modell mit dem Durchmesser DN15 und gruppieren Sie das Ergebnis nach dem jeweiligen Geschoss.}
+\textbf{Berechnen Sie die Gesamtlänge aller Heizungsrohre im Modell mit dem Durchmesser DN15 und gruppieren Sie das Ergebnis nach dem jeweiligen Geschoss.}
+
 Im Vergleich zu den vorherigen Aufgabenstellungen handelt es sich bei der genannten Aufgabenstellung um ein komplexes Problem, 
 das im Kontext der den Probanden der Gruppe A gestellten Leitfrage (vgl. Kap. \ref{sec:aufgabenstellung-gruppe-a}) für eine unangelernte Hilfskraft grundsätzlich ungeeignet ist.
 Dennoch wurde sie im Rahmen der Interviews verwendet, um die Leistungsfähigkeit des Query-Werkzeuges und die mehrstufige Abfrage von Informationen zu überprüfen. \\
@@ -322,19 +432,22 @@ Im Rahmen der Vorprüfung der Aufgabenstellungen wurden Aufgabenstellungen ausso
 die zumutbare Komplexität für fachfremde Akteure überschritten oder mindestens in Teilen Daten benötigten, die im verwendeten Datensatz nicht vorhanden waren.
 In diesem Abschnitt werden die aussortierten Aufgabenstellungen strukturiert abgebildet und entsprechende Probleme auf Basis der Interviews mit der Probandengruppe A erläutert. \\
 
-\textit{Prüfen Sie das Modell auf mögliche Kollisionen von Bauteilen und erstellen Sie eine Liste mit den entsprechenden Kollisionen, welche Bauteile, die Koordinaten der Kollision, sowie eine Beschreibung und Bewertung der Kollision beinhaltet.}
+\textbf{Prüfen Sie das Modell auf mögliche Kollisionen von Bauteilen und erstellen Sie eine Liste mit den entsprechenden Kollisionen, welche Bauteile, die Koordinaten der Kollision, sowie eine Beschreibung und Bewertung der Kollision beinhaltet.}
+
 Im beruflichen Alltag stellen Kollisionsprüfungen einen wichtigen Bestandteil der Arbeit mit datengetriebener Planung dar.
 Aufgrund der vielfältigen Zusammenarbeit verschiedener Planer, die in der Praxis über mehrere Unternehmen verteilt sind, sind Komplikationen in der Platzierung von Bauteilen oder Objekten nicht auszuschließen.
 Das Thema Kollisionsprüfung ist ein komplexes Unterfangen, das in der Praxis durch spezielle Software gelöst wird, die auf diese Aufgabe zugeschnitten ist.
 Unter dem Hintergrund der Komplexität wurde diese Aufgabenstellung daher aussortiert. \\
 
-\textit{Überprüfen Sie, ob alle Bauteile, welche einem IfcSpace zugewiesen sind, von diesem eingefasst werden.}
+\textbf{Überprüfen Sie, ob alle Bauteile, welche einem IfcSpace zugewiesen sind, von diesem eingefasst werden.}
+
 Bei einem IfcSpace handelt es sich um ein virtuelles Volumen, das innerhalb der Gesamtstruktur eines \gls{ifc}-Modells einen Raum oder eine Fläche definiert.
 Jedem IfcSpace können dabei Bauteile und Elemente untergeordnet werden, welche in direkter Relation zu diesem IfcSpace stehen.
 Aufgrund von Umpositionierungen oder unsauberer Modellierung können dabei Bauteile die Grenzen des IfcSpace-Volumens überschreiten und somit zwar in der Struktur logisch verknüpft sein,
 im Kontext der Geometrie aber nicht oder nur teilweise zuzuordnen sein. Aufgrund der im Datensatz fehlenden Geometrieinformationen war diese Aufgabenstellung jedoch nicht durchzuführen. \\
 
-\textit{Überprüfen Sie, ob die Durchbrüche für Leitungen und Rohre vorhanden sind und korrekt ausgeführt wurden.}
+\textbf{Überprüfen Sie, ob die Durchbrüche für Leitungen und Rohre vorhanden sind und korrekt ausgeführt wurden.}
+
 Analog zur vorangegangenen Aufgabenstellung werden Durchbrüche in der Praxis oft zunächst als IfcBuildingElementProxy (generisches Element) ausgeführt.
 Um die korrekte Platzierung der Durchbrüche zu validieren, ist zudem eine Kollisionsüberprüfung der am Durchbruch beteiligten Elemente erforderlich.
 Auf Basis der Komplexität der Aufgabenstellung sowie der Verwendung von Daten, die im Datensatz nicht vorhanden sind, wurde die Aufgabe aussortiert. \\
@@ -355,11 +468,6 @@ Probanden der Gruppe B mit minimalem Grundwissen nutzten Formulierungen, welche 
 oder in den Skills (vgl. Tab. \ref{tab:103_available-skills}) verwendeten Fachbegriffen lagen.
 Probanden der Gruppe B mit keiner Vorerfahrung setzten zum Teil Formulierungen ein, welche durch das \gls{llm} konträr zum Ziel des Probanden interpretiert wurden, 
 sodass Aufgabenstellungen erst nach Korrektur durch weitere Informationen des Probanden oder gar nicht vollständig bearbeitet wurden. \\
-
-Allgemein konnte festgestellt werden, dass das \gls{llm} die Ausführung von Werkzeugen grundsätzlich passiv auslegte und dadurch zum Teil auf wichtige Informationen,
-welche durch das Skill-Werkzeug zur Verfügung gestellt wurden, verzichtete. Dies hatte zur Folge, dass manche \gls{llm}-Ausgaben fehlerhaft waren und die Aufgabenstellung durch Probanden nicht komplett bearbeitet werden konnte.
-Analog dazu wurde das Skill-Werkzeug in den meisten \gls{llm}-Ausgaben lediglich einmal ausgeführt, 
-wodurch bei Aufgabenstellungen mit direktem Bezug zum \gls{ifc}-Standard und zeitgleicher Nutzung der Datenbank Informationen zur Bearbeitung der Aufgabenstellung nicht vorhanden waren. \\
 
 Insgesamt zeigten sich alle Probanden der Gruppe B sehr zufrieden mit den Ausgaben, die durch das \gls{llm} generiert wurden.
 Das galt in Bezug auf die Detailtiefe der Ausgaben, aber auch für die empfohlenen Handlungsanweisungen, die vom \gls{llm} in den meisten Fällen am Ende der Ausgabe formuliert wurden.
@@ -439,8 +547,7 @@ Es handelt sich bei diesen Ergebnissen um die objektive Analyse der ausgegebenen
 In der Abbildung \ref{fig:104_results-ai} sind die strukturierten Analysedaten der \gls{llm}-Ausgaben abgebildet. 
 Von den insgesamt 41 analysierten \gls{llm}-Ausgaben sind 36 \% der \gls{llm}-Ausgaben als objektiv korrekt eingestuft worden. 
 Insbesondere die Einbettung allgemeinen Wissens in Ausgaben des \gls{llm} war korrekt durchgeführt.
-Bei bauspezifischen Themen wie der Definition der DIN 276 oder von Kostengruppen gab das \gls{llm} trotz fehlenden Werkzeugs zur Internetsuche korrekte Informationen aus,
-welche den Probanden der Gruppe B die Aufgabenstellung und das Ziel näher brachte. 
+Bei bauspezifischen Themen wie der Definition der DIN 276 oder von Kostengruppen gab das \gls{llm} trotz fehlenden Werkzeugs zur Internetsuche korrekte Informationen aus.
 Allgemein wurde bemerkt, dass durch das \gls{llm} korrekte Annahmen oder Erklärungen an die Probanden gegeben wurden,
 welche Informationen beinhalteten, die weder in der Datenbank noch im Systemprompt vorhanden waren.
 Auch die Möglichkeit, vorangegangene Inhalte der Konversation mit den Probanden zusammenzufassen und in einfacherer Sprache zu erläutern, bot den Probanden eine Möglichkeit,
