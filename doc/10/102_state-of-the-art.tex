@@ -49,7 +49,7 @@ Im Folgenden wird die Probandengruppe dargestellt, die im Rahmen der vorliegende
 Die Zusammenstellung der Probandengruppe folgt einem kriteriumsorientierten, gezielten Sampling (purposeful sampling). 
 Dabei werden Teilnehmende nicht zufällig ausgewählt, sondern anhand vordefinierter Merkmale, um informationsreiche Fälle für die jeweilige Forschungsfrage zu erhalten \cite{palinkas2015purposefulsampling}. \\
 
-Für die vorliegende Fallstudie wurden die Auswahlkriterien aus den im Interviewteil formulierten Erkenntniszielen (vgl. Kap. \ref{chap:interviews}) sowie aus den Leitfragen des Interviewkerns (vgl. Tab. \ref{tab:103_interview-core-questions}) abgeleitet. 
+Für die vorliegende Fallstudie wurden die Auswahlkriterien aus den im Interviewteil formulierten Erkenntniszielen (vgl. Kap. \ref{sec:interviews}) sowie aus den Leitfragen des Interviewkerns (vgl. Tab. \ref{tab:103_interview-core-questions}) abgeleitet. 
 Die zentrale Trennvariable ist die Fachkompetenz im untersuchten Domänenkontext. 
 Diese Aufteilung ermöglicht eine kontrastive Betrachtung zwischen fachlich geprägter und fachfremder Perspektive und erhöht zugleich die Spezifität der Stichprobe. \\
 
@@ -362,54 +362,37 @@ Für die vorliegende Arbeit wurde dieses Prinzip in angepasster Form übernommen
 \label{sec:software-development}
 
 Dieser Abschnitt beschreibt die technischen Grundlagen der im Rahmen dieser Arbeit umgesetzten Softwareentwicklung. 
-Zuerst wird die Strukturierung und Versionierung von Quellcode betrachtet (vgl. Kap. \ref{sec:structure-code-with-repositories} und Kap. \ref{sec:git-github}).
+Zuerst wird in die verwendete Vorgehensweise bei der Entwicklung eingeleitet (vgl. Kap. \ref{sec:spiral-model}).
+Es folgt die Strukturierung und Versionierung von Quellcode in Kapitel \ref{sec:structure-code-with-repositories}
 Der danach folgende Unterabschnitt \glqq Entwicklung von Web-Anwendungen\grqq{} (vgl. Kap. \ref{sec:web-development}) führt dabei in die Grundsätze der Entwicklung von Webanwendungen ein und erläutert die technischen Hintergründe für die Datenübertragung.
 Zuletzt wird die konkrete Technologiewahl mit React, NestJS, PostgresSQL und Prisma sowie tRPC (vgl. Kap. \ref{sec:react}, Kap. \ref{sec:nestjs}, Kap. \ref{sec:postgresql-prisma} und Kap. \ref{sec:trpc}) in den nachfolgenden Unterabschnitten vertieft.
 
+\subsection{Spiralmodell für die Anwendungsentwicklung}
+\label{sec:spiral-model}
 
-\subsection{Strukturierung von Code mit Repositories}
+Das Spiralmodell nach Boehm ist ein risikoorientiertes Vorgehensmodell der Softwareentwicklung, das den Entwicklungsprozess als wiederholte Zyklen organisiert.
+Jede Iteration durchläuft dabei typischerweise vier Kernaktivitäten: Zieldefinition und Planung, systematische Risikoanalyse, Entwicklung und Validierung eines Zwischenstands sowie die Entscheidung über das weitere Vorgehen.
+Im Unterschied zu strikt linearen Modellen erlaubt das Spiralmodell eine schrittweise Verfeinerung von Anforderungen und Lösungen, wobei Unsicherheiten früh erkannt und durch gezielte Maßnahmen reduziert werden.
+Damit eignet sich der Ansatz insbesondere für Anwendungsentwicklungen mit komplexen Rahmenbedingungen, sich ändernden Anforderungen und erhöhtem Projekt- oder Technologierisiko \cite{boehm1988spiralmodel}.
+
+\subsection{Strukturierung und Versionierung von Code mit Repositories, Git und GitHub}
 \label{sec:structure-code-with-repositories}
-Die Softwareentwicklung basiert grundsätzlich auf der Erstellung von Quellcode, der in Textdateien abgelegt wird.
-Zur strukturierten Organisation, nachvollziehbaren Versionierung und kollaborativen Weiterentwicklung dieses Quellcodes werden in der Praxis Repositories eingesetzt. \\
-
-Repositories ermöglichen Entwicklern, den Quellcode von entwickelten Anwendungen mithilfe von Commits zu speichern.
-Ein Commit beschreibt dabei Änderungen des Quellcodes, von einem einzelnen Entwickler verpackt und mit einer Beschreibung versehen (vgl. Kap. \ref{sec:git-github}).
-Dies ermöglicht eine redundante Strategie für Backups, da Repositories in den meisten Fällen bei Cloud-Diensten mit entsprechender Backup-Struktur gespeichert sind, 
-nachvollziehbare Änderungen durch die Unveränderbarkeit erstellter Commits sowie die Zusammenarbeit mit anderen Entwicklern durch ein System für das Zusammenführen von Änderungen und die Konfliktlösung bei Problemen \cite{losoviz2023monorepovsmultirepo}. \\
-
-Zur Strukturierung eines gesamten Softwareprojekts gibt es unterschiedliche Repository-Strategien. \\
-
-Eine Strategie ist das Mono-Repository, in dem alle Komponenten des Projekts in einem einzelnen Repository abgelegt sind. 
-Dabei birgt dies besonders bei stark gekoppelten Anwendungen einen Vorteil, da Code zwischen verschiedenen Komponenten des Projekts ohne Orchestrierungsaufwand, wie etwa erweiterte Abhängigkeitsverwaltung, ausgetauscht und verwendet werden kann.
-Ebenso reduziert sich der Aufwand, neue Teammitglieder in das bestehende Projekt aufzunehmen. Gleichzeitig erlaubt ein Mono-Repository jedem Entwickler, einen Gesamtüberblick über das Projekt zu gewinnen, ohne von Repository zu Repository springen zu müssen.
-Dieser Überblick eignet sich besonders bei weitreichenden Änderungen, welche weite Teile des Projektes gleichzeitig betreffen. \cite{losoviz2023monorepovsmultirepo}. \\
-
-Als Gegenstrategie existiert das Multi-Repository. Jede abgrenzbare Komponente bekommt ein eigenes Repository und ist im Bezug auf Abhängigkeiten und Code stärker von anderen Komponenten isoliert. 
-Die Isolation erlaubt unabhängige Veröffentlichung der jeweiligen Komponenten, wodurch sich die Veröffentlichungsfrequenz im Vergleich zu einem Mono-Repository erhöht.
-Da Zugriffsrechte immer je Repository vergeben werden, erlaubt die Multi-Repository-Strategie eine verbesserte Rechtezuweisung. 
-Teammitglieder, welche nur einzelne Komponenten bearbeiten, bekommen nicht automatisch Zugriff auf den gesamten Quellcode des Projektes.
-Des Weiteren erlaubt die Isolation der Komponenten unabhängige Architekturentscheidungen für jede Komponente, da nur die Schnittstelle zwischen den Komponenten für die Kommunikation relevant ist \cite{losoviz2023monorepovsmultirepo}. \\
-
-\subsection{Speicherung von Code mit Git \& GitHub}
 \label{sec:git-github}
 
-Wie im vorherigen Abschnitt beschrieben, bilden Commits die grundlegende Einheit der Änderungsverfolgung in einem Versionsverwaltungssystem. 
-Jeder Commit stellt dabei einen gespeicherten Zustand des Projekts dar und ermöglicht es, den Entwicklungsverlauf nachzuvollziehen sowie bei Bedarf auf frühere Stände zurückzukehren \cite{chacon2014progit}. 
-Aufbauend auf diesem Konzept wird im Folgenden das Versionsverwaltungssystem Git sowie die darauf aufbauende Plattform GitHub eingeführt. \\
+Die Organisation von Quellcode erfolgt in der Praxis über Repositories, die sowohl eine strukturierte Ablage als auch eine nachvollziehbare Änderungsverfolgung ermöglichen. 
+Als zentrale Einheit dient der Commit, der einen konkreten Projektzustand mit zugehörigen Metadaten dokumentiert. 
+Damit wird der Entwicklungsverlauf transparent, und frühere Stände lassen sich bei Bedarf wiederherstellen \cite{chacon2014progit}. \\
 
-Git ist ein \gls{dvcs}, das ursprünglich im Jahr 2005 von Linus Torvalds für die Entwicklung des Linux-Kernels entwickelt wurde. 
-Im Gegensatz zu zentralisierten Systemen besitzt bei Git jede Arbeitskopie die vollständige Geschichte des Projekts. 
-Dadurch können Entwicklerinnen und Entwickler unabhängig voneinander und auch ohne ständige Netzwerkverbindung arbeiten \cite{chacon2014progit}. \\
+Für die übergeordnete Projektstruktur werden typischerweise Mono- und Multi-Repository-Strategien unterschieden. 
+Mono-Repositories bündeln alle Komponenten in einem gemeinsamen Repository, was insbesondere bei eng gekoppelten Systemen den abteilungsübergreifenden Austausch und koordinierte Änderungen erleichtert. 
+Multi-Repositories trennen Komponenten stärker voneinander und unterstützen dadurch unabhängige Releases, differenzierte Zugriffsrechte sowie getrennte technologische Entscheidungen je Komponente \cite{losoviz2023monorepovsmultirepo}. \\
 
-Git speichert Daten nicht als Datei-Differenzen, sondern als eine Folge von Snapshots des gesamten Projektverzeichnisses. 
-Die Snapshots sind dabei so strukturiert, dass nicht geänderte Dateien als Referenz zur letzten Änderung abgelegt werden und somit keine doppelte Speicherung dieser erfolgt.
-Jeder Commit referenziert dabei einen solchen Snapshot und enthält Metadaten wie Autor, Zeitstempel und eine Beschreibung der vorgenommenen Änderungen \cite{chacon2014progit}. \\
+Die Versionierung wird häufig mit Git als \gls{dvcs} umgesetzt. 
+Git arbeitet snapshot-basiert und hält die Projekthistorie in jeder Arbeitskopie vor, wodurch kollaboratives Arbeiten auch bei unterbrochener Netzwerkverbindung möglich bleibt. 
+Über Branches können Änderungen zunächst isoliert entwickelt und anschließend per Merge in den Hauptzweig integriert werden \cite{chacon2014progit}. \\
 
-Ein Kernbestandteil von Git sind sogenannte Branches (dt. Zweige). Ein Branch ist dabei ein von anderen Änderungen isolierter Strang, welcher von einem Commit aus gestartet wird.
-Dabei können weitere Commits zu diesem Branch hinzugefügt werden, ohne dass andere Branches beeinflusst werden. 
-Diese Isolation ermöglicht die Zusammenarbeit unter der Nutzung von Git mit einer beliebigen Teamgröße.
-Änderungen und entsprechende Commits beeinflussen nicht die Arbeit anderer Teammitglieder.
-Nachdem Commits auf dem jeweiligen Branch erstellt wurden, können diese über einen Merge (Zusammenführung) in den Hauptzweig zurückgeführt werden \cite{chacon2014progit}. \\
+Auf dieser Grundlage wird GitHub als Plattform genutzt, um Git-Repositories zentral bereitzustellen und teamorientierte Arbeitsabläufe zu unterstützen. 
+Dadurch werden sowohl die technische Versionierung als auch die organisatorische Zusammenarbeit im Entwicklungsprozess gebündelt \cite{losoviz2023monorepovsmultirepo}.
 
 \subsection{Entwicklung von Web-Anwendungen}
 \label{sec:web-development}

@@ -1,50 +1,53 @@
 \chapter{\textbf{Methodik}}
 \label{chap:methods}
 
-Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen der Arbeit angewandte Methodik systematisch dargestellt. Zunächst wird die Entwicklung der Anwendung über mehrere Iterationsschritte beschrieben und der technische Aufbau der finalen Version erläutert.
+Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen der Arbeit angewandte Methodik systematisch dargestellt. 
+Zunächst wird die Entwicklung der Anwendung auf Basis des Spiralmodelles (vgl. Kap. \ref{sec:spiral-model}) beschrieben und der technische Aufbau des lauffähigen Prototypen erläutert.
 Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen dargestellt; anschließend erfolgt die Validierung der erzeugten \gls{llm}-Ausgaben.
 Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die spätere Auswertung.
 
 \section{KI-Anwendung für Interviews}
 \label{sec:app}
 
-Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung zur Nutzung im Rahmen der Interviews geschaffen.
+Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung entwickelt, die im Rahmen der Interviews eingesetzt werden konnte.
 Die Anwendung wurde bewusst als methodisches Werkzeug konzipiert, um die Interaktion der Probanden mit dem \gls{llm} unter vergleichbaren Rahmenbedingungen zu ermöglichen.
-Damit sollte eine nachvollziehbare Grundlage geschaffen werden, auf deren Basis die Qualität der erzeugten Antworten systematisch betrachtet werden kann.
-Dabei lag der Fokus ausschließlich auf der Entwicklung einer fähigen KI-Chat-Anwendung, sodass Benutzererfahrung, Benutzbarkeit oder zusätzliche Funktionen, wie sie in klassischen Produkten zu finden sind, nicht Teil des Umfangs der Anwendung waren.
+Damit konnte eine nachvollziehbare Grundlage geschaffen werden, auf deren Basis die Qualität der erzeugten Antworten systematisch betrachtet werden kann.
+Während der Entwicklungsfokus auf der genannten Kernfunktion lag, wurden Benutzererfahrung und zusätzliche Funktionen nur sekundär betrachtet und flossen lediglich teilweise in Entwicklungsentscheidungen ein. 
+Ein wichtiger Teil des Konzeptes war die Möglichkeit mehrere \gls{ifc}-Modelle gleichzeitig zu laden, um dem in der Praxis angewandten Aufteilen von Modellen nach Fachdisziplin (vgl. Kap. \ref{sec:open-closed-bim}) gerecht zu werden. \\
+
+Die Struktur der Entwicklung orientierte sich am Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}). Zunächst wurde ein Konzept erarbeitet, das die grundlegenden Anforderungen und Ziele der Anwendung festlegte.
+Darauf folgte eine Vorentwicklung, in der die technologische Machbarkeit überprüft wurde und anschließend in der Entwicklung des ersten Prototypen mündete.
+Die letzte Phase stellte die Entwicklung des lauffähigen Prototypen dar, welcher für die Interviews eingesetzt wurde.
+Eine vollständige Implementierung für ein Release war im Rahmen der Bachelorarbeit jedoch nicht vorgesehen, da dies die zur Verfügung stehenden Ressourcen überschritten hätte. \\
+
+Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten Anwendung eingegangen.
 
 \subsection{Konzept}
 \label{sec:app-concept}
 
 Als Kern der Anwendung wurde eine textbasierte Eingabe vorgesehen, über die Probanden direkt mit dem \gls{llm} kommunizieren können.
 Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine möglichst direkte Bearbeitung der Aufgabenstellungen.
-Zusätzlich war die einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, für eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung erforderlich.
-Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge (tool calling) sowie dadurch zusätzlich eingebundenes Wissen.
-Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur zwischen einzelnen Iterationen zu verändern. \\
+Darüber hinaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, für eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung erforderlich.
+Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge (tool calling) sowie zusätzlich eingebundenes Wissen.
+Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur während der Entwicklung ändern zu müssen. \\
 
-In allen Iterationen der Anwendung wurde ausschließlich auf \gls{llm} gesetzt, welche über das Internet verfügbar sind, um den Betrieb der entsprechenden \gls{llm} aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
-Alle eingesetzten \gls{llm} besitzen ein \gls{api}, welches mit dem OpenAI \gls{api}-Standard kompatibel ist.
+Bei der Anbindung des \gls{llm} wurde auf externe Dienstleister zur Bereitstellung der \gls{llm}-Funktionalität gesetzt, 
+um den Betrieb der entsprechenden \gls{llm} aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
+Alle eingesetzten \gls{llm} besitzen ein \gls{api}, das mit dem OpenAI \gls{api}-Standard kompatibel ist.
 Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung grundlegend bearbeiten zu müssen.
 Damit wurde zugleich sichergestellt, dass Modellwechsel oder Anpassungen an der Modellwahl den methodischen Ablauf der Interviews nicht beeinflussen. \\
 
-Der Nutzer sollte bei der Bedienung Fragen durch die Anwendung an das \gls{llm} übermitteln, das auf Basis des Systemprompts und des im \gls{ifc}-Modell vorhandenen Wissens eine Antwort an den Nutzer ausgibt.
-Damit wurde ein klarer und einheitlicher Ablauf geschaffen, der die Bearbeitung der Aufgaben sowie die spätere Auswertung der Antworten unterstützt.
+Der Nutzer übermittelte bei der Bedienung Fragen über die Anwendung an das \gls{llm}, das auf Basis des Systemprompts und des im \gls{ifc}-Modell vorhandenen Wissens eine Antwort ausgibt.
+Damit wurde ein klarer und einheitlicher Ablauf geschaffen, der die Bearbeitung der Aufgaben sowie die spätere Auswertung der Antworten unterstützt. \\
 
-\subsection{Iteration 1: Vorgefertigter \gls{mcp}-Server}
+\subsection{Vorentwicklung und technische Machbarkeit}
 \label{sec:app-iteration-1}
 
-Die erste Iteration der Anwendung basierte auf einem vorgefertigten \gls{mcp}-Server, der in Python mit der FastMCP-Bibliothek umgesetzt wurde \cite{github2025bonsaimcp}.
+Um zu überprüfen, ob die im Konzept geplanten Technologien in Kombination zu einer funktionsfähigen Anwendung führen, 
+wurde am Anfang des Entwicklungsprozesses die technische Machbarkeit mit einer Vorentwicklung evaluiert.
+Dabei basierte die Vorentwicklung auf einem vorgefertigten \gls{mcp}-Server, der in Python mit der FastMCP-Bibliothek umgesetzt wurde \cite{github2025bonsaimcp}.
 Als technische Grundlage wurde die öffentlich verfügbare 3D-Bearbeitungssoftware Blender verwendet, um \gls{ifc}-Modelle zu laden und zu bearbeiten.
 Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erweiterung Bonsai eingesetzt, die von IfcOpenShell bereitgestellt wird \cite{bonsai2026blenderextensions}. \\
-
-Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung genutzt, die gemeinsam mit dem \gls{mcp}-Server bereitgestellt wurde.
-Die Kommunikation zwischen Server und Blender erfolgte über eine Socket-Verbindung.
-Dabei wurden Werkzeugaufrufe einschließlich ihrer Parameter vom \gls{mcp}-Server an die in Blender installierte Erweiterung übermittelt, die die Befehle an Bonsai weiterleitete.
-Der \gls{mcp}-Server übernahm damit die Rolle einer Schnittstelle zwischen \gls{llm} und Modellbearbeitung \cite{github2025bonsaimcp}. \\
-
-Diese erste Iteration war geeignet, um die grundsätzliche technische Machbarkeit zu prüfen und ein funktionsfähiges Prototypen bereitzustellen.
-Gleichzeitig zeigte sich, dass die bereitgestellte Werkzeugmenge sowie die enge Kopplung an Blender den praktischen Einsatz für den weiteren Verlauf der Arbeit einschränkten.
-Die Erkenntnisse aus dieser Phase bildeten daher die Grundlage für die zweite Iteration mit stärkerer Fokussierung auf einfache Konfiguration und klarere Werkzeugauswahl.
 
 \begin{table}[!htb]
     \centering
@@ -57,13 +60,13 @@ Die Erkenntnisse aus dieser Phase bildeten daher die Grundlage für die zweite I
 
         \texttt{get\_ifc\_project\_info} & Gibt grundsätzliche Projektinformationen über das \gls{ifc}-Modell zurück. Neben Metadaten, wie Name und Beschreibung umfasst dies die Anzahl aller verfügbaren \gls{ifc}-Entitäten. \\
 
-        \texttt{list\_ifc\_entities} & Durchsucht das \gls{ifc}-Modell auf Basis von gegebenen Suchparametern nach \gls{ifc}-Entitäten. Als Suchparameter gibt es den \gls{ifc}-Entitätstyp und die Möglichkeit die Ergebnisse in der Anzahl zu beschneiden.  \\
+        \texttt{list\_ifc\_entities} & Durchsucht das \gls{ifc}-Modell auf Basis gegebener Suchparameter nach \gls{ifc}-Entitäten. Als Suchparameter stehen der \gls{ifc}-Entitätstyp und die Möglichkeit zur Begrenzung der Ergebnisanzahl zur Verfügung.  \\
 
-        \texttt{get\_ifc\_properties} & Gibt alle Eigenschaften eines einzelnen Bauteils in dem geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
+        \texttt{get\_ifc\_properties} & Gibt alle Eigenschaften eines einzelnen Bauteils im geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
 
         \texttt{get\_ifc\_spatial\_structure} & Gibt den strukturellen Aufbau des \gls{ifc}-Modells zurück. Dabei wird die Beziehung von Grundstücken (IfcSite), Gebäuden (IfcBuilding), Geschossen (IfcBuildingStorey) und einzelnen Räumen bzw. Flächen (IfcSpace) dargestellt. \\
 
-        \texttt{get\_ifc\_relationships} & Gibt alle Beziehungen eines einzelnen Bauteils in dem geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
+        \texttt{get\_ifc\_relationships} & Gibt alle Beziehungen eines einzelnen Bauteils im geladenen \gls{ifc}-Modell auf Basis der globalen Identifikation oder der Nutzerselektion in Blender zurück. \\
 
         \texttt{get\_selected\_ifc\_entities} & Gibt grundsätzliche Informationen über die vom Nutzer in Blender selektierten Bauteile zurück. \\
 
@@ -73,209 +76,126 @@ Die Erkenntnisse aus dieser Phase bildeten daher die Grundlage für die zweite I
 
         \texttt{get\_ifc\_quantities} & Gibt Mengenwerte von \gls{ifc}-Entitäten zurück. \\
 
-        \texttt{get\_ifc\_total\_structure} & Als Erweiterung von \texttt{get\_ifc\_spatial\_structure} werden zusätzlich noch die darunterliegenden \gls{ifc}-Entitäten, welche einen Bezug zu einem einzelnen Raum bzw. einer Fläche (IfcSpace) besitzen. \\
+        \texttt{get\_ifc\_total\_structure} & Als Erweiterung von \texttt{get\_ifc\_spatial\_structure} werden zusätzlich die darunterliegenden \gls{ifc}-Entitäten ausgegeben, die einen Bezug zu einem einzelnen Raum bzw. einer Fläche (IfcSpace) besitzen. \\
         
         \hline
     \end{tabular}
 \end{table} 
 
-\subsection{Iteration 2: Selbstentwickelter \gls{mcp}-Server}
+Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung genutzt, die gemeinsam mit dem \gls{mcp}-Server bereitgestellt wurde.
+Die Kommunikation zwischen Server und Blender erfolgte über eine Socket-Verbindung.
+Dabei wurden Werkzeugaufrufe einschließlich ihrer Parameter vom \gls{mcp}-Server an die in Blender installierte Erweiterung übermittelt, die die Befehle an Bonsai weiterleitete.
+Der \gls{mcp}-Server übernahm damit die Rolle einer Schnittstelle zwischen \gls{llm} und Modellbearbeitung \cite{github2025bonsaimcp}.
+In Tabelle \ref{tab:iteration1tools} sind die durch den \gls{mcp}-Server bereitgestellten Werkzeuge gelistet. \\
+
+Im folgenden Abschnitt wird die Entwicklung des Prototyps erläutert, welcher auf Basis der Vorentwicklung entwickelt wurde.
+
+\subsection{Entwicklung des Prototypen}
 \label{sec:app-iteration-2}
 
-In der zweiten Iteration der Anwendung wurde ein selbstentwickelter \gls{mcp}-Server eingesetzt. Dieser wurde, analog zur ersten Iteration, in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
-Im Unterschied zur ersten Iteration lag der Schwerpunkt nun auf einer gezielten Reduktion der bereitgestellten Werkzeuge. Statt einer breiten Abdeckung von Modellbearbeitungsfunktionen wurden nur noch Werkzeuge zur Wissensgewinnung bereitgestellt.
-Dadurch sollte die Auswahl des jeweils passenden Werkzeuges durch das \gls{llm} vereinfacht und die Nachvollziehbarkeit der Werkzeugaufrufe im Interviewkontext verbessert werden. \\
+Auf Basis der im vorherigen Kapitel vorgestellten Vorentwicklung wurde im Rahmen der Prototypenentwicklung ein selbst entwickelter \gls{mcp}-Server geschaffen. 
+Dieser wurde in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
+Im Unterschied zur Vorentwicklung lag der Schwerpunkt auf einer gezielten Reduktion der bereitgestellten Werkzeuge. 
+Statt einer breiten Abdeckung von Modellbearbeitungsfunktionen wurden nur noch Werkzeuge zur Wissensgewinnung bereitgestellt. \\
 
-Die bereitgestellten Werkzeuge gleichen in ihrer Funktion der Iteration 1, aber verwenden als \gls{ifc}-Bibliothek IFC Open Shell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
-Dies erlaubt die eigenständige Definition der Extraktionslogik aus den geladenen Modellen. Im Hinblick auf die Leistungsfähigkeit des \gls{llm} ermöglicht dies eine genauere Kontrolle über den Kontext des \gls{llm} \cite{ifcopenshell_github}. \\
+Die bereitgestellten Werkzeuge entsprechen in ihrer Funktion weitgehend der Vorentwicklung, verwenden jedoch als \gls{ifc}-Bibliothek IfcOpenShell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
+Dies ermöglicht die eigenständige Definition der Extraktionslogik aus den geladenen Modellen. Im Hinblick auf die Leistungsfähigkeit des \gls{llm} erlaubt dies eine genauere Kontrolle über den bereitgestellten Kontext \cite{ifcopenshell_github}. \\
 
 Für die textbasierte Interaktion mit dem \gls{llm} wurde Open WebUI als Oberfläche genutzt.
 Die Software ermöglichte die Anbindung an unterschiedliche \gls{llm} sowie die Einbindung eigener \gls{mcp}-Server.
 Zusätzlich bot sie eine praktikable Grundlage für den Export von Nachrichtenverläufen und damit für die spätere Analyse der im Interview erzeugten Kommunikation \cite{openwebui2026home}. \\
 
-Eine weitere Iteration der Anwendung ergab sich aus der Anforderung, den Systemprompt, den dem \gls{llm} verfügbaren Kontext sowie die Integration einer primären Datenquelle präziser zu definieren.
-Zugleich war der Ansatz durch FastMCP und Open WebUI limitiert, da weder mehrfache Abfragen noch ein agentenähnliches Verhalten möglich waren.
-Die finale Iteration ermöglichte daher die kontrollierte Definition aller Bestandteile der \gls{llm}-Abfrage.
+Nach der Definition des Prototypen wird im folgenden Abschnitt die Entwicklung des lauffähigen Prototypen (operational prototype) erläutert.
 
-\subsection{Finale Iteration: Selbstentwickelte Anwendung}
+\subsection{Entwicklung des lauffähigen Prototypen}
 \label{sec:app-final-iteration}
 
-Die finale Iteration wurde als eigenständige Anwendung konzipiert, um den gesamten Ablauf der Anfrageverarbeitung methodisch kontrollieren zu können.
-Im Mittelpunkt der Anwendung steht die Anbindung eines externen Datensatzes in Form einer Datenbank, welche eine effizientere Bereitstellung von Wissen für das \gls{llm} ermöglicht.
+Der im vorherigen Abschnitt definierte Prototyp diente zusammen mit dem Konzept als Grundlage für die Entwicklung des lauffähigen Prototypen (operational prototype).
+Im Mittelpunkt der Entwicklung stand dabei die Anbindung eines externen Datensatzes als Datenquelle, die eine effizientere Bereitstellung von Wissen für das \gls{llm} ermöglicht.
+Die Struktur des Datensatzes ist in Tabelle \ref{tab:103_app-data-structure} dargestellt und umfasst Informationen zu Bauteilen, Systemen, Materialien und Geschossen, die in den bereitgestellten \gls{ifc}-Modellen enthalten sind.
+Dabei entspricht jede Zeile einem einzelnen Eigenschaftswert, einer Systembeschreibung oder anderen einzelnen Informationseinheit, die mit einem Bauteil oder einem anderen Element im Modell verknüpft ist. \\
+\begin{table}[!htb]
+    \centering
+    \caption{Struktur des externen Datensatzes für den lauffähigen Prototypen}
+    \label{tab:103_app-data-structure}
+    \begin{tabular}{C{3cm} C{1.5cm} L{6.5cm}}
+        \hline
+        \textbf{Spalte} & \textbf{Typ} & \textbf{Beschreibung} \\
+        \hline
+
+        element\_uuid & text & Identifikation jedes Bauteils \\
+
+        model\_id & text & Referenz zum Modell \\
+
+        element\_type & text & IFC-Entitätstyp \\
+
+        property\_id & text & Identifikation der Eigenschaft \\
+
+        property\_name & text & Name der Eigenschaft \\
+
+        property\_value & text & Wert der Eigenschaft \\
+
+        property\_description & text & Beschreibung der Eigenschaft \\
+
+        property\_type & text & Typklassifikation der Eigenschaft \\
+
+        property\_valuetype & text & Datentyp des Wertes \\
+
+        pset\_name & text & Name des Property Sets  \\
+
+        pset\_type & text & Typ des Property Sets \\
+
+        pset\_description & text & Beschreibung des Property Sets \\
+
+        system\_uuid & text & Identifikation des Systems \\
+
+        system\_name & text & Name des Systems \\
+
+        system\_type & text & Typ des Systems \\
+
+        system\_description & text & Beschreibung des Systems \\
+
+        material\_name & text & Name des Materials \\
+
+        material\_category & text & Kategorie des Materials \\
+
+        material\_description & text & Beschreibung des Materials \\
+
+        material\_thickness & text & Dicke des Materials \\
+
+        storey\_uuid & text & Identifikation des Geschosses \\
+
+        storey\_name & text & Name des Geschosses \\
+
+        storey\_longname & text & Vollständiger Name des Geschosses \\
+
+        \hline
+    \end{tabular}
+\end{table}
+
+
+Zur Integration des Datensatzes wurde eine vollständige Web-Anwendung geschaffen (full stack web application), die die methodische Kontrolle des gesamten Ablaufs der Anfrageverarbeitung ermöglichte.
 Des Weiteren war die genaue Definition des Systemprompts sowie die Strukturierung der Anfragearchitektur ein wesentliches Mittel, um die Qualität der \gls{llm}-Abfragen zu steigern.
-Die Nachvollziehbarkeit einzelner Verarbeitungsschritte erhöhte sich aufgrund der Kontrolle über den gesamten Prozess und Quellcode.
-Gegenüber den vorherigen Iterationen ergab sich aus diesem Ansatz eine stabilere technische Basis und Verbesserungen für die spätere Auswertung der Interviews.
+Für die Entwicklung der Web-Anwendung wurde TypeScript als Programmiersprache eingesetzt, um die Kommunikation zwischen Frontend und Backend zu vereinfachen. \\
 
-
-\subsection{Technischer Aufbau}
-\label{sec:app-technical-structure}
-
-Aufbauend auf der im vorangegangenen Abschnitt beschriebenen finalen Iteration wird im Folgenden der technische Aufbau der Anwendung strukturiert dargestellt.
-Die Anwendung basiert im Backend auf dem NestJS-Framework und nutzt die dort integrierte \gls{di}, um zentrale Verantwortlichkeiten in eigenständige Module zu gliedern.
-Als Datenbanksystem wird PostgreSQL eingesetzt, das über die \gls{orm}-Bibliothek Prisma angebunden ist (vgl. Kap. \ref{sec:app-prismamodule}).
-Die textbasierte Interaktion zwischen Nutzer und \gls{llm} erfolgt im ChatModule (vgl. Kap. \ref{sec:app-chatmodule}), während das ChatHistoryModule die Nachrichten für die spätere Auswertung speichert (vgl. Kap. \ref{sec:app-chathistorymodule}).
-Für die Wissensbereitstellung sind das PromptModule (vgl. Kap. \ref{sec:app-promptmodule}), das SkillsModule (vgl. Kap. \ref{sec:app-skillsmodule}) und das ToolsModule (vgl. Kap. \ref{sec:app-toolsmodule}) verantwortlich.
-In der Abb. \ref{fig:103_app-final-backend-structure} sind die Beziehungen der verschiedenen Module, sowie deren untergeordneten Dienstleistungen grafisch dargestellt.
-
-\begin{figure}[htb]
-	\centering
-		\includegraphics[width=0.8\textwidth]{doc/10/103_methods/app_final_backend_structure}
-
-	\caption[Struktur des Backends der finalen Iteration der Anwendung]{Die Struktur des Backends der finalen Iteration der Anwendung}
-
-	\label{fig:103_app-final-backend-structure}
-\end{figure}
-
-\subsubsection{AppModule - Einstiegspunkt}
-\label{sec:app-appmodule}
-
-Das AppModule bildet den zentralen Einstiegspunkt der Anwendung und übernimmt die übergeordnete Konfiguration der weiteren Module.
-In diesem Modul werden insbesondere Umgebungsvariablen aus Konfigurationsdateien eingebunden, darunter die \gls{uri} der Datenbank, der \gls{api}-Schlüssel sowie die Auswahl des verwendeten \gls{llm}.
-Damit stellt das AppModule sicher, dass die Anwendung über den Bootstrapper konsistent initialisiert und in einer definierten Laufzeitumgebung gestartet wird.
-
-\subsubsection{PrismaModule - Datenbankzugriff}
-\label{sec:app-prismamodule}
-
-Das PrismaModule kapselt den Zugriff auf die relationale Datenbank und stellt mit Prisma eine \gls{orm}-basierte Abstraktion gegenüber klassischen SQL-Abfragen bereit.
-Dadurch werden Typensicherheit, strukturierte Datenzugriffe sowie die Migration der Datenbankstruktur unterstützt.
-Kernbestandteil des Moduls ist der PrismaService, der die zentrale Datenbankverwaltung innerhalb der Anwendung implementiert.
-Zusätzlich erlaubt das Modul die Ausführung von rohem SQL, was insbesondere für das QueryTool erforderlich ist (vgl. Kap. \ref{sec:postgresql-prisma}).
-
-\subsubsection{ChatModule - Verarbeitung von Nutzereingaben und Ablauf der \gls{llm}-Anfrage}
-\label{sec:app-chatmodule}
-
-Im ChatModule wird der vollständige Ablauf der textbasierten Interaktion zwischen Nutzer und \gls{llm} orchestriert.
-Jede Chatnachricht wird hier entgegengenommen, verarbeitet und in den weiteren Anfrageprozess überführt.
-Der ChatConversationService übernimmt die primäre Verarbeitung der Nutzereingaben und steuert die dialogbezogene Logik.
-Zur Erfassung des aktuellen Verlaufs aus Nachrichten, Werkzeugaufrufen und Modellantworten wird der ChatExecutionHistoryService eingesetzt.
-Die Anbindung an OpenAI-kompatible \gls{api}s erfolgt über den ChatOpenAIService, der damit die technische Schnittstelle zu den eingesetzten \gls{llm} bildet.
-
-\subsubsection{ChatHistoryModule - Verwaltung der Nachrichtenhistorie}
-\label{sec:app-chathistorymodule}
-
-Das ChatHistoryModule dient der persistenten Speicherung der während der Anwendungslaufzeit entstehenden Kommunikationsdaten.
-Hierzu werden Nachrichten, Werkzeugaufrufe und \gls{llm}-Antworten über den ChatHistoryService strukturiert erfasst und in Form von Gruppen (Threads) abgelegt.
-Die systematische Dokumentation ermöglicht sowohl eine laufende Analyse während der Entwicklung als auch eine belastbare spätere Auswertung im Rahmen der Arbeit.
-Dabei werden relevante Parameter und einzelne Werkzeugaufrufe vollständig gespeichert, um Entscheidungen des \gls{llm} bei der Analyse nachvollziehen zu können.
-
-\subsubsection{IfcModule - Bereitstellung von \gls{ifc}-Modellen für das Frontend}
-\label{sec:app-ifcmodule}
-
-Das IfcModule stellt \gls{ifc}-Modelle in Form von \gls{ifc}-Dateien für das Frontend bereit und verwaltet zugleich standardbezogene Referenzdaten.
-Ein zentraler Bestandteil ist die Konvertierung von EXPRESS-Definitionen des \gls{ifc}-Standards in \gls{json}-Strukturen, die anschließend durch das \gls{llm} abgefragt werden können.
-Das Modul unterstützt die gängigen \gls{ifc}-Versionen und ermöglicht über das IfcTool sowohl die gezielte Abfrage einzelner Standardkategorien als auch spezifischer Entitätstypen.
-
-\subsubsection{PromptModule - Bereitstellung des Systemprompts}
-\label{sec:app-promptmodule}
-
-Das PromptModule erzeugt den Systemprompt dynamisch auf Basis der geladenen Modelle und der verfügbaren Kontextinformationen.
-Damit wird sichergestellt, dass das \gls{llm} eine konsistente Aufgabenbeschreibung, den relevanten Modellkontext sowie Hinweise zur Werkzeugnutzung erhält.
-
-\begin{table}[!htb]
-    \centering
-    \caption{Aufbau des Systemprompts}
-    \label{tab:103_system-prompt}
-    \begin{tabular}{C{2cm} C{3cm} L{8cm}}
-        \hline
-        \textbf{Bezeichnung} & & \textbf{Beschreibung} \\
-        \hline
-
-        Basis & & Beinhaltet grundsätzliche Informationen über die Aufgabe des \gls{llm}, welche Ziele der Nutzer verfolgt und Informationen über die Nutzung von Einheiten und des Skills-Werkzeuges \\
-
-        Skills & & Details zu den verfügbaren Skills, welche das \gls{llm} über das Skills-Werkzeug abrufen kann. \\
-
-        Modell & & Details für jedes geladene Modell, zu welchem der Nutzer Fragen stellen kann. \\
-
-        & Metadaten & Beinhaltet die interne Identifikation, die sog. Model-Identifikation, zur Identifikation bei Datenbankabfragen, den Namen des Modells, die Projekt-Identifikation, welche mehrere Modelle in einem Projekt bündelt, sowie die verwendete Version des \gls{ifc}-Standards. \\
-
-        & \gls{ifc}-Entitäten & Eine Liste aller \gls{ifc}-Entitätstypen, welche im entsprechenden Modell geladen sind, sowie die Anzahl dieser. \\
-
-        & \gls{ifc}-Beziehungen & Für jedes Geschoss im geladenen Modell ist die Identifikation des Geschosses, sowie die Identifikation aller dem Geschoss untergeordneten Räume angegeben. \\
-
-        \hline
-    \end{tabular}
-\end{table}
-
-\subsubsection{SkillsModule - Wissensbibliothek über Werkzeuge}
-\label{sec:app-skillsmodule}
-
-Das SkillsModule stellt dem \gls{llm} thematisch gegliederte Wissensbausteine zu verfügbaren Werkzeugen bereit.
-Bei Bedarf kann das Modell gezielt zusätzliche Informationen zu einem bestimmten Werkzeug nachladen, anstatt sämtliche Detailinformationen dauerhaft im aktiven Kontext zu halten.
-Auf diese Weise wird die Kontextlast reduziert und zugleich die aufgabenbezogene Nutzung von Werkzeugwissen unterstützt (vgl. Kap. \ref{sec:skills}).
-
-\begin{table}[!htb]
-    \centering
-    \caption{Englische Definition von Skills, welche vom Skills-Werkzeug bereitgestellt werden}
-    \label{tab:103_available-skills}
-    \begin{tabular}{C{2cm} L{11cm}}
-        \hline
-        \textbf{Name} & \textbf{Beschreibung} \\
-        \hline
-
-        ask-user & Give the user one or more questions to answer with single-choice, multiple-choice or free-form inputs \\
-
-        ifc & Further information about the IFC standard and how to work with IFC building models. \\
-
-        query & Use SQL queries to find IFC elements, properties, Psets, systems, materials and storey data, including aggregates and math expressions. \\
-
-        \hline
-    \end{tabular}
-\end{table}
-
-Der Skill "ask-user" unterstützt das \gls{llm} bei notwendigen Rückfragen an den Nutzer und beschreibt, wie Fragen strukturiert sowie in welchen Situationen Rückfragen gestellt werden sollen.
-Im Skill "query" ist das datenbankbezogene Wissen gebündelt.
-Dazu zählen die Tabellenstruktur der Tabelle ifc\_elements, die Beschreibung einzelner Spalten inklusive PostgreSQL-Typ sowie Hinweise zur inhaltlichen Verwendung.
-Ergänzend enthält der Skill erprobte Beispiele für SQL-Abfragen, die auf den vorhandenen Modelldaten ausgeführt werden können, sowie Informationen zum direkten Export von Abfrageergebnissen.
-Der Skill "ifc" beschreibt den \gls{ifc}-Standard in kompakter Form und erläutert den Aufbau der verfügbaren \gls{ifc}-\gls{json}-Strukturen einschließlich der nutzbaren Abfrageparameter.
-
-\subsubsection{ToolsModule - Bereitstellung von \gls{llm}-Werkzeugen}
-\label{sec:app-toolsmodule}
-
-Im ToolsModule sind sämtliche zur Laufzeit ausführbaren \gls{llm}-Werkzeuge zentral definiert.
-Das Modul bildet damit die kontrollierte Ausführungsschicht zwischen Modellanfrage und konkreter Systemfunktion.
-
-\begin{table}[!htb]
-    \centering
-    \caption{Englische Definition von Werkzeugen, welche dem \gls{llm} bereitgestellt werden}
-    \label{tab:103_available-tools}
-    \begin{tabular}{C{3.5cm} L{9.5cm}}
-        \hline
-        \textbf{Name} & \textbf{Beschreibung} \\
-        \hline
-
-        askUser & Ask the user one or more questions to gather information. Supports text input, single-choice, and multiple-choice questions. Always use this tool when requesting information from the user. Combine multiple questions into a single call when possible. \\
-
-        highlightElement & Highlight specific building elements in the 3D viewer by their express IDs. Useful for showing search results or pointing out specific components visually. \\
-
-        ifc & Read IFC standard reference data by version. Supports returning the complete parsed standard artifact or searching for specific elements by free text, declaration type, or entity name. \\
-
-        query & Execute SQL queries against IFC model data, including advanced filtering, grouping, aggregation, and computed values. Supports pagination and optional direct export of query results as CSV, JSON, or XML. \\
-
-        skill & Load a skill by name and return its information. \\
-
-        \hline
-    \end{tabular}
-\end{table}
-
-Zusammenfassend zeigt der technische Aufbau eine klar modulare Architektur mit einer durchgängigen Trennung von Konfiguration, Datenhaltung, Anfrageverarbeitung, Wissensbereitstellung und Werkzeugausführung.
-Die Anwendung bringt damit die notwendigen technischen Voraussetzungen mit, um die Interaktion der Probanden mit dem \gls{llm} im Rahmen der Interviews methodisch kontrolliert zu gestalten und die Qualität der erzeugten Antworten systematisch zu analysieren.
+Der lauffähige Prototyp wurde im Rahmen der Interviews mit den Probanden eingesetzt, die im nachfolgenden Abschnitt näher beschrieben werden.
 
 \section{Interviews}
 \label{sec:interviews}
 
-Um die entwickelte \gls{llm}-Anwendung mit Probanden zu testen, wurden Interviews durchgeführt. Dabei handelte es sich um Einzelinterviews, die in Form eines Online-Meetings durchgeführt wurden.
-Dies ermöglichte Interviews ohne Koordination von Reisen, sowie den entsprechenden technischen Zugängen vor Ort klären zu müssen. 
+Um die entwickelte \gls{llm}-Anwendung mit Probanden zu testen, wurden Interviews durchgeführt. Dabei handelte es sich um Einzelinterviews, die in Form einer Videokonferenz durchgeführt wurden.
+Dies reduzierte die Nutzung von Ressourcen für die Koordination der Interviewtermine erheblich, da die Verfügbarkeit von Probanden durch das ortsunabhängige Format verbessert wurde.
 
 Zur inhaltlichen Nachvollziehbarkeit wurde während der Gespräche ein grobes Gedankenprotokoll erstellt. Dieses diente als ergänzende Grundlage für die spätere Analyse der vom \gls{llm} erzeugten Ausgaben und half dabei, zentrale Beobachtungen aus der Interaktion systematisch festzuhalten.
 Der Ablauf der Interviews ist in den folgenden Unterkapiteln schrittweise dargestellt, um die einzelnen methodischen Schritte transparent zu machen.
 
 \subsection{Zuordnung zur Probanden-Gruppe}
 
-Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierten Probanden-Gruppen zugewiesen. Dies erfolgte über die in Abb. \ref{tab:103_interview-core-questions} gezeigten Fragen.
+Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierten Probanden-Gruppen zugewiesen. Dies erfolgte auf Basis der in Tabelle \ref{tab:103_interview-core-questions} gezeigten Fragen.
 
 \begin{table}[!htb]
     \centering
-    \caption{Den Probanden gestellte Fragen, zur Zuordnung zu den Probanden-Gruppen}
+    \caption{Den Probanden gestellte Fragen zur Zuordnung zu den Probanden-Gruppen}
     \label{tab:103_interview-core-questions}
     \begin{tabular}{C{2cm} L{11cm}}
         \hline
@@ -286,13 +206,13 @@ Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierte
 
         2 & Wie viel Prozent der wöchentlichen Arbeitszeit beschäftigen Sie sich mit digitaler datengetriebener Planung? \\
 
-        3 & Wie viel \% der wöchentlichen Arbeitszeit beschäftigen Sie sich mit der Koordination von Projekten oder Teammitglieder? \\
+        3 & Wie viel \% der wöchentlichen Arbeitszeit beschäftigen Sie sich mit der Koordination von Projekten oder Teammitgliedern? \\
 
         \hline
     \end{tabular}
 \end{table}
 
-Für die Zuordnung wurde Frage 2 als zentrales Kriterium gewichtet, da sie den unmittelbaren Anteil aktiver Tätigkeiten in der digitalen datengetriebenen Planung direkt abbildet. 
+Für die Zuordnung wurde Frage 2 als zentrales Kriterium gewichtet, da sie den unmittelbaren Anteil aktiver Tätigkeiten in der digitalen datengetriebenen Planung abbildet. 
 Ergänzend wurden Frage 1 und Frage 3 herangezogen, um Probanden differenziert einzuordnen, die zwar einen geringeren operativen Anteil in diesem Aufgabenfeld aufweisen, 
 jedoch aufgrund ihrer Berufserfahrung sowie ihrer fachlichen und organisatorischen Verantwortung weiterhin der Probanden-Gruppe A zugeordnet werden konnten. \\
 
@@ -305,12 +225,12 @@ zunächst die Entwicklung von Aufgabenstellungen durch Probanden-Gruppe A und an
 Der zweite Schritt der Interviews für die Probanden-Gruppe A bestand aus der Entwicklung von Aufgabenstellungen. 
 Dabei wurde die folgende Leitfrage entwickelt, um den Probanden einen Einstieg in das Interview zu ermöglichen: \\
 
-\say{Ihnen steht eine unangelernte Hilfskraft zur Verfügung, welche von Ihnen eine Aufgabe für exemplarische digitale Modell benötigt. Welche Aufgaben fallen Ihnen dazu in Stichworten ein?} \\
+\say{Ihnen steht eine unangelernte Hilfskraft zur Verfügung, für die Sie eine Aufgabe für ein exemplarisches digitales Modell formulieren sollen. Welche Aufgaben fallen Ihnen dazu in Stichworten ein?} \\
 
-Zusätzlich zur genannten Leitfrage, wurde den Probanden der Gruppe A zusätzlich der Rahmen für die Aufgabenstellungen erklärt. 
+Zusätzlich zur genannten Leitfrage wurde den Probanden der Gruppe A der Rahmen für die Aufgabenstellungen erläutert. 
 Es wurde dabei auf Aufgabenstellungen abgezielt, welche eine einzige Problemstellung betreffen. 
 Besondere Priorität hatte dabei die Identifizierbarkeit des Kernproblems der Aufgabenstellung.
-Für Probanden der Gruppe B, sollte dabei erkenntlich sein, welches Ziel sie zu erreichen hatten. 
+Für Probanden der Gruppe B sollte dabei erkenntlich sein, welches Ziel sie zu erreichen hatten. 
 Dies schloss die Verwendung von Fachbegriffen nicht aus, da Probanden das \gls{llm} als Hilfsmittel einsetzen konnten.
 Jedoch wurde explizit auf eine Kombination aus mehreren Aufgaben in einer einzelnen Aufgabenstellung verzichtet, 
 um den Fokus der Probanden pro Aufgabenstellung auf ein einzelnes zu lösendes Problem zu lenken.
@@ -319,13 +239,13 @@ um den Fokus der Probanden pro Aufgabenstellung auf ein einzelnes zu lösendes P
 \label{sec:aufgabenstellung-gruppe-b}
 Im Vergleich zur Probanden-Gruppe A bestand der zweite Schritt des Interviews für die Probanden-Gruppe B aus der Bearbeitung der im vorherigen Unterkapitel (vgl. Kap. \ref{sec:aufgabenstellung-gruppe-a}) genannten Aufgabenstellungen. \\
 
-Zu Beginn erhielten die Probanden eine kurze Einführung in Zielsetzung und Ablauf des Interviews. Die Einführung erfolgte bewusst ohne die Definition eines starren Schemas und ohne inhaltliche Vorwegnahme von Lösungswegen. 
+Zu Beginn erhielten die Probanden eine kurze Einführung in Zielsetzung und Ablauf des Interviews. Die Einführung erfolgte bewusst ohne die Vorgabe eines starren Schemas und ohne inhaltliche Vorwegnahme möglicher Lösungswege. 
 Zusätzlich wurde das Interviewdatum erfasst, um die spätere Extraktion der zugehörigen Nachrichten aus der Datenbank eindeutig zuordnen zu können. \\
 
-Anschließend wurden die einzelnen Aufgabenstellungen nacheinander präsentiert und in sequentieller Reihenfolge bearbeitet. 
+Anschließend wurden die einzelnen Aufgabenstellungen nacheinander präsentiert und in festgelegter Reihenfolge bearbeitet. 
 Dabei wurden keine zusätzlichen fachlichen Hinweise gegeben, sodass die Aufgabenbearbeitung ausschließlich auf der jeweiligen Aufgabenbeschreibung und der Interaktion mit dem \gls{llm} beruhte. \\
 
-Die Probanden formulierten ihre Eingaben selbstständig und übermittelten diese aus technischen Gründen an den Interviewführer, welcher die Eingabe mit Hilfe der bereitgestellten Anwendung an das \gls{llm} übergab. 
+Die Probanden formulierten ihre Eingaben selbstständig und übermittelten diese aus technischen Gründen an den Interviewführer, der die Eingaben mithilfe der bereitgestellten Anwendung an das \gls{llm} weitergab. 
 Sämtliche Eingaben sowie die jeweils erzeugten Antworten wurden fortlaufend in einem Gedankenprotokoll dokumentiert, um den Bearbeitungsverlauf später nachvollziehbar auswerten zu können. \\
 
 Eine Aufgabenstellung galt als abgeschlossen, sobald der Proband das angestrebte Ziel als erreicht bewertete. 
@@ -335,17 +255,18 @@ Sofern im Verlauf der Bearbeitung Exportdateien, beispielsweise im CSV-Format, e
 Die \gls{llm}-Ausgaben, Dateierzeugnisse und andere Daten wurden danach auf Basis der im folgenden Abschnitt definierten Methodik validiert.
 
 \section{Validierung der \gls{llm}-Ausgabe}
+\label{sec:datenvalidierung}
 
 Bevor die im Rahmen der Interviews gewonnenen Daten aufbereitet und ausgewertet werden konnten, wurden alle \gls{llm}-Ausgaben auf Richtigkeit geprüft. \\
 
-Für die Überprüfung von Attributen und Struktur des digitalen Modells wurde ein Modellviewer, welcher zum \gls{ifc}-Standard kompatibel ist, eingesetzt.
+Für die Überprüfung von Attributen und Struktur des digitalen Modells wurde ein Modellviewer eingesetzt, der mit dem \gls{ifc}-Standard kompatibel ist.
 Es handelte sich dabei um BIMcollab Zoom, eine von BIMcollab entwickelte Software für die Prüfung und Qualitätsanalyse von digitalen datengetriebenen Gebäudemodellen.
 BIMcollab Zoom unterstützt allgemein die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter sowie die Durchsetzung von Standards für jedes Projekt \cite{bimcollabUnknownZoom}. \\
 
-Zusätzlich bietet BIMcollab Zoom die Möglichkeit bestehende Modelldaten auf Basis von definierten Regeln zu restrukturieren und beliebige Parameter und Elemente farblich zu visualisieren.
+Zusätzlich bietet BIMcollab Zoom die Möglichkeit, bestehende Modelldaten auf Basis definierter Regeln zu restrukturieren sowie beliebige Parameter und Elemente farblich zu visualisieren.
 Die Integration in andere Produkte von BIMcollab, wie BIMcollab Twin, eine \gls{cde}, oder BIMcollab Nexus, eine Kommunikationsplattform für Issues, ist ein wichtiger Teil von BIMcollab Zoom \cite{bimcollabUnknownZoom}. \\
 
-Im Rahmen der Bachelorarbeit wurden damit unter anderem einzelne Elemente, zum Beispiel technische Geräte, welche vom \gls{llm} direkt erwähnt wurden, durch Selektion in BIMcollab Zoom geprüft.
+Im Rahmen der Bachelorarbeit wurden damit unter anderem einzelne Elemente, beispielsweise technische Geräte, die vom \gls{llm} direkt erwähnt wurden, durch Selektion in BIMcollab Zoom geprüft.
 Dabei wurden alle mit dem Element verknüpften Psets und Properties angezeigt und manuell ausgewertet (s. Abb. \ref{fig:103_bimcollab-zoom-selection}). \\
 
 \begin{figure}[htb]
@@ -359,8 +280,8 @@ Dabei wurden alle mit dem Element verknüpften Psets und Properties angezeigt un
 
 Für komplexere Überprüfungen, besonders bei großen Mengen an Elementen, wurden Listen in BIMcollab Zoom eingesetzt.
 Bei der Erstellung dieser Listen konnten verschiedene Suchkriterien ausgefüllt werden, um eine genaue Auswahl an Elementen aus dem digitalen Modell zu extrahieren.
-Mit der Verwendung eines Pivot-Rasters, einer Unterkategorie der klassischen Liste, bestand die Möglichkeit auch arithmetische Funktionen auf den Properties der selektierten Elemente auszuführen.
-In der Abb. \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Berechnung der Fensterfläche in einem Modell gezeigt, welche im Rahmen der Überprüfung eingesetzt wurde. \\
+Mit der Verwendung eines Pivot-Rasters, einer Unterkategorie der klassischen Liste, bestand zudem die Möglichkeit, arithmetische Funktionen auf den Properties der selektierten Elemente auszuführen.
+In Abbildung \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Berechnung der Fensterfläche in einem Modell dargestellt, das im Rahmen der Überprüfung eingesetzt wurde. \\
 
 \begin{figure}[htb]
 	\centering
@@ -372,10 +293,11 @@ In der Abb. \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Bere
 \end{figure}
 
 Um die vom \gls{llm} verwendeten \gls{sql}-Abfragen zu überprüfen, wurde eine lokale Verwaltungssoftware für die manuelle Ausführung der generierten \gls{sql}-Abfragen verwendet.
-Es handelte sich dabei um pgAdmin, eine für mehrere Betriebssysteme entwickelte Anwendung, welche die Verwaltung verschiedener PostgreSQL-Datenbanken ermöglicht.
-Neben der manuellen Ausführung von \gls{sql}-Abfragen, wurde pgAdmin auch zur Analyse der Datenbankstruktur nach Migrationen oder zur Analyse einzelner Dateneinträge genutzt \cite{pgadmin2026features}.
+Es handelte sich dabei um pgAdmin, eine für mehrere Betriebssysteme entwickelte Anwendung, die die Verwaltung verschiedener PostgreSQL-Datenbanken ermöglicht.
+Neben der manuellen Ausführung von \gls{sql}-Abfragen wurde pgAdmin auch zur Analyse der Datenbankstruktur nach Migrationen oder zur Analyse einzelner Dateneinträge genutzt \cite{pgadmin2026features}.
 
 \section{Aufbereitung der Daten}
+\label{sec:datenaufbereitung}
 
 Nach Abschluss der inhaltlichen Prüfung wurden die im Interviewverlauf entstandenen Daten in einem mehrstufigen Verfahren aufbereitet.
 Zunächst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
@@ -401,9 +323,9 @@ Die im Rahmen dieser Einordnung verwendeten Fehlerzustände sind in Tabelle \ref
         Falsche Property/Pset genutzt & Im Rahmen der \gls{sql}-Abfrage wurde von dem \gls{llm} nach einer falschen Property oder einem falschen Pset gesucht. 
         Dies hat zur Folge, dass fälschlicherweise behauptet wurde, Daten seien nicht vorhanden, oder dass die angezeigten Daten unvollständig oder falsch waren. \\
 
-        Falsches Werkzeug & Das \gls{llm} wählte bei der Bearbeitung ein falsches Werkzeug, sodass die ausgegeben Daten teilweise oder vollständig falsch waren. \\
+        Falsches Werkzeug & Das \gls{llm} wählte bei der Bearbeitung ein falsches Werkzeug, sodass die ausgegebenen Daten teilweise oder vollständig falsch waren. \\
 
-        \gls{sql}-Abfrage falsch aufgebaut & Die vom \gls{llm} erzeugte \gls{sql}-Abfrage wurde falsch aufgebaut. Dies können fehlende Filter, Gruppierungen oder falsche Aggregation sein,
+        \gls{sql}-Abfrage falsch aufgebaut & Die vom \gls{llm} erzeugte \gls{sql}-Abfrage wurde falsch aufgebaut. Dies können fehlende Filter, Gruppierungen oder falsche Aggregationen sein,
         was zu falschen Ergebnissen der Abfrage geführt hat. \\
 
         Sonstiger Fehler & Der Fehler hing nicht direkt mit dem \gls{llm} zusammen, sondern basierte auf Problemen mit der Datenbank, der eigentlichen Anwendung oder anderen vom \gls{llm} unabhängigen Parametern. \\

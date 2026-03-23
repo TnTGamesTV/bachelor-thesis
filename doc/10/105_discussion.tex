@@ -1,9 +1,81 @@
 \chapter{\textbf{Diskussion \& Ausblick}}
 
-- Intro zur Diskussion und Ausblick
-- Interviews
-    - Format als Online-Meeting gut, da remote + Zeitunabhängig
-    - zT Dauer zu lang bzw. zu viele Aufgaben
-    - Ausführung von LLM und Ladezeit der Anwendung hat zT für Wartezeit gesorgt
-    - Weitergabe von LLM-Eingaben nur kleines Problem
-    - 
+Nach der Darstellung der Ergebnisse im vorangegangenen Kapitel erfolgt nun deren Diskussion 
+sowie ein Ausblick auf Verbesserungsmöglichkeiten und zukünftige Entwicklungen im Kontext der vorherigen Kapitel.
+Die gewonnenen Erkenntnisse werden dabei in der Reihenfolge ihrer Erarbeitung diskutiert 
+und anschließend in einem Gesamtüberblick zusammenfassend betrachtet. \\
+
+\section{Entwickelte Anwendung}
+
+Die im Rahmen der Bachelorarbeit entwickelte Anwendung leistete gute Unterstützung bei der Datenerfassung während der Interviews.
+Das in Kapitel \ref{sec:app-concept} definierte Konzept konnte mithilfe der vorgesehenen Entwicklungsstruktur und der vorhandenen Ressourcen umgesetzt werden,
+sodass die für die Interviews erforderlichen Funktionen implementiert werden konnten.
+Der Übergang von der Vorentwicklung über den Prototyp bis hin zum lauffähigen Prototypen 
+ermöglichte zwischen den einzelnen Schritten eine Verfeinerung der Kriterien und des Entwicklungsplans.
+Obwohl die Nutzbarkeit nur sekundär betrachtet wurde, traten bei den Probanden keine größeren Probleme bei der Bedienung der Anwendung auf.
+Dies ist nicht zuletzt auf die geringe Komplexität der Interaktionsfläche zurückzuführen, die nur essenzielle Funktionen bereitstellte.
+Die Darstellung der \gls{ifc}-Modelle in einem Viewer erhöhte die Ladezeit nach der Modellwahl erheblich,
+brachte jedoch keinen erkennbaren Informationsgewinn für die Probanden, da die vom \gls{llm} genutzte Datenquelle davon unabhängig war.
+Ein Verzicht auf den Viewer oder eine engere Integration beider Elemente erscheint daher sinnvoll. \\
+
+Im nachfolgenden Abschnitt wird die Anwendung im Kontext der Interviews diskutiert, bevor die gewonnenen Erkenntnisse zu den \gls{llm}-Daten betrachtet werden.
+
+\section{Interviews}
+
+Die durchgeführten Interviews (vgl. Kap. \ref{sec:interviews} und Kap. \ref{sec:results-interviews}) erwiesen sich im Format einer Videokonferenz als geeignete Wahl,
+da die Terminfindung mit Probanden im Vergleich zu Präsenzterminen weniger aufwendig war.
+Gleichzeitig erleichterte dieses Format die technische Bereitstellung und Darstellung der Anwendung,
+sodass die Hürde für die Interaktion mit dem \gls{llm} für die Probanden gering blieb.
+Eine öffentliche Bereitstellung der Anwendung hätte demgegenüber den Verzicht auf die Weitergabe von Texteingaben der Probanden an das \gls{llm} zur Folge gehabt.
+Dies wäre ein weiterer wesentlicher Schritt zur Reduktion potenzieller Reibungspunkte in der Interaktion mit der Anwendung gewesen.
+Im Verlauf der Interviews zeigte sich jedoch, dass die Einschränkung durch die Weitergabe der Inhalte insgesamt gering ausfiel.  \\
+
+Die Einordnung der Probanden anhand der in Tabelle \ref{tab:103_interview-core-questions} aufgeführten Fragen funktionierte zuverlässig,
+sodass eine eindeutige Trennung der beiden Probandengruppen möglich war. Von einer Erweiterung dieses Fragenkerns ist grundsätzlich abzusehen,
+da eine stabile Struktur die Vergleichbarkeit der Antworten verbessert und die Auswertung vereinfacht. \\
+
+Vereinzelt wurde deutlich, dass der zeitliche Aufwand einzelner Aufgabenstellungen den vorgesehenen Interviewrahmen überschritt.
+Obwohl dies nur in einem Fall relevant war, erscheint eine präzisere zeitliche Strukturierung der Interviews sinnvoll.
+Eine frühzeitige Schätzung der Aufgabenlängen im Rahmen der Vorprüfung könnte zu einer verbesserten zeitlichen Planung beitragen
+und den Interviewverlauf insgesamt besser planbar machen. \\
+
+% Grundsätzlich beeinflusste die Ausführungsgeschwindigkeit des \gls{llm} den Fortschritt der Interviews.
+% Aufgrund hoher \gls{ttft}-Werte wirkten Antworten insgesamt träge, auch wenn nachfolgende Antworten des \gls{llm} geringere Latenzen aufwiesen.
+% Da der Betrieb des \gls{llm} an externe Dienstleister ausgelagert ist, sind die erhöhten \gls{ttft}-Werte vermutlich teilweise auf die Anwendung zurückzuführen.
+% Insbesondere der Aufbau des Systemprompts bietet aus technischer Sicht Verbesserungspotenzial, um die Zeit zwischen Nutzeranfrage und Übermittlung an das \gls{llm} zu verkürzen. \\
+
+Einzelne Aufgabenstellungen zeigten, dass Daten vorausgesetzt wurden, die im bereitgestellten Datensatz nicht enthalten waren.
+Für künftige Erhebungen sollte daher insbesondere für Probanden der Gruppe A klarer spezifiziert werden, welche Daten verfügbar sind und welche Grenzen sich daraus ergeben.
+Darüber hinaus erwiesen sich manche Aufgaben als zu komplex oder zu stark gegliedert, sodass eine Vereinfachung oder Aufteilung sinnvoll erscheint.
+Alternativ kann zu Beginn präziser erläutert werden, welcher Aufgabentyp erwartet wird.
+Die im Interview eingesetzte Leitfrage hat sich dabei als hilfreiches Mittel erwiesen, um unpassende Aufgaben frühzeitig auszusortieren. \\
+
+Bei der Bearbeitung der Aufgaben wurden zudem Unklarheiten in Bezug auf erwartete Ausgabeformate, zum Beispiel ein tabellarisches Format, sowie hinsichtlich der Zielsetzung einzelner Aufgaben sichtbar.
+Hieraus ergibt sich die Notwendigkeit, die Einleitung der Probanden der Gruppe B klarer zu strukturieren und die Erwartungen vorab eindeutiger zu kommunizieren.
+Unabhängig davon waren die Erfahrungsstufen der Probanden trotz geringer Stichprobengröße gut gefächert, was die Interpretation der Ergebnisse aus unterschiedlichen Nutzungsperspektiven unterstützt. \\
+
+Abschließend lässt sich festhalten, dass die Interviews insgesamt wertvolle Einblicke in die Interaktion von Probanden mit der entwickelten Anwendung und dem \gls{llm} ermöglichten.
+Es hat sich im Rahmen der Interviews eindeutig gezeigt, dass \gls{llm} eine wichtige unterstützende Rolle bei der Bearbeitung von Aufgabenstellungen einnehmen können, jedoch auch klare Grenzen in Bezug auf die Dateninterpretation und -nutzung aufweisen.
+
+\section{\gls{llm}-Daten}
+
+Objektiv zeigten sich einige Schwächen in den Antworten des \gls{llm}, die sich insbesondere in der fehlerhaften Nutzung von Werkzeugen sowie der fehlerhaften Interpretation von Datenbankstrukturen manifestierten.
+Diese Fehler führten teilweise zu unverständlichen oder unbrauchbaren Antworten, die bei den Probanden Unsicherheit auslösten.
+Durch eine verbesserte Konfiguration der Werkzeuge und der dem \gls{llm} zur Verfügung gestellten Informationen können diese Fehlerquellen reduziert und die Qualität der Antworten verbessert werden.
+Gleichzeitig zeigte sich, dass das allgemeine Wissen des \gls{llm} kompetent genug für die Beantwortung komplexer fachspezifischer Fragen war. 
+Um auch bei Themen, die nicht im Trainingsdatensatz des \gls{llm} enthalten sind, kompetente Antworten zu ermöglichen, könnte zukünftig die Möglichkeit zur gezielten Nachladung von Informationen über ein Internetsuche-Werkzeug implementiert werden. \\
+
+Insgesamt lässt sich festhalten, dass trotz der überwiegend fehlerhaften Antworten des \gls{llm}, die Probanden der Gruppe B in der Lage waren, die Antworten zu interpretieren und teilweise auch zu korrigieren, um die Aufgaben erfolgreich zu bearbeiten.
+Dies unterstreicht die Bedeutsamkeit der menschlichen Interpretation und Korrektur bei der Nutzung von \gls{llm} in komplexen Anwendungsfällen, insbesondere wenn die Datenbasis unvollständig oder fehlerhaft ist.
+Um fachkompetenten Akteuren die Nutzung von \gls{llm} zu erleichtern, ist in zukünftigen Anwendungen eine tiefgründige, manuell erarbeitete Datengrundlage für die Definition fachspezifischer Informationen notwendig,
+um die Fehleranfälligkeit der Antworten zu reduzieren und die Nutzbarkeit der \gls{llm}-Unterstützung zu erhöhen.
+
+\section{Gesamtausblick}
+
+Auf Basis der gewonnenen Erkenntnisse aus der Entwicklung der Anwendung, den durchgeführten Interviews und der Analyse der \gls{llm}-Daten, 
+lässt sich die zu Beginn der Arbeit formulierte Forschungsfrage beantworten: \\
+
+\gls{llm} können eine unterstützende Rolle bei der Bearbeitung komplexer Aufgabenstellungen einnehmen, weisen jedoch klare Grenzen in Bezug auf die Dateninterpretation und -nutzung auf.
+Um fachfremden Akteuren den Zugang zu digitalen, datengetriebenen Bauprojekten zu ermöglichen, ist daher die Reduzierung der Fehleranfälligkeit von großer Bedeutung.
+Die aktuell vorhandene \gls{llm}-Technik zeigt, dass auch in Zukunft eine Verbesserung der Qualität der Antworten zu erwarten ist, 
+jedoch wird es auch weiterhin notwendig sein, \gls{llm} auf Basis bereitgestellter Daten und Werkzeuge gezielt zu stärken, um eine reibungslose und kompetente Unterstützung zu ermöglichen.
