@@ -16,6 +16,7 @@
 \usepackage{hyperref}   %links in TOC
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{tocloft}
 \pgfplotsset{compat=1.18}
 \definecolor{fhaachen}{RGB}{80,255,248}
 \definecolor{tegelerprimary}{RGB}{158,11,99}
@@ -109,7 +110,7 @@
 \setlength{\parindent}{0cm} %change indent of new paragraphs (if 0cm --> no indent)
 
 % gap between header and headlines
-\renewcommand*{\chapterheadstartvskip}{\vspace*{-0.75\baselineskip}}
+\renewcommand*{\chapterheadstartvskip}{\vspace*{\baselineskip}}
 
 % header and footer
 \pagestyle{scrheadings}
@@ -152,17 +153,12 @@
   xleftmargin=0.1\linewidth
 }
 
-% Renaming "table of contents" in "Contents"
 \renewcaptionname{english}{\contentsname}{\textbf{Inhaltsverzeichnis}}
-
-% Renaming "Sources" in "References"
 \renewcaptionname{english}{\bibname}{\textbf{Referenzen}} 
-
-% German names for figures/tables and their lists
 \renewcaptionname{english}{\figurename}{Abbildung}
 \renewcaptionname{english}{\tablename}{Tabelle}
 \renewcaptionname{english}{\listfigurename}{\textbf{Abbildungsverzeichnis}}
-\renewcaptionname{english}{\listtablename}{\textbf{Tabellenverzeichnis}} 
+\renewcaptionname{english}{\listtablename}{\textbf{Tabellenverzeichnis}}
 
 % \usepackage[
 %   tocindentmanual,
@@ -176,78 +172,71 @@
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
-%start of the document
-
 \begin{document}
+    % Define a new list called "appendices"
+    \newlistof{appendices}{apx}{Anhangsverzeichnis}
+
+    % Command to add an appendix entry
+    \newcommand{\appendixentry}[1]{%
+        \refstepcounter{appendices}
+        \addcontentsline{apx}{appendices}{#1}
+    }
+
     \setstretch{1.5}
     \addtocontents{toc}{\linespread{1}}
-    \pagenumbering{gobble} %no page numbering
+    \pagenumbering{gobble}
     
-    % Here the individual chapters are included in the main document by '\include{....}' . The files are in the folder 'doc'
     \include{./doc/00/001_title}
     \include{./doc/00/002_task}
     \include{./doc/00/003_abstract}
-    % Table of contents is generated:
+
     \makeatletter
-    \renewcommand*{\@dotsep}{1} % set gap between dots
+    \renewcommand*{\@dotsep}{0.5}
     \makeatother
     \tableofcontents
+
+    \clearpage
+    \pagenumbering{Roman}
+    \addcontentsline{toc}{chapter}{\textbf{Abbildungsverzeichnis}}
+    \markright{\textbf{Abbildungsverzeichnis}}
+    \markleft{\textbf{Abbildungsverzeichnis}}
+    \listoffigures
+
+    \clearpage
+    \addcontentsline{toc}{chapter}{\textbf{Tabellenverzeichnis}}
+    \markright{\textbf{Tabellenverzeichnis}}
+    \markleft{\textbf{Tabellenverzeichnis}}
+    \listoftables
+
+    \clearpage
+    \addcontentsline{toc}{chapter}{\textbf{Abkürzungsverzeichnis}}
+    \markright{\textbf{Abkürzungsverzeichnis}}
+    \markleft{\textbf{Abkürzungsverzeichnis}}
+    \printglossary[type=\acronymtype,title={\textbf{Abkürzungsverzeichnis}}]
     
-    % First chapter starts on uneven number 
+    \clearpage
+    \addcontentsline{toc}{chapter}{\textbf{Anhangsverzeichnis}}
+    \markright{\textbf{Anhangsverzeichnis}}
+    \markleft{\textbf{Anhangsverzeichnis}}
+    \listofappendices
+    
     \cleardoublepage
     \setstretch{1.25}
 
-
-    \setcounter{page}{1} %counter for page numbering is set to 1
-    \pagenumbering{arabic} %page numbering is done with arabic numbers
-    % chapters which are not used can be commented out
-    % additional chapters require a new file in folder 'doc'
+    \setcounter{page}{1}
+    \pagenumbering{arabic}
     \include{./doc/10/101_intro} % Introduction 
     \include{./doc/10/102_state-of-the-art} % State of the art
     \include{./doc/10/103_methods} % Methods
     \include{./doc/10/104_results} % Results
     \include{./doc/10/105_discussion} % Discussion & Outlook
 
-    % References
     \clearpage
-
-    \pagenumbering{Roman} % page numbering is done with capital roman signs (I, II, III...)
-
-    \bibliographystyle{unsrtdineng} % modified unsrtdin needs to be included as file in the main path (same level as the main document 000report.tex 
-    \bibliography{./bibliography/sources}
-
     \addcontentsline{toc}{chapter}{\textbf{Referenzen}}
-     % add to TOC
+    \bibliographystyle{unsrtdineng}
+    \bibliography{./bibliography/sources}
+    
     \clearpage
- 
-    %List of abbreviations
-    \markright{\textbf{Abkürzungsverzeichnis}}
-    \markleft{\textbf{Abkürzungsverzeichnis}}
-    \include{./doc/20/201_abbrevations}
-    \clearpage
-    
-    %List of figures
-    \markright{\textbf{Abbildungsverzeichnis}}
-    \markleft{\textbf{Abbildungsverzeichnis}}
-    \listoffigures
-    \addcontentsline{toc}{chapter}{\textbf{Abbildungsverzeichnis}}
-    
-    %List of tables
-    \clearpage
-    \markright{\textbf{Tabellenverzeichnis}}
-    \markleft{\textbf{Tabellenverzeichnis}}
-    \listoftables
-    \addcontentsline{toc}{chapter}{\textbf{Tabellenverzeichnis}}
-    \clearpage
-    
-    
-    %acknowledgments 
-     \clearpage
-    \markright{\textbf{Danksagungen}}
-    \markleft{\textbf{Danksagungen}}
-    \include{./doc/20/202_acknowledgements}
-    
-    
-    %Appendix
+    \pagenumbering{Alph}
     \include{./doc/30/301_appendix}
 \end{document}
