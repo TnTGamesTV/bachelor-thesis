@@ -2,21 +2,21 @@
 \label{chap:methods}
 
 Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen der Arbeit angewandte Methodik systematisch dargestellt. 
-Zunächst wird die Entwicklung der Anwendung beschrieben, welche auf Basis des Spiralmodelles (vgl. Kap. \ref{sec:spiral-model}) durchgeführt wurde.
-Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen dargestellt; anschließend erfolgt die Validierung der erzeugten \gls{llm}-Ausgaben.
-Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die spätere Auswertung.
+Zunächst wird die Entwicklung der Anwendung beschrieben, welche auf Basis des Spiralmodelles durchgeführt wurde (vgl. Kap. \ref{sec:app}).
+Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen dargestellt (vgl. Kap. \ref{sec:interviews}); anschließend erfolgt die Validierung der erzeugten \gls{llm}-Ausgaben (vgl. Kap. \ref{sec:datenvalidierung}).
+Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die Auswertung in dem darauf folgenden Kapitel.
 
 \section{KI-Anwendung für Interviews}
 \label{sec:app}
 
-Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung entwickelt, die im Rahmen der Interviews eingesetzt werden konnte.
-Die Anwendung wurde bewusst als methodisches Werkzeug konzipiert, um die Interaktion der Probanden mit dem \gls{llm} unter vergleichbaren Rahmenbedingungen zu ermöglichen.
+Zur Evaluierung der Fähigkeiten von künstlicher Intelligenz in digitalen Planungsprojekten wurde im Rahmen dieser Bachelorarbeit eine Anwendung entwickelt, die innerhalb der Interviews eingesetzt werden konnte.
+Die Anwendung entstand bewusst als methodisches Werkzeug, um die Interaktion der Probanden mit dem \gls{llm} unter vergleichbaren Rahmenbedingungen zu ermöglichen.
 Damit konnte eine nachvollziehbare Grundlage geschaffen werden, auf deren Basis die Qualität der erzeugten Antworten systematisch betrachtet werden kann.
 Während der Entwicklungsfokus auf der genannten Kernfunktion lag, wurden Benutzererfahrung und zusätzliche Funktionen nur sekundär betrachtet und flossen lediglich teilweise in Entwicklungsentscheidungen ein. \\
 
 Die Struktur der Entwicklung orientierte sich am Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}). 
 Zunächst wurde ein Konzept (vgl. Kap. \ref{sec:app-concept}) erarbeitet, das die grundlegenden Anforderungen und Ziele der Anwendung festlegte.
-Auf das Konzept folgte eine Vorentwicklung, in der die technologische Machbarkeit überprüft wurde und gewonnene Erkenntnisse in Form eines Entwicklungsplans festgehalten wurden (vgl. Kap. \ref{sec:app-development-plan}).
+Auf das Konzept folgte eine Vorentwicklung, in der die technologische Machbarkeit überprüft wurde und gewonnene Erkenntnisse in Form eines Entwicklungsplans festgehalten wurden.
 Die Entwicklung des Prototypen orientierte sich an diesem Plan und wurde anschließend analysiert, um die Kriterien und den Entwicklungsplan zu verfeinern.
 Nach der Verbesserung des Entwicklungsplans wurde der lauffähige Prototyp entwickelt, welcher für die Interviews eingesetzt wurde.
 Eine vollständige Implementierung für ein Release, wie er im Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}) vorgesehen war, ist auf Basis der zur Verfügung stehenden Ressourcen ausgeschlossen. \\
@@ -27,7 +27,7 @@ Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten 
 \label{sec:app-concept}
 
 Als Kern der Anwendung wurde eine textbasierte Eingabe vorgesehen, über die Probanden direkt mit dem \gls{llm} kommunizieren können.
-Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine möglichst direkte Bearbeitung der Aufgabenstellungen.
+Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine direkte Bearbeitung der Aufgabenstellungen.
 Darüber hinhaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, Teil des Konzeptes, um eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung zu ermöglichen.
 Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge sowie zusätzlich eingebundenes Wissensbausteine.
 Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur während der Entwicklung ändern zu müssen.
@@ -36,25 +36,25 @@ um dem in der Praxis angewandten Aufteilen von Modellen nach Fachdisziplin (vgl.
 
 Das Konzept sah bei der Anbindung von \gls{llm} die Nutzung von externen Dienstleistern vor, 
 um den Betrieb aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
-Die Anbindung erfolgt über eine \gls{api}, welche dem OpenAI \gls{api}-Standard entspricht, um die Flexibilität bei der Auswahl des \gls{llm} zu erhöhen.
-Dies ermöglicht einen Tausch des verwendeten \gls{llm}, ohne die Anwendung grundlegend bearbeiten zu müssen, 
-sodass Modellwechsel oder Anpassungen an der Modellwahl den methodischen Ablauf der Interviews nicht beeinflussen. \\
+Diese Verbindung erfolgt über eine \gls{api}, welche dem OpenAI \gls{api}-Standard entspricht,
+sodass der Tausch des verwendeten \gls{llm} möglich ist, ohne die Anwendung grundlegend bearbeiten zu müssen oder den Interviewfluss zu stören. \\
 
-Die Anwendung wurde im Rahmen der Interviews eingesetzt, welche nachfolgend methodisch definiert werden.
+Die Anwendung wurde während der Ausführung der Interviews eingesetzt, welche nachfolgend beschrieben werden.
 
 \section{Interviews}
 \label{sec:interviews}
 
-Um die entwickelte \gls{llm}-Anwendung mit Probanden zu testen, wurden Einzelinterviews in Form einer Videokonferenz durchgeführt wurden.
-Dies reduzierte die Nutzung von Ressourcen für die Koordination der Interviewtermine erheblich, da die Verfügbarkeit von Probanden durch das ortsunabhängige Format verbessert wurde.
+Um die erzeugte \gls{llm}-Anwendung mit Probanden zu testen, wurden Einzelinterviews in Form einer Videokonferenz durchgeführt wurden.
+Dies reduzierte die Nutzung von Ressourcen für die Koordination der Interviewtermine erheblich, da Probanden insgesamt an mehr Terminvorschlägen teilnehmen konnten.
 
-Zur inhaltlichen Nachvollziehbarkeit wurde während der Gespräche ein grobes Gedankenprotokoll erstellt. Dieses diente als ergänzende Grundlage für die spätere Analyse der vom \gls{llm} erzeugten Ausgaben und half dabei, zentrale Beobachtungen aus der Interaktion systematisch festzuhalten.
+Zur inhaltlichen Nachvollziehbarkeit wurde während der Gespräche ein grobes Gedankenprotokoll erstellt. 
+Dieses diente als ergänzende Grundlage für die spätere Analyse der vom \gls{llm} erzeugten Ausgaben und half dabei, zentrale Beobachtungen aus der Interaktion systematisch festzuhalten.
 Der Ablauf der Interviews ist in den folgenden Unterkapiteln schrittweise dargestellt, um die einzelnen methodischen Schritte transparent zu machen.
 
 \subsection{Zuordnung zur Probanden-Gruppe}
 \label{sec:probandenzuordnung}
 
-Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierten Probanden-Gruppen zugewiesen. Dies erfolgte auf Basis der in Tabelle \ref{tab:103_interview-core-questions} gezeigten Fragen.
+Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierten Gruppen zugewiesen. Dies erfolgte auf Basis der in Tabelle \ref{tab:103_interview-core-questions} abgebildeten Fragen.
 
 \begin{table}[!htb]
     \centering
@@ -77,7 +77,7 @@ Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierte
 
 Für die Zuordnung wurde Frage 2 als zentrales Kriterium gewichtet, da sie den unmittelbaren Anteil aktiver Tätigkeiten in der digitalen datengetriebenen Planung abbildet. 
 Ergänzend wurden Frage 1 und Frage 3 herangezogen, um Probanden differenziert einzuordnen, die zwar einen geringeren operativen Anteil in diesem Aufgabenfeld aufweisen, 
-jedoch aufgrund ihrer Berufserfahrung sowie ihrer fachlichen und organisatorischen Verantwortung weiterhin der Probanden-Gruppe A zugeordnet werden konnten. \\
+jedoch aufgrund ihrer Berufserfahrung sowie ihrer fachlichen und organisatorischen Verantwortung weiterhin der Gruppe A zugeordnet werden konnten. \\
 
 Nach der Zuordnung der Probanden zu den entsprechenden Gruppen folgt in den nächsten beiden Unterkapiteln die Darstellung des zweiten Interviewschritts: 
 zunächst die Entwicklung von Aufgabenstellungen durch Probanden-Gruppe A und anschließend die Bearbeitung dieser Aufgabenstellungen durch Probanden-Gruppe B.
@@ -164,7 +164,7 @@ Neben der manuellen Ausführung von \gls{sql}-Abfragen wurde pgAdmin auch zur An
 
 Nach Abschluss der inhaltlichen Prüfung wurden die im Interviewverlauf entstandenen Daten in einem mehrstufigen Verfahren aufbereitet.
 Zunächst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
-Darauf aufbauend wurden die Kommunikationsverläufe in Form von Threads dokumentiert, wobei jeweils mehrere zusammenhängende Nachrichten einer konkreten Aufgabenstellung zugeordnet wurden.
+Darauf aufbauend wurden die Kommunikationsverläufe in Form von Threads dokumentiert, wobei jeweils mehrere zusammenhängende Nachrichten einer konkreten Aufgabenstellung zugeordnet wurden. \\
 
 Die zentrale Grundlage der weiteren Analyse bildete anschließend eine Tabelle mit sämtlichen \gls{llm}-Rückgaben.
 Jeder Rückgabe wurde eine inhaltliche Kategorie zugewiesen; bei inkorrekten Ergebnissen wurde zusätzlich der vermutete Fehlergrund erfasst.
