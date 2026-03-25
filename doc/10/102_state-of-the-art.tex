@@ -76,6 +76,7 @@ um die verfügbaren Aufgabenstellungen auf einem vergleichbaren Niveau zu fachko
 
 \section{Open \& Closed Building Information Modelling}
 \label{sec:open-closed-bim}
+\glsreset{bim}
 
 Für den Einsatz der \gls{bim}-Methodik ist die Nutzung von Software ein essenzieller Bestandteil der alltäglichen Arbeit. Datengetriebene Planung erfolgt vollständig digital und ist somit in der Praxis direkt an Softwarenutzung geknüpft.
 Die eingesetzte Software und ihr Hersteller, hängt von verschiedenen Faktoren ab, wobei die Teamgröße, Interoperabilität mit anderen Unternehmen oder Teams, Budgets und Kundenanforderungen eine entscheidende Rolle spielen. \\
@@ -96,10 +97,13 @@ Im Rahmen der Bachelorarbeit wird die Open \gls{bim}-Methodik angewandt, weswege
 
 \section{Industry Foundation Classes}
 \label{sec:industry-foundation-classes}
+\glsreset{ifc}
 
 Im Sinne des Open-BIM-Ansatzes gewinnt die Nutzung offener Standards für den softwareübergreifenden Datenaustausch eine zentrale Bedeutung. 
-Industry Foundation Classes ist ein offener internationaler Maßstab für den Austausch und gemeinsame Nutzung von \gls{bim}-Daten zwischen verschiedenen Softwareanwendungen und Projektbeteiligten. 
-In der Version 4.3 umfasst der Anwendungsbereich nicht nur Hochbau, sondern explizit auch Infrastrukturbereiche wie Brücken, Straßen, Schienenwege, Wasserwege und Hafenanlagen. 
+Industry Foundation Classes (IFC) ist ein offener internationaler Maßstab für den Austausch und gemeinsame Nutzung von \gls{bim}-Daten zwischen verschiedenen Softwareanwendungen und Projektbeteiligten,
+welcher von {buildingSMART} fortlaufend entwickelt wird. Die letzte offizielle Version ist 4.3, während an der Version 5.0 gearbeitet wird\cite{buildingsmart2025ifc4}. \\
+
+Die neuste Variante umfasst als Anwendungsbereich nicht nur Hochbau, sondern explizit auch Infrastrukturbereiche wie Brücken, Straßen, Schienenwege, Wasserwege und Hafenanlagen. 
 \gls{ifc} definiert dazu den Austausch über den gesamten Lebenszyklus eines Bauwerks, von frühen Planungsphasen über Bau und Beschaffung bis in Betrieb und Instandhaltung \cite{buildingsmart2025ifc4}. \\
 
 Der Standard besteht aus mehreren Bausteinen: einem formalen Datenschema, der zugehörigen Spezifikationsdokumentation, standardisierten Property- und Quantity-Set-Definitionen sowie Austauschmechanismen für Dateien. 
@@ -118,7 +122,7 @@ Für Zertifizierungen müssen Anwendungen angegeben werden, gegen welche MVD sie
 \begin{figure}[htb]
     \centering
         \includegraphics[width=0.75\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.png}
-    \caption[Struktur des \gls{ifc}4-Standards als Schema]{Der \gls{ifc}-Standard ist in mehrere Ebenen unterteilt \cite{buildingsmart2025ifc4}.}
+    \caption[Struktur des \glstext{ifc}4-Standards als Schema]{Der \gls{ifc}-Standard ist in mehrere Ebenen unterteilt \cite{buildingsmart2025ifc4}.}
     \label{fig:102_ifc4-architecture}
 \end{figure}
 
@@ -132,7 +136,7 @@ Für die langfristige Nutzbarkeit von Bauwerksdaten ist insbesondere die Kompati
 Die Spezifikation unterscheidet zwischen Abwärtskompatibilität (ältere Austauschstrukturen bleiben in neueren Implementierungen lesbar) und Vorwärtskompatibilität (neuere Dateien bleiben in älteren Implementierungen möglichst nutzbar). 
 Dabei wird Abwärtskompatibilität für die Weiterentwicklung des EXPRESS-Schemas priorisiert, wohingehend Änderungen an Property- und Quantity-Sets weniger restriktiv behandelt werden \cite{buildingsmart2025ifc4}. \\
 
-\section{Modellviewer mit \gls{ifc}-Schnittstelle und Validierung}
+\section{Modellviewer mit \glsname{ifc}-Schnittstelle und Validierung}
 \label{sec:ifc-viewer}
 
 Aufbauend auf den zuvor beschriebenen Eigenschaften und Austauschmechanismen von \gls{ifc} wird für die praktische Arbeit mit solchen Modellen ein geeigneter Modellviewer benötigt.
@@ -174,8 +178,9 @@ Im folgenden Abschnitt wird daher die Klasse von \gls{gpt} als technische Grundl
 
 \subsection{Generative Pretrained Transformer}
 \label{sec:gpt}
+\glsreset{gpt}
 
-Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
+Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT, einem von OpenAI mit Sitz in Kalifornien, Vereinigte Staaten entwickelten Produkt, stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
 Das zugrunde liegende Prinzip, Modelle zunächst auf großen Datenmengen vorzutrainieren und anschließend auf konkrete Aufgaben anzupassen, ist jedoch deutlich älter und in der Forschung seit Jahren etabliert \cite[S. 4-5]{han2021pretrainedmodelspastpresent}. \\
 
 Frühe Verfahren des Vortrainierens orientierten sich am "transfer learning": Ein Modell wurde auf einer Ausgangsaufgabe trainiert und das dabei gelernte Wissen auf eine andere, verwandte Aufgabe übertragen \cite[S. 5]{han2021pretrainedmodelspastpresent}. \\
@@ -195,6 +200,7 @@ Die veranschaulichten Architektur- und Trainingsprinzipien markieren den methodi
 
 \subsection{Large-Language-Modelle}
 \label{sec:llm}
+\glsreset{llm}
 
 Unter \glspl{llm} werden großskalige Sprachmodelle verstanden, die auf sehr umfangreichen Textkorpora trainiert werden und durch ihre Parametrisierung vielfältige Sprachaufgaben innerhalb eines Modells bearbeiten können.
 Für die vorliegende Arbeit ist diese Modellklasse besonders bedeutsam, da sie sowohl allgemeine Sprachkompetenz als auch eine Anpassung an domänenspezifische Anwendungskontexte ermöglicht.
@@ -287,6 +293,7 @@ Die heute dominierende Transformer-Architektur ist dafür besonders geeignet, da
 
 \subsection{Tool Calling \& Model Context Protocol}
 \label{sec:tool-calling-mcp}
+\glsreset{mcp}
 
 Während des Trainings eines \gls{llm} werden neben der Semantik auch Wissen aus dem Trainingssatz extrapoliert.
 Da der Datensatz jedoch zum Trainingszeitpunkt eingefroren ist, friert das Wissen ebenfalls ab diesem Zeitpunkt ein. Dies wird als Wissensgrenze (knowledge cutoff) bezeichnet \cite{googlecloud2025modelcontextprotocol}. \\
@@ -348,7 +355,7 @@ In erster Instanz erhält das Modell lediglich Namen und eine kurze Beschreibung
 Diese Informationen dienen der Auswahlentscheidung, ob ein Skill mit der aktuellen Nutzeranfrage übereinstimmt \cite{agentskills_github}.
 Auf der zweiten Ebene wird der Einstiegspunkt des Skills, typischerweise die Datei \textit{SKILL.md}, dem Modell zur Verfügung gestellt. 
 Dadurch werden nur die für die Anfrage vorausgewählten Inhalte in den Kontext übernommen \cite{agentskills_github}.
-Zusätzlich können aus SKILL.md referenzierte Inhalte nachgeladen werden, zum Beispiel weitere Markdown-Dateien oder Skripte. 
+Zusätzlich können aus \textit{SKILLS.md} referenzierte Inhalte nachgeladen werden, zum Beispiel weitere Markdown-Dateien oder Skripte. 
 Dieses stufenweise Vorgehen ermöglicht einen inkrementellen Wissensaufbau, ohne von Beginn an den Systemprompt zu füllen \cite{agentskills_github}. \\
 
 Im Vergleich zu monolithischen Prompts ergeben sich zwei zentrale Vorteile: die Relevanz der im Kontext enthaltenen Informationen erhöht, weil irrelevante Wissensanteile nicht dauerhaft im Systemprompt enthalten sind. 
@@ -398,6 +405,7 @@ Dadurch werden sowohl die technische Versionierung als auch die organisatorische
 
 \subsection{Entwicklung von Web-Anwendungen}
 \label{sec:web-development}
+\glsreset{http}
 
 Web-Anwendungen werden typischerweise in mehreren Programmiersprachen entwickelt, die jeweils unterschiedliche Aufgaben im System übernehmen.
 Grundlegende Sprachen wie HTML, CSS und JavaScript sind seit Prsprung des World Wide Web etabliert und bilden die technische Basis nahezu aller modernen Web-Anwendungen \cite{mdn_client_server}.
@@ -434,7 +442,6 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
   
     \begin{tikzpicture}
         \begin{axis}[
-            title={Frontend-Framework Nutzung (2016–2024)},
             xlabel={Jahr},
             ylabel={Nutzung [\%]},
             xmin=2016, xmax=2024,
@@ -443,10 +450,18 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
             grid=major,
             legend style={at={(1.02,1)}, anchor=north west},
             symbolic x coords={2016,2017,2018,2019,2020,2021,2022,2023,2024},
-            width=12cm, height=8cm
+            width=12cm, height=8cm,
+            cycle list={
+                {tegelerprimary, thick, solid, mark=*},
+                {blue, thick, solid, mark=*},
+                {tegelersecondary, thick, solid, mark=*},
+                {red, thick, solid, mark=*},
+                {green, thick, solid, mark=*},
+                {darkgray, thick, solid, mark=*},
+            }
         ]
 
-            \addplot+[mark=*] coordinates {
+            \addplot+ coordinates {
                 (2016,52.7)
                 (2017,62)
                 (2018,71.6)
@@ -459,7 +474,7 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
             };
             \addlegendentry{React}
 
-            \addplot+[mark=*] coordinates {
+            \addplot+ coordinates {
                 (2016,10.1)
                 (2017,21.6)
                 (2018,31.7)
@@ -472,7 +487,7 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
             };
             \addlegendentry{Vue}
 
-            \addplot+[mark=*] coordinates {
+            \addplot+ coordinates {
                 (2016,20)
                 (2017,28.5)
                 (2018,57.8)
@@ -485,7 +500,7 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
             };
             \addlegendentry{Angular}
 
-            \addplot+[mark=*] coordinates {
+            \addplot+ coordinates {
                 (2019,7.8)
                 (2020,14.6)
                 (2021,19.9)
@@ -495,8 +510,7 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
             };
             \addlegendentry{Svelte}
 
-            % Solid usage
-            \addplot+[mark=*] coordinates {
+            \addplot+ coordinates {
                 (2021,2.8)
                 (2022,6.3)
                 (2023,8)
@@ -504,7 +518,7 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
             };
             \addlegendentry{Solid}
 
-            \addplot+[mark=*] coordinates {
+            \addplot+ coordinates {
                 (2020,5.4)
                 (2021,7.1)
                 (2022,6.2)
@@ -512,10 +526,9 @@ Bei der dargestellten Grafik ist zu beachten, dass Mehrfachantworten möglich si
                 (2024,9)
             };
             \addlegendentry{Lit}
-
         \end{axis}
     \end{tikzpicture}
-    \caption[Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024]{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024 \cite{tkrotoff2026frontendframeworkspopularity}.}
+    \caption[Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024]{Verlauf der Nutzung von Frontend-Frameworks von 2016 bis 2024. Die Nutzung von React (Magenta) liegt dabei in jedem Datenpunkt über der Nutzung anderer Frameworks und verbleibt ab 2019 um die 80-\%-Marke. Die anderen meistgenutzten Frameworks sind Vue (Blau) und Angular (Türkis), überschritten aber zu keinem Zeitpunkt eine Nutzung von mehr als 60\% und hielten im Jahr 2024 einen Abstand zu React von über 30 \% zu React \cite{tkrotoff2026frontendframeworkspopularity}.}
     \label{fig:102_frontend-framework-usage}
 \end{figure}
 
@@ -579,7 +592,15 @@ Die Kopplung zwischen Komponenten wird damit reduziert, Tests lassen sich einfac
             grid=major,
             legend style={at={(1.02,1)}, anchor=north west},
             symbolic x coords={2017,2018,2019,2020,2021,2022,2023,2024,2025},
-            width=12cm, height=8cm
+            width=12cm, height=8cm,
+            cycle list={
+                {tegelerprimary, thick, solid, mark=*},
+                {tegelersecondary, thick, solid, mark=*},
+                {blue, thick, solid, mark=*},
+                {red, thick, solid, mark=*},
+                {green, thick, solid, mark=*},
+                {darkgray, thick, solid, mark=*},
+            }
         ]
 
             \addplot+[mark=*] coordinates {
@@ -630,7 +651,7 @@ Die Kopplung zwischen Komponenten wird damit reduziert, Tests lassen sich einfac
             \addlegendentry{Hapi}
         \end{axis}
     \end{tikzpicture}
-    \caption[Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025]{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025. In den Jahren 2022, 2023 und 2024 wurden keine Daten erhoben. Einträge mit nur einem Datenpunkt wurden nicht übernommen \cite{devographics2025backendframeworksusage}.}
+    \caption[Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025]{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025 (mit Ausnahme der Jahre 2022, 2023 und 2024). Express (Magenta) ist liegt mit einer Nutzung von 80 \% im Jahr 2025 50 \% über NestJS (Türkis) mit 30 \%. Alle anderen Frameworks werden weniger als 20 \% genutzt -- nur Fastify (Blau) erreicht in 2025 eine Nutzung von 20 \% \cite{devographics2025backendframeworksusage}.}
     \label{fig:102_backend-framework-usage}
 \end{figure}
 
@@ -655,6 +676,7 @@ Des Weiteren hilft Prisma auf Basis von Änderungen am Schema Migrationsskripte 
 Dadurch können Änderungen am Schema in der lokalen Entwicklungsumgebung in andere Umgebungen übertragen werden \cite{prismaUnknownDocumentation}.
 
 \subsubsection{PostgreSQL}
+\glsreset{sql}
 
 Bei PostgreSQL handelt es sich um ein \gls{ordbms}, welches auf POSTGRES, einem an der "University of California" am "Berkeley Computer Science Department" entwickelten Datenbanksystem, basiert.
 Der Quellcode hinter PostgreSQL ist öffentlich zugänglich, wodurch jede Person Änderungen an der Software durchführen kann. 
@@ -768,6 +790,7 @@ Faktoren für den in Abb. \ref{fig:102_database-usage} dargestellten Popularitä
 
 \subsection{Frontend-Backend-Kommunikation mit tRPC}
 \label{sec:trpc}
+\glsreset{api}
 
 Bei der klassischen Kommunikation zwischen Frontend und Backend über HTTP-Schnittstellen entsteht in TypeScript-Projekten häufig ein Abstimmungsproblem zwischen beiden Seiten.
 Anfragen und Antworten lokal typisiert werden, die tatsächliche Schnittstellenbeschreibung liegt dabei voneinander getrennt vor.

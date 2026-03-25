@@ -471,14 +471,14 @@ FUNCTION {format.names}
       t  v  *  fkt  *  't :=
       nameptr #1 >
          { namesleft #1 >
-             { " ; " * t * }
+             { "; " * t * }
              { numnames #2 >
                   { " " * }
                   'skip$
                if$
                t "\textsc{others}" = t "\textsc{others} (Hrsg.)" = or
                   { ua.etal * }
-                  { " ; " * t * }
+                  { "; " * t * }
                if$
                }
             if$  %% Ende der namesleft-Pruefung
@@ -512,7 +512,7 @@ FUNCTION {format.editors}
           editor format.names
         }
         { " (Hrsg.)" 'fkt :=
-          " ; " * editor format.names *
+          "; " * editor format.names *
         }
       if$
    }

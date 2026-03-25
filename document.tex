@@ -54,10 +54,39 @@
 \hyphenation{Struk-tu-ren}
 \hyphenation{Ifc-Building-Element-Proxy}
 
+% glossary and acronyms
 \usepackage[acronym,automake]{glossaries}
+% \usepackage{glossaries-extra}
+
 \makeglossaries
 
-\include{doc/00/000_abbreviations}
+\newacronym{bim}{BIM}{building information modeling}
+\newacronym{gpt}{GPT}{generative pre-trained transformer}
+\newacronym{llm}{LLM}{large language model}
+\newacronym{lm}{LM}{language model}
+\newacronym{mcp}{MCP}{Model Context Protocol}
+\newacronym{rnns}{RNNs}{recurrent neural networks}
+\newacronym{seq2seq}{seq2seq}{sequence-to-sequence}
+\newacronym{gpu}{GPU}{graphics processing unit}
+\newacronym{tpu}{TPU}{tensor processing unit}
+\newacronym{ifc}{IFC}{Industry Foundation Classes}
+\newacronym{pset}{Pset}{Property Set}
+\newacronym{api}{API}{application programming interface}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{di}{DI}{dependency injection}
+\newacronym{uri}{URI}{Uniform Resource Identifier}
+\newacronym{orm}{ORM}{object-relational mapping}
+\newacronym{vdom}{VDOM}{virtual document object model}
+\newacronym{html}{HTML}{Hypertext Markup Language}
+\newacronym{spa}{SPA}{single-page application}
+\newacronym{cde}{CDE}{common data environment}
+\newacronym{sql}{SQL}{structured query language}
+\newacronym{ordbms}{ORDBMS}{object-relational database management system}
+\newacronym{ui}{UI}{user interface}
+\newacronym{http}{HTTP}{Hypertext Transfer Protocol}
+\newacronym{sse}{SSE}{server-sent events}
+\newacronym{dvcs}{DVCS}{distributed version control system}
+\newacronym{ttft}{TTFT}{Time To First Token}
 
 \usepackage[german,english]{babel}       % language: germena nad english, english is main language, german is used in the german abstract and the acknowledgements 
 % \usepackage[T1]{fontenc}
@@ -207,6 +236,10 @@
 
     \setstretch{1.25}
 
+    % set glossary commands to noindex and disable hyperlinks
+    % \GlsXtrSetDefaultGlsOpts{local,noindex}
+    % \glsdisablehyper
+
     \makeatletter
     \renewcommand*{\@dotsep}{0.5}
     \makeatother
@@ -240,7 +273,10 @@
     \markright{\textbf{Anhangsverzeichnis}}
     \markleft{\textbf{Anhangsverzeichnis}}
     \listofappendices
-    
+
+    % \glsenablehyper
+    % \GlsXtrSetDefaultGlsOpts{}   % set glossary commands to default and enable hyperlinks
+    \glsresetall % reset glossary entries usage
     \cleardoublepage
 
     \setcounter{page}{1}
