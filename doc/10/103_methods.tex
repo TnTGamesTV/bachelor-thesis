@@ -3,8 +3,9 @@
 
 Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen der Arbeit angewandte Methodik systematisch dargestellt. 
 Zunächst wird die Entwicklung der Anwendung beschrieben, welche auf Basis des Spiralmodelles durchgeführt wurde (vgl. Kap. \ref{sec:app}).
-Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen dargestellt (vgl. Kap. \ref{sec:interviews}); anschließend erfolgt die Validierung der erzeugten \gls{llm}-Ausgaben (vgl. Kap. \ref{sec:datenvalidierung}).
-Den Abschluss bildet die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die Auswertung in dem darauf folgenden Kapitel.
+Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen präsentiert (vgl. Kap. \ref{sec:interviews}); 
+anschließend folgt die Validierung der erzeugten \gls{llm}-Ausgaben (vgl. Kap. \ref{sec:datenvalidierung}).
+Im abschließenden Abschnitt wird strukturierte Aufbereitung der erhobenen Daten als Grundlage für die Auswertung in dem darauf folgenden Kapitel definiert.
 
 \section{KI-Anwendung für Interviews}
 \label{sec:app}
@@ -17,11 +18,11 @@ Während der Entwicklungsfokus auf der genannten Kernfunktion lag, wurden Benutz
 Die Struktur der Entwicklung orientierte sich am Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}). 
 Zunächst wurde ein Konzept (vgl. Kap. \ref{sec:app-concept}) erarbeitet, das die grundlegenden Anforderungen und Ziele der Anwendung festlegte.
 Auf das Konzept folgte eine Vorentwicklung, in der die technologische Machbarkeit überprüft wurde und gewonnene Erkenntnisse in Form eines Entwicklungsplans festgehalten wurden.
-Die Entwicklung des Prototypen orientierte sich an diesem Plan und wurde anschließend analysiert, um die Kriterien und den Entwicklungsplan zu verfeinern.
-Nach der Verbesserung des Entwicklungsplans wurde der lauffähige Prototyp entwickelt, welcher für die Interviews eingesetzt wurde.
-Eine vollständige Implementierung für ein Release, wie er im Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}) vorgesehen war, ist auf Basis der zur Verfügung stehenden Ressourcen ausgeschlossen. \\
+Die Entwicklung des Prototypen orientierte sich an diesem und wurde anschließend analysiert, um die Kriterien und den Planinhalt zu verfeinern.
+Nach der Verbesserung wurde der lauffähige Prototyp entwickelt, welcher für die Interviews eingesetzt wurde.
+Eine vollständige Implementierung für ein Release, wie im Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}) vorgesehen, ist auf Basis der zur Verfügung stehenden Ressourcen ausgeschlossen. \\
 
-Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten Anwendung eingegangen, welches als Grundlage für den gesamten Entwicklungsprozess diente.
+Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten Anwendung thematisiert, welches als Grundlage für den gesamten Entwicklungsprozess diente.
 
 \subsection{Konzept}
 \label{sec:app-concept}
@@ -29,13 +30,13 @@ Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten 
 Als Kern der Anwendung wurde eine textbasierte Eingabe vorgesehen, über die Probanden direkt mit dem \gls{llm} kommunizieren können.
 Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine direkte Bearbeitung der Aufgabenstellungen.
 Darüber hinhaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, Teil des Konzeptes, um eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung zu ermöglichen.
-Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge sowie zusätzlich eingebundenes Wissensbausteine.
+Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge sowie zusätzlich eingebundene Wissensbausteine.
 Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur während der Entwicklung ändern zu müssen.
-Ein wichtiger Teil des Konzeptes war die Möglichkeit mehrere \gls{ifc}-Modelle gleichzeitig zu laden, 
+Ein wichtiger Teil des Konzeptes war die Möglichkeit mehrere \gls{ifc}-Modelle gleichzeitig abzurufen, 
 um dem in der Praxis angewandten Aufteilen von Modellen nach Fachdisziplin (vgl. Kap. \ref{sec:open-closed-bim}) gerecht zu werden. \\
 
 Das Konzept sah bei der Anbindung von \gls{llm} die Nutzung von externen Dienstleistern vor, 
-um den Betrieb aus der Bachelorarbeit auszulagern und den Entwicklungsaufwand zu reduzieren.
+um den Betrieb aus der Bachelorarbeit zu externalisieren und den Entwicklungsaufwand zu reduzieren.
 Diese Verbindung erfolgt über eine \gls{api}, welche dem OpenAI \gls{api}-Standard entspricht,
 sodass der Tausch des verwendeten \gls{llm} möglich ist, ohne die Anwendung grundlegend bearbeiten zu müssen oder den Interviewfluss zu stören. \\
 
@@ -44,11 +45,11 @@ Die Anwendung wurde während der Ausführung der Interviews eingesetzt, welche n
 \section{Interviews}
 \label{sec:interviews}
 
-Um die erzeugte \gls{llm}-Anwendung mit Probanden zu testen, wurden Einzelinterviews in Form einer Videokonferenz durchgeführt wurden.
-Dies reduzierte die Nutzung von Ressourcen für die Koordination der Interviewtermine erheblich, da Probanden insgesamt an mehr Terminvorschlägen teilnehmen konnten.
+Um die erzeugte \gls{llm}-Anwendung mit Probanden zu testen, wurden Einzelinterviews in Form einer Videokonferenz durchgeführt.
+Dies reduzierte die Nutzung von Ressourcen für die Koordination der Interviewtermine aufgrund der Tatsache, dass Probanden insgesamt an mehr Terminvorschlägen teilnehmen konnten.
 
 Zur inhaltlichen Nachvollziehbarkeit wurde während der Gespräche ein grobes Gedankenprotokoll erstellt. 
-Dieses diente als ergänzende Grundlage für die spätere Analyse der vom \gls{llm} erzeugten Ausgaben und half dabei, zentrale Beobachtungen aus der Interaktion systematisch festzuhalten.
+Dieses diente als ergänzende Grundlage für die spätere Analyse und half dabei, zentrale Beobachtungen aus der Interaktion systematisch festzuhalten.
 Der Ablauf der Interviews ist in den folgenden Unterkapiteln schrittweise dargestellt, um die einzelnen methodischen Schritte transparent zu machen.
 
 \subsection{Zuordnung zur Probanden-Gruppe}
@@ -76,27 +77,26 @@ Im ersten Schritt des Interviews wurde jeder Proband einer der beiden definierte
 \end{table}
 
 Für die Zuordnung wurde Frage 2 als zentrales Kriterium gewichtet, da sie den unmittelbaren Anteil aktiver Tätigkeiten in der digitalen datengetriebenen Planung abbildet. 
-Ergänzend wurden Frage 1 und Frage 3 herangezogen, um Probanden differenziert einzuordnen, die zwar einen geringeren operativen Anteil in diesem Aufgabenfeld aufweisen, 
+Ergänzend wurden Frage 1 und Frage 3 herangezogen, um die Probanden differenziert einzuordnen, welche einen geringeren operativen Anteil in diesem Aufgabenfeld aufweisen, 
 jedoch aufgrund ihrer Berufserfahrung sowie ihrer fachlichen und organisatorischen Verantwortung weiterhin der Gruppe A zugeordnet werden konnten. \\
 
 Nach der Zuordnung der Probanden zu den entsprechenden Gruppen folgt in den nächsten beiden Unterkapiteln die Darstellung des zweiten Interviewschritts: 
-zunächst die Entwicklung von Aufgabenstellungen durch Probanden-Gruppe A und anschließend die Bearbeitung dieser Aufgabenstellungen durch Probanden-Gruppe B.
+zunächst die Entwicklung von Aufgabenstellungen durch Gruppe A und anschließend die Bearbeitung dieser Aufgabenstellungen durch Gruppe B.
 
 \subsection{Entwicklung von Aufgabenstellungen durch Probanden-Gruppe A}
 \label{sec:aufgabenstellung-gruppe-a}
 
-Der zweite Schritt der Interviews für die Probanden-Gruppe A bestand aus der Entwicklung von Aufgabenstellungen. 
+Der zweite Schritt des Interviews für die Probanden-Gruppe A bestand aus der Entwicklung von Aufgabenstellungen. 
 Dabei wurde die folgende Leitfrage entwickelt, um den Probanden einen Einstieg in das Interview zu ermöglichen: \\
 
 \say{Ihnen steht eine unangelernte Hilfskraft zur Verfügung, für die Sie eine Aufgabe für ein exemplarisches digitales Modell formulieren sollen. Welche Aufgaben fallen Ihnen dazu in Stichworten ein?} \\
 
-Zusätzlich zur genannten Leitfrage wurde den Probanden der Gruppe A der Rahmen für die Aufgabenstellungen erläutert. 
-Es wurde dabei auf Aufgabenstellungen abgezielt, welche eine einzige Problemstellung betreffen. 
-Besondere Priorität hatte dabei die Identifizierbarkeit des Kernproblems der Aufgabenstellung.
-Für Probanden der Gruppe B sollte dabei erkenntlich sein, welches Ziel sie zu erreichen hatten. 
+Zusätzlich zur genannten Leitfrage wurde der Rahmen für die Aufgabenstellungen mit den Probanden besprochen. 
+Dabei wurde auf Aufgabenstellungen abgezielt, welche eine einzige Problemstellung betreffen.
+Für Studienteilnehmer der Gruppe B sollte dabei erkenntlich sein, welches Ziel sie anzustreben haben. 
 Dies schloss die Verwendung von Fachbegriffen nicht aus, da Probanden das \gls{llm} als Hilfsmittel einsetzen konnten.
-Jedoch wurde explizit auf eine Kombination aus mehreren Aufgaben in einer einzelnen Aufgabenstellung verzichtet, 
-um den Fokus der Probanden pro Aufgabenstellung auf ein einzelnes zu lösendes Problem zu lenken.
+Jedoch wurde explizit auf eine Kombination aus mehreren Problemstellungen in einer einzelnen Aufgabenstellung verzichtet, 
+um den Fokus der Probanden auf ein einzelnes zu lösendes Problem zu lenken.
 
 \subsection{Durchführung der Aufgabenstellung durch Probanden-Gruppe B}
 \label{sec:aufgabenstellung-gruppe-b}
@@ -108,14 +108,14 @@ Zusätzlich wurde das Interviewdatum erfasst, um die spätere Extraktion der zug
 Anschließend wurden die einzelnen Aufgabenstellungen nacheinander präsentiert und in festgelegter Reihenfolge bearbeitet. 
 Dabei wurden keine zusätzlichen fachlichen Hinweise gegeben, sodass die Aufgabenbearbeitung ausschließlich auf der jeweiligen Aufgabenbeschreibung und der Interaktion mit dem \gls{llm} beruhte. \\
 
-Die Probanden formulierten ihre Eingaben selbstständig und übermittelten diese aus technischen Gründen an den Interviewführer, der die Eingaben mithilfe der bereitgestellten Anwendung an das \gls{llm} weitergab. 
+Die Probanden formulierten ihre Eingaben selbstständig und übermittelten diese an den Interviewführer, der die Eingaben mithilfe der bereitgestellten Anwendung an das \gls{llm} weitergab. 
 Sämtliche Eingaben sowie die jeweils erzeugten Antworten wurden fortlaufend in einem Gedankenprotokoll dokumentiert, um den Bearbeitungsverlauf später nachvollziehbar auswerten zu können. \\
 
 Eine Aufgabenstellung galt als abgeschlossen, sobald der Proband das angestrebte Ziel als erreicht bewertete. 
 Falls die erzeugten Ergebnisse deutlich von der Aufgabenstellung abwichen und keine zielführende Weiterbearbeitung erkennbar war, wurde die Bearbeitung dieser Aufgabe abgebrochen. 
 Sofern im Verlauf der Bearbeitung Exportdateien, beispielsweise im CSV-Format, erzeugt wurden, wurden diese für die weitere Analyse lokal gespeichert. \\
 
-Die \gls{llm}-Ausgaben, Dateierzeugnisse und andere Daten wurden danach auf Basis der im folgenden Abschnitt definierten Methodik validiert.
+Die \gls{llm}-Ausgaben, Dateiprodukte und andere Daten wurden danach auf Basis der im folgenden Abschnitt definierten Methodik validiert.
 
 \section{Validierung der \gls{llm}-Ausgabe}
 \label{sec:datenvalidierung}
@@ -124,10 +124,10 @@ Bevor die im Rahmen der Interviews gewonnenen Daten aufbereitet und ausgewertet 
 
 Für die Überprüfung von Attributen und Struktur des digitalen Modells wurde ein Modellviewer eingesetzt, der mit dem \gls{ifc}-Standard kompatibel ist.
 Es handelte sich dabei um BIMcollab Zoom, eine von BIMcollab entwickelte Software für die Prüfung und Qualitätsanalyse von digitalen datengetriebenen Gebäudemodellen.
-BIMcollab Zoom unterstützt allgemein die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter sowie die Durchsetzung von Standards für jedes Projekt \cite{bimcollabUnknownZoom}. \\
+BIMcollab Zoom unterstützt allgemein die Prüfung auf Kollisionen von Elementen, die Qualitätssicherung der verknüpften Parameter sowie die Durchsetzung von Standards für jegliche Art von Projekt \cite{bimcollabUnknownZoom}. \\
 
 Zusätzlich bietet BIMcollab Zoom die Möglichkeit, bestehende Modelldaten auf Basis definierter Regeln zu restrukturieren sowie beliebige Parameter und Elemente farblich zu visualisieren.
-Die Integration in andere Produkte von BIMcollab, wie BIMcollab Twin, eine \gls{cde}, oder BIMcollab Nexus, eine Kommunikationsplattform für Issues, ist ein wichtiger Teil von BIMcollab Zoom \cite{bimcollabUnknownZoom}. \\
+Die Integration in andere Produkte von BIMcollab wie BIMcollab Twin, eine \gls{cde} oder BIMcollab Nexus, eine Kommunikationsplattform für Issues, ist ein wichtiger Teil von BIMcollab Zoom \cite{bimcollabUnknownZoom}. \\
 
 Im Rahmen der Bachelorarbeit wurden damit unter anderem einzelne Elemente, beispielsweise technische Geräte, die vom \gls{llm} direkt erwähnt wurden, durch Selektion in BIMcollab Zoom geprüft.
 Dabei wurden alle mit dem Element verknüpften Psets und Properties angezeigt und manuell ausgewertet (s. Abb. \ref{fig:103_bimcollab-zoom-selection}). \\
@@ -141,10 +141,10 @@ Dabei wurden alle mit dem Element verknüpften Psets und Properties angezeigt un
 	\label{fig:103_bimcollab-zoom-selection}
 \end{figure}
 
-Für komplexere Überprüfungen, besonders bei großen Mengen an Elementen, wurden Listen in BIMcollab Zoom eingesetzt.
-Bei der Erstellung dieser Listen konnten verschiedene Suchkriterien ausgefüllt werden, um eine genaue Auswahl an Elementen aus dem digitalen Modell zu extrahieren.
-Mit der Verwendung eines Pivot-Rasters, einer Unterkategorie der klassischen Liste, bestand zudem die Möglichkeit, arithmetische Funktionen auf den Properties der selektierten Elemente auszuführen.
-In Abbildung \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Berechnung der Fensterfläche in einem Modell dargestellt, das im Rahmen der Überprüfung eingesetzt wurde. \\
+Für komplexere Überprüfungen, besonders bei großen Mengen an Elementen, wurden Listen eingesetzt.
+Bei der Erstellung dieser konnten verschiedene Suchkriterien ausgefüllt werden, um eine genaue Auswahl aus dem digitalen Modell zu extrahieren.
+Mit der Verwendung eines Pivot-Rasters, der Unterkategorie der klassischen Liste, bestand zudem die Möglichkeit, arithmetische Funktionen auf den Properties der selektierten Elemente auszuführen.
+In Abbildung \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Berechnung der Fensterfläche in einem Modell dargestellt, das im Rahmen der Überprüfung angewendet wurde. \\
 
 \begin{figure}[htb]
 	\centering
@@ -157,19 +157,19 @@ In Abbildung \ref{fig:103_bimcollab-zoom-list} ist ein Pivot-Raster für die Ber
 
 Um die vom \gls{llm} verwendeten \gls{sql}-Abfragen zu überprüfen, wurde eine lokale Verwaltungssoftware für die manuelle Ausführung der generierten \gls{sql}-Abfragen verwendet.
 Es handelte sich dabei um pgAdmin, eine für mehrere Betriebssysteme entwickelte Anwendung, die die Verwaltung verschiedener PostgreSQL-Datenbanken ermöglicht.
-Neben der manuellen Ausführung von \gls{sql}-Abfragen wurde pgAdmin auch zur Analyse der Datenbankstruktur nach Migrationen oder zur Analyse einzelner Dateneinträge genutzt \cite{pgadmin2026features}.
+Diese wurde neben der manuellen Ausführung von \gls{sql}-Abfragen auch zur Analyse der Datenbankstruktur nach Migrationen oder einzelner Dateneinträge genutzt \cite{pgadmin2026features}.
 
 \section{Aufbereitung der Daten}
 \label{sec:datenaufbereitung}
 
 Nach Abschluss der inhaltlichen Prüfung wurden die im Interviewverlauf entstandenen Daten in einem mehrstufigen Verfahren aufbereitet.
-Zunächst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
-Darauf aufbauend wurden die Kommunikationsverläufe in Form von Threads dokumentiert, wobei jeweils mehrere zusammenhängende Nachrichten einer konkreten Aufgabenstellung zugeordnet wurden. \\
+Vorerst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
+Darauf gestützt wurden die Kommunikationsverläufe in Form von Threads dokumentiert, wobei jeweils mehrere zusammenhängende Nachrichten einer konkreten Aufgabenstellung kategorisiert wurden. \\
 
 Die zentrale Grundlage der weiteren Analyse bildete anschließend eine Tabelle mit sämtlichen \gls{llm}-Rückgaben.
 Jeder Rückgabe wurde eine inhaltliche Kategorie zugewiesen; bei inkorrekten Ergebnissen wurde zusätzlich der vermutete Fehlergrund erfasst.
 Auf diese Weise konnte neben der reinen Ergebnisdokumentation auch die qualitative Einordnung der Antworten nachvollziehbar festgehalten werden.
-Die im Rahmen dieser Einordnung verwendeten Fehlerzustände sind in Tabelle \ref{tab:103_incorrect-output-errors} zusammengefasst.
+Die im Rahmen dieser Einordnung verwendeten Fehlerzustände sind in Tabelle \ref{tab:103_incorrect-output-errors} zusammengefasst. \\
 
 \begin{table}[!htb]
     \centering
@@ -197,6 +197,6 @@ Die im Rahmen dieser Einordnung verwendeten Fehlerzustände sind in Tabelle \ref
     \end{tabular}
 \end{table}
 
-Ergänzend wurden die aufbereiteten Tabellen in einem gemeinsamen Datensatz zusammengeführt, sodass Rückgaben, Thread-Kontext und Probandengruppe gemeinsam ausgewertet werden konnten.
-Im letzten Schritt wurde eine Aggregation der Daten durchgeführt, insbesondere auf Basis der kategorisierten \gls{llm}-Rückgaben und der dokumentierten Fehlerzustände.
+Ergänzend wurden die verarbeitete Tabellen in einem gemeinsamen Datensatz zusammengeführt, sodass es möglich war Rückgaben, Thread-Kontext und Probandengruppe gemeinsam auszuwerten.
+Zum Schluss wurde eine Aggregation der Daten durchgeführt, insbesondere auf Basis der kategorisierten \gls{llm}-Rückgaben und der dokumentierten Fehlerzustände.
 Diese Verdichtung diente der Berechnung statistischer Kennzahlen und der Erstellung vergleichbarer Übersichten, die als Grundlage für die spätere Interpretation der Ergebnisse herangezogen wurden.
