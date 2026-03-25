@@ -121,8 +121,9 @@ Für Zertifizierungen müssen Anwendungen angegeben werden, gegen welche MVD sie
 
 \begin{figure}[htb]
     \centering
-        \includegraphics[width=0.75\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.png}
-    \caption[Struktur des \glstext{ifc}4-Standards als Schema]{Der \gls{ifc}-Standard ist in mehrere Ebenen unterteilt \cite{buildingsmart2025ifc4}.}
+        \includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.png}
+    \caption[Struktur des \glstext{ifc}4-Standards als Schema]{Der Aufbau des \gls{ifc}4.3-Standards teilt sich in vier Ebenen (Resource-, Core-, Interoperability- und Domainebene). 
+    Dabei stellen Resource- und Coreebene grundsätzliche Bausteine dar, während Interoperability- und Domainebene fachspezifische Elemente definieren \cite{buildingsmart2025ifc4}.}
     \label{fig:102_ifc4-architecture}
 \end{figure}
 
@@ -153,9 +154,11 @@ Künstliche Intelligenz (KI) umfasst Verfahren, mit denen Computersysteme Aufgab
 Im Bereich der Sprachverarbeitung reichen die wissenschaftlichen Wurzeln bis zu frühen Systemen wie ELIZA zurück, das bereits 1966 die regelbasierte Simulation von Dialogen demonstrierte \cite{weizenbaum1966eliza}. \\
 \begin{figure}[htb]
     \centering
-        \includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/ai-index-technical-performance.png}
+        \includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/ai-index-technical-performance-2.png}
 
-    \caption[Verlauf verschiedener KI-Benchmarks]{Der Verlauf verschiedener KI-Benchmarks ab 2012 \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}.}
+    \caption[Verlauf verschiedener KI-Benchmarks]{Der Verlauf verschiedener KI-Benchmarks ab 2012 mit menschlichem Vergleich als Ziel. Die Metriken für Bildklassifikation (ImageNet Top-5) und Leseverständnis auf mittlerem Niveau (SQuAD 2.0) übertrafen 2016 bzw. 2019 den menschlichen Vergleichswert. 
+    Andere Benchmarks, wie visual reasoning (VQA) oder English language understanding (SuperGLUE) konnten die menschliche Referenz bereits um 2021 überholen. Multitask language understanding (MMLU), Competition-level mathematics (MATH) oder PhD-level science questions (GPQA Diamond)
+    sind ab 2024 ebenfalls Menschen überlegen. Multimodal understanding and reasoning (MMMU) erreicht als einzige Benchmark nicht das Ziel  \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}.}
 
     \label{fig:102_ai-index-technical-performance}
 \end{figure}
@@ -276,9 +279,9 @@ Ziel ist es, mit einer geeigneten Anzahl von Tokens möglichst viel Information 
 
 \begin{figure}[htb]
 	\centering
-		\includegraphics[width=0.5\textwidth]{doc/10/102_state-of-the-art/tokenizing-a-sentence.png}
+		\includegraphics[width=0.7\textwidth]{doc/10/102_state-of-the-art/tokenizing-a-sentence-2.png}
 
-	\caption[LLM tokenisiert Beispielsatz]{Ein Beispielsatz wird vom Tokenizer "gpt-4o" in Tokens aufgeteilt. Erstellt mit \url{https://tiktokenizer.vercel.app/}.}
+	\caption[LLM tokenisiert Beispielsatz]{Ein Beispielsatz wird von einem Tokenizer (gpt-4o) in entsprechende Tokens unterteilt. Diese Trennung ist farblich gekennzeichnet. Erstellt mit \url{https://tiktokenizer.vercel.app/}.}
 
 	\label{fig:102_tokenizing-a-sentence}
 \end{figure}
@@ -544,9 +547,11 @@ Da React selbst entscheidet, welche Teile des \gls{html} angepasst werden müsse
 
 \begin{figure}[htb]
 	\centering
-		\includegraphics[width=0.9\textwidth]{doc/10/102_state-of-the-art/example-react-component.png}
+		\includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/example-react-component.png}
 
-	\caption[Beispiel für eine React-Komponente]{Ein Beispiel einer React-Komponente, welche einen Knopf und Zähler vereint. Erstellt mit \url{https://carbon.now.sh}.}
+	\caption[Beispiel für eine React-Komponente]{
+        Der Programmcode zeigt eine React-Komponente, welcher aus einer Funktion besteht, sowie einen Zustandswert ("counter") und eine Methode ("increaseCounter") definiert
+        Bei Interaktion des Nutzers ("onClick") wird die Methode aufgerufen, um den Zustand zu verändern. Das Label des Knopfes besteht aus dem aktuellen Wert des Zählers, welcher sich bei jedem Klick erhöht. Erstellt mit \url{https://carbon.now.sh}.}
 
 	\label{fig:102_example-react-component}
 \end{figure}
@@ -683,11 +688,6 @@ Der Quellcode hinter PostgreSQL ist öffentlich zugänglich, wodurch jede Person
 Tatsächliche Änderungen am Quellcode im offiziellen PostgreSQL Repository sind jedoch einer durch interne Abstimmung erhobenen Gruppe an Entwicklern vorbehalten.
 Andere Entwickler können Änderungen vorschlagen, welche von der Arbeitsgruppe geprüft und gegebenenfalls übernommen werden \cite{postgresqlUnknownDocs} \cite{postgresqlUnknownGovernance}. \\
 
-PostgreSQL unterstützt einen Großteil des \gls{sql}-Standards und erweitert den Funktionsumfang mit Funktionen, wie komplexen Auswertungen, 
-geprüfte Referenzen zwischen verschiedenen Tabellen (foreign keys), sowie Unterstützung für Transaktionen, die sicherstellen, 
-dass in einem Block von Datenbankoperationen alle Schritte gemeinsam ausgeführt werden und 
-bei Fehlern einzelner Abfragen die bereits geänderte Daten auf den vorherigen Zustand zurückgesetzt werden \cite{postgresqlUnknownDocs}. \\
-
 \begin{figure}[htbp]
     \centering
   
@@ -702,7 +702,14 @@ bei Fehlern einzelner Abfragen die bereits geänderte Daten auf den vorherigen Z
             grid=major,
             legend style={at={(1.02,1)}, anchor=north west},
             symbolic x coords={2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026},
-            width=11cm, height=8cm
+            width=11cm, height=8cm,
+            cycle list={
+                {red, thick, solid, mark=*},
+                {darkgray, thick, solid, mark=*},
+                {blue, thick, solid, mark=*},
+                {tegelerprimary, thick, solid, mark=*},
+                {tegelersecondary, thick, solid, mark=*},
+            }
         ]
 
             \addplot+[mark=*] coordinates {
@@ -781,9 +788,15 @@ bei Fehlern einzelner Abfragen die bereits geänderte Daten auf den vorherigen Z
             \addlegendentry{MongoDB}
         \end{axis}
     \end{tikzpicture}
-    \caption[Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}]{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}. Wert von Januar für das gesamte Jahr verwendet und Kommawerte abgeschnitten. \cite{dbengines2026rankingtrend}}
+    \caption[Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}]{Verlauf der Popularität der fünf populärsten Datenbanksystemen nach \href{https://db-engines.com/de/ranking_trend}{db-engines.com}. Wert von Januar für das gesamte Jahr verwendet und Kommawerte abgeschnitten.
+    Die drei bekanntesten Datenbanksysteme Oracle (Rot), MySQL (Dunkelgrau) und Microsoft SQL Server (Blau) zeigen einen rückläufigen Trend, während PostgreSQL (Magenta) an Popularität gewinnt und im Jahr 2026 mit einem Popularitätswert von 666 auf dem vierten Platz liegt. MongoDB (Türkis) zeigt nach einem mit PostgreSQL vergleichbaren Anstieg seit 2022 ebenfalls einen rückläufigen Trend und liegt 2025 mit 376 Punkten auf dem fünften Platz \cite{dbengines2026rankingtrend}.}
     \label{fig:102_database-usage}
 \end{figure}
+
+PostgreSQL unterstützt einen Großteil des \gls{sql}-Standards und erweitert den Funktionsumfang mit Funktionen, wie komplexen Auswertungen, 
+geprüfte Referenzen zwischen verschiedenen Tabellen (foreign keys), sowie Unterstützung für Transaktionen, die sicherstellen, 
+dass in einem Block von Datenbankoperationen alle Schritte gemeinsam ausgeführt werden und 
+bei Fehlern einzelner Abfragen die bereits geänderte Daten auf den vorherigen Zustand zurückgesetzt werden \cite{postgresqlUnknownDocs}. \\
 
 In den letzten Jahren hat PostgreSQL an Popularität gewonnen und ist nach der Bestenliste von \href{https://db-engines.com/de/ranking_trend}{db-engines.com} auf dem vierten Platz. 
 Faktoren für den in Abb. \ref{fig:102_database-usage} dargestellten Popularitätswert sind neben der Anzahl von Suchanfragen zur Datenbank die Häufigkeit technischer Diskussionen, die Anzahl von Jobangeboten sowie die Anzahl an Entwicklern, die das entsprechende Datenbanksystem in ihrem professionellen Profil aufgeführt haben \cite{dbengines2026rankingdefinition}.

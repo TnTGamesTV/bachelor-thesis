@@ -26,7 +26,7 @@ Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erwei
 	\centering
 		\includegraphics[width=0.75\textwidth]{doc/10/104_results/blender-ifc-bonsai.png}
 
-	\caption[Nutzung von Blender als \gls{ifc}-Viewer]{Blender wird als \gls{ifc}-Viewer mit einem beispielhaften Modell genutzt.}
+	\caption[Nutzung von Blender als \gls{ifc}-Viewer]{Zusammen mit der Bonsai-Erweiterung in Blender wird ein beispielhaftes \gls{ifc}-Modell dargestellt. Im linken Panel wird die hierarchische Struktur des Modells angezeigt, während im rechten Panel Modelmetadaten und Eigenschaften angezeigt werden und die 3D-Ansicht des Modells im Zentrum zu sehen ist.}
 
 	\label{fig:104_blender-ifc-viewer}
 \end{figure}
@@ -117,7 +117,7 @@ Die gesamte Anwendung wurde mit einer Mono-Repository-Strategie strukturiert und
 	\centering
 		\includegraphics[width=0.8\textwidth]{doc/10/104_results/app-chat-window.png}
 
-	\caption[Lauffähiger Prototyp mit Chatfenster]{Der lauffähige Prototyp mit geladenem Modell und Chatfenster.}
+	\caption[Lauffähiger Prototyp mit Chatfenster]{Der lauffähige Prototyp besteht aus dem beispielhaften Modell im 3D-Viewer, sowie dem Chatfenster, welches exemplarische Kommunikation zwischen Probanden und \gls{llm} zeigt.}
 
 	\label{fig:104_app-ui-chat}
 \end{figure}
@@ -131,7 +131,7 @@ Zusätzlich verfügte das Frontend über eine Modellauswahl, welche als Startbil
 	\centering
 		\includegraphics[width=0.8\textwidth]{doc/10/104_results/app-loading-ifc-models.png}
 
-	\caption[Lauffähiger Prototyp mit Modellauswahl]{Der lauffähige Prototyp mit der Modellauswahl als Startbildschirm.}
+	\caption[Lauffähiger Prototyp mit Modellauswahl]{Bevor das Chatfenster geöffnet wird, wird im  lauffähigen Prototypen die Modellauswahl angezeigt. Die gleichzeitige Auswahl mehrere Fachmodelle war innerhalb eines Projektes möglich.}
 
 	\label{fig:104_app-loading-ifc-model}
 \end{figure}
@@ -143,7 +143,7 @@ welche eine vollständige Vorschau der Datei, sowie den Download ermöglichte (v
 	\centering
 		\includegraphics[width=0.8\textwidth]{doc/10/104_results/app-file-export.png}
 
-	\caption[Lauffähiger Prototyp mit Dateivorschau]{Der lauffähige Prototyp mit der Vorschau einer tabellarischen Datei.}
+	\caption[Lauffähiger Prototyp mit Dateivorschau]{Um dem Nutzer tabellarische Dateien anzuzeigen besteht die Möglichkeit per Knopfdruck ein Dialogfenster zu öffnen, welches die vollständige Vorschau der Datei ermöglicht. Zusätzlich kann die Datei über einen Download-Button heruntergeladen werden.}
 
 	\label{fig:104_app-file-export}
 \end{figure}
@@ -165,7 +165,7 @@ In der Abbildung \ref{fig:104_app-backend-structure} sind die Beziehungen der ve
 	\centering
 		\includegraphics[width=0.8\textwidth]{doc/10/103_methods/app_final_backend_structure}
 
-	\caption[Backend-Struktur des lauffähigen Prototypen]{Die Backend-Struktur des lauffähigen Prototypen.}
+	\caption[Backend-Struktur des lauffähigen Prototypen]{Das Backend des lauffähigen Prototypen unterteilt sich in verschiedene Module. Das AppModule bildet den Einstiegspunkt der Anwendung, während das PrismaModule den Datenbankzugriff ermöglicht. Das ChatModule steuert die Verarbeitung von Nutzereingaben und die Interaktion mit dem \gls{llm}, während das ChatHistoryModule die Nachrichtenhistorie verwaltet. Das IfcModule stellt \gls{ifc}-Modelle bereit, das PromptModule generiert den Systemprompt, das SkillsModule bietet Wissensbausteine und das ToolsModule definiert die ausführbaren Werkzeuge. Die Pfeile zeigen die Abhängigkeiten zwischen den Modulen an.}
 
 	\label{fig:104_app-backend-structure}
 \end{figure}
@@ -543,7 +543,7 @@ Es handelt sich bei diesen Ergebnissen um die objektive Analyse der ausgegebenen
   \end{scope}
 
 \end{tikzpicture}
-\caption[Gesamtergebnisse der \gls{llm}-Auswertung]{Verteilung der Ergebnisse (gesamt: 41)}
+\caption[Gesamtergebnisse der \gls{llm}-Auswertung]{Die Analyse ergab, dass von 41 Ausgaben des \gls{llm} 7.3\% abgebrochen wurden, 51.2\% der Ausgaben erzeugt und als inkorrekt eingestuft wurden, 36.6\% der Ausgaben erzeugt und als korrekt eingestuft wurden, und 4.9\% der Fälle keine Ausgabe erzeugten.}
 \label{fig:104_results-ai}
 \end{figure}
 
@@ -623,7 +623,7 @@ richtig und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gew�
   \end{scope}
 
 \end{tikzpicture}
-\caption[Fehlerergebnisse der \gls{llm}-Auswertung]{Verteilung der Fehlertypen (gesamt: 21)}
+\caption[Fehlerergebnisse der \gls{llm}-Auswertung]{Bei den analysierten Fehlern des \gls{llm} wurden 9.5\% der Fehler durch die Nutzung einer falschen IFC-Entität verursacht, 23.8\% durch die Nutzung einer falschen Property oder Pset, 14.3\% durch die Nutzung eines falschen Werkzeugs, 23.8\% durch falsch aufgebaute SQL-Abfragen, und 28.6\% durch sonstige Fehler.}
 \label{fig:104_results-ai-errors}
 \end{figure}
 
