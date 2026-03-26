@@ -98,7 +98,8 @@ Der durch das \gls{llm} verwendete Datensatz und die Struktur der Tabelle in Kom
 Obwohl dies in manchen Situationen zu erhöhter Fehleranfälligkeit führte, war insgesamt eine positive Nutzung der Freiheit durch das \gls{llm} erkennbar,
 welches besonders bei komplexeren Aufgabenstellungen korrekte Interpretationen und Abfragen generierte.
 Um Fehler mit der \gls{sql}-Generation zu reduzieren, könnte die Verbesserung des Query-Werkzeug und des Systemprompts eine Lösung darstellen.
-Dabei könnten mehr Beispielabfragen oder ein stärkerer Fokus auf die Formatierung der \gls{sql}-Abfragen für einen geringeren Ausfall der Abfragen sorgen, ohne die Freiheit bei der Generierung zu stark einzuschränken. \\
+Dabei könnten mehr Beispielabfragen oder ein stärkerer Fokus auf die Formatierung der \gls{sql}-Abfragen für einen geringeren Ausfall der Abfragen sorgen, ohne die Freiheit bei der Generierung zu stark einzuschränken.
+Zusätzlich wären manuelle Filter bzw. Textersetzungen außerhalb des \gls{llm} eine unkomplizierte Lösung für die Entfernung von Sonderzeichen in den Anweisungen möglich. \\
 
 Um dem \gls{llm} kontextbezogene Informationen bereitzustellen, wurde eine modularen Wissensdatenbank in Form des Skill-Werkzeugs implementiert,
 welche positive Auswirkung auf die Kompetenz des \gls{llm} bei der Bearbeitung von Aufgabenstellungen hatte.

@@ -383,6 +383,60 @@ Die Einzelinterviews mit beiden Probandengruppen wurden auf Basis der in Kap. \r
   \item sowie die grundsätzliche Aufgabenstellung der Probandengruppe A.
 \end{itemize}
 
+\begin{figure}[h]
+  \centering
+    \begin{tikzpicture}
+      % --- Einstellungen ---
+      \def\barwidth{1.8}       % Balkenbreite
+      \def\ymax{4}            % Maximaler Y-Wert
+      \def\gridstep{2}         % Abstand der Gitterlinien
+
+      % --- Farben ---
+      \definecolor{barblue}{RGB}{70, 130, 180}
+      \definecolor{gridgray}{RGB}{200, 200, 200}
+
+      % --- Hintergrundfläche ---
+      \fill[gray!10] (0,0) rectangle (6.5,\ymax);
+
+      % --- Gitterlinien ---
+      \foreach \y in {0,2,...,\ymax} {
+          \draw[gridgray, thin] (0,\y) -- (6.5,\y);
+      }
+
+      % --- Balken (x-Position, Höhe, Beschriftung) ---
+      \foreach \x/\h/\xlabel in {
+          2.0/{3}/{Gruppe A},
+          4.5/{3}/{Gruppe B}
+      } {
+          % Balken zeichnen
+          \fill[barblue, opacity=0.85]
+              (\x - \barwidth/2, 0) rectangle (\x + \barwidth/2, \h);
+          % Oberer Rand des Balkens
+          \draw[barblue!60!black, thick]
+              (\x - \barwidth/2, \h) -- (\x + \barwidth/2, \h);
+          % Wert über dem Balken
+          \node[above, font=\small\bfseries, text=barblue!60!black]
+              at (\x, \h) {\h};
+          % X-Achsenbeschriftung
+          \node[below, font=\small] at (\x, 0) {\xlabel};
+      }
+
+      % --- Achsen ---
+      \draw[black, very thick] (0,0) -- (6.5,0);
+          % node[right, font=\small] {Monat};
+      \draw[black, very thick, ->] (0,0) -- (0,\ymax + 0.5)
+          node[above, font=\small] {Anzahl Probanden};
+
+      % --- Y-Achsen-Beschriftungen ---
+      \foreach \y in {0,2,...,\ymax} {
+          \draw[black, thin] (-0.05,\y) -- (0.05,\y);
+          \node[left, font=\small] at (0,\y) {\y};
+      }
+  \end{tikzpicture}
+    \caption{Die Anzahl der Probanden, welche die Interviews mit der jeweiligen Probandengruppe durchgeführt haben beläuft sich auf drei Teilnehmer der Gruppe A und drei Teilnehmer der Gruppe B.}
+    \label{fig:104_interview-count}
+\end{figure}
+
 Alle Datenpunkte wurden im Kontext des jeweiligen Interviews erhoben und ausgewertet. 
 Die Zuordnung der Probanden erfolgte auf Basis der im Anhang (vgl. Kap. \nameref{sec:appendix-probanden-antworten}) befindlichen Antworten der Probanden auf die in Kapitel \ref{sec:probandenzuordnung} definierten Fragen.
 Der folgende Abschnitt befasst sich mit den Ergebnissen der Probandengruppe A, welche die Aufgabenstellungen für die Probandengruppe B entwickelt hat.
@@ -457,6 +511,7 @@ Um die korrekte Platzierung der Durchbrüche zu validieren, ist zudem eine Kolli
 Auf Basis der Komplexität der Aufgabenstellung sowie der Verwendung von Daten, die im Datensatz nicht vorhanden sind, wurde die Aufgabe aussortiert. \\
 
 Bereits direkt im Fluss der Interviews wurden einige Aufgabenstellungen eliminiert, die grundsätzlich nicht mit der Leitfrage übereinstimmten.
+Neben der Verwendung nicht vorhandener Daten, wie die Zusammenfassung von projektspezifischen Textdokumenten oder die Analyse von Unternehmensdaten, wurde ebenfalls die Nutzung nicht vorhandener Funktionen, etwa die Bearbeitung des \gls{ifc}-Modells oder die Generation von Bilddaten, als Kriterium für die Aussortierung herangezogen.
 Dabei waren besonders Aufgabenstellungen mit der Anforderung von Funktionen betroffen, die mit den vorhandenen Werkzeugen oder Daten nicht in Übereinstimmung zu bringen waren.
 Im nachfolgenden Abschnitt werden die von den Probanden der Gruppe B bearbeiteten Aufgaben, deren Fortschritt sowie mögliche Probleme mit den Aufgabenstellungen dargelegt.
 
@@ -480,8 +535,9 @@ Im folgenden Abschnitt erfolgt die Analyse der vom \gls{llm} ausgegebenen Nachri
 \section{Ergebnisse der KI-Anwendung}
 \label{sec:results-ai}
 
-Während im vorherigen Kapitel die Ergebnisse aus Sicht der Probanden präsentiert wurden, bezieht sich dieses Kapitel rein auf die Ergebnisse des \gls{llm}.
-Es handelt sich bei diesen Ergebnissen um die objektive Analyse der ausgegebenen Nachrichten im Kontext der Modelle und der vorhandenen Daten. \\
+Während im vorherigen Kapitel die Ergebnisse aus Sicht der Probanden präsentiert wurden, wird in diesem exklusiv die Analyse der \gls{llm}-Ausgaben betrachtet.
+Dabei unterscheidet sich die Analyse darin, dass die subjektive Wahrnehmung der Probanden nicht berücksichtigt wird, sondern die objektive Analyse der generierten Nachrichten im Kontext der Modelle und der vorhandenen Daten im Vordergrund steht.
+Die vollständigen erhobenen Daten, welche die Grundlage für die Analyse bilden, sind im Anhang (vgl. Kap. \nameref{sec:appendix-probanden-antworten}) dokumentiert. \\
 
 \begin{figure}[h]
 \centering
@@ -624,7 +680,7 @@ richtig und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gew�
   \end{scope}
 
 \end{tikzpicture}
-\caption[Fehlerergebnisse der \gls{llm}-Auswertung]{Bei den analysierten Fehlern des \gls{llm} wurden 9.5\% der Fehler durch die Nutzung einer falschen IFC-Entität verursacht, 23.8\% durch die Nutzung einer falschen Property oder Pset, 14.3\% durch die Nutzung eines falschen Werkzeugs, 23.8\% durch falsch aufgebaute SQL-Abfragen, und 28.6\% durch sonstige Fehler.}
+\caption[Fehlerergebnisse der \gls{llm}-Auswertung]{Von den vorherigen 21 fehlerhaften Ausgaben schlüsselen sich die Gründe wie folgt auf: 9.5\% der Fehler wurden durch die Nutzung einer falschen IFC-Entität verursacht, 23.8\% durch die Nutzung einer falschen Property oder Pset, 14.3\% durch die Nutzung eines falschen Werkzeugs, 23.8\% durch falsch aufgebaute SQL-Abfragen, und 28.6\% durch sonstige Fehler, welche nicht Zusammenhang mit dem \gls{llm} stehen.}
 \label{fig:104_results-ai-errors}
 \end{figure}
 
