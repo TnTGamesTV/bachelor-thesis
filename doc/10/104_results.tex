@@ -81,13 +81,13 @@ um die im Konzept definierten Anforderungen umzusetzen.
 
 \subsection{Ergebnisse des Prototypen}
 
-Auf Basis der im vorherigen Kapitel vorgestellten Vorentwicklung, sowie des abgeleiteten Entwicklungsplans, 
+Auf Basis der im vorherigen Kapitel vorgestellten Vorentwicklung sowie des abgeleiteten Entwicklungsplans 
 wurde im Rahmen der Prototypenentwicklung ein selbst entwickelter \gls{mcp}-Server geschaffen. 
 Dieser wurde in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
 Im Unterschied zur Vorentwicklung wurden die bereitgestellten Werkzeuge fokussiert reduziert, 
 sodass statt einer breiten Abdeckung von Modellbearbeitungsfunktionen nur noch Werkzeuge zur Wissensgewinnung bereitgestellt werden. \\
 
-Die  Werkzeuge entsprechen in ihrer Funktion weitgehend der Vorentwicklung, verwenden jedoch als \gls{ifc}-Bibliothek IfcOpenShell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
+Die Werkzeuge entsprechen in ihrer Funktion weitgehend der Vorentwicklung, verwenden jedoch als \gls{ifc}-Bibliothek IfcOpenShell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
 Dies ermöglicht die eigenständige Definition der Extraktionslogik aus den geladenen Modellen und allgemein die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten.
 Im Hinblick auf die Leistungsfähigkeit des \gls{llm} erlaubt dies eine genauere Kontrolle über den bereitgestellten Kontext \cite{ifcopenshell_github}. \\
 
@@ -101,7 +101,7 @@ und die Möglichkeit, mehrere \gls{ifc}-Modelle parallel zu verarbeiten, ergaben
 
 \subsection{Ergebnisse des lauffähigen Prototypen - Frontend}
 
-Auf Basis der nach der Entwicklung des Prototypen des verfeinerten Entwicklungsplans wurde der lauffähige Prototyp entwickelt. 
+Auf Basis des nach der Entwicklung des Prototypen verfeinerten Entwicklungsplans wurde der lauffähige Prototyp entwickelt. 
 Dieser nutzte als Datengrundlage einen externen Datensatz, welcher als Tabelle eingebettet wurde und über \gls{sql} abgefragt werden kann (vgl. Tab. \ref{tab:104_app-data-structure}).
 Die Tabelle umfasst Informationen zu Bauteilen, Systemen, Materialien und Geschossen, die in den bereitgestellten \gls{ifc}-Modellen enthalten sind.
 Jede Zeile entspricht einem einzelnen Eigenschaftswert, einer Systembeschreibung oder anderen einzelnen Informationseinheit, die mit einem Bauteil oder einem anderen Element im Modell verknüpft ist. 
@@ -455,13 +455,13 @@ weshalb sie in den folgenden Absätzen auf Basis der Aussagen der Probanden der 
 Die genannte Aufgabenstellung befasst sich mit der Verwendung von IfcBuildingElementProxy-Entitäten bei der Modellierung von Gebäuden. 
 Dabei handelt es sich bei dieser Entität um einen Platzhalter, welcher für beliebige Elemente eingesetzt wird. 
 Vorgesehen ist dieses Objekt für Elemente, welche keinen eigenen \gls{ifc}-Typ besitzen und somit generisch abgebildet werden müssen.
-Aufgrund der generischen Natur wird diese in der Praxis auch an Stellen eingesetzt, für die im \gls{ifc}-Standard bereits eine Passende vorgegeben ist.
+Aufgrund der generischen Natur wird diese in der Praxis auch an Stellen eingesetzt, für die im \gls{ifc}-Standard bereits eine passende Entität vorgegeben ist.
 Die Aufgabenstellung zielt daher auf die Analyse der in den Modellen vorhandenen IfcBuildingElementProxy-Entitäten ab, um festzustellen, 
 ob die Nutzung dieser generischen Instanz innerhalb der Projektvorgaben liegt. \\
 
 \textbf{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt werden und die gleiche Höhe besitzen.}
 
-Im Rahmen der gesamtheitlich datengetriebenen Planung von Gebäuden werden verschiedene Modelle benutzt, welche in der Praxis den unterschiedlichen Gewerken oder Fachgebieten zugeordnet sind.
+Im Rahmen der datengetriebenen Planung von Gebäuden werden verschiedene Modelle benutzt, welche in der Praxis den unterschiedlichen Gewerken oder Fachgebieten zugeordnet sind.
 Diese Modelle besitzen unterschiedliche Elemente des Gebäudes, benötigen aber eine gemeinsame Projektstruktur. 
 Der \gls{ifc}-Standard definiert innerhalb eines Gebäudes (IfcBuilding), Ebenen (IfcBuildingStorey) und Räume bzw. Volumen (IfcSpace).
 Das Architekturmodell, welches in der Praxis vom Architekten oder primären Planungsbüro modelliert wird, gibt dabei die Struktur vor, welche in den anderen Modellen repliziert wird.
@@ -486,7 +486,7 @@ Diese werden im folgenden Abschnitt betrachtet werden.
 \subsubsection{Aussortierte Aufgabenstellung}
 \label{sec:results-group-a-deleted}
 
-Im Rahmen der Vorprüfung der Aufgabenstellungen wurden diese aussortiert, da sie mehrere Aufgaben in Einer vereinten,
+Im Rahmen der Vorprüfung der Aufgabenstellungen wurden diese aussortiert, da sie mehrere Aufgaben in einer einzelnen Aufgabenstellung vereinten,
 die zumutbare Komplexität für fachfremde Akteure überschritten oder mindestens in Teilen Daten benötigten, die im verwendeten Datensatz nicht vorhanden waren.
 In diesem Abschnitt werden die aussortierten Aufgabenstellungen strukturiert abgebildet und entsprechende Probleme auf Basis der Interviews mit der Probandengruppe A erläutert. \\
 
@@ -698,7 +698,7 @@ die aus der Anfrage des Probanden abgeleitet war. Dies führte dazu, dass in Kom
 obwohl im Modell noch weitere Daten vorhanden waren. Ebenso wurde bei der Erstellung von Raumlisten die Zuordnung von IfcSpaces falsch interpretiert,
 da diese im beispielhaften Modell mit doppelten Bezeichnungen jeweils als Fläche und als Raum angelegt waren. Diese Dopplung wurde vom \gls{llm} nicht korrekt interpretiert,
 sodass die erzeugte Raumliste sowie die berechneten Flächenwerte nicht korrekt waren. Dennoch wurden die geladenen Modelle korrekt verwendet,
-jedoch wurde des Öfteren die Annahme getroffen, dass Properties in allen Modellen vorhanden waren, obwohl dies, besonders in Fachmodellen, nicht gegeben war. \\
+jedoch wurde des Öfteren die Annahme getroffen, dass Properties in allen Modellen vorhanden seien, obwohl dies insbesondere in Fachmodellen nicht gegeben war. \\
 
 Insgesamt zeigte sich, dass die Fehler des \gls{llm} hauptsächlich in der fehlerhaften Nutzung der Werkzeuge sowie der fehlerhaften Interpretation von Datenbankstrukturen lagen.
 Im folgenden Kapitel werden die gewonnenen Ergebnisse diskutiert, in Bezug auf die Forschungsfrage eingeordnet und Implikationen für die Praxis sowie weitere Forschung abgeleitet.

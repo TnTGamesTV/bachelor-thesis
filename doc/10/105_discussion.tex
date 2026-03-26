@@ -3,7 +3,7 @@
 
 Nach der Darstellung der Ergebnisse im vorangegangenen Kapitel erfolgt nun deren Diskussion 
 sowie ein Ausblick auf Verbesserungsmöglichkeiten und zukünftige Entwicklungen im Kontext der vorherigen Kapitel.
-Dabei wird zuerst auf die erarbeitete Anwendung, die verschiedenen Stufen der Schaffungsprozesses und das Konzept eingegangen.
+Dabei wird zuerst auf die erarbeitete Anwendung, die verschiedenen Stufen des Schaffungsprozesses und das Konzept eingegangen.
 Bevor die Analyse der \gls{llm}-Daten betrachtet wird, werden die durchgeführten Interviews und die gewonnenen Erkenntnisse diskutiert.
 Zuletzt werden die erörterten Erkenntnisse im Gesamtkontext der Forschungsfrage eingeordnet und in einem Gesamtüberblick evaluiert.
 
@@ -22,11 +22,11 @@ Aufgrund der geringen Flexibilität der verwendeten technischen Komponenten eign
 
 Der entworfene Entwicklungsplan, welcher auf Basis der vorherigen Entwicklungsstufe erstellt wurde, 
 erwies sich als adäquat, um im nächsten Schritt für die Ausarbeitung des Prototypen verwendet zu werden.
-Die Implementation eines selbst entwickelten \gls{mcp}-Servers ergab die notwendige Flexibilität, um die gewünschten Änderungen aus dem Entwicklungsplan umzusetzen,
+Die Implementierung eines selbst entwickelten \gls{mcp}-Servers ergab die notwendige Flexibilität, um die gewünschten Änderungen aus dem Entwicklungsplan umzusetzen,
 jedoch unter der Verwendung von mehr Ressourcen, als im vorherigen Entwicklungsschritt. 
 Dabei zeigte sich, dass eine Texteingabe, wie sie über Open WebUI zur Verfügung gestellt wurde, für die Probanden eine funktionale Möglichkeit zur Interaktion mit dem \gls{llm} darstellte.
 Das geplante Konzept konnte jedoch nicht vollständig umgesetzt werden, da die genaue Definition von Werkzeugen und die Bereitstellung von Informationen für das \gls{llm}
-sowie die Verwendung mehrerer Modelle als gleichzeitige Datenquelle technisch nicht realisieren waren. \\
+sowie die Verwendung mehrerer Modelle als gleichzeitige Datenquelle technisch nicht realisierbar waren. \\
 
 Aus den genannten Gründen wurde vor der letzten Entwicklungsstufe, die Überarbeitung des Entwicklungsplans durchgeführt.
 Dabei standen für die letzte Stufe insgesamt mehr Ressourcen zur Verfügung, wodurch im Konzept definierte Funktionen mit maximaler Detailtiefe geplant und in der Entwicklung implementiert werden konnten.
@@ -89,17 +89,17 @@ Im folgenden Kapitel wird die Analyse der \gls{llm}-Daten diskutiert, um die gew
 \label{sec:discussion-llm-data}
 
 Während die entwickelte Anwendung insgesamt positiv bewertet werden kann, zeigten sich bei der Analyse der \gls{llm}-Daten (vgl. Kap. \ref{sec:results-ai}) verschiedene Schwächen in Bezug auf die Qualität der generierten Antworten.
-Das \gls{llm} konnte grundsätzlich komplexe Anfragen verstehen, zeigte jedoch Lücken in der korrekten Verwendung der bereitgestellten Werkzeuge, insbesondere im Bezug auf die Datenbankabfrage sowie in der Interpretation von Datenbankstrukturen.
+Das \gls{llm} konnte grundsätzlich komplexe Anfragen verstehen, zeigte jedoch Lücken in der korrekten Verwendung der bereitgestellten Werkzeuge, insbesondere in Bezug auf die Datenbankabfrage sowie in der Interpretation von Datenbankstrukturen.
 Diese objektiv erfassten Fehler führten teilweise zu unverständlichen oder unbrauchbaren Antworten, welche bei den Probanden Unsicherheit auslösten. \\
 
-Die Anpassung des Systemprompts bietet dabei eine Möglichkeit, die Fehlerquellen zu reduzieren. Besonders zusätzliches Praxiswissen im Bezug auf den Aufbau von Modellen oder 
+Die Anpassung des Systemprompts bietet dabei eine Möglichkeit, die Fehlerquellen zu reduzieren. Besonders zusätzliches Praxiswissen in Bezug auf den Aufbau von Modellen oder 
 die Verwendung der vorhandenen Werkzeuge im Praxisbezug könnte dabei eine entscheidende Rolle spielen. Trotzdem zeigte sich, dass das allgemeine Wissen des \gls{llm} kompetent genug für die Beantwortung komplexer fachspezifischer Fragen war.
 Um als Wissensquelle nicht ausschließlich auf den Trainingsdatensatz angewiesen zu sein, könnte die Bereitstellung eines Werkzeugs zur Internetrecherche eine sinnvolle Ergänzung darstellen, um die Qualität der Antworten zu verbessern. \\
 
 Der durch das \gls{llm} eingesetzte Datensatz und die Struktur der Tabelle in Kombination mit dem Query-Werkzeug ermöglichte dem \gls{llm} eine nahezu freie Generation der Abfrage.
 Obwohl dies in manchen Situationen zu erhöhter Fehleranfälligkeit führte, war insgesamt eine positive Nutzung der Freiheit ersichtlich,
 welches besonders bei komplexeren Aufgabenstellungen korrekte Interpretationen und Abfragen generierte.
-Um Fehler mit der \gls{sql}-Generation zu reduzieren, könnte die Verbesserung des Query-Werkzeug und des Systemprompts eine Lösung darstellen.
+Um Fehler mit der \gls{sql}-Generation zu reduzieren, könnte die Verbesserung des Query-Werkzeugs und des Systemprompts eine Lösung darstellen.
 Dabei könnten mehr Beispielabfragen oder ein stärkerer Fokus auf die Formatierung der \gls{sql}-Abfragen für einen geringeren Ausfall der Abfragen sorgen, ohne die Freiheit bei der Generierung zu stark einzuschränken.
 Zusätzlich wären manuelle Filter bzw. Textersetzungen außerhalb des \gls{llm} eine unkomplizierte Lösung für die Entfernung von Sonderzeichen in den Anweisungen möglich. \\
 
@@ -128,12 +128,12 @@ ein Gesamtausblick gegeben, um im Kontext der Forschungsfrage zu betrachten und 
 \section{Gesamtausblick}
 
 Die Bachelorarbeit hat gezeigt, dass mit dem heutigen Stand der Technik und limitierten Ressourcen die Entwicklung eines lauffähigen Prototypen möglich ist.
-Im Rahmen der Interviews konnte der entwickelte Prototyp erfolgreich eingesetzt werden und die Kombination aus \gls{llm} und menschlicher Interpretation im Kontext von digitalen, datengetriebenen Bauprojekten untersucht werden können.
+Im Rahmen der Interviews konnte der entwickelte Prototyp erfolgreich eingesetzt und die Kombination aus \gls{llm} und menschlicher Interpretation im Kontext von digitalen, datengetriebenen Bauprojekten untersucht werden.
 Trotz der überwiegend fehlerhaften Antworten des \gls{llm} sind einfache Handlungsschritte, wie die Verbesserung des Systemprompts oder der Werkzeugdefinition, diskutiert worden, 
 welche die Fehleranfälligkeit von \gls{llm}-Antworten reduzieren können, um die Nutzung von \gls{llm} in der Praxis zu erleichtern. \\
 
 Auf Basis der diskutierten Ergebnisse lässt sich abschließend festhalten,
-dass die Nutzung von \gls{llm}, für fachfremden Akteuren den Zugang zu digitalen, datengetriebenen Bauprojekten zu ermöglichen, umsetzbar ist.
+dass die Nutzung von \gls{llm}, um fachfremden Akteuren den Zugang zu digitalen, datengetriebenen Bauprojekten zu ermöglichen, umsetzbar ist.
 Die technischen Hürden, wie höhere Fehlerquoten, lassen sich mit dem Einsatz zusätzlicher Ressourcen überwinden, um ein praxistaugliches System zu entwickeln. \\
 
 Grundsätzlich ist immer zu betrachten, welche Rolle fachfremde Akteure in digitalen, datengetriebenen Bauprojekten einnehmen sollen,
