@@ -1,12 +1,12 @@
 \chapter{\textbf{Ergebnisse}}
 \label{chap:result}
 
-Dieses Kapitel führt die Ergebnisse vor, die auf Grundlage der in Kapitel \ref{chap:methods} beschriebenen Methodik gewonnen wurden.
-Zuerst werden die Erkenntnisse, welche im Rahmen der Softwareentwicklung der bereitgestellten Anwendung gewonnen wurden, erläutert und eingeordnet.
+Dieses Kapitel führt die Ergebnisse vor, die durch der in Kapitel \ref{chap:methods} beschriebenen Methodik erzielt wurden.
+Zuerst werden die im Rahmen der Softwareentwicklung der bereitgestellten Anwendung erlangten Erkenntnisse erläutert und eingeordnet.
 Danach wird in die Ergebnisse der Interviews eingeleitet sowie die verfügbaren Datenstrukturen gelistet.
 Anschließend werden die von der Probandengruppe A entwickelten Aufgaben vorgestellt und in ihren einzelnen Bestandteilen untersucht (vgl. Kap. \ref{sec:results-group-a}).
-Die Bearbeitung der Aufgabenstellung durch die Probandengruppe B wird in Kap. \ref{sec:results-group-b} vorgestellt und auf die Lösbarkeit der Aufgabenstellungen aus Probandensicht eingegangen.
-Zuletzt werden die Ausgaben des \gls{llm} nach ihrer Richtigkeit bewertet und in entsprechenden Statistiken dargestellt (vgl. Kap. \ref{sec:results-ai}).
+Die Bearbeitung der Aufgabenstellung durch die Probandengruppe B wird in Kap. \ref{sec:results-group-b} vorgestellt und dort wird auf die Lösbarkeit der Aufgabenstellungen aus Probandensicht eingegangen.
+Zuletzt werden die Ausgaben des \gls{llm} nach ihrer Richtigkeit bewertet und in entsprechenden Statistiken veranschaulicht (vgl. Kap. \ref{sec:results-ai}).
 
 \section{Ergebnisse der Anwendungsentwicklung}
 \label{sec:results-software-development}
@@ -19,7 +19,7 @@ Dieser Abschnitt befasst sich mit den genannten Entwicklungsständen sowie dem i
 Um zu überprüfen, ob die im Konzept geplanten Technologien in Kombination zu einer funktionsfähigen Anwendung führen, 
 wurde am Anfang des Entwicklungsprozesses die technische Machbarkeit mit einer Vorentwicklung evaluiert.
 Dabei basierte die Vorentwicklung auf einem vorgefertigten \gls{mcp}-Server, der in Python mit der FastMCP-Bibliothek umgesetzt wurde \cite{github2025bonsaimcp}.
-Als technische Grundlage wurde die öffentlich verfügbare 3D-Bearbeitungssoftware Blender verwendet, um \gls{ifc}-Modelle zu laden und zu bearbeiten (vgl. Abb. \ref{fig:104_blender-ifc-viewer}).
+Als technische Grundlage wurde die öffentlich verfügbare 3D-Bearbeitungssoftware Blender verwendet, um \gls{ifc}-Modelle zu instanzieren und zu bearbeiten (vgl. Abb. \ref{fig:104_blender-ifc-viewer}).
 Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erweiterung Bonsai eingesetzt, die von IfcOpenShell bereitgestellt wird \cite{bonsai2026blenderextensions}. \\
 
 \begin{figure}[htb]
@@ -31,7 +31,7 @@ Da der \gls{ifc}-Standard in Blender nicht nativ verfügbar ist, wurde die Erwei
 	\label{fig:104_blender-ifc-viewer}
 \end{figure}
 
-Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung genutzt, die gemeinsam mit dem \gls{mcp}-Server bereitgestellt wurde.
+Um dem \gls{llm} den Zugriff auf Modellinhalte und Bearbeitungsfunktionen zu ermöglichen, wurde eine zusätzliche Erweiterung verwendet, die gemeinsam mit dem \gls{mcp}-Server zur Verfügung gestellt wurde.
 Die Kommunikation zwischen Server und Blender erfolgte über eine Socket-Verbindung.
 Dabei wurden Werkzeugaufrufe einschließlich ihrer Parameter vom \gls{mcp}-Server an die in Blender installierte Erweiterung übermittelt, die die Befehle an Bonsai weiterleitete.
 Der \gls{mcp}-Server übernahm damit die Rolle einer Schnittstelle zwischen \gls{llm} und Modellbearbeitung \cite{github2025bonsaimcp}.
@@ -76,7 +76,7 @@ Aufgrund der erheblichen Anzahl an definierten Werkzeugen gelang es dem \gls{llm
 wodurch die Ausgabequalität insgesamt eingeschränkt wurde. \\
 
 Aus der Vorentwicklung wurde ein Entwicklungsplan für den Prototypen abgeleitet, welcher die Reduktion der bereitgestellten Werkzeuge, 
-die Verbesserung der Anfragearchitektur sowie die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten vorsah,
+die Verbesserung der Anfragearchitektur sowie die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten einplante,
 um die im Konzept definierten Anforderungen umzusetzen.
 
 \subsection{Ergebnisse des Prototypen}
@@ -85,23 +85,23 @@ Auf Basis der im vorherigen Kapitel vorgestellten Vorentwicklung, sowie des abge
 wurde im Rahmen der Prototypenentwicklung ein selbst entwickelter \gls{mcp}-Server geschaffen. 
 Dieser wurde in der Programmiersprache Python unter Verwendung der FastMCP-Bibliothek umgesetzt \cite{gofastmcp2026welcome}.
 Im Unterschied zur Vorentwicklung wurden die bereitgestellten Werkzeuge fokussiert reduziert, 
-sodass statt einer breiten Abdeckung von Modellbearbeitungsfunktionen wurden nur noch Werkzeuge zur Wissensgewinnung bereitgestellt werden. \\
+sodass statt einer breiten Abdeckung von Modellbearbeitungsfunktionen nur noch Werkzeuge zur Wissensgewinnung bereitgestellt werden. \\
 
 Die  Werkzeuge entsprechen in ihrer Funktion weitgehend der Vorentwicklung, verwenden jedoch als \gls{ifc}-Bibliothek IfcOpenShell anstelle der Kombination aus Bonsai und Blender als \gls{ifc}-Viewer. 
 Dies ermöglicht die eigenständige Definition der Extraktionslogik aus den geladenen Modellen und allgemein die Integration einer primären Datenquelle ohne externe Softwareabhängigkeiten.
 Im Hinblick auf die Leistungsfähigkeit des \gls{llm} erlaubt dies eine genauere Kontrolle über den bereitgestellten Kontext \cite{ifcopenshell_github}. \\
 
-Für die textbasierte Interaktion mit dem \gls{llm} wurde Open WebUI als Oberfläche genutzt.
+Für die textbasierte Interaktion mit dem \gls{llm} wurde Open WebUI als Oberfläche eingesetzt.
 Die Software ermöglichte die Anbindung an unterschiedliche \gls{llm} sowie die Einbindung eigener \gls{mcp}-Server.
-Zusätzlich bot sie eine praktikable Grundlage für den Export von Nachrichtenverläufen und damit für die spätere Analyse der im Interview erzeugten Kommunikation \cite{openwebui2026home}. \\
+Zusätzlich bietet sie eine praktikable Grundlage für den Export von Nachrichtenverläufen und damit für die spätere Analyse der im Interview erzeugten Kommunikation \cite{openwebui2026home}. \\
 
 Auf Basis des Prototypen wurde der Entwicklungsplan für den lauffähigen Prototypen weiter verfeinert, um das Konzept (vgl. Kap. \ref{sec:app-concept}) vollständig umzusetzen.
 Besonders die Kombination von Interaktionsfläche und technischen Komponenten in einer einzelnen Anwendung, eine Strukturierung der \gls{llm}-Anfrage 
-und die Möglichkeit mehrere \gls{ifc}-Modelle parallel zu verarbeiten, ergaben sich aus den Erkenntnissen der Prototypenentwicklung. \\
+und die Möglichkeit mehrere \gls{ifc}-Modelle parallel zu verarbeiten ergaben sich aus den Erkenntnissen der Prototypenentwicklung. \\
 
 \subsection{Ergebnisse des lauffähigen Prototypen - Frontend}
 
-Auf Basis der nach der Entwicklung des Prototypen verfeinerten Entwicklungsplans wurde der lauffähige Prototyp entwickelt. 
+Auf Basis der nach der Entwicklung des Prototypen des verfeinerten Entwicklungsplans wurde der lauffähige Prototyp entwickelt. 
 Dieser nutzte als Datengrundlage einen externen Datensatz, welcher als Tabelle eingebettet wurde und über \gls{sql} abgefragt werden kann (vgl. Tab. \ref{tab:104_app-data-structure}).
 Die Tabelle umfasst Informationen zu Bauteilen, Systemen, Materialien und Geschossen, die in den bereitgestellten \gls{ifc}-Modellen enthalten sind.
 Jede Zeile entspricht einem einzelnen Eigenschaftswert, einer Systembeschreibung oder anderen einzelnen Informationseinheit, die mit einem Bauteil oder einem anderen Element im Modell verknüpft ist. 
@@ -124,8 +124,8 @@ Die gesamte Anwendung wurde mit einer Mono-Repository-Strategie strukturiert und
 
 Das mit React umgesetzte Frontend als Interaktionsfläche für die Probanden bestand aus einer Primäransicht (vgl. Abb. \ref{fig:104_app-ui-chat}), die einen \gls{ifc}-Viewer sowie die Texteingabe beinhaltete.
 Probanden konnten über die Texteingabe mit dem \gls{llm} kommunizieren und bekamen die entsprechenden Ausgaben des \gls{llm} angezeigt. 
-Der in der Abbildung dargestellte \gls{ifc}-Viewer diente als Referenz, verfügte jedoch nicht über einen direkten Bezug zwischen den dem \gls{llm} zur Verfügung stehenden Daten und den abgebildeten Modellen im Viewer.
-Zusätzlich verfügte das Frontend über eine Modellauswahl, welche als Startbildschirm der Anwendung konfiguriert war (\ref{fig:104_app-loading-ifc-model}).
+Der in der Abbildung dargestellte \gls{ifc}-Viewer diente als Referenz, verfügte jedoch nicht einen direkten Bezug zwischen den dem \gls{llm} zur Verfügung stehenden Daten und den abgebildeten Modellen im Viewer.
+Zusätzlich besitzt das Frontend eine Modellauswahl, welche als Startbildschirm der Anwendung konfiguriert ist (vgl. Abb.\ref{fig:104_app-loading-ifc-model}).
 
 \begin{figure}[htb]
 	\centering
@@ -136,8 +136,8 @@ Zusätzlich verfügte das Frontend über eine Modellauswahl, welche als Startbil
 	\label{fig:104_app-loading-ifc-model}
 \end{figure}
 
-Um den Probanden tabellarische Dateien zur Anzeige und zum Download zur Verfügung zu stellen, verfügte das Frontend über eine entsprechende Interfacekomponente,
-welche eine vollständige Vorschau der Datei, sowie den Download ermöglichte (vgl. Abb. \ref{fig:104_app-file-export}).
+Um den Probanden tabellarische Dateien zur Anzeige und zum Download zur Verfügung zu stellen, verfügt das Frontend über eine entsprechende Interfacekomponente,
+welche eine vollständige Vorschau der Datei sowie den Download ermöglichte (vgl. Abb. \ref{fig:104_app-file-export}).
 
 \begin{figure}[htb]
 	\centering
@@ -154,7 +154,7 @@ Der folgende Abschnitt befasst sich mit dem technischen Aufbau des Backends, wel
 \label{sec:app-technical-structure}
 
 Aufbauend auf dem im vorangegangenen Abschnitt beschriebenen Frontend wird im Folgenden das Backend des lauffähigen Prototypen strukturiert dargestellt.
-Das Backend basiert auf dem NestJS-Framework und nutzt die dort integrierte \gls{di}, um zentrale Verantwortlichkeiten in eigenständige Module zu gliedern.
+Das Backend basiert auf dem NestJS-Framework und verwendet die dort integrierte \gls{di}, um zentrale Verantwortlichkeiten in eigenständige Module zu gliedern.
 Als Datenbanksystem wird PostgreSQL eingesetzt, das über die \gls{orm}-Bibliothek Prisma angebunden ist (vgl. Kap. \ref{sec:app-prismamodule}).
 Dabei integriert das Datenbanksystem den in Tabelle \ref{tab:104_app-data-structure} beschriebenen Datensatz, welcher die Grundlage für die Datenabfrage durch das \gls{llm} bildet.
 Die textbasierte Interaktion zwischen Nutzer und \gls{llm} erfolgt im ChatModule (vgl. Kap. \ref{sec:app-chatmodule}), während das ChatHistoryModule die Nachrichten für die spätere Auswertung speichert (vgl. Kap. \ref{sec:app-chathistorymodule}).
@@ -163,7 +163,7 @@ In der Abbildung \ref{fig:104_app-backend-structure} sind die Beziehungen der ve
 
 \begin{figure}[htb]
 	\centering
-		\includegraphics[width=0.8\textwidth]{doc/10/103_methods/app_final_backend_structure}
+		\includegraphics[width=0.9\textwidth]{doc/10/104_results/app_final_backend_structure.pdf}
 
 	\caption[Backend-Struktur des lauffähigen Prototypen]{Das Backend des lauffähigen Prototypen unterteilt sich in verschiedene Module. Das AppModule bildet den Einstiegspunkt der Anwendung, während das PrismaModule den Datenbankzugriff ermöglicht. Das ChatModule steuert die Verarbeitung von Nutzereingaben und die Interaktion mit dem \gls{llm}, während das ChatHistoryModule die Nachrichtenhistorie verwaltet. Das IfcModule stellt \gls{ifc}-Modelle bereit, das PromptModule generiert den Systemprompt, das SkillsModule bietet Wissensbausteine und das ToolsModule definiert die ausführbaren Werkzeuge. Die Pfeile zeigen die Abhängigkeiten zwischen den Modulen an.}
 
@@ -307,13 +307,15 @@ Damit wird sichergestellt, dass das \gls{llm} eine konsistente Aufgabenbeschreib
 \subsubsection{SkillsModule - Wissensbibliothek über Werkzeuge}
 \label{sec:app-skillsmodule}
 
-Das SkillsModule stellt dem \gls{llm} thematisch gegliederte Wissensbausteine zu verfügbaren Werkzeugen bereit.
-Bei Bedarf kann das Modell gezielt zusätzliche Informationen zu einem bestimmten Werkzeug nachladen, anstatt sämtliche Detailinformationen dauerhaft im aktiven Kontext zu halten.
+Das SkillsModule stellt dem \gls{llm} Wissen auf Basis von Skills (vgl. Kap. \ref{sec:skills}) bereit,
+welche Informationen zu bestimmten Werkzeugen bündeln (vgl. Tab. \ref{tab:103_available-skills}). \\
+
+Bei Bedarf kann das Modell gezielt zusätzliche Informationen zu einem bestimmten Werkzeug nachträglich laden, anstatt sämtliche Detailinformationen dauerhaft im aktiven Kontext zu halten.
 Auf diese Weise wird die Kontextlast reduziert und zugleich die aufgabenbezogene Nutzung von Werkzeugwissen unterstützt (vgl. Kap. \ref{sec:skills}).
 
 \begin{table}[!htb]
     \centering
-    \caption[Definition von Skills im Skills-Werkzeug]{Englische Definition von Skills, welche vom Skills-Werkzeug bereitgestellt werden}
+    \caption[Definition von Skills im Skills-Werkzeug]{Definition von Skills, welche vom Skills-Werkzeug bereitgestellt werden}
     \label{tab:103_available-skills}
     \begin{tabular}{C{2cm} L{11cm}}
         \hline
@@ -330,10 +332,10 @@ Auf diese Weise wird die Kontextlast reduziert und zugleich die aufgabenbezogene
     \end{tabular}
 \end{table}
 
-Der Skill "ask-user" unterstützt das \gls{llm} bei notwendigen Rückfragen an den Nutzer und beschreibt, wie Fragen strukturiert sowie in welchen Situationen Rückfragen gestellt werden sollen.
+Der Skill "ask-user" unterstützt das \gls{llm} bei notwendigen Rückfragen an den Nutzer und beschreibt, wie Fragen strukturiert werden sowie in welchen Situationen Rückfragen gestellt werden sollen.
 Im Skill "query" ist das datenbankbezogene Wissen gebündelt.
 Dazu zählen die Tabellenstruktur der Tabelle ifc\_elements, die Beschreibung einzelner Spalten inklusive PostgreSQL-Typ sowie Hinweise zur inhaltlichen Verwendung.
-Ergänzend enthält der Skill erprobte Beispiele für SQL-Abfragen, die auf den vorhandenen Modelldaten ausgeführt werden können, sowie Informationen zum direkten Export von Abfrageergebnissen.
+Ergänzend enthält der Skill erprobte Beispiele für SQL-Abfragen, die auf den vorhandenen Modelldaten ausgeführt werden können sowie Informationen zum direkten Export von Abfrageergebnissen.
 Der Skill "ifc" beschreibt den \gls{ifc}-Standard in kompakter Form und erläutert den Aufbau der verfügbaren \gls{ifc}-\gls{json}-Strukturen einschließlich der nutzbaren Abfrageparameter.
 
 \subsubsection{ToolsModule - Bereitstellung von \gls{llm}-Werkzeugen}
@@ -342,12 +344,11 @@ Der Skill "ifc" beschreibt den \gls{ifc}-Standard in kompakter Form und erläute
 Im ToolsModule sind sämtliche zur Laufzeit ausführbaren \gls{llm}-Werkzeuge zentral definiert.
 Das Modul bildet damit die kontrollierte Ausführungsschicht zwischen Modellanfrage und konkreter Systemfunktion.
 Werkzeuge sind dabei von Skills zu unterscheiden, da sie die Ausführung von Funktionen ermöglichen, während Skills lediglich Wissen über die Werkzeuge bereitstellen.
-Das SkillsModule benutzt dabei das gleichnamige Werkzeug "skill", um dem \gls{llm} die Möglichkeit zu geben, gezielt Informationen zu einem bestimmten Thema nachzuladen.
-
+Das SkillsModule benutzt dabei das gleichnamige Werkzeug "skill", um dem \gls{llm} die in Kapitel \ref{sec:app-skillsmodule} beschriebenen Funktionalitäten des inkrementellen Wissensmanagements bereitzustellen. \\
 
 \begin{table}[!htb]
     \centering
-    \caption[Definition von Werkzeugen]{Englische Definition von Werkzeugen, welche dem \gls{llm} bereitgestellt werden}
+    \caption[Definition von Werkzeugen]{Definition von Werkzeugen, welche dem \gls{llm} bereitgestellt werden}
     \label{tab:103_available-tools}
     \begin{tabular}{C{3.5cm} L{9.5cm}}
         \hline
@@ -368,7 +369,7 @@ Das SkillsModule benutzt dabei das gleichnamige Werkzeug "skill", um dem \gls{ll
     \end{tabular}
 \end{table}
 
-Die Ergebnisse, welche unter Verwendung der Anwendung erzeugt wurden, sind im folgenden Abschnitt dargestellt und analysiert.
+Die Ergebnisse, welche unter Einsatz der Anwendung erzeugt wurden, sind im folgenden Abschnitt dargestellt und analysiert.
 
 \section{Ergebnisse der Interviews}
 \label{sec:results-interviews}
@@ -391,7 +392,7 @@ Der folgende Abschnitt befasst sich mit den Ergebnissen der Probandengruppe A, w
 \label{sec:results-group-a}
 
 Im Rahmen der Interviews mit der Probandengruppe A wurden Aufgabenstellungen aus verschiedenen Bereichen der \gls{bim}-Methodik entwickelt.
-Die gesamte Auflistung der entwickelten Aufgabenstellungen wurde aufgrund der Größe angehängt. 
+Die gesamte Auflistung der erarbeiteten Aufgabenstellungen wurde aufgrund der Größe beigefügt. 
 Einige dieser im Anhang befindlichen Aufgabenstellungen sind aufgrund von Fachbegriffen oder fehlenden Details aus dem Alltag ohne zusätzliche Erklärung schwer nachzuvollziehen,
 weshalb sie in den folgenden Absätzen auf Basis der Aussagen der Probanden der Gruppe A näher definiert werden. \\
 
@@ -399,12 +400,12 @@ weshalb sie in den folgenden Absätzen auf Basis der Aussagen der Probanden der 
 
 Die genannte Aufgabenstellung befasst sich mit der Verwendung von IfcBuildingElementProxy-Entitäten bei der Modellierung von Gebäuden. 
 Dabei handelt es sich bei dieser Entität um einen Platzhalter, welcher für beliebige Elemente eingesetzt wird. 
-Vorgesehen ist diese Entität für Elemente, welche keine eigene \gls{ifc}-Entität besitzen und somit durch eine generische Entität abgebildet werden müssen.
-Aufgrund der generischen Natur der Entität wird diese in der Praxis auch an Stellen eingesetzt, für die im \gls{ifc}-Standard bereits eine passende Entität vorgegeben ist.
+Vorgesehen ist dieses Objekt für Elemente, welche keinen eigenen \gls{ifc}-Typ besitzen und somit generisch abgebildet werden müssen.
+Aufgrund der generischen Natur wird diese in der Praxis auch an Stellen eingesetzt, für die im \gls{ifc}-Standard bereits eine Passende vorgegeben ist.
 Die Aufgabenstellung zielt daher auf die Analyse der in den Modellen vorhandenen IfcBuildingElementProxy-Entitäten ab, um festzustellen, 
-ob die Nutzung dieser generischen Entität innerhalb der Projektvorgaben liegt. \\
+ob die Nutzung dieser generischen Instanz innerhalb der Projektvorgaben liegt. \\
 
-\textbf{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt und die gleiche Höhe besitzen.}
+\textbf{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt werden und die gleiche Höhe besitzen.}
 
 Im Rahmen der gesamtheitlich datengetriebenen Planung von Gebäuden werden verschiedene Modelle benutzt, welche in der Praxis den unterschiedlichen Gewerken oder Fachgebieten zugeordnet sind.
 Diese Modelle besitzen unterschiedliche Elemente des Gebäudes, benötigen aber eine gemeinsame Projektstruktur. 
@@ -414,8 +415,8 @@ Dabei können besonders in Bezug auf die Benennung oder die Höhe der Ebenen Unt
 
 \textbf{Finden Sie das Attribut zur Ermittlung von Kostengruppen nach der DIN 276 im Modell.}
 
-Bei der Planung und Ausführung von Bauprojekten wird die DIN 276 eingesetzt, um systematisch Kosten des Projektes zu planen und aufzuschlüsseln.
-Dabei ist jedem Kostenpunkt abhängig vom Zweck der Kosten eine entsprechende numerische Kategorie zugewiesen.
+Bei der Planung und Ausführung von Bauprojekten wird die DIN 276 eingesetzt, um systematisch Ausgaben des Projektes zu planen und aufzuschlüsseln.
+Dabei ist jedem Kostenpunkt abhängig vom Zweck der Aufwendung eine entsprechende numerische Kategorie zugewiesen.
 Im Rahmen von datengetriebenen Planungsprojekten können diese Kostengruppen als Parameter an den jeweiligen Elementen des Modells hinterlegt werden.
 Die Aufgabenstellung zielt dabei explizit auf den verwendeten Parameter zur Sicherung der Kostengruppe pro Element ab, da dieser in der Praxis keinem Standard folgt und zwischen verschiedenen Projekten unterschiedlich definiert sein kann. \\
 
@@ -425,13 +426,13 @@ Im Vergleich zu den vorherigen Aufgabenstellungen handelt es sich bei der genann
 das im Kontext der den Probanden der Gruppe A gestellten Leitfrage (vgl. Kap. \ref{sec:aufgabenstellung-gruppe-a}) für eine unangelernte Hilfskraft grundsätzlich ungeeignet ist.
 Dennoch wurde sie im Rahmen der Interviews verwendet, um die Leistungsfähigkeit des Query-Werkzeuges und die mehrstufige Abfrage von Informationen zu überprüfen. \\
 
-Während letztere Aufgabenstellung aufgrund der Mehrschichtigkeit bei der Datenbankabfrage zugelassen wurde, mussten andere Aufgabenstellungen aussortiert werden,
-die im folgenden Abschnitt betrachtet werden.
+Während letztere Aufgabenstellung aufgrund der Mehrschichtigkeit bei der Datenbankabfrage zugelassen wurde, mussten andere aussortiert werden.
+Diese werden im folgenden Abschnitt betrachtet werden.
 
 \subsubsection{Aussortierte Aufgabenstellung}
 \label{sec:results-group-a-deleted}
 
-Im Rahmen der Vorprüfung der Aufgabenstellungen wurden Aufgabenstellungen aussortiert, da sie mehrere Aufgaben in einer einzigen Aufgabenstellung vereinten,
+Im Rahmen der Vorprüfung der Aufgabenstellungen wurden diese aussortiert, da sie mehrere Aufgaben in Einer vereinten,
 die zumutbare Komplexität für fachfremde Akteure überschritten oder mindestens in Teilen Daten benötigten, die im verwendeten Datensatz nicht vorhanden waren.
 In diesem Abschnitt werden die aussortierten Aufgabenstellungen strukturiert abgebildet und entsprechende Probleme auf Basis der Interviews mit der Probandengruppe A erläutert. \\
 
@@ -445,9 +446,9 @@ Unter dem Hintergrund der Komplexität wurde diese Aufgabenstellung daher aussor
 \textbf{Überprüfen Sie, ob alle Bauteile, welche einem IfcSpace zugewiesen sind, von diesem eingefasst werden.}
 
 Bei einem IfcSpace handelt es sich um ein virtuelles Volumen, das innerhalb der Gesamtstruktur eines \gls{ifc}-Modells einen Raum oder eine Fläche definiert.
-Jedem IfcSpace können dabei Bauteile und Elemente untergeordnet werden, welche in direkter Relation zu diesem IfcSpace stehen.
-Aufgrund von Umpositionierungen oder unsauberer Modellierung können dabei Bauteile die Grenzen des IfcSpace-Volumens überschreiten und somit zwar in der Struktur logisch verknüpft sein,
-im Kontext der Geometrie aber nicht oder nur teilweise zuzuordnen sein. Aufgrund der im Datensatz fehlenden Geometrieinformationen war diese Aufgabenstellung jedoch nicht durchzuführen. \\
+Jedem IfcSpace können dabei Bauteile und Elemente untergeordnet werden, welche in direkter Relation zu diesem stehen.
+Aufgrund von Umpositionierungen oder unsauberer Modellierung können dabei Bauteile die Grenzen des IfcSpace-Volumens überschreiten und sind somit zwar in der Struktur logisch verknüpft,
+im Kontext der Geometrie aber nicht oder nur teilweise zuzuordnen. Aufgrund der im Datensatz fehlenden Geometrieinformationen war diese Aufgabenstellung jedoch nicht durchzuführen. \\
 
 \textbf{Überprüfen Sie, ob die Durchbrüche für Leitungen und Rohre vorhanden sind und korrekt ausgeführt wurden.}
 
@@ -455,9 +456,9 @@ Analog zur vorangegangenen Aufgabenstellung werden Durchbrüche in der Praxis of
 Um die korrekte Platzierung der Durchbrüche zu validieren, ist zudem eine Kollisionsüberprüfung der am Durchbruch beteiligten Elemente erforderlich.
 Auf Basis der Komplexität der Aufgabenstellung sowie der Verwendung von Daten, die im Datensatz nicht vorhanden sind, wurde die Aufgabe aussortiert. \\
 
-Bereits direkt im Fluss der Interviews wurden einige Aufgabenstellungen aussortiert, welche grundsätzlich nicht mit der Leitfrage übereinstimmten.
+Bereits direkt im Fluss der Interviews wurden einige Aufgabenstellungen eliminiert, die grundsätzlich nicht mit der Leitfrage übereinstimmten.
 Dabei waren besonders Aufgabenstellungen mit der Anforderung von Funktionen betroffen, die mit den vorhandenen Werkzeugen oder Daten nicht in Übereinstimmung zu bringen waren.
-Im nachfolgenden Abschnitt werden die von den Probanden der Gruppe B bearbeiteten Aufgaben, deren Fortschritt sowie mögliche Probleme mit den Aufgabenstellungen dargestellt.
+Im nachfolgenden Abschnitt werden die von den Probanden der Gruppe B bearbeiteten Aufgaben, deren Fortschritt sowie mögliche Probleme mit den Aufgabenstellungen dargelegt.
 
 \subsection{Ergebnisse der Probandengruppe B} 
 \label{sec:results-group-b}
@@ -467,9 +468,9 @@ Während der Interviews mit der Probandengruppe B konnten verschiedene Lösungsa
 Grundsätzlich zeigte sich, dass Probanden, die nach eigenen Angaben über minimales Grundwissen in Bezug auf digitale datengetriebene Planungsprozesse verfügen,
 die gegebenen Aufgabenstellungen tendenziell näher an das in der Aufgabenstellung definierte Ziel führen konnten.
 Dabei unterschieden sich der grundsätzliche Ansatz der Probanden und die Verwendung bestimmter Fachbegriffe bei der Strukturierung der Anfrage an das \gls{llm}.
-Probanden der Gruppe B mit minimalem Grundwissen nutzten Formulierungen, welche näher an dem im Systemprompt (vgl. Kap. \nameref{sec:appendix-systemprompt}) 
+Probanden der Gruppe B mit minimalen Vorerfahrungen nutzten Ausdrücke, welche näher an dem im Systemprompt (vgl. Kap. \nameref{sec:appendix-systemprompt}) 
 oder in den Skills (vgl. Tab. \ref{tab:103_available-skills}) verwendeten Fachbegriffen lagen.
-Probanden der Gruppe B mit keiner Vorerfahrung setzten zum Teil Formulierungen ein, welche durch das \gls{llm} konträr zum Ziel des Probanden interpretiert wurden, 
+Teilnehmer der Gruppe B mit keiner Vorerfahrung setzten zum Teil Formulierungen ein, welche durch das \gls{llm} konträr zum Ziel des Probanden interpretiert wurden, 
 sodass Aufgabenstellungen erst nach Korrektur durch weitere Informationen des Probanden oder gar nicht vollständig bearbeitet wurden. \\
 
 Insgesamt zeigten sich alle Probanden der Gruppe B sehr zufrieden mit den Ausgaben, die durch das \gls{llm} generiert wurden.
@@ -543,7 +544,7 @@ Es handelt sich bei diesen Ergebnissen um die objektive Analyse der ausgegebenen
   \end{scope}
 
 \end{tikzpicture}
-\caption[Gesamtergebnisse der \gls{llm}-Auswertung]{Die Analyse ergab, dass von 41 Ausgaben des \gls{llm} 7.3\% abgebrochen wurden, 51.2\% der Ausgaben erzeugt und als inkorrekt eingestuft wurden, 36.6\% der Ausgaben erzeugt und als korrekt eingestuft wurden, und 4.9\% der Fälle keine Ausgabe erzeugten.}
+\caption[Gesamtergebnisse der \gls{llm}-Auswertung]{Die Analyse der \gls{llm}-Ausgaben der Probandengruppe B ergab, dass von 41 Ausgaben des \gls{llm} 7.3\% abgebrochen wurden, 51.2\% der Ausgaben erzeugt und als inkorrekt eingestuft wurden, 36.6\% der Ausgaben erzeugt und als korrekt eingestuft wurden, und 4.9\% der Fälle keine Ausgabe erzeugten.}
 \label{fig:104_results-ai}
 \end{figure}
 
@@ -551,9 +552,9 @@ In der Abbildung \ref{fig:104_results-ai} sind die strukturierten Analysedaten d
 Von den insgesamt 41 analysierten \gls{llm}-Ausgaben sind 36 \% der \gls{llm}-Ausgaben als objektiv korrekt eingestuft worden. 
 Insbesondere die Einbettung allgemeinen Wissens in Ausgaben des \gls{llm} war korrekt durchgeführt.
 Bei bauspezifischen Themen wie der Definition der DIN 276 oder von Kostengruppen gab das \gls{llm} trotz fehlenden Werkzeugs zur Internetsuche korrekte Informationen aus.
-Allgemein wurde bemerkt, dass durch das \gls{llm} korrekte Annahmen oder Erklärungen an die Probanden gegeben wurden,
+Allgemein wurde bemerkt, dass durch das \gls{llm} zutreffende Annahmen oder Erklärungen vorgegeben wurden,
 welche Informationen beinhalteten, die weder in der Datenbank noch im Systemprompt vorhanden waren.
-Auch die Möglichkeit, vorangegangene Inhalte der Konversation mit den Probanden zusammenzufassen und in einfacherer Sprache zu erläutern, bot den Probanden eine Möglichkeit,
+Auch die Möglichkeit, vorangegangene Inhalte der Konversation mit den Probanden zusammenzufassen und in einfacherer Sprache zu erläutern, bot eine Möglichkeit,
 um komplexe Aufgabenstellungen in verständliche Probleme aufzubrechen. Zusätzlich interpretierte das \gls{llm} leere Ergebnisse, in der Regel eine leere Datenbankabfrage,
 richtig und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gewünschten Daten zu finden. \\
 
@@ -629,19 +630,19 @@ richtig und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gew�
 
 Wie in der Abbildung \ref{fig:104_results-ai-errors} zu erkennen ist, gab es neben Fehlern, die außerhalb des Einflussbereichs des \gls{llm} lagen ("Sonstige Fehler"), 
 primär Probleme mit der Datenbankabfrage ("SQL-Abfrage falsch aufgebaut") sowie der Suche nach Properties ("Falsche Property/Pset genutzt"). 
-Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeuge (Query-Werkzeug) wählte das \gls{llm} in der Regel die Injektion von Zeilenumbrüchen ("\textbackslash{n}") 
-sowie Semikola (";") in den SQL-Abfragen an die Datenbank, obwohl dies dem \gls{llm} im Systemprompt explizit verboten wurde. 
+Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeuge (Query-Werkzeug) wählte das dieses in der Regel die Injektion von Zeilenumbrüchen ("\textbackslash{n}") 
+sowie Semikola (";") in den SQL-Abfragen an die Datenbank, obwohl dies im Systemprompt explizit verboten wurde. 
 Dies sorgte für Fehler bei Datenbankabfragen, wodurch vorhandene Daten nicht oder nur teilweise abgerufen wurden. 
 Gleichzeitig ignorierte das \gls{llm} die Anweisungen aus dem Systemprompt in Bezug auf die Nutzung des Skill-Werkzeugs,
 wodurch die korrekten Skills zum Teil nicht geladen wurden. Im Kontext von Datenbankabfragen führte dies zu Problemen, da die Struktur der Datenbank dem \gls{llm} nicht vorlag.
 Die Annahmen, wie Spalten in der Datenbank bezeichnet waren, welche das \gls{llm} traf, waren nicht korrekt und führten zu fehlerhaften Abfragen.
-Bei komplexeren Aufgabenstellungen wurde durch das \gls{llm} zum Teil der SQL-Befehl \textit{JOIN} (zwei Tabellen kombinieren -- exponentielle Anzahl von Elementen) gewählt sowie gewisse SQL-Filter nicht korrekt umgesetzt,
+Bei komplexeren Aufgabenstellungen wurde zum Teil der SQL-Befehl \textit{JOIN} (zwei Tabellen kombinieren -- exponentielle Anzahl von Elementen) gewählt sowie gewisse SQL-Filter nicht korrekt umgesetzt,
 sodass arithmetische Funktionen wie Summierungen ungenaue Ergebnisse lieferten. Während der Property-Suche nutzte das \gls{llm} in den meisten Fällen eine direkte Bezeichnung der Property, 
-die aus der Anfrage des Probanden abgeleitet war. Dies führte dazu, dass in Kombination mit einer direkten Suche Properties nicht korrekt gefunden wurden oder das \gls{llm} frühzeitig ein Ergebnis erzeugte,
-obwohl im Modell noch weitere Daten vorhanden waren. Ebenso interpretierte das \gls{llm} bei der Erstellung von Raumlisten die Zuordnung von IfcSpaces falsch,
-da diese im beispielhaften Modell mit doppelten Bezeichnungen jeweils als Fläche und als Raum angelegt waren. Diese Dopplung der Bezeichnungen wurde vom \gls{llm} nicht korrekt interpretiert,
-sodass die erzeugte Raumliste, sowie berechneten Flächenwerte nicht korrekt waren. Zusätzlich verwendete das \gls{llm} die geladenen Modelle korrekt, 
-jedoch wurde des Öfteren durch das \gls{llm} die Annahme getroffen, dass Properties in allen Modellen vorhanden waren, obwohl dies besonders in Fachmodellen nicht gegeben war. \\
+die aus der Anfrage des Probanden abgeleitet war. Dies führte dazu, dass in Kombination mit einer direkten Suche Properties nicht korrekt gefunden wurden oder frühzeitig ein Ergebnis erzeugte,
+obwohl im Modell noch weitere Daten vorhanden waren. Ebenso wurde bei der Erstellung von Raumlisten die Zuordnung von IfcSpaces falsch interpretiert,
+da diese im beispielhaften Modell mit doppelten Bezeichnungen jeweils als Fläche und als Raum angelegt waren. Diese Dopplung wurde vom \gls{llm} nicht korrekt interpretiert,
+sodass die erzeugte Raumliste, sowie berechneten Flächenwerte nicht korrekt waren. Dennoch wurden die geladenen Modelle korrekt verwendet,
+jedoch wurde des Öfteren die Annahme getroffen, dass Properties in allen Modellen vorhanden waren, obwohl dies, besonders in Fachmodellen, nicht gegeben war. \\
 
 Insgesamt zeigte sich, dass die Fehler des \gls{llm} hauptsächlich in der fehlerhaften Nutzung der Werkzeuge sowie der fehlerhaften Interpretation von Datenbankstrukturen lagen.
 Im folgenden Kapitel werden die gewonnenen Ergebnisse diskutiert, in Bezug auf die Forschungsfrage eingeordnet und Implikationen für die Praxis sowie weitere Forschung abgeleitet.

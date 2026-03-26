@@ -121,7 +121,7 @@ Für Zertifizierungen müssen Anwendungen angegeben werden, gegen welche MVD sie
 
 \begin{figure}[htb]
     \centering
-        \includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.png}
+        \includegraphics[width=1\textwidth]{doc/10/102_state-of-the-art/IFC4_layered_architecture.pdf}
     \caption[Struktur des \glstext{ifc}4-Standards als Schema]{Der Aufbau des \gls{ifc}4.3-Standards teilt sich in vier Ebenen (Resource-, Core-, Interoperability- und Domainebene). 
     Dabei stellen Resource- und Coreebene grundsätzliche Bausteine dar, während Interoperability- und Domainebene fachspezifische Elemente definieren \cite{buildingsmart2025ifc4}.}
     \label{fig:102_ifc4-architecture}
@@ -356,9 +356,9 @@ Für dialogorientierte Anwendungen ist dies besonders relevant, da die verfügba
 
 In erster Instanz erhält das Modell lediglich Namen und eine kurze Beschreibung der Skills. 
 Diese Informationen dienen der Auswahlentscheidung, ob ein Skill mit der aktuellen Nutzeranfrage übereinstimmt \cite{agentskills_github}.
-Auf der zweiten Ebene wird der Einstiegspunkt des Skills, typischerweise die Datei \textit{SKILL.md}, dem Modell zur Verfügung gestellt. 
+Auf der zweiten Ebene wird der Einstiegspunkt des Skills, typischerweise die Datei \textit{SKILL.md}, dem Modell als reinen Text zur Verfügung gestellt. 
 Dadurch werden nur die für die Anfrage vorausgewählten Inhalte in den Kontext übernommen \cite{agentskills_github}.
-Zusätzlich können aus \textit{SKILLS.md} referenzierte Inhalte nachgeladen werden, zum Beispiel weitere Markdown-Dateien oder Skripte. 
+Zusätzlich können aus \textit{SKILLS.md} referenzierte Inhalte nachgeladen werden, zum Beispiel weitere Markdown-Dateien (Textdateien) oder Skripte. 
 Dieses stufenweise Vorgehen ermöglicht einen inkrementellen Wissensaufbau, ohne von Beginn an den Systemprompt zu füllen \cite{agentskills_github}. \\
 
 Im Vergleich zu monolithischen Prompts ergeben sich zwei zentrale Vorteile: die Relevanz der im Kontext enthaltenen Informationen erhöht, weil irrelevante Wissensanteile nicht dauerhaft im Systemprompt enthalten sind. 
@@ -556,7 +556,7 @@ Da React selbst entscheidet, welche Teile des \gls{html} angepasst werden müsse
 	\label{fig:102_example-react-component}
 \end{figure}
 
-Im Beispiel ist ein sich ändernder Zustand ("counter") abgebildet, welcher durch die Methode "increaseCounter" bei jedem Druck des Knopfes um Eins erhöht wird.
+Im Beispiel in Abbildung \ref{fig:102_example-react-component} ist ein sich ändernder Zustand ("counter") abgebildet, welcher durch die Methode "increaseCounter" bei jedem Druck des Knopfes erhöht wird.
 Gleichzeitig aktualisiert sich der Text, um den aktuellen Stand des Zustandes anzuzeigen (s. Abb. \ref{fig:102_example-react-component}). \\
 
 Die Nutzung von \gls{vdom} als Abstraktion ermöglicht es, mit Technolgie wie React Native auch außerhalb von Browsern Anwendung zu entwickeln,
