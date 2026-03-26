@@ -32,32 +32,8 @@
     pdfborder={0 0 1},    % Unterstreichung (0 0 1 bedeutet 1pt Linie unten)
 }
 
-\hyphenation{Qua-li-täts-si-che-rung}
-\hyphenation{Pla-nungs-pha-sen}
-\hyphenation{Ge-samt-sche-mas}
-\hyphenation{Un-ter-su-chungs-lo-gik}
-\hyphenation{fach-kom-pe-ten-ten}
-\hyphenation{Ge-bäu-des}
-\hyphenation{Re-sour-ce}
-\hyphenation{wäh-rend}
-\hyphenation{Leis-tungs-zu-wach-ses}
-\hyphenation{Sprach-kom-pe-tenz}
-\hyphenation{Grö-ßen-ord-nung}
-\hyphenation{selbst-über-wach-ten}
-\hyphenation{Zu-sam-men-hän-ge}
-\hyphenation{Pa-ra-me-tri-sie-rung}
-\hyphenation{Mög-lich-keit}
-\hyphenation{Aus-wahl-ent-schei-dung}
-\hyphenation{Re-po-si-to-ry}
-\hyphenation{Ab-hän-gig-keits-ver-wal-tung}
-\hyphenation{ver-bes-ser-te}
-\hyphenation{Struk-tu-ren}
-\hyphenation{Ifc-Building-Element-Proxy}
-\hyphenation{Vor-ge-hens-wei-se}
-\hyphenation{be-schrie-ben}
-\hyphenation{Phä-no-me-ne}
-\hyphenation{Kon-zep-ten}
-\hyphenation{Er-klä-rung}
+\hyphenation{Web-So-ckets}
+\hyphenation{Ifc-Buil-ding-E-le-ment-Pro-xy}
 
 % glossary and acronyms
 \usepackage[acronym,automake]{glossaries}
@@ -94,7 +70,8 @@
 \newacronym{ttft}{TTFT}{Time To First Token}
 \newacronym{guid}{GUID}{globally unique identifier}
 
-\usepackage[german,english]{babel}       % language: german and english, english is main language, german is used in the german abstract and the acknowledgements 
+\usepackage[main=german,english]{babel}       % language: german and english, german is main language; use local switch for english sections
+\usepackage[autostyle=true, german=quotes]{csquotes}
 % \usepackage[T1]{fontenc}
 \usepackage[ddmmyyyy]{datetime} 
 \renewcommand{\dateseparator}{.} 

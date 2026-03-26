@@ -332,11 +332,11 @@ Auf diese Weise wird die Kontextlast reduziert und zugleich die aufgabenbezogene
     \end{tabular}
 \end{table}
 
-Der Skill "ask-user" unterstützt das \gls{llm} bei notwendigen Rückfragen an den Nutzer und beschreibt, wie Fragen strukturiert werden sowie in welchen Situationen Rückfragen gestellt werden sollen.
-Im Skill "query" ist das datenbankbezogene Wissen gebündelt.
+Der Skill \enquote{ask-user} unterstützt das \gls{llm} bei notwendigen Rückfragen an den Nutzer und beschreibt, wie Fragen strukturiert werden sowie in welchen Situationen Rückfragen gestellt werden sollen.
+Im Skill \enquote{query} ist das datenbankbezogene Wissen gebündelt.
 Dazu zählen die Tabellenstruktur der Tabelle ifc\_elements, die Beschreibung einzelner Spalten inklusive PostgreSQL-Typ sowie Hinweise zur inhaltlichen Verwendung.
 Ergänzend enthält der Skill erprobte Beispiele für SQL-Abfragen, die auf den vorhandenen Modelldaten ausgeführt werden können sowie Informationen zum direkten Export von Abfrageergebnissen.
-Der Skill "ifc" beschreibt den \gls{ifc}-Standard in kompakter Form und erläutert den Aufbau der verfügbaren \gls{ifc}-\gls{json}-Strukturen einschließlich der nutzbaren Abfrageparameter.
+Der Skill \enquote{ifc} beschreibt den \gls{ifc}-Standard in kompakter Form und erläutert den Aufbau der verfügbaren \gls{ifc}-\gls{json}-Strukturen einschließlich der nutzbaren Abfrageparameter.
 
 \subsubsection{ToolsModule - Bereitstellung von \gls{llm}-Werkzeugen}
 \label{sec:app-toolsmodule}
@@ -344,7 +344,7 @@ Der Skill "ifc" beschreibt den \gls{ifc}-Standard in kompakter Form und erläute
 Im ToolsModule sind sämtliche zur Laufzeit ausführbaren \gls{llm}-Werkzeuge zentral definiert.
 Das Modul bildet damit die kontrollierte Ausführungsschicht zwischen Modellanfrage und konkreter Systemfunktion.
 Werkzeuge sind dabei von Skills zu unterscheiden, da sie die Ausführung von Funktionen ermöglichen, während Skills lediglich Wissen über die Werkzeuge bereitstellen.
-Das SkillsModule benutzt dabei das gleichnamige Werkzeug "skill", um dem \gls{llm} die in Kapitel \ref{sec:app-skillsmodule} beschriebenen Funktionalitäten des inkrementellen Wissensmanagements bereitzustellen. \\
+Das SkillsModule benutzt dabei das gleichnamige Werkzeug \enquote{skill}, um dem \gls{llm} die in Kapitel \ref{sec:app-skillsmodule} beschriebenen Funktionalitäten des inkrementellen Wissensmanagements bereitzustellen. \\
 
 \begin{table}[!htb]
     \centering
@@ -433,7 +433,7 @@ Die Einzelinterviews mit beiden Probandengruppen wurden auf Basis der in Kap. \r
           \node[left, font=\small] at (0,\y) {\y};
       }
   \end{tikzpicture}
-    \caption{Die Anzahl der Probanden, welche die Interviews mit der jeweiligen Probandengruppe durchgeführt haben beläuft sich auf drei Teilnehmer der Gruppe A und drei Teilnehmer der Gruppe B.}
+    \caption{Die Anzahl der Probanden, welche an Interviews partizipiert haben, beläuft sich auf drei Teilnehmer der Gruppe A und drei Teilnehmer der Gruppe B.}
     \label{fig:104_interview-count}
 \end{figure}
 
@@ -452,11 +452,11 @@ weshalb sie in den folgenden Absätzen auf Basis der Aussagen der Probanden der 
 
 \textbf{Analysieren Sie, wie viele IfcBuildingElementProxy-Entitäten es im Modell gibt und für welchen Zweck diese eingesetzt werden.}
 
-Die genannte Aufgabenstellung befasst sich mit der Verwendung von IfcBuildingElementProxy-Entitäten bei der Modellierung von Gebäuden. 
+Die genannte Aufgabenstellung befasst sich mit der Verwendung von IfcBuildingElementProxy"=Entitäten bei der Modellierung von Gebäuden. 
 Dabei handelt es sich bei dieser Entität um einen Platzhalter, welcher für beliebige Elemente eingesetzt wird. 
 Vorgesehen ist dieses Objekt für Elemente, welche keinen eigenen \gls{ifc}-Typ besitzen und somit generisch abgebildet werden müssen.
 Aufgrund der generischen Natur wird diese in der Praxis auch an Stellen eingesetzt, für die im \gls{ifc}-Standard bereits eine passende Entität vorgegeben ist.
-Die Aufgabenstellung zielt daher auf die Analyse der in den Modellen vorhandenen IfcBuildingElementProxy-Entitäten ab, um festzustellen, 
+Die Aufgabenstellung zielt daher auf die Analyse der in den Modellen vorhandenen IfcBuildingElementProxy"=Entitäten ab, um festzustellen, 
 ob die Nutzung dieser generischen Instanz innerhalb der Projektvorgaben liegt. \\
 
 \textbf{Vergleichen Sie, ob alle Ebenen (IfcBuildingStorey) in den Modellen gleich benannt werden und die gleiche Höhe besitzen.}
@@ -684,10 +684,10 @@ richtig und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gew�
 \label{fig:104_results-ai-errors}
 \end{figure}
 
-Wie in der Abbildung \ref{fig:104_results-ai-errors} zu erkennen ist, gab es neben Fehlern, die außerhalb des Einflussbereichs des \gls{llm} lagen ("Sonstige Fehler"), 
-primär Probleme mit der Datenbankabfrage ("SQL-Abfrage falsch aufgebaut") sowie der Suche nach Properties ("Falsche Property/Pset genutzt"). 
-Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeuge (Query-Werkzeug) wählte dieses in der Regel die Injektion von Zeilenumbrüchen ("\textbackslash{n}") 
-sowie Semikola (";") in den SQL-Abfragen an die Datenbank, obwohl dies im Systemprompt explizit verboten wurde. 
+Wie in der Abbildung \ref{fig:104_results-ai-errors} zu erkennen ist, gab es neben Fehlern, die außerhalb des Einflussbereichs des \gls{llm} lagen (\enquote{Sonstige Fehler}), 
+primär Probleme mit der Datenbankabfrage (\enquote{SQL-Abfrage falsch aufgebaut}) sowie der Suche nach Properties (\enquote{Falsche Property/Pset genutzt}). 
+Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeuge (Query-Werkzeug) wählte dieses in der Regel die Injektion von Zeilenumbrüchen (\enquote{\textbackslash{n}}) 
+sowie Semikola (\enquote{;}) in den SQL-Abfragen an die Datenbank, obwohl dies im Systemprompt explizit verboten wurde. 
 Dies sorgte für Fehler bei Datenbankabfragen, wodurch vorhandene Daten nicht oder nur teilweise abgerufen wurden. 
 Gleichzeitig ignorierte das \gls{llm} die Anweisungen aus dem Systemprompt in Bezug auf die Nutzung des Skill-Werkzeugs,
 wodurch die korrekten Skills zum Teil nicht geladen wurden. Im Kontext von Datenbankabfragen führte dies zu Problemen, da die Struktur der Datenbank dem \gls{llm} nicht vorlag.
