@@ -1,9 +1,9 @@
 \chapter{\textbf{Ergebnisse}}
 \label{chap:result}
 
-Dieses Kapitel führt die Ergebnisse vor, die durch der in Kapitel \ref{chap:methods} beschriebenen Methodik erzielt wurden.
+Dieses Kapitel stellt die Ergebnisse vor, die durch die in Kapitel \ref{chap:methods} beschriebene Methodik erzielt wurden.
 Zuerst werden die im Rahmen der Softwareentwicklung der bereitgestellten Anwendung erlangten Erkenntnisse erläutert und eingeordnet.
-Danach wird in die Ergebnisse der Interviews eingeleitet sowie die verfügbaren Datenstrukturen gelistet.
+Danach wird in die Ergebnisse der Interviews eingeführt und die verfügbaren Datenstrukturen werden dargestellt.
 Anschließend werden die von der Probandengruppe A entwickelten Aufgaben vorgestellt und in ihren einzelnen Bestandteilen untersucht (vgl. Kap. \ref{sec:results-group-a}).
 Die Bearbeitung der Aufgabenstellung durch die Probandengruppe B wird in Kap. \ref{sec:results-group-b} vorgestellt und dort wird auf die Lösbarkeit der Aufgabenstellungen aus Probandensicht eingegangen.
 Zuletzt werden die Ausgaben des \gls{llm} nach ihrer Richtigkeit bewertet und in entsprechenden Statistiken veranschaulicht (vgl. Kap. \ref{sec:results-ai}).
@@ -97,7 +97,7 @@ Zusätzlich bietet sie eine praktikable Grundlage für den Export von Nachrichte
 
 Auf Basis des Prototypen wurde der Entwicklungsplan für den lauffähigen Prototypen weiter verfeinert, um das Konzept (vgl. Kap. \ref{sec:app-concept}) vollständig umzusetzen.
 Besonders die Kombination von Interaktionsfläche und technischen Komponenten in einer einzelnen Anwendung, eine Strukturierung der \gls{llm}-Anfrage 
-und die Möglichkeit mehrere \gls{ifc}-Modelle parallel zu verarbeiten ergaben sich aus den Erkenntnissen der Prototypenentwicklung. \\
+und die Möglichkeit, mehrere \gls{ifc}-Modelle parallel zu verarbeiten, ergaben sich aus den Erkenntnissen der Prototypenentwicklung. \\
 
 \subsection{Ergebnisse des lauffähigen Prototypen - Frontend}
 
@@ -108,7 +108,7 @@ Jede Zeile entspricht einem einzelnen Eigenschaftswert, einer Systembeschreibung
 Mögliche Abfragen wurden durch das \gls{llm} als Text generiert, wodurch im Vergleich zu einem statischen Abfrageobjekt dem \gls{llm} mehr Freiheit bei der Datenabfrage gegeben wurde. \\
 
 Um das eingebundene Wissen zu nutzen, wurde eine vollständige Web-Anwendung geschaffen (full stack web application), die die methodische Kontrolle des gesamten Ablaufs der Anfrageverarbeitung ermöglichte.
-Des Weiteren wurde die Definition des Systemprompts, sowie die Anfragearchitektur im Entwicklungsplan als Kernelemente identifziert und ausgebaut.
+Des Weiteren wurden die Definition des Systemprompts sowie die Anfragearchitektur im Entwicklungsplan als Kernelemente identifiziert und ausgebaut.
 Für die Entwicklung der Web-Anwendung wurde TypeScript als Programmiersprache eingesetzt, um die Kommunikation zwischen Frontend und Backend zu vereinfachen.
 React (vgl. Kap. \ref{sec:react}) wurde für Interaktionsflächen genutzt, während NestJS (vgl. Kap. \ref{sec:nestjs}) die technische Struktur des Backends bildete.
 Die gesamte Anwendung wurde mit einer Mono-Repository-Strategie strukturiert und unter GitHub versioniert (vgl. \ref{sec:structure-code-with-repositories}). \\
@@ -124,14 +124,14 @@ Die gesamte Anwendung wurde mit einer Mono-Repository-Strategie strukturiert und
 
 Das mit React umgesetzte Frontend als Interaktionsfläche für die Probanden bestand aus einer Primäransicht (vgl. Abb. \ref{fig:104_app-ui-chat}), die einen \gls{ifc}-Viewer sowie die Texteingabe beinhaltete.
 Probanden konnten über die Texteingabe mit dem \gls{llm} kommunizieren und bekamen die entsprechenden Ausgaben des \gls{llm} angezeigt. 
-Der in der Abbildung dargestellte \gls{ifc}-Viewer diente als Referenz, verfügte jedoch nicht einen direkten Bezug zwischen den dem \gls{llm} zur Verfügung stehenden Daten und den abgebildeten Modellen im Viewer.
+Der in der Abbildung dargestellte \gls{ifc}-Viewer diente als Referenz, verfügte jedoch über keinen direkten Bezug zwischen den dem \gls{llm} zur Verfügung stehenden Daten und den abgebildeten Modellen im Viewer.
 Zusätzlich besitzt das Frontend eine Modellauswahl, welche als Startbildschirm der Anwendung konfiguriert ist (vgl. Abb.\ref{fig:104_app-loading-ifc-model}).
 
 \begin{figure}[htb]
 	\centering
 		\includegraphics[width=0.8\textwidth]{doc/10/104_results/app-loading-ifc-models.png}
 
-	\caption[Lauffähiger Prototyp mit Modellauswahl]{Bevor das Chatfenster geöffnet wird, wird im  lauffähigen Prototypen die Modellauswahl angezeigt. Die gleichzeitige Auswahl mehrere Fachmodelle war innerhalb eines Projektes möglich.}
+    \caption[Lauffähiger Prototyp mit Modellauswahl]{Bevor das Chatfenster geöffnet wird, wird im lauffähigen Prototypen die Modellauswahl angezeigt. Die gleichzeitige Auswahl mehrerer Fachmodelle war innerhalb eines Projektes möglich.}
 
 	\label{fig:104_app-loading-ifc-model}
 \end{figure}
@@ -535,7 +535,7 @@ Im folgenden Abschnitt erfolgt die Analyse der vom \gls{llm} ausgegebenen Nachri
 \section{Ergebnisse der KI-Anwendung}
 \label{sec:results-ai}
 
-Während im vorherigen Kapitel die Ergebnisse aus Sicht der Probanden präsentiert wurden, wird in diesem exklusiv die Analyse der \gls{llm}-Ausgaben betrachtet.
+Während im vorherigen Kapitel die Ergebnisse aus Sicht der Probanden präsentiert wurden, wird in diesem Kapitel ausschließlich die Analyse der \gls{llm}-Ausgaben betrachtet.
 Dabei unterscheidet sich die Analyse darin, dass die subjektive Wahrnehmung der Probanden nicht berücksichtigt wird, sondern die objektive Analyse der generierten Nachrichten im Kontext der Modelle und der vorhandenen Daten im Vordergrund steht.
 Die vollständigen erhobenen Daten, welche die Grundlage für die Analyse bilden, sind im Anhang (vgl. Kap. \nameref{sec:appendix-probanden-antworten}) dokumentiert. \\
 
@@ -680,13 +680,13 @@ richtig und empfahl den Probanden einen korrekten Lösungsvorschlag, um die gew�
   \end{scope}
 
 \end{tikzpicture}
-\caption[Fehlerergebnisse der \gls{llm}-Auswertung]{Von den vorherigen 21 fehlerhaften Ausgaben schlüsselen sich die Gründe wie folgt auf: 9.5\% der Fehler wurden durch die Nutzung einer falschen IFC-Entität verursacht, 23.8\% durch die Nutzung einer falschen Property oder Pset, 14.3\% durch die Nutzung eines falschen Werkzeugs, 23.8\% durch falsch aufgebaute SQL-Abfragen, und 28.6\% durch sonstige Fehler, welche nicht Zusammenhang mit dem \gls{llm} stehen.}
+\caption[Fehlerergebnisse der \gls{llm}-Auswertung]{Von den zuvor genannten 21 fehlerhaften Ausgaben schlüsseln sich die Gründe wie folgt auf: 9.5\% der Fehler wurden durch die Nutzung einer falschen IFC-Entität verursacht, 23.8\% durch die Nutzung einer falschen Property oder eines falschen Psets, 14.3\% durch die Nutzung eines falschen Werkzeugs, 23.8\% durch falsch aufgebaute SQL-Abfragen und 28.6\% durch sonstige Fehler, die nicht im Zusammenhang mit dem \gls{llm} stehen.}
 \label{fig:104_results-ai-errors}
 \end{figure}
 
 Wie in der Abbildung \ref{fig:104_results-ai-errors} zu erkennen ist, gab es neben Fehlern, die außerhalb des Einflussbereichs des \gls{llm} lagen ("Sonstige Fehler"), 
 primär Probleme mit der Datenbankabfrage ("SQL-Abfrage falsch aufgebaut") sowie der Suche nach Properties ("Falsche Property/Pset genutzt"). 
-Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeuge (Query-Werkzeug) wählte das dieses in der Regel die Injektion von Zeilenumbrüchen ("\textbackslash{n}") 
+Bei der Verwendung der dem \gls{llm} zur Verfügung stehenden Abfragewerkzeuge (Query-Werkzeug) wählte dieses in der Regel die Injektion von Zeilenumbrüchen ("\textbackslash{n}") 
 sowie Semikola (";") in den SQL-Abfragen an die Datenbank, obwohl dies im Systemprompt explizit verboten wurde. 
 Dies sorgte für Fehler bei Datenbankabfragen, wodurch vorhandene Daten nicht oder nur teilweise abgerufen wurden. 
 Gleichzeitig ignorierte das \gls{llm} die Anweisungen aus dem Systemprompt in Bezug auf die Nutzung des Skill-Werkzeugs,
@@ -694,10 +694,10 @@ wodurch die korrekten Skills zum Teil nicht geladen wurden. Im Kontext von Daten
 Die Annahmen, wie Spalten in der Datenbank bezeichnet waren, welche das \gls{llm} traf, waren nicht korrekt und führten zu fehlerhaften Abfragen.
 Bei komplexeren Aufgabenstellungen wurde zum Teil der SQL-Befehl \textit{JOIN} (zwei Tabellen kombinieren -- exponentielle Anzahl von Elementen) gewählt sowie gewisse SQL-Filter nicht korrekt umgesetzt,
 sodass arithmetische Funktionen wie Summierungen ungenaue Ergebnisse lieferten. Während der Property-Suche nutzte das \gls{llm} in den meisten Fällen eine direkte Bezeichnung der Property, 
-die aus der Anfrage des Probanden abgeleitet war. Dies führte dazu, dass in Kombination mit einer direkten Suche Properties nicht korrekt gefunden wurden oder frühzeitig ein Ergebnis erzeugte,
+die aus der Anfrage des Probanden abgeleitet war. Dies führte dazu, dass in Kombination mit einer direkten Suche Properties nicht korrekt gefunden wurden oder frühzeitig ein Ergebnis erzeugt wurde,
 obwohl im Modell noch weitere Daten vorhanden waren. Ebenso wurde bei der Erstellung von Raumlisten die Zuordnung von IfcSpaces falsch interpretiert,
 da diese im beispielhaften Modell mit doppelten Bezeichnungen jeweils als Fläche und als Raum angelegt waren. Diese Dopplung wurde vom \gls{llm} nicht korrekt interpretiert,
-sodass die erzeugte Raumliste, sowie berechneten Flächenwerte nicht korrekt waren. Dennoch wurden die geladenen Modelle korrekt verwendet,
+sodass die erzeugte Raumliste sowie die berechneten Flächenwerte nicht korrekt waren. Dennoch wurden die geladenen Modelle korrekt verwendet,
 jedoch wurde des Öfteren die Annahme getroffen, dass Properties in allen Modellen vorhanden waren, obwohl dies, besonders in Fachmodellen, nicht gegeben war. \\
 
 Insgesamt zeigte sich, dass die Fehler des \gls{llm} hauptsächlich in der fehlerhaften Nutzung der Werkzeuge sowie der fehlerhaften Interpretation von Datenbankstrukturen lagen.

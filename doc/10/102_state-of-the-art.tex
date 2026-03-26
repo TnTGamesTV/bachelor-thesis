@@ -1,4 +1,5 @@
 \chapter{\textbf{Stand der Technik und theoretischer Hintergrund}}
+\label{chap:state-of-the-art}
 
 Aufbauend auf der Einleitung werden in diesem Kapitel die für die Arbeit relevanten fachlichen und methodischen Grundlagen systematisch dargestellt.
 Zunächst werden die Fallstudie als Forschungsdesign und die Zusammensetzung der Probandengruppe erläutert.
@@ -36,7 +37,7 @@ Anschließend wird im vierten Schritt der Fall strukturiert dargestellt.
 Dabei werden die für die Untersuchung relevanten Rahmenbedingungen, Akteure und Einzelheiten nachvollziehbar beschrieben und gegenüber bereits dokumentierten Fällen abgegrenzt \cite{pfeiffer2023fallstudie}. \\
 
 Zuletzt erfolgt im fünften Schritt die Auswertung und Interpretation der erhobenen Informationen.
-Die Ergebnisse werden entlang der Forschungsfrage zusammengeführt, mit den theoretischen Grundlagen zurückgeführt und in ihren Konsequenzen für den untersuchten Kontext diskutiert \cite{pfeiffer2023fallstudie,hollweck2016casestudy}. \\
+Die Ergebnisse werden entlang der Forschungsfrage zusammengeführt, mit den theoretischen Grundlagen in Beziehung gesetzt und in ihren Konsequenzen für den untersuchten Kontext diskutiert \cite{pfeiffer2023fallstudie,hollweck2016casestudy}. \\
 
 Insgesamt ermöglicht die Fallstudie einen realitätsnahen Zugang zu komplexen und kontextreichen Ereignissen und kann dabei sinnvoll mit weiteren Methoden kombiniert werden.
 Gleichzeitig sind ihre Grenzen zu berücksichtigen, insbesondere die potenzielle Subjektivität in der Auswertung sowie der vergleichsweise hohe Ressourcenaufwand \cite{hertrich2020forschungsmethodefallstudien,hollweck2016casestudy}. \\
@@ -79,7 +80,7 @@ um die verfügbaren Aufgabenstellungen auf einem vergleichbaren Niveau zu fachko
 \glsreset{bim}
 
 Für den Einsatz der \gls{bim}-Methodik ist die Nutzung von Software ein essenzieller Bestandteil der alltäglichen Arbeit. Datengetriebene Planung erfolgt vollständig digital und ist somit in der Praxis direkt an Softwarenutzung geknüpft.
-Die eingesetzte Software und ihr Hersteller, hängt von verschiedenen Faktoren ab, wobei die Teamgröße, Interoperabilität mit anderen Unternehmen oder Teams, Budgets und Kundenanforderungen eine entscheidende Rolle spielen. \\
+Die eingesetzte Software und ihr Hersteller hängen von verschiedenen Faktoren ab, wobei die Teamgröße, Interoperabilität mit anderen Unternehmen oder Teams, Budgets und Kundenanforderungen eine entscheidende Rolle spielen. \\
 
 Mit Open \gls{bim} ist die Nutzung spezifischer Software nicht vorgegeben. Der Datenaustausch erfolgt dabei über definierte offene Austauschformate (Bsp. vgl. Kap. \ref{sec:industry-foundation-classes}).
 Diese stellen eine Grundlage für die Entwicklung von Drittanbieter-Anwendungen zur Weiterverarbeitung ausgetauschter Daten dar, welche in einem geschlossenen System auf der Schnittstelle des Software-Herstellers basieren würden und somit von dessen Weiterentwicklung abhängig wären.
@@ -100,10 +101,10 @@ Im Rahmen der Bachelorarbeit wird die Open \gls{bim}-Methodik angewandt, weswege
 \glsreset{ifc}
 
 Im Sinne des Open-BIM-Ansatzes gewinnt die Nutzung offener Standards für den softwareübergreifenden Datenaustausch eine zentrale Bedeutung. 
-Industry Foundation Classes (IFC) ist ein offener internationaler Maßstab für den Austausch und gemeinsame Nutzung von \gls{bim}-Daten zwischen verschiedenen Softwareanwendungen und Projektbeteiligten,
-welcher von {buildingSMART} fortlaufend entwickelt wird. Die letzte offizielle Version ist 4.3, während an der Version 5.0 gearbeitet wird\cite{buildingsmart2025ifc4}. \\
+Industry Foundation Classes (IFC) ist ein offener internationaler Maßstab für den Austausch und die gemeinsame Nutzung von \gls{bim}-Daten zwischen verschiedenen Softwareanwendungen und Projektbeteiligten,
+welcher von buildingSMART fortlaufend entwickelt wird. Die letzte offizielle Version ist 4.3, während an der Version 5.0 gearbeitet wird \cite{buildingsmart2025ifc4}. \\
 
-Die neuste Variante umfasst als Anwendungsbereich nicht nur Hochbau, sondern explizit auch Infrastrukturbereiche wie Brücken, Straßen, Schienenwege, Wasserwege und Hafenanlagen. 
+Die neueste Variante umfasst als Anwendungsbereich nicht nur den Hochbau, sondern explizit auch Infrastrukturbereiche wie Brücken, Straßen, Schienenwege, Wasserwege und Hafenanlagen. 
 \gls{ifc} definiert dazu den Austausch über den gesamten Lebenszyklus eines Bauwerks, von frühen Planungsphasen über Bau und Beschaffung bis in Betrieb und Instandhaltung \cite{buildingsmart2025ifc4}. \\
 
 Der Standard besteht aus mehreren Bausteinen: einem formalen Datenschema, der zugehörigen Spezifikationsdokumentation, standardisierten Property- und Quantity-Set-Definitionen sowie Austauschmechanismen für Dateien. 
@@ -183,7 +184,7 @@ Im folgenden Abschnitt wird daher die Klasse von \gls{gpt} als technische Grundl
 \label{sec:gpt}
 \glsreset{gpt}
 
-Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT, einem von OpenAI mit Sitz in Kalifornien, Vereinigte Staaten entwickelten Produkt, stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
+Der Begriff \gls{gpt} hat insbesondere seit der breiten Verfügbarkeit von ChatGPT, einem von OpenAI mit Sitz in Kalifornien in den Vereinigten Staaten entwickelten Produkt, stark an Sichtbarkeit gewonnen \cite{openAi2022chatgpt}. 
 Das zugrunde liegende Prinzip, Modelle zunächst auf großen Datenmengen vorzutrainieren und anschließend auf konkrete Aufgaben anzupassen, ist jedoch deutlich älter und in der Forschung seit Jahren etabliert \cite[S. 4-5]{han2021pretrainedmodelspastpresent}. \\
 
 Frühe Verfahren des Vortrainierens orientierten sich am "transfer learning": Ein Modell wurde auf einer Ausgangsaufgabe trainiert und das dabei gelernte Wissen auf eine andere, verwandte Aufgabe übertragen \cite[S. 5]{han2021pretrainedmodelspastpresent}. \\
@@ -311,7 +312,7 @@ Das offen standardisierte \gls{mcp} arbeitet dabei als Brücke zwischen Modell u
 Der Grundgedanke besteht darin, dem Modell nur Informationen zu geben, die für die aktuelle Aufgabe benötigt \cite{lfprojects2025modelcontextprotocol} werden. 
 Der Endnutzer muss sich dabei nicht mit Infrastruktur oder Abhängigkeiten des Werkzeugs beschäftigen und Anbieter können in vielen Programmiersprachen Schnittstellen entwickeln \cite{github2025modelcontextprotocol}.\\
 
-Die Architektur von MCP umfasst vier zentrale Komponenten bestehend aus dem \gls{mcp}-Host, \gls{mcp}-Client, \gls{mcp}-Server und der Transportschicht. Der \gls{mcp}-Host und \gls{mcp}-Client entspricht im Kontext von \gls{llm} dem Modell selbst, wobei der Client die Kommunikation und Bereitstellung der Werkzeugergebnisse koordiniert.
+Die Architektur von MCP umfasst vier zentrale Komponenten: den \gls{mcp}-Host, den \gls{mcp}-Client, den \gls{mcp}-Server und die Transportschicht. Der \gls{mcp}-Host und der \gls{mcp}-Client entsprechen im Kontext von \gls{llm} dem Modell selbst, wobei der Client die Kommunikation und Bereitstellung der Werkzeugergebnisse koordiniert.
 Der \gls{mcp}-Server bildet das Gegenstück zum Client: Er verarbeitet den Werkzeugaufruf und sendet die gewonnenen Informationen zurück. Der Austausch zwischen Client und Server erfolgt über die Transportschicht \cite{googlecloud2025modelcontextprotocol}, welche das Bindeglied bildet.
 
 \begin{table}[!htb]
@@ -361,7 +362,7 @@ Dadurch werden nur die für die Anfrage vorausgewählten Inhalte in den Kontext 
 Zusätzlich können aus \textit{SKILLS.md} referenzierte Inhalte nachgeladen werden, zum Beispiel weitere Markdown-Dateien (Textdateien) oder Skripte. 
 Dieses stufenweise Vorgehen ermöglicht einen inkrementellen Wissensaufbau, ohne von Beginn an den Systemprompt zu füllen \cite{agentskills_github}. \\
 
-Im Vergleich zu monolithischen Prompts ergeben sich zwei zentrale Vorteile: die Relevanz der im Kontext enthaltenen Informationen erhöht, weil irrelevante Wissensanteile nicht dauerhaft im Systemprompt enthalten sind. 
+Im Vergleich zu monolithischen Prompts ergeben sich zwei zentrale Vorteile: Die Relevanz der im Kontext enthaltenen Informationen erhöht sich, weil irrelevante Wissensanteile nicht dauerhaft im Systemprompt enthalten sind. 
 Ebenso verbessert sich die Wartbarkeit, da Skills als eigenständige, versionierbare Wissensbausteine gepflegt werden können. 
 Änderungen an einzelnen Themenbereichen lassen sich dadurch gezielt vornehmen, ohne den gesamten Systemprompt neu zu strukturieren \cite{agentskills_github}. \\
 
@@ -411,7 +412,7 @@ Dadurch werden sowohl die technische Versionierung als auch die organisatorische
 \glsreset{http}
 
 Web-Anwendungen werden typischerweise in mehreren Programmiersprachen entwickelt, die jeweils unterschiedliche Aufgaben im System übernehmen.
-Grundlegende Sprachen wie HTML, CSS und JavaScript sind seit Prsprung des World Wide Web etabliert und bilden die technische Basis nahezu aller modernen Web-Anwendungen \cite{mdn_client_server}.
+Grundlegende Sprachen wie HTML, CSS und JavaScript sind seit dem Ursprung des World Wide Web etabliert und bilden die technische Basis nahezu aller modernen Web-Anwendungen \cite{mdn_client_server}.
 Darüber hinaus kommen je nach Einsatzszenario weitere Sprachen zum Einsatz, die auf dem Server ausgeführt werden und dort Logik, Datenhaltung und Kommunikation übernehmen. \\
 
 Web-Anwendungen werden durch das Client-Server-Modell beschrieben. Der Webbrowser (Client) stellt Anfragen an einen Server,
@@ -559,7 +560,7 @@ Da React selbst entscheidet, welche Teile des \gls{html} angepasst werden müsse
 Im Beispiel in Abbildung \ref{fig:102_example-react-component} ist ein sich ändernder Zustand ("counter") abgebildet, welcher durch die Methode "increaseCounter" bei jedem Druck des Knopfes erhöht wird.
 Gleichzeitig aktualisiert sich der Text, um den aktuellen Stand des Zustandes anzuzeigen (s. Abb. \ref{fig:102_example-react-component}). \\
 
-Die Nutzung von \gls{vdom} als Abstraktion ermöglicht es, mit Technolgie wie React Native auch außerhalb von Browsern Anwendung zu entwickeln,
+Die Nutzung von \gls{vdom} als Abstraktion ermöglicht es, mit Technologie wie React Native auch außerhalb von Browsern Anwendungen zu entwickeln,
 welche die gleiche Entwicklungserfahrung bietet, aber in nativen Komponenten für das Betriebssystem des Nutzers übersetzt wird \cite{occhino2015reactnative}. 
 
 \subsection{Backend-Framework NestJS}
@@ -656,7 +657,7 @@ Die Kopplung zwischen Komponenten wird damit reduziert, Tests lassen sich einfac
             \addlegendentry{Hapi}
         \end{axis}
     \end{tikzpicture}
-    \caption[Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025]{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025 (mit Ausnahme der Jahre 2022, 2023 und 2024). Express (Magenta) ist liegt mit einer Nutzung von 80 \% im Jahr 2025 50 \% über NestJS (Türkis) mit 30 \%. Alle anderen Frameworks werden weniger als 20 \% genutzt -- nur Fastify (Blau) erreicht in 2025 eine Nutzung von 20 \% \cite{devographics2025backendframeworksusage}.}
+    \caption[Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025]{Verlauf der Nutzung von Backend-Frameworks von 2017 bis 2025 (mit Ausnahme der Jahre 2022, 2023 und 2024). Express (Magenta) liegt mit einer Nutzung von 80 \% im Jahr 2025 um 50 \% über NestJS (Türkis) mit 30 \%. Alle anderen Frameworks werden mit weniger als 20 \% genutzt -- nur Fastify (Blau) erreicht 2025 eine Nutzung von 20 \% \cite{devographics2025backendframeworksusage}.}
     \label{fig:102_backend-framework-usage}
 \end{figure}
 
@@ -668,7 +669,7 @@ Die dargestellten Statistiken erlauben eine Mehrfachauswahl, weswegen die Summe 
 \label{sec:postgresql-prisma}
 
 Während NestJS die serverseitige Verarbeitung von Anfragen strukturiert, benötigt die Anwendung für die dauerhafte Speicherung und Abfrage von Informationen eine angebundene Datenbank.
-Der Zugriff auf darauf kann dabei manuell umgesetzt werden, indem passende Datenbankbibliotheken eingebunden und Abfragen direkt in der jeweiligen Datenbanksprache formuliert werden.
+Der Zugriff darauf kann dabei manuell umgesetzt werden, indem passende Datenbankbibliotheken eingebunden und Abfragen direkt in der jeweiligen Datenbanksprache formuliert werden.
 Als Alternative eignet sich ein \gls{orm}, das als vermittelnde Abstraktionsebene zwischen der Datenbanksprache und der Backend-Logik fungiert.
 
 \subsubsection{Prisma}
@@ -793,10 +794,10 @@ Andere Entwickler können Änderungen vorschlagen, welche von der Arbeitsgruppe 
     \label{fig:102_database-usage}
 \end{figure}
 
-PostgreSQL unterstützt einen Großteil des \gls{sql}-Standards und erweitert den Funktionsumfang mit Funktionen, wie komplexen Auswertungen, 
-geprüfte Referenzen zwischen verschiedenen Tabellen (foreign keys), sowie Unterstützung für Transaktionen, die sicherstellen, 
+PostgreSQL unterstützt einen Großteil des \gls{sql}-Standards und erweitert den Funktionsumfang um Funktionen wie komplexe Auswertungen, 
+geprüfte Referenzen zwischen verschiedenen Tabellen (foreign keys) sowie Unterstützung für Transaktionen, die sicherstellen, 
 dass in einem Block von Datenbankoperationen alle Schritte gemeinsam ausgeführt werden und 
-bei Fehlern einzelner Abfragen die bereits geänderte Daten auf den vorherigen Zustand zurückgesetzt werden \cite{postgresqlUnknownDocs}. \\
+bei Fehlern einzelner Abfragen die bereits geänderten Daten auf den vorherigen Zustand zurückgesetzt werden \cite{postgresqlUnknownDocs}. \\
 
 In den letzten Jahren hat PostgreSQL an Popularität gewonnen und ist nach der Bestenliste von \href{https://db-engines.com/de/ranking_trend}{db-engines.com} auf dem vierten Platz. 
 Faktoren für den in Abb. \ref{fig:102_database-usage} dargestellten Popularitätswert sind neben der Anzahl von Suchanfragen zur Datenbank die Häufigkeit technischer Diskussionen, die Anzahl von Jobangeboten sowie die Anzahl an Entwicklern, die das entsprechende Datenbanksystem in ihrem professionellen Profil aufgeführt haben \cite{dbengines2026rankingdefinition}.
@@ -806,7 +807,7 @@ Faktoren für den in Abb. \ref{fig:102_database-usage} dargestellten Popularitä
 \glsreset{api}
 
 Bei der klassischen Kommunikation zwischen Frontend und Backend über HTTP-Schnittstellen entsteht in TypeScript-Projekten häufig ein Abstimmungsproblem zwischen beiden Seiten.
-Anfragen und Antworten lokal typisiert werden, die tatsächliche Schnittstellenbeschreibung liegt dabei voneinander getrennt vor.
+Anfragen und Antworten sind lokal typisiert, die tatsächliche Schnittstellenbeschreibung liegt dabei jedoch getrennt vor.
 Dadurch steigt das Risiko, dass sich Parameter, Rückgabetypen oder Fehlermodelle im Lauf der Entwicklung divergieren und Fehler erst zur Laufzeit sichtbar werden \cite{trpc2026documentation}. \\
 
 tRPC adressiert dieses Problem mit einem Ende-zu-Ende typisierten Ansatz für \gls{api}-Aufrufe.

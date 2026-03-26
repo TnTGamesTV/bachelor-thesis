@@ -5,7 +5,7 @@ Nach der Einordnung des Stands der Technik wird in diesem Kapitel die im Rahmen 
 Zunächst wird die Entwicklung der Anwendung beschrieben, welche auf Basis des Spiralmodelles durchgeführt wurde (vgl. Kap. \ref{sec:app}).
 Darauf aufbauend werden die Durchführung der Interviews sowie die Entwicklung und Bearbeitung der Aufgabenstellungen präsentiert (vgl. Kap. \ref{sec:interviews}); 
 anschließend folgt die Validierung der erzeugten \gls{llm}-Ausgaben (vgl. Kap. \ref{sec:datenvalidierung}).
-Im abschließenden Abschnitt wird strukturierte Aufbereitung der erhobenen Daten als Grundlage für die Auswertung in dem darauf folgenden Kapitel definiert.
+Im abschließenden Abschnitt wird die strukturierte Aufbereitung der erhobenen Daten als Grundlage für die Auswertung im darauffolgenden Kapitel definiert.
 
 \section{KI-Anwendung für Interviews}
 \label{sec:app}
@@ -22,17 +22,17 @@ Die Entwicklung des Prototypen orientierte sich an diesem und wurde anschließen
 Nach der Verbesserung wurde der lauffähige Prototyp entwickelt, welcher für die Interviews eingesetzt wurde.
 Eine vollständige Implementierung für ein Release, wie im Spiral-Modell (vgl. Kap. \ref{sec:spiral-model}) vorgesehen, ist auf Basis der zur Verfügung stehenden Ressourcen ausgeschlossen. \\
 
-Im folgenden Abschnitt wird näher auf das erarbeitete Konzept der entwickelten Anwendung thematisiert, welches als Grundlage für den gesamten Entwicklungsprozess diente.
+Im folgenden Abschnitt wird das erarbeitete Konzept der entwickelten Anwendung näher thematisiert, das als Grundlage für den gesamten Entwicklungsprozess diente.
 
 \subsection{Konzept}
 \label{sec:app-concept}
 
 Als Kern der Anwendung wurde eine textbasierte Eingabe vorgesehen, über die Probanden direkt mit dem \gls{llm} kommunizieren können.
 Die gewählte Form der Interaktion reduziert technische Hürden und unterstützt damit eine direkte Bearbeitung der Aufgabenstellungen.
-Darüber hinhaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, Teil des Konzeptes, um eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung zu ermöglichen.
+Darüber hinaus war eine einfache Konfiguration der Variablen, die das \gls{llm} beeinflussen, Teil des Konzepts, um eine schnelle Entwicklung und schrittweise Verbesserung der Anwendung zu ermöglichen.
 Dies umfasst neben dem Systemprompt auch die dem \gls{llm} zur Verfügung gestellten Werkzeuge sowie zusätzlich eingebundene Wissensbausteine.
 Auf diese Weise konnte die inhaltliche Steuerung des Modells gezielt angepasst werden, ohne die grundlegende Systemarchitektur während der Entwicklung ändern zu müssen.
-Ein wichtiger Teil des Konzeptes war die Möglichkeit mehrere \gls{ifc}-Modelle gleichzeitig abzurufen, 
+Ein wichtiger Teil des Konzepts war die Möglichkeit, mehrere \gls{ifc}-Modelle gleichzeitig abzurufen, 
 um dem in der Praxis angewandten Aufteilen von Modellen nach Fachdisziplin (vgl. Kap. \ref{sec:open-closed-bim}) gerecht zu werden. \\
 
 Das Konzept sah bei der Anbindung von \gls{llm} die Nutzung von externen Dienstleistern vor, 
@@ -40,7 +40,7 @@ um den Betrieb aus der Bachelorarbeit zu externalisieren und den Entwicklungsauf
 Diese Verbindung erfolgt über eine \gls{api}, welche dem OpenAI \gls{api}-Standard entspricht,
 sodass der Tausch des verwendeten \gls{llm} möglich ist, ohne die Anwendung grundlegend bearbeiten zu müssen oder den Interviewfluss zu stören. \\
 
-Die Anwendung wurde während der Ausführung der Interviews eingesetzt, welche nachfolgend beschrieben werden.
+Die Anwendung wurde während der Durchführung der Interviews eingesetzt, die nachfolgend beschrieben werden.
 
 \section{Interviews}
 \label{sec:interviews}
@@ -87,7 +87,7 @@ zunächst die Entwicklung von Aufgabenstellungen durch Gruppe A und anschließen
 \label{sec:aufgabenstellung-gruppe-a}
 
 Der zweite Schritt des Interviews für die Probanden-Gruppe A bestand aus der Entwicklung von Aufgabenstellungen. 
-Dabei wurde die folgende Leitfrage entwickelt, um den Probanden einen Einstieg in das Interview zu ermöglichen: \\
+Dabei wurde die folgende Leitfrage verwendet, um den Probanden einen Einstieg in das Interview zu ermöglichen: \\
 
 \say{Ihnen steht eine unangelernte Hilfskraft zur Verfügung, für die Sie eine Aufgabe für ein exemplarisches digitales Modell formulieren sollen. Welche Aufgaben fallen Ihnen dazu in Stichworten ein?} \\
 
@@ -165,7 +165,7 @@ Diese wurde neben der manuellen Ausführung von \gls{sql}-Abfragen auch zur Anal
 \label{sec:datenaufbereitung}
 
 Nach Abschluss der inhaltlichen Prüfung wurden die im Interviewverlauf entstandenen Daten in einem mehrstufigen Verfahren aufbereitet.
-Vorerst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
+Zunächst erfolgte die strukturierte Erfassung aller Probanden einschließlich ihrer Gruppenzuordnung, um die späteren Auswertungen eindeutig den beiden Probanden-Gruppen zuordnen zu können.
 Darauf gestützt wurden die Kommunikationsverläufe in Form von Threads dokumentiert, wobei jeweils mehrere zusammenhängende Nachrichten einer konkreten Aufgabenstellung kategorisiert wurden. \\
 
 Die zentrale Grundlage der weiteren Analyse bildete anschließend eine Tabelle mit sämtlichen \gls{llm}-Rückgaben.
@@ -199,6 +199,6 @@ Die im Rahmen dieser Einordnung verwendeten Fehlerzustände sind in Tabelle \ref
     \end{tabular}
 \end{table}
 
-Ergänzend wurden die verarbeitete Tabellen in einem gemeinsamen Datensatz zusammengeführt, sodass es möglich war Rückgaben, Thread-Kontext und Probandengruppe gemeinsam auszuwerten.
+Ergänzend wurden die verarbeiteten Tabellen in einem gemeinsamen Datensatz zusammengeführt, sodass es möglich war, Rückgaben, Thread-Kontext und Probandengruppe gemeinsam auszuwerten.
 Zum Schluss wurde eine Aggregation der Daten durchgeführt, insbesondere auf Basis der kategorisierten \gls{llm}-Rückgaben und der dokumentierten Fehlerzustände.
 Diese Verdichtung diente der Berechnung statistischer Kennzahlen und der Erstellung vergleichbarer Übersichten, die als Grundlage für die spätere Interpretation der Ergebnisse herangezogen wurden.

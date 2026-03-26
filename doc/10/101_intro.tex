@@ -3,19 +3,42 @@
 \chapter{\textbf{Einleitung}}
 \label{chap:introduction}
 
-Die deutsche Bauwirtschaft befindet sich in einem strukturellen Wandel von digitalen Planungs- und Koordinationsprozessen zu exklusiv datengetriebenen Abläufen. 
-Die \gls{bim}-Methodik hat in den vergangenen Jahren an Verbreitung gewonnen und etabliert sich zunehmend als Grundlage für den digitalen Informationsaustausch in Bauprojekten  \cite[Abb. 2]{vorbeck2022current}. \\
+Die deutsche Bauwirtschaft befindet sich in einem strukturellen Wandel von digital gestützten Planungs- und Koordinationsprozessen hin zu zunehmend datengetriebenen Abläufen.
+Die \gls{bim}-Methodik hat in den vergangenen Jahren an Verbreitung gewonnen und etabliert sich zunehmend als Grundlage für den digitalen Informationsaustausch in Bauprojekten \cite[Abb. 2]{vorbeck2022current}. \\
 
-Parallel dazu zeigt sich, dass künstliche Intelligenz im Kontext von Unternehmen erheblich an Bedeutung gewinnt. 
-In einer von Bitkom durchgeführten Studie sprechen 90 \% der befragten Unternehmen künstlicher Intelligenz eine große oder sehr große Rolle in der Wettbewerbsfähigkeit eines Unternehmens zu. \cite[Abb. 14]{bitkom2025digitalisierung-der-wirtschaft}. \\
+Parallel dazu zeigt sich, dass künstliche Intelligenz im Unternehmenskontext an Bedeutung gewinnt.
+In einer von Bitkom durchgeführten Studie messen 90 \% der befragten Unternehmen künstlicher Intelligenz eine große oder sehr große Bedeutung für die Wettbewerbsfähigkeit von Unternehmen bei \cite[Abb. 14]{bitkom2025digitalisierung-der-wirtschaft}. \\
 
-Zusätzlich ist die Qualität der Ausgaben von KI-Modellen in verschiedenen Benchmarks in den letzten Jahren stark gestiegen 
-und hat zum Teil bereits menschliche Fähigkeiten überschritten \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}.
-Gleichzeitig sind Kosten für die Nutzung von KI-Modellen in den letzten Jahren konsequent gefallen 
-und die Nutzung in Unternehmen stetig angestiegen \cite[Abb. 1.3.22]{maslej2025artificialintelligenceindexreport} \cite[Abb. 4.4.1]{maslej2025artificialintelligenceindexreport}. \\
+Darüber hinaus ist die Qualität der Ausgaben von KI-Modellen in verschiedenen Benchmarks in den letzten Jahren gestiegen
+und erreicht in einzelnen Bereichen ein mit menschlichen Leistungen vergleichbares Niveau \cite[Abb. 2.1.33]{maslej2025artificialintelligenceindexreport}.
+Gleichzeitig sind die Kosten für die Nutzung von KI-Modellen kontinuierlich gesunken,
+während ihre Anwendung in Unternehmen stetig zugenommen hat \cite[Abb. 1.3.22]{maslej2025artificialintelligenceindexreport} \cite[Abb. 4.4.1]{maslej2025artificialintelligenceindexreport}. \\
 
 Vor diesem Hintergrund untersucht die vorliegende Bachelorarbeit den Nutzen generativer KI in der datengetriebenen Planung von Bauprojekten.
-Im Fokus steht die Frage, ob natürliche Sprachkommunikation mit einem KI-System den Zugriff auf die im Bauprojekt vorhandenen Informationen erleichtern kann, insbesondere für fachfremde Akteure. \\
+Insbesondere die geringe Anzahl an Forschungsarbeiten, die die Kombination von KI und \gls{bim} in der Praxis untersuchen, motiviert diese Arbeit.
+Zudem ist die Interaktion zwischen \gls{llm} und fachfremden Akteuren ein bislang begrenzt untersuchtes Thema, das in dieser Arbeit näher betrachtet wird.
+Die zunehmende Leistungsfähigkeit und Verfügbarkeit von \gls{llm} eröffnet zusätzliche Möglichkeiten für die Interaktion zwischen Menschen und Software, insbesondere durch die Nutzung natürlicher Sprache als Kommunikationsmittel.
+In Kombination mit adäquat bereitgestelltem Wissen könnte dies fachfremden Akteuren den praktischen Zugang zu entsprechenden Systemen erleichtern,
+weswegen dies die Grundlage der Fragestellung bildet. \\
 
-Zur Beantwortung dieser Fragestellung wird im Rahmen einer Fallstudie eine KI-Anwendung entwickelt und mit Probanden unterschiedlicher Fachkompetenz in der digitalen datengetriebenen Planung von Bauprojekten erprobt.
-Die erhobenen Antworten werden im Kontext der zugrunde liegenden Modelldaten auf ihre inhaltliche Richtigkeit und praktische Verwendbarkeit hin analysiert. \\
+Zur Erforschung der Zusammenarbeit von \gls{llm} und Probanden wurde im Rahmen der Fallstudie eine selbst konzipierte Anwendung erstellt.
+Die Entwicklung erfolgte auf Basis etablierter Softwareentwicklungsprozesse und setzte moderne Webtechnologien in Kombination mit konventionellen Datenstrukturen ein \cite{boehm1988spiralmodel,hunt2013whydidwebuildreact,nestjsUnknownDocumentation,postgresqlUnknownDocs}.
+
+Die Software wurde in Interviews eingesetzt, um die Interaktion zwischen einem \gls{llm} und fachfremden Akteuren in der Praxis zu untersuchen.
+Dabei liegt der Fokus auf der Frage, ob die natürliche Sprachkommunikation mit einem KI-System den Zugriff auf die in Bauprojekten vorhandenen Informationen insbesondere für fachfremde Akteure erleichtern kann. \\
+
+Der grundsätzliche Aufbau der Bachelorarbeit umfasst die folgenden Kapitel:
+
+Die theoretische Basis wird in Kapitel \ref{chap:state-of-the-art} gelegt, in dem Themen wie die Fallstudie als Forschungsmethode, die Zusammensetzung der Probandengruppe, die \gls{bim}-Methodik, der \gls{ifc}-Standard und der Stand der Technik im Bereich künstlicher Intelligenz dargestellt werden.
+Des Weiteren werden die Spiralmethode als Softwareentwicklungsprozess sowie die verschiedenen technischen Komponenten zur Entwicklung der Anwendung vorgestellt. \\
+
+Im folgenden Kapitel (vgl. Kap. \ref{chap:methods}) werden neben der methodischen Vorgehensweise bei der Entwicklung der Anwendung auch der Aufbau der Interviews, die Gruppenzuweisung der Probanden sowie die Datenerhebung und -auswertung beschrieben. \\
+
+Daraufhin folgt in Kapitel \ref{chap:result} die Vorstellung des Entwicklungsprozesses mit den einzelnen Entwicklungsstufen sowie der im Rahmen der Interviews verwendeten Anwendung.
+Deren Struktur wird im Detail beschrieben, um die einzelnen Abschnitte und ihren Anteil an der Verarbeitung von Nutzeranfragen zu erläutern.
+Es folgen die Ergebnisse der Interviews, die neben den entwickelten Fragestellungen auch die Antworten der Probanden strukturiert darstellen.
+Abschließend wird die Analyse der generierten Antworten als Grundlage für die folgende Diskussion präsentiert. \\
+
+Diese wird in Kapitel \ref{chap:discussion} durchgeführt und umfasst Herausforderungen der bereitgestellten Anwendung sowie Lösungsansätze zur Weiterentwicklung für die zukünftige Nutzung.
+Dabei werden die gewonnenen Erkenntnisse aus den Interviews diskutiert und in Bezug auf die subjektive Wahrnehmung der Probanden eingeordnet.
+Abschließend wird die objektive Analyse der im vorherigen Kapitel erfassten Daten besprochen sowie ein Gesamtüberblick gegeben, der die gestellte Forschungsfrage im Kontext der gewonnenen Erkenntnisse betrachtet und zukünftige Entwicklungen diskutiert. \\

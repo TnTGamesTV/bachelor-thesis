@@ -1,10 +1,11 @@
 \chapter{\textbf{Diskussion \& Ausblick}}
+\label{chap:discussion}
 
 Nach der Darstellung der Ergebnisse im vorangegangenen Kapitel erfolgt nun deren Diskussion 
 sowie ein Ausblick auf Verbesserungsmöglichkeiten und zukünftige Entwicklungen im Kontext der vorherigen Kapitel.
-Dabei wird zuerst auf die entwickelte Anwendung, die verschiedenen Stufen der Entwicklung und das Konzept eingegangen.
-Anschließend werden die durchgeführten Interviews und die gewonnenen Erkenntnisse diskutiert, bevor die Analyse der \gls{llm}-Daten betrachtet wird.
-Zuletzt werden die diskutierten Erkenntnisse im Gesamtkontext der Forschungsfrage betrachtet und in einem Gesamtüberblick betrachtet.
+Dabei wird zuerst auf die erarbeitete Anwendung, die verschiedenen Stufen der Schaffungsprozesses und das Konzept eingegangen.
+Bevor die Analyse der \gls{llm}-Daten betrachtet wird, werden die durchgeführten Interviews und die gewonnenen Erkenntnisse diskutiert.
+Zuletzt werden die erörterten Erkenntnisse im Gesamtkontext der Forschungsfrage eingeordnet und in einem Gesamtüberblick evaluiert.
 
 \section{Entwickelte Anwendung}
 \label{sec:discussion-app}
@@ -13,46 +14,47 @@ Bei der Entwicklung der Anwendung zeigten sich verschiedene diskussionswürdige 
 
 Grundsätzlich war die verwendete Entwicklungsstruktur mit den in Kapitel \ref{sec:app} beschriebenen Entwicklungsstufen dienlich,
 um das Konzept schrittweise umzusetzen ohne eine große Bindung von Ressourcen oder Risiko eingehen zu müssen.
-Deswegen war es möglich, dass Konzept (vgl. Kap. \ref{sec:app-concept}) vollständig im Rahmen der gegebenen Ressourcen umzusetzen. \\
+Dadurch war es möglich, das Konzept (vgl. Kap. \ref{sec:app-concept}) im Rahmen der gegebenen Ressourcen vollständig umzusetzen. \\
 
 Die erste Entwicklungsstufe, die Vorentwicklung, erwies sich als besonders wichtig, da die technische Machbarkeit zu Beginn der Arbeit unklar war.
 Besonders die Verwendung eines vorbereiteten \gls{mcp}-Servers in Kombination mit Blender als externe Datenquelle ermöglichte die schnelle Validierung ohne größeren Ressourceneinsatz.
-Aufgrund der geringen Flexibilät der verwendeten technischen Komponenten, eignete sich diese Struktur lediglich für die Vorentwicklung und musste für subsequente Entwicklungsstufen überarbeitet werden. \\
+Aufgrund der geringen Flexibilität der verwendeten technischen Komponenten eignete sich diese Struktur lediglich für die Vorentwicklung und musste für nachfolgende Entwicklungsstufen überarbeitet werden. \\
 
 Der entworfene Entwicklungsplan, welcher auf Basis der vorherigen Entwicklungsstufe erstellt wurde, 
-erwies sich als adäquat, um im nächsten Schritt für den Entwicklung des Prototypen verwendet zu werden.
+erwies sich als adäquat, um im nächsten Schritt für die Ausarbeitung des Prototypen verwendet zu werden.
 Die Implementation eines selbst entwickelten \gls{mcp}-Servers ergab die notwendige Flexibilität, um die gewünschten Änderungen aus dem Entwicklungsplan umzusetzen,
 jedoch unter der Verwendung von mehr Ressourcen, als im vorherigen Entwicklungsschritt. 
 Dabei zeigte sich, dass eine Texteingabe, wie sie über Open WebUI zur Verfügung gestellt wurde, für die Probanden eine funktionale Möglichkeit zur Interaktion mit dem \gls{llm} darstellte.
 Das geplante Konzept konnte jedoch nicht vollständig umgesetzt werden, da die genaue Definition von Werkzeugen und die Bereitstellung von Informationen für das \gls{llm}
-sowie die Verwendung mehrere Modell als gleichzeitige Datenquelle technisch nicht umzusetzen waren. \\
+sowie die Verwendung mehrerer Modelle als gleichzeitige Datenquelle technisch nicht realisieren waren. \\
 
 Aus den genannten Gründen wurde vor der letzten Entwicklungsstufe, die Überarbeitung des Entwicklungsplans durchgeführt.
-Dabei standen für die letzte Stufe insgesamt mehr Ressourcen zur Verfügung, wodurch im Konzept definierte Funktionen mit maximale Detailtiefe geplant und in der Entwicklung umgesetzt werden konnten.
+Dabei standen für die letzte Stufe insgesamt mehr Ressourcen zur Verfügung, wodurch im Konzept definierte Funktionen mit maximaler Detailtiefe geplant und in der Entwicklung implementiert werden konnten.
 Dies betraf primär die Anpassbarkeit der Werkzeuge, des Systemprompts sowie der verwendeten Datenquelle, welche im Prototypen nicht oder nur in geringem Umfang umgesetzt werden konnten.
 Zeitgleich konnte aufgrund der Wahl einer vollständigen Web-Anwendung (full stack web application) die Interaktionsfläche und technische Komponenten der Anwendung kombiniert werden.
-React als Frontend-Framework für die Entwicklung der Interaktionsfläche zu verwenden, resultierte in einer inkomplexen Benutzererfahrung durch die Probanden,
-da nur die notwendigen Funktionen bereitgestellt wurden. Negativ aufgefallen ist die Verwendung eines \gls{ifc}-Viewers im Frontend,
-welcher geladenen \gls{ifc}-Modelle darstellt, jedoch keinen erkennbaren Mehrwert für die Probanden bietet. Im Gegenteil führte der Ladevorgang der \gls{ifc}-Modelle
-zu erheblicher Wartezeit, welche die Interaktion mit der Anwendung erschwerte.
+React als Frontend-Framework für die Entwicklung der Interaktionsfläche zu verwenden, resultierte in einer inkomplexen Benutzererfahrung der Probanden,
+da nur die notwendigen Funktionen bereitgestellt wurden. Negativ aufgefallen ist der Einsatz eines \gls{ifc}-Viewers im Frontend,
+welcher geladene \gls{ifc}-Modelle veranschaulichte, jedoch keinen erkennbaren Mehrwert für die Probanden bietet. 
+Zusätzlich führte der Ladevorgang der \gls{ifc}-Modelle zu erheblicher Wartezeit, welche die Interaktion mit der Anwendung erschwerte. \\
 
 Die Backend-Architektur mit einer durchgängigen Trennung von Konfiguration, Datenhaltung, Anfrageverarbeitung, Wissensbereitstellung und Werkzeugausführung erwies sich als positiv,
-da Komponenten in der Entwicklungsstufe unabhängig voneinander angepasst werden konnten. Neben einer verbesserten Fehlersuche, führte dies insgesamt zu einer besseren Entwicklungserfahrung.
-Für die spätere Analyse der Nachrichten wurden diese mitsamt aller Metadaten, wie Werkzeugaufrufe oder \gls{llm}-Anfragen, in der Datenbank gespeichert.
-Dies ermöglichte die schnelle Analyse aller Nachrichten sowohl im Bezug auf die Richtigkeit der \gls{llm}-Ausgabe, als auch auf verwendete Werkzeuge und mögliche Gründe für fehlerhafte Antworten. \\
+da Komponenten in der Entwicklungsstufe unabhängig voneinander angepasst werden konnten. Neben einer verbesserten Fehlersuche führte dies insgesamt zu einer besseren Entwicklungserfahrung.
+Für die spätere Analyse der Nachrichten wurden diese mitsamt aller Metadaten wie Werkzeugaufrufe oder \gls{llm}-Anfragen in der Datenbank gespeichert.
+Dies ermöglichte die schnelle Analyse aller Nachrichten sowohl in Bezug auf die Richtigkeit der \gls{llm}-Ausgabe als auch auf verwendete Werkzeuge und mögliche Gründe für fehlerhafte Antworten. \\
 
 Wird der lauffähige Prototyp im Gesamtbild der Bachelorarbeit betrachtet, so lässt sich festhalten,
-dass die Entwicklung der Anwendung insgesamt erfolgreich war, da das Konzept vollständig umgesetzt werden konnte und die Anwendung für die Probanden im Rahmen der Interviews funktional war.
-Im nachfolgenden Abschnitt werden die Interviews diskutiert und die gewonnenen Erkenntnisse aus der Interaktion der Probanden mit der Anwendung und dem \gls{llm} betrachtet.
+dass die Entwicklung der Anwendung insgesamt erfolgreich war, da das Konzept vollständig umgesetzt werden konnte und die Applikation für die Probanden im Rahmen der Interviews funktional war.
+Im nachfolgenden Abschnitt werden die Interviews diskutiert und die gewonnenen Erkenntnisse aus der Interaktion der Probanden und dem \gls{llm} betrachtet.
 
 \section{Interviews}
 \label{sec:discussion-interviews}
 
 Die durchgeführten Interviews (vgl. Kap. \ref{sec:interviews} und Kap. \ref{sec:results-interviews}) erwiesen sich im Format einer Videokonferenz als geeignete Wahl,
-da die Terminfindung mit Probanden im Vergleich zu Präsenzterminen weniger aufwendig war.
+da die Terminfindung mit Probanden im Vergleich zu Präsenzterminen weniger komplex war.
 Gleichzeitig erleichterte dieses Format die technische Bereitstellung und Darstellung der Anwendung,
 sodass die Hürde für die Interaktion mit dem \gls{llm} für die Probanden gering blieb.
-Eine öffentliche Bereitstellung der Anwendung hätte demgegenüber den Verzicht auf die Weitergabe von Texteingaben der Probanden an das \gls{llm} zur Folge gehabt.
+Eine öffentliche Bereitstellung hätte demgegenüber den Verzicht auf die Weitergabe von Texteingaben der Probanden an das \gls{llm} zur Folge gehabt,
+da Teilnehmer mittels ihres Browsers Zugriff auf die Applikation erhalten hätten.
 Dies wäre ein weiterer wesentlicher Schritt zur Reduktion potenzieller Reibungspunkte in der Interaktion mit der Anwendung gewesen.
 Im Verlauf der Interviews zeigte sich jedoch, dass die Einschränkung durch die Weitergabe der Inhalte insgesamt gering ausfiel.  \\
 
@@ -76,67 +78,67 @@ Darüber hinaus erwiesen sich manche Aufgaben als zu komplex oder zu stark gegli
 Alternativ kann zu Beginn präziser erläutert werden, welcher Aufgabentyp erwartet wird.
 Die im Interview eingesetzte Leitfrage hat sich dabei als hilfreiches Mittel erwiesen, um unpassende Aufgaben frühzeitig auszusortieren. \\
 
-Bei der Bearbeitung der Aufgaben wurden zudem Unklarheiten in Bezug auf erwartete Ausgabeformate, zum Beispiel ein tabellarisches Format, sowie hinsichtlich der Zielsetzung einzelner Aufgaben sichtbar.
+Bei der Bearbeitung der Aufgaben wurden zudem Unklarheiten in Bezug auf erwartete Ausgabeformate, zum Beispiel ein tabellarisches Format, sowie hinsichtlich der Zielsetzung einzelner Aufgaben deutlich.
 Hieraus ergibt sich die Notwendigkeit, die Einleitung der Probanden der Gruppe B klarer zu strukturieren und die Erwartungen vorab eindeutiger zu kommunizieren.
 Unabhängig davon waren die Erfahrungsstufen der Probanden trotz geringer Stichprobengröße gut gefächert, was die Interpretation der Ergebnisse aus unterschiedlichen Nutzungsperspektiven unterstützt. \\
 
-Abschließend lässt sich festhalten, dass im Rahmen der Interviews wertvolle Daten zur Interaktion der Probanden mit \gls{llm} und der entwickelten Anwendung gewonnen werden konnten.
-Im folgenden Kapitel wird die Analyse der \gls{llm}-Daten diskutiert, um die gewonnen Erkenntisse der Forschungsfrage zuzuordnen.
+Resümierend lässt sich festhalten, dass im Rahmen der Interviews wertvolle Daten zur Interaktion der Probanden mit \gls{llm} und der entwickelten Anwendung gewonnen werden konnten.
+Im folgenden Kapitel wird die Analyse der \gls{llm}-Daten diskutiert, um die gewonnenen Erkenntnisse der Forschungsfrage zuzuordnen.
 
 \section{\glsname{llm}-Daten}
 \label{sec:discussion-llm-data}
 
 Während die entwickelte Anwendung insgesamt positiv bewertet werden kann, zeigten sich bei der Analyse der \gls{llm}-Daten (vgl. Kap. \ref{sec:results-ai}) verschiedene Schwächen in Bezug auf die Qualität der generierten Antworten.
-Das \gls{llm} konnte grundsätzlich komplexe Anfragen verstehen, es zeigten sich jedoch Lücken in der korrekten Verwendung der bereitgestellten Werkzeuge, insbesondere im Bezug auf die Datenbankabfrage, sowie in der Interpretation von Datenbankstrukturen.
+Das \gls{llm} konnte grundsätzlich komplexe Anfragen verstehen, zeigte jedoch Lücken in der korrekten Verwendung der bereitgestellten Werkzeuge, insbesondere im Bezug auf die Datenbankabfrage sowie in der Interpretation von Datenbankstrukturen.
 Diese objektiv erfassten Fehler führten teilweise zu unverständlichen oder unbrauchbaren Antworten, welche bei den Probanden Unsicherheit auslösten. \\
 
 Die Anpassung des Systemprompts bietet dabei eine Möglichkeit, die Fehlerquellen zu reduzieren. Besonders zusätzliches Praxiswissen im Bezug auf den Aufbau von Modellen oder 
-die Verwendung der vorhandenen Werkzeuge im Praxisbezug könnte dabei eine entscheidenen Rolle spielen. Trotzdem zeigte sich, dass das allgemeine Wissen des \gls{llm} kompetent genug für die Beantwortung komplexer fachspezifischer Fragen war.
-Eine Erweiterung dieser Fähigkeit wäre mit Hilfe von einem Internetsuche-Werkzeug mögliches, welches dem \gls{llm} Zugriff auf aktuelle Informationen ermöglicht, welche nicht im Trainingsdatensatz des \gls{llm} enthalten sind. \\
+die Verwendung der vorhandenen Werkzeuge im Praxisbezug könnte dabei eine entscheidende Rolle spielen. Trotzdem zeigte sich, dass das allgemeine Wissen des \gls{llm} kompetent genug für die Beantwortung komplexer fachspezifischer Fragen war.
+Um als Wissensquelle nicht ausschließlich auf den Trainingsdatensatz angewiesen zu sein, könnte die Bereitstellung eines Werkzeugs zur Internetrecherche eine sinnvolle Ergänzung darstellen, um die Qualität der Antworten zu verbessern. \\
 
-Der durch das \gls{llm} verwendete Datensatz und die Struktur der Tabelle in Kombination mit dem Query-Werkzeug ermöglichte dem \gls{llm} eine nahezu freie Generation der Abfrage.
-Obwohl dies in manchen Situationen zu erhöhter Fehleranfälligkeit führte, war insgesamt eine positive Nutzung der Freiheit durch das \gls{llm} erkennbar,
+Der durch das \gls{llm} eingesetzte Datensatz und die Struktur der Tabelle in Kombination mit dem Query-Werkzeug ermöglichte dem \gls{llm} eine nahezu freie Generation der Abfrage.
+Obwohl dies in manchen Situationen zu erhöhter Fehleranfälligkeit führte, war insgesamt eine positive Nutzung der Freiheit ersichtlich,
 welches besonders bei komplexeren Aufgabenstellungen korrekte Interpretationen und Abfragen generierte.
 Um Fehler mit der \gls{sql}-Generation zu reduzieren, könnte die Verbesserung des Query-Werkzeug und des Systemprompts eine Lösung darstellen.
 Dabei könnten mehr Beispielabfragen oder ein stärkerer Fokus auf die Formatierung der \gls{sql}-Abfragen für einen geringeren Ausfall der Abfragen sorgen, ohne die Freiheit bei der Generierung zu stark einzuschränken.
 Zusätzlich wären manuelle Filter bzw. Textersetzungen außerhalb des \gls{llm} eine unkomplizierte Lösung für die Entfernung von Sonderzeichen in den Anweisungen möglich. \\
 
-Um dem \gls{llm} kontextbezogene Informationen bereitzustellen, wurde eine modularen Wissensdatenbank in Form des Skill-Werkzeugs implementiert,
-welche positive Auswirkung auf die Kompetenz des \gls{llm} bei der Bearbeitung von Aufgabenstellungen hatte.
+Um dem \gls{llm} kontextbezogene Informationen bereitzustellen, wurde eine modulare Wissensdatenbank in Form des Skill-Werkzeugs implementiert,
+die sich positiv auf die Kompetenz des \gls{llm} bei der Bearbeitung von Aufgabenstellungen auswirkte.
 Gleichzeitig war die Wissensabfrage bezüglich der Datenbankstruktur essentiell, um dem \gls{llm} Beispielabfragen und die Tabellenstruktur bereitzustellen.
-Das Skill-Werkzeuge wurde in jeder Situation lediglich einmal pro Nachricht verwendet, wodurch die bereitgestellten Informationen teilweise nicht ausreichend waren, um die Aufgabenstellung korrekt zu bearbeiten.
-In einigen Fällen fehlte dem \gls{llm} daher Informationen über die Datenbank, wodurch eine korrekte Ausführung der Aufgabenstellung nicht möglich war.
+Das Skill-Werkzeug wurde in jeder Situation lediglich einmal pro Nachricht verwendet, wodurch die bereitgestellten Informationen teilweise nicht ausreichend waren, um die Aufgabenstellung korrekt zu bearbeiten.
+In einigen Fällen fehlten dem \gls{llm} daher Informationen über die Datenbank, wodurch eine korrekte Ausführung der Aufgabenstellung nicht möglich war.
 Um dies zukünftig zu verbessern, könnte die Anpassung des Systemprompts und die genauere Definition der Werkzeugbeschreibung dabei helfen, die Nutzung des Skill-Werkzeugs zu erhöhen. \\
 
-Die Nutzung der Dateiexport-Funktion, welche Teil des Query-Werkzeuges ist, wurde konsequent vom LLM eingesetzt und manifestierte sich als benutzerfreundliche Möglichkeit,
-tabellarische Daten direkt in der Nutzeroberfläche anzuzeigen und die Ausgaben des \gls{llm} zu verifzieren. 
+Der Gebrauch der Dateiexport-Funktion, die Teil des Query-Werkzeugs ist, wurde konsequent vom \gls{llm} eingesetzt und erwies sich als benutzerfreundliche Möglichkeit,
+tabellarische Daten direkt in der Nutzeroberfläche anzuzeigen und die Ausgaben des \gls{llm} zu verifizieren. 
 Im Gegensatz dazu wurde das "ask-user"-Werkzeug, welches die Möglichkeit bietet, Rückfragen an die Probanden zu stellen, nicht verwendet, obwohl dies zur Verbesserung der Nutzererfahrung beigetragen hätte.
-Eine konsequentere Nutzung des Werkzeuges lässt sich durch eine Anpassung des Systemprompts erreichen, sodass Nachfragen systematisch strukturiert und beantwortet werden können. \\
+Eine konsequentere Nutzung des Werkzeugs lässt sich durch eine Anpassung des Systemprompts erreichen, sodass Nachfragen systematisch strukturiert und beantwortet werden können. \\
 
-Insgesamt lässt sich festhalten, dass trotz der überwiegend fehlerhaften Antworten des \gls{llm}, die Probanden der Gruppe B in der Lage waren, die Antworten zu interpretieren und teilweise auch zu korrigieren, um die Aufgaben erfolgreich zu bearbeiten.
+Insgesamt lässt sich festhalten, dass trotz der überwiegend fehlerhaften Antworten die Probanden der Gruppe B in der Lage waren, die Antworten zu interpretieren und teilweise auch zu korrigieren, um die Aufgaben erfolgreich zu bearbeiten.
 Dies unterstreicht die Bedeutsamkeit der menschlichen Interpretation und Korrektur bei der Nutzung von \gls{llm} in komplexen Anwendungsfällen, insbesondere wenn die Datenbasis unvollständig oder fehlerhaft ist.
 Um fachfremden Akteuren die Nutzung von \gls{llm} zu erleichtern, ist in zukünftigen Anwendungen eine tiefgründige, manuell erarbeitete Datengrundlage für die Definition fachspezifischer Informationen notwendig,
 um die Fehleranfälligkeit der Antworten zu reduzieren und die Nutzbarkeit der \gls{llm}-Unterstützung zu erhöhen.
-Gleichzeitig gewinnen \gls{llm} stetig an allgemeinem Wissen und Kompetenz, bei gleichzeitig fallenden Nutzungskosten, 
-wodurch in Zukunft die Nutzung von stärkeren \gls{llm} in der Praxis anzunehmen ist und die Qualität der Antworten weiter steigen wird. \\
+Gleichzeitig gewinnen \gls{llm} stetig an allgemeinem Wissen und an Kompetenz bei simultan fallenden Nutzungskosten, 
+wodurch in Zukunft die Nutzung von stärkeren \gls{llm} in der Praxis anzunehmen ist und die Qualität der Antworten weiter steigern wird. \\
 
 Auf Basis der gewonnenen Erkenntnisse aus der Entwicklung der Anwendung, den durchgeführten Interviews und der Analyse der \gls{llm}-Daten wird im folgenden Abschnitt
-ein Gesamtausblick gegeben, um die gewonnenen Erkenntnisse im Kontext der Forschungsfrage zu betrachten und zukünftige Entwicklungen zu diskutieren.
+ein Gesamtausblick gegeben, um im Kontext der Forschungsfrage zu betrachten und zukünftige Entwicklungen zu diskutieren.
 
 \section{Gesamtausblick}
 
 Die Bachelorarbeit hat gezeigt, dass mit dem heutigen Stand der Technik und limitierten Ressourcen die Entwicklung eines lauffähigen Prototypen möglich ist.
-Im Rahmen der Interviews konnte der entwickelte Prototyp erfolgreich eingesetzt werden und die Kombination aus \gls{llm} und menschlicher Interpretation im Kontext von digitalen, datengetriebenen Bauprojekten untersucht werden.
-Trotz der überwiegend fehlerhaften Antworten des \gls{llm} sind einfache Handlungsschritte, wie die Verbesserung des Systemprompts oder der Werkzeugdefinition, entstanden, 
+Im Rahmen der Interviews konnte der entwickelte Prototyp erfolgreich eingesetzt werden und die Kombination aus \gls{llm} und menschlicher Interpretation im Kontext von digitalen, datengetriebenen Bauprojekten untersucht werden können.
+Trotz der überwiegend fehlerhaften Antworten des \gls{llm} sind einfache Handlungsschritte, wie die Verbesserung des Systemprompts oder der Werkzeugdefinition, diskutiert worden, 
 welche die Fehleranfälligkeit von \gls{llm}-Antworten reduzieren können, um die Nutzung von \gls{llm} in der Praxis zu erleichtern. \\
 
-Auf Basis der gewonnenen Erkenntnisse, sowie den in diesem Kapitel diskutierten Ergebnissen, lässt sich abschließend festhalten,
-dass die Nutzung von \gls{llm}, um fachfremden Akteuren den Zugang zu digitalen, datengetriebenen Bauprojekten zu ermöglichen, umsetzbar ist.
-Die technischen Hürden, wie höhere Fehlerquoten, lassen sich mit dem Einsatz von mehr Ressourcen überwinden, um ein in der Praxis fähiges System zu entwickeln. \\
+Auf Basis der diskutierten Ergebnisse lässt sich abschließend festhalten,
+dass die Nutzung von \gls{llm}, für fachfremden Akteuren den Zugang zu digitalen, datengetriebenen Bauprojekten zu ermöglichen, umsetzbar ist.
+Die technischen Hürden, wie höhere Fehlerquoten, lassen sich mit dem Einsatz zusätzlicher Ressourcen überwinden, um ein praxistaugliches System zu entwickeln. \\
 
 Grundsätzlich ist immer zu betrachten, welche Rolle fachfremde Akteure in digitalen, datengetriebenen Bauprojekten einnehmen sollen,
-da trotz der Möglichkeiten, die \gls{llm} bieten, die Interpretation und Korrektur der generierten Inhalte durch Menschen notwendig bleibt, um eine erfolgreiche Bearbeitung von Aufgabenstellungen zu ermöglichen.
+da trotz der Möglichkeiten, die \gls{llm} bieten, die Interpretation und Korrektur der generierten Inhalte durch Menschen notwendig bleibt, um eine erfolgreiche Bearbeitung von Aufgabenstellungen zu bewirken.
 Eine abschließende Sichtung der generierten Ausgaben durch fachkompetente Akteure ist daher auch in Zukunft notwendig, um die in der Praxis geforderten Qualitätsstandards zu erfüllen. \\
 
 Die im Rahmen der Bachelorarbeit entwickelte Anwendung in Kombination mit fachfremden Akteuren kann nach heutigem Stand der Technik lediglich eine unterstützende Rolle bei der Bearbeitung komplexer Probleme einnehmen.
-Dennoch bietet die Nutzung dieser entsprechenden Technologien die Chance langfristig Verbesserung in der Zusammenarbeit zwischen fachfremden und fachkompetenten Akteuren zu erzielen und den Zugang zu digitalen, datengetriebenen Bauprojekten zu erleichtern.
+Dennoch bietet die Nutzung dieser Technologien die Chance, langfristig Verbesserungen in der Zusammenarbeit zwischen fachfremden und fachkompetenten Akteuren zu erzielen und den Zugang zu digitalen, datengetriebenen Bauprojekten zu erleichtern.
